@@ -1,0 +1,44 @@
+{
+  "link": "https://www.typescriptlang.org/docs/handbook/compiler-options.html",
+  "include": ["src", "types"],
+  "compilerOptions": {
+    "lib": ["dom", "es7"],
+    "target": "es5",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "noImplicitAny": false,
+    "baseUrl": "./src",
+    /* Base directory to resolve non-absolute module names. */
+    "paths": {
+      "@screens": ["./screens"],
+      "@components": ["./components"],
+      "@navigation": ["./navigation"],
+      "@layout": ["./layout"],
+      "@config": ["./config"],
+      "@utils": ["./utils"],
+      "@store": ["./store"],
+      "@context": ["./context"],
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "./node_modules",
+    "./node_modules/*",
+    "./node_modules/@types/node/index.d.ts",
+  ],
+  "plugins": [
+    {
+      "name": "typescript-styled-plugin"
+    }
+  ]
+}

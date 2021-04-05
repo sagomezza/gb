@@ -1,0 +1,88 @@
+{
+  "name": "rnboilerplate",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "ts": "tsc --watch --noEmit --skipLibCheck",
+    "eslint-fix-all": "eslint --fix src/**/*.{js,ts,tsx}",
+    "prettier-fix-all": "prettier --write src/**/*.{js,ts,tsx,json}",
+    "eslint-check-all": "eslint src/**/*.{js,ts,tsx}",
+    "prettier-check-all": "prettier --check src/**/*.{js,ts,tsx,json}",
+    "clean-modules": "rm -rf node_modules/ && yarn cache clean",
+    "pod-clear": "rm -rf ~/Library/Caches/CocoaPods && rm -rf Pods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && cd ios && pod deintegrate && pod setup"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "*.{json}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "@react-navigation/native": "^5.9.3",
+    "@react-navigation/stack": "^5.14.3",
+    "@reduxjs/toolkit": "^1.5.1",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
+    "react": "16.13.1",
+    "react-hook-form": "^6.15.5",
+    "react-native": "0.63.4",
+    "react-native-bootsplash": "^3.2.0",
+    "react-native-dotenv": "^2.5.3",
+    "react-native-dropdown-picker": "^4.0.2",
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-paper": "^4.7.2",
+    "react-native-safe-area-context": "^3.2.0",
+    "react-native-screens": "^3.0.0",
+    "react-native-vector-icons": "^8.1.0",
+    "react-redux": "^7.2.3",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.2.2",
+    "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/preset-react": "^7.13.13",
+    "@babel/runtime": "^7.8.4",
+    "@react-native-community/eslint-config": "^1.1.0",
+    "@types/jest": "^25.2.3",
+    "@types/react-native": "^0.63.2",
+    "@types/react-test-renderer": "^16.9.2",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^25.1.0",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "babel-plugin-styled-components": "^1.12.0",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.23.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "jest": "^25.1.0",
+    "metro-react-native-babel-preset": "^0.59.0",
+    "prettier": "^2.2.1",
+    "react-test-renderer": "16.13.1",
+    "typescript": "^3.8.3"
+  },
+  "resolutions": {
+    "@types/react": "^16"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
+}
