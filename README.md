@@ -67,9 +67,3 @@ sudo xcode-select --switch /Applications/Xcode.app
 ```
 
 _Note_: this may very based on the system.
-
-### Twilio: `Phone number considered invalid by Twilio; please validate if this is not intentional.`
-
-This Twilio log message is due to having a Twilio test account; it will only send to pre-registered phone numbers. Even when it’s not a test account though, it will require real, connected phone numbers to send the SMS. The api bypasses the SMS in the dev configuration and the code that would be sent to the end user is printed in the json response.
-
-This can be ignored during development. The warning lets us know that the integration is working.
