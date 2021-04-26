@@ -1,19 +1,82 @@
 import * as React from 'react';
-import { _ModalInfo } from './styles';
-import Typography from '../Typography';
+import { Modal } from 'react-native';
+import { FadedContainer } from './styles';
+import BaseModalContent from './BaseModalContent';
+export interface IBaseModalProps {
+  actionOnPress?: () => void;
+  actionText?: string;
+  children?: any;
+  onClose: () => void;
+  subtitle: string;
+  title: string;
+  visible: boolean;
+}
+interface IModalInfoProps extends IBaseModalProps {
+  emphasis: "SUCCESS" | "ERROR";
+};
 
-const ModalInfo = ({ text }: { text: string }) => {
+const ModalInfo = (props: IModalInfoProps) => {
+  const {
+    actionOnPress,
+    actionText,
+    children,
+    emphasis,
+    onClose,
+    subtitle,
+    title,
+    visible,
+  } = props;
+
+  const renderChildren = React.useCallback(() => {
+    return <React.Fragment>{children ?? null}</React.Fragment>;
+  }, [children]);
+
+  const renderDefaults = React.useCallback(() => {
+    const DefaultsContent = (() => {
+      return (
+        <BaseModalContent
+          actionOnPress={actionOnPress}
+          actionText={actionText}
+          emphasis={emphasis}
+          onClose={onClose}
+          subtitle={subtitle}
+          title={title}
+        />
+      );
+    })();
+
+    return (
+      <React.Fragment>{!children ? DefaultsContent : null}</React.Fragment>
+    );
+  }, [
+    actionOnPress,
+    actionText,
+    children,
+    emphasis,
+    onClose,
+    subtitle,
+    title,
+    visible,
+  ]);
+
   return (
-    <_ModalInfo>
-      <Typography marginStart={16} textAlign="left" color="white" size={16} variant="regular">
-        {text}
-      </Typography>
-    </_ModalInfo>
+    <Modal
+      animationType="slide"
+      onRequestClose={() => { }}
+      transparent={true}
+      visible={visible}
+    >
+      <FadedContainer>
+        {renderChildren()}
+        {renderDefaults()}
+      </FadedContainer>
+    </Modal>
   );
 };
 
 ModalInfo.defaultProps = {
   text: '',
 };
+
 
 export default ModalInfo;
