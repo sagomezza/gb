@@ -12,8 +12,8 @@ const Stack = createStackNavigator();
 const AppNavigator: React.FC = () => (
   <NavigationContainer>
     <Stack.Navigator headerMode="none">
-      <Stack.Screen name={routes.LOGIN} component={AuthNavigator} />
       <Stack.Screen name={routes.HOME} component={MainStackNavigation} />
+      <Stack.Screen name={routes.LOGIN} component={AuthNavigator} />
     </Stack.Navigator>
   </NavigationContainer>
 );

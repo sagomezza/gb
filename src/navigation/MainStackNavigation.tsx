@@ -14,6 +14,7 @@ import { HomeScreen } from '../screens';
 
 // ROUTES
 import routes from 'config/routes';
+import ProfileScreen from 'screens/Profile';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +30,7 @@ export const MainStackNavigation = () => (
     }}
   >
     <Stack.Screen name={routes.HOME} component={HomeScreen} />
+    <Stack.Screen name={routes.PROFILE} component={ProfileScreen} />
   </Stack.Navigator>
 );
 

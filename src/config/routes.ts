@@ -5,6 +5,7 @@ export enum ROUTES_AUTH {
 
 export enum ROUTES_MAIN {
   HOME = 'HOME',
+  PROFILE = 'PROFILE',
 }
 
 const routes = {
