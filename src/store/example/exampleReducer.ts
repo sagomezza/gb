@@ -1,36 +1,34 @@
-// LIBS
-import { createSlice } from '@reduxjs/toolkit';
-
-// TYPES
-import { ExampleState } from '../types';
-
-// ACTIONS
-import { fetchExample } from './exampleActions';
-
-// UTILS
-import { getErrorMessage } from 'utils/general';
+import { createSlice } from "@reduxjs/toolkit";
+import { getErrorMessage } from "utils/general";
+import { ExampleState } from "../types";
+import { fetchExample } from "./exampleActions";
 
 const initialState = {
   exampleError: null,
   fetchExample: null,
-  homeWord: '',
+  homeWord: "",
 } as ExampleState;
 
 const exampleSlice = createSlice({
-  name: 'example',
+  name: "example",
   initialState,
   reducers: {
-    updateHomeWordExample: (state, { payload }) => ({ ...state, homeWord: payload.word }),
+    updateHomeWordExample: (state, { payload }) => ({
+      ...state,
+      homeWord: payload.word,
+    }),
     resetExampleError: (state) => ({ ...state, exampleError: null }),
     resetExample: () => initialState,
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchExample.fulfilled, (state, { payload }) => {
-      state.fetchExample = payload;
-    });
-    builder.addCase(fetchExample.rejected, (state, action) => {
-      state.exampleError = getErrorMessage(action);
-    });
+    builder.addCase(fetchExample.fulfilled, (state, { payload }) => ({
+      ...state,
+      fetchExample: payload,
+    }));
+    builder.addCase(fetchExample.rejected, (state, action) => ({
+      ...state,
+      exampleError: getErrorMessage(action),
+    }));
   },
 });
 

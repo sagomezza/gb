@@ -1,16 +1,16 @@
-export enum ROUTES_AUTH {
-  LOGIN = 'LOGIN',
-  STYLEGUIDE = 'STYLEGUIDE',
+export enum RoutesAuth {
+  LOGIN = "LOGIN",
+  STYLEGUIDE = "STYLEGUIDE",
 }
 
-export enum ROUTES_MAIN {
-  HOME = 'HOME',
-  PROFILE = 'PROFILE',
+export enum RotuesMain {
+  HOME = "HOME",
+  PROFILE = "PROFILE",
 }
 
 const routes = {
-  ...ROUTES_AUTH,
-  ...ROUTES_MAIN,
+  ...RoutesAuth,
+  ...RotuesMain,
 };
 
 export default routes;

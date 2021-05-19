@@ -1,25 +1,25 @@
 // COMPONENTS
-import icon from 'react-native-vector-icons/MaterialIcons';
-import iconAwesome from 'react-native-vector-icons/FontAwesome';
-import iconAntDesign from 'react-native-vector-icons/AntDesign';
-import iconEntypo from 'react-native-vector-icons/Entypo';
-import iconEvil from 'react-native-vector-icons/EvilIcons';
-import iconFeather from 'react-native-vector-icons/Feather';
-import iconAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import iconFontisto from 'react-native-vector-icons/Fontisto';
-import iconFoundation from 'react-native-vector-icons/Foundation';
-import iconIonicons from 'react-native-vector-icons/Ionicons';
-import iconMaterialCommunity from 'react-native-vector-icons/MaterialCommunityIcons';
-import iconOcticons from 'react-native-vector-icons/Octicons';
-import iconZocial from 'react-native-vector-icons/Zocial';
-import iconSimpleLine from 'react-native-vector-icons/SimpleLineIcons';
+import icon from "react-native-vector-icons/MaterialIcons";
+import iconAwesome from "react-native-vector-icons/FontAwesome";
+import iconAntDesign from "react-native-vector-icons/AntDesign";
+import iconEntypo from "react-native-vector-icons/Entypo";
+import iconEvil from "react-native-vector-icons/EvilIcons";
+import iconFeather from "react-native-vector-icons/Feather";
+import iconAwesome5 from "react-native-vector-icons/FontAwesome5";
+import iconFontisto from "react-native-vector-icons/Fontisto";
+import iconFoundation from "react-native-vector-icons/Foundation";
+import iconIonicons from "react-native-vector-icons/Ionicons";
+import iconMaterialCommunity from "react-native-vector-icons/MaterialCommunityIcons";
+import iconOcticons from "react-native-vector-icons/Octicons";
+import iconZocial from "react-native-vector-icons/Zocial";
+import iconSimpleLine from "react-native-vector-icons/SimpleLineIcons";
 
 // STYLES
-import styled from 'styled-components/native';
-import { theme } from 'config/theme';
+import styled from "styled-components/native";
+import { theme } from "config/theme";
 
 // UTILS
-import { nlz, rs } from 'utils/dimensions';
+import { nlz, rs } from "utils/dimensions";
 
 export const Icon = styled(icon)((p) => ({
   color: theme.colors[p.color],

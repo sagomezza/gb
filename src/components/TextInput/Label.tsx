@@ -1,45 +1,29 @@
-import React from 'react';
-// COMPONENTS
-import Typography from '../Typography';
-// TYPES
-import { TypographyProps } from '../Typography/types';
-import { styles } from './index';
-import { TextStyle } from 'react-native';
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-props-no-spreading */
+import React from "react";
+import { TextStyle } from "react-native";
+import Typography from "../Typography";
 
 export const TypographyVariant = {
-  regular: 'nunito-regular',
-  bold: 'nunito-bold',
-  extraBold: 'nunito-extraBold',
-  light: 'nunito-light',
+  regular: "Roboto-Regular",
+  bold: "Roboto-Bold",
+  extraBold: "Roboto-Black",
+  light: "Roboto-Light",
 };
 
-export interface defaultLabelProps {
-  variant?: keyof typeof TypographyVariant;
+export interface IDefaultLabelProps {
   children?: React.ReactNode;
-  textAlign?: 'left' | 'right' | 'center';
+  lineSpacing?: string;
+  margin?: number;
+  marginEnd?: number;
+  marginStart?: number;
   size?: number;
   style?: TextStyle;
-  margin?: number;
-  marginStart?: number;
-  marginEnd?: number;
-  lineSpacing?: string;
+  textAlign?: "left" | "right" | "center";
+  variant?: keyof typeof TypographyVariant;
 }
 
-const defaultLabelProps: TypographyProps = {
-  children: null,
-  color: 'gray2',
-  margin: 0,
-  marginEnd: 0,
-  marginStart: 0,
-  lineSpacing: '0',
-  size: 12,
-  style: {},
-  textAlign: 'left',
-  variant: 'regular',
+export const Label = (props) => {
+  const { textLabel } = props;
+  return <Typography {...props}>{textLabel}</Typography>;
 };
-
-export const Label = (props) => (
-  <Typography {...defaultLabelProps} {...props}>
-    {props?.textLabel}
-  </Typography>
-);

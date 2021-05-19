@@ -1,141 +1,118 @@
-/* eslint-disable react/display-name */
-// REACT
-import React, { ReactElement } from 'react';
-import { TextInput, StyleSheet, View } from 'react-native';
-import { TextInput as TextPaperInput } from 'react-native-paper';
-
-import type { TextStyleProp } from 'react-native/Libraries/StyleSheet/StyleSheet';
-
+/* eslint-disable react/jsx-props-no-spreading */
+import React, { ReactElement } from "react";
+import { View, TextStyle } from "react-native";
+import { TextInput as TextPaperInput } from "react-native-paper";
+import Typography from "components/Typography";
+import { Controller } from "react-hook-form";
+import { theme } from "config/theme";
 import type {
   KeyboardType,
   ReturnKeyType,
-} from 'react-native/Libraries/Components/TextInput/TextInput';
-
-// COMPONENTS
-import Typography from 'components/Typography';
-
-// FORM
-import { Controller } from 'react-hook-form';
-
-// STYLES
-import { styles } from './styles';
-
-// TYPES
-import { TypographyProps } from '../Typography/types';
-
-import { theme } from 'config/theme';
-import { TextStyle } from 'react-native';
+} from "react-native/Libraries/Components/TextInput/TextInput";
+import type { TextStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
+import { styles } from "./styles";
+import { TypographyProps } from "../Typography/types";
 
 export const TypographyVariant = {
-  regular: 'Roboto',
-  bold: 'Roboto',
-  extraBold: 'Roboto',
-  light: 'Roboto',
+  regular: "Roboto-Regular",
+  bold: "Roboto-Bold",
+  extraBold: "Roboto-Black",
+  light: "Roboto-Light",
 };
 
-const inputStyles = {
-  fontFamily: theme.fonts.regular.fontFamily,
-  fontWeight: theme.fonts.regular.fontWeight,
-  color: theme.colors.text,
-  backgroundColor: theme.colors.white,
-  fontSize: 21,
-};
-
-export interface labelProps {
-  color?: keyof typeof theme.colors;
-  variant?: keyof typeof TypographyVariant;
+export interface ILabelProps {
   children?: React.ReactNode;
-  textAlign?: 'left' | 'right' | 'center';
+  color?: keyof typeof theme.colors;
+  lineSpacing?: string;
+  margin?: number;
+  marginEnd?: number;
+  marginStart?: number;
   size?: number;
   style?: TextStyle;
-  margin?: number;
-  marginStart?: number;
-  marginEnd?: number;
-  lineSpacing?: string;
+  textAlign?: "left" | "right" | "center";
+  variant?: keyof typeof TypographyVariant;
 }
 
 interface Props {
+  autoFocus?: boolean;
   containerStyle?: Object;
   control: any;
   defaultValue?: string;
   error?: string;
+  errorText?: string;
   inputStyle?: TextStyleProp;
+  keyboardType?: KeyboardType;
   label?: string;
-  labelProps?: labelProps;
+  labelProps?: ILabelProps;
   mode?: string;
   name: string;
   placeholder?: string;
-  rules?: Object;
-  autoFocus?: boolean;
-  keyboardType?: KeyboardType;
   returnKeyType?: ReturnKeyType;
+  rules?: Object;
 }
 
 const defaultLabelProps: TypographyProps = {
   children: null,
-  color: 'gray2',
+  color: "gray2",
   margin: 0,
   marginEnd: 0,
   marginStart: 0,
-  lineSpacing: '0',
+  lineSpacing: "0",
   size: 12,
   style: styles.label,
-  textAlign: 'left',
-  variant: 'regular',
+  textAlign: "left",
+  variant: "regular",
 };
 
 export default ({
   containerStyle = {},
   control,
-  defaultValue = '',
-  error = '',
-  inputStyle = {},
-  label = '',
+  defaultValue = "",
+  error = "",
+  errorText = "",
+  label = "",
   labelProps = defaultLabelProps,
   name,
-  placeholder = '',
+  placeholder = "",
   rules = {},
-  mode = 'outlined',
   autoFocus = false,
-  keyboardType = 'default',
-  returnKeyType = 'default',
-}: Props): ReactElement => {
-  const errorMessage = (): string => {
-    if (error === 'required') return 'Field required';
-    return 'Invalid data';
-  };
-
-  return (
-    <Controller
-      control={control}
-      defaultValue={defaultValue}
-      name={name}
-      render={({ onChange, onBlur, value }) => (
-        <View style={[styles.container, containerStyle]}>
-          {!!label && <Typography {...labelProps}>{label}</Typography>}
-          <TextPaperInput
-            onBlur={onBlur}
-            textAlign="left"
-            onChangeText={(value) => onChange(value)}
-            placeholder={placeholder}
-            mode="outlined"
-            underlineColor={theme.colors.gray4}
-            placeholderTextColor={theme.colors.gray3}
-            theme={{ colors: { primary: theme.colors.onPrimary, placeholder: theme.colors.gray4 } }}
-            style={[inputStyles, { fontSize: 14, height: 50 }]}
-            value={value}
-            autoFocus={autoFocus}
-            keyboardType={keyboardType}
-            returnKeyType={returnKeyType}
-          />
-          {!!error && (
-            <Typography color="error" size={11}>
-              {errorMessage()}
-            </Typography>
-          )}
-        </View>
-      )}
-      rules={rules}
-    />
-  );
-};
+  keyboardType = "default",
+  returnKeyType = "default",
+}: Props): ReactElement => (
+  <Controller
+    control={control}
+    defaultValue={defaultValue}
+    name={name}
+    render={({ onBlur, onChange, value }) => (
+      <View style={[containerStyle]}>
+        {!!label && <Typography {...labelProps}>{label}</Typography>}
+        <TextPaperInput
+          autoFocus={autoFocus}
+          keyboardType={keyboardType}
+          mode="outlined"
+          placeholder={placeholder}
+          placeholderTextColor={theme.colors.gray3}
+          returnKeyType={returnKeyType}
+          style={[styles.textPaperInput]}
+          textAlign="left"
+          theme={{
+            colors: {
+              primary: theme.colors.onPrimary,
+              placeholder: theme.colors.gray4,
+            },
+          }}
+          underlineColor={theme.colors.gray4}
+          value={value}
+          onBlur={onBlur}
+          onChangeText={(value) => onChange(value)}
+        />
+        {!!error && (
+          <Typography color="error" size={11}>
+            {errorText}
+          </Typography>
+        )}
+      </View>
+    )}
+    rules={rules}
+  />
+);

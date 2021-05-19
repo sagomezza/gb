@@ -1,10 +1,11 @@
-import React from 'react';
-import { View } from 'react-native';
-import { InputLabel, ProfileInput } from './styles';
+import React from "react";
+import { View } from "react-native";
+import { InputLabel, ProfileInput } from "./styles";
 
 interface IInputProps {
   defaultValue?: string;
   label: string;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onChange: (newText: string) => void;
   placeholder?: string;
   value: string;
@@ -16,18 +17,16 @@ const Input: React.FC<IInputProps> = ({
   onChange,
   placeholder,
   value,
-}: IInputProps) => {
-  return (
-    <View>
-      <InputLabel size={13}>{label}</InputLabel>
-      <ProfileInput
-        defaultValue={defaultValue}
-        onTextChange={onChange}
-        placeholder={placeholder}
-        value={value}
-      />
-    </View>
-  );
-}
+}: IInputProps) => (
+  <View>
+    <InputLabel size={13}>{label}</InputLabel>
+    <ProfileInput
+      defaultValue={defaultValue}
+      placeholder={placeholder}
+      value={value}
+      onTextChange={onChange}
+    />
+  </View>
+);
 
 export default Input;

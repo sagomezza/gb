@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { Modal, Text, TouchableOpacity } from "react-native";
+import { Modal, TouchableOpacity } from "react-native";
 import * as ImageSelector from "react-native-image-picker";
 import {
   ButtonsCard,
@@ -11,66 +11,78 @@ import {
 
 interface IImagePickerProps {
   children: React.ReactElement;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onChange: (imageUri: string) => void;
   title?: string;
 }
 
-const ImagePicker: React.FC<IImagePickerProps> = ({ children, onChange, title }: IImagePickerProps) => {
-
+const ImagePicker: React.FC<IImagePickerProps> = ({
+  children,
+  onChange,
+  title,
+}: IImagePickerProps) => {
   const [showModal, toggleModal] = useState(false);
 
-  const sendImageToParent = useCallback((selectedImageUri) => {
-    if (onChange) {
-      onChange(selectedImageUri);
-    }
-    toggleModal(false);
-  }, [onChange]);
+  const sendImageToParent = useCallback(
+    (selectedImageUri) => {
+      if (onChange) {
+        onChange(selectedImageUri);
+      }
+      toggleModal(false);
+    },
+    [onChange]
+  );
 
   const pickImage = () => {
-    ImageSelector.launchImageLibrary({
-      mediaType: 'photo',
-      quality: 1,
-    }, (result) => {
-      if (!result.didCancel) {
-        sendImageToParent(result.uri);
-      } else {
-        toggleModal(true);
+    ImageSelector.launchImageLibrary(
+      {
+        mediaType: "photo",
+        quality: 1,
+      },
+      (result) => {
+        if (!result.didCancel) {
+          sendImageToParent(result.uri);
+        } else {
+          toggleModal(true);
+        }
       }
-    });
+    );
   };
 
   const takePhoto = () => {
-    ImageSelector.launchCamera({
-      mediaType: 'photo',
-      quality: 1,
-    }, function(result){
-      if (!result.didCancel) {
-        sendImageToParent(result.uri);
-      } else {
-        toggleModal(true);
+    ImageSelector.launchCamera(
+      {
+        mediaType: "photo",
+        quality: 1,
+      },
+      (result) => {
+        if (!result.didCancel) {
+          sendImageToParent(result.uri);
+        } else {
+          toggleModal(true);
+        }
       }
-    });
+    );
   };
 
   return (
-    <React.Fragment>
+    <>
       <Modal
+        transparent
         animationType="slide"
-        onRequestClose={() => toggleModal(false)}
-        transparent={true}
         visible={showModal}
+        onRequestClose={() => toggleModal(false)}
       >
         <Fallback>
           <ButtonsCard>
-
-            {title && (<CardTitle size={14}>{title}</CardTitle>)}
+            {title && <CardTitle size={14}>{title}</CardTitle>}
 
             <OptionButton
               contentStyle={OptionButtonContentStyle}
               icon="camera"
               mode="outlined"
-              onPress={takePhoto}
               uppercase={false}
+              onPress={takePhoto}
             >
               Camera
             </OptionButton>
@@ -79,8 +91,8 @@ const ImagePicker: React.FC<IImagePickerProps> = ({ children, onChange, title }:
               contentStyle={OptionButtonContentStyle}
               icon="image"
               mode="outlined"
-              onPress={pickImage}
               uppercase={false}
+              onPress={pickImage}
             >
               Gallery
             </OptionButton>
@@ -89,8 +101,8 @@ const ImagePicker: React.FC<IImagePickerProps> = ({ children, onChange, title }:
               contentStyle={OptionButtonContentStyle}
               icon="close"
               mode="outlined"
-              onPress={() => toggleModal(false)}
               uppercase={false}
+              onPress={() => toggleModal(false)}
             >
               Close
             </OptionButton>
@@ -101,7 +113,7 @@ const ImagePicker: React.FC<IImagePickerProps> = ({ children, onChange, title }:
       <TouchableOpacity onPress={() => toggleModal(true)}>
         {children}
       </TouchableOpacity>
-    </React.Fragment>
+    </>
   );
 };
 

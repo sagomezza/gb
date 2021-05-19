@@ -1,17 +1,17 @@
-//Libs
-import React from 'react';
-//Components
-import SettingsView from '../Settings';
-import Switch from '../Switch';
-import { Subheading } from '../Subheading';
+// Libs
+import React from "react";
+// Components
+import SettingsView from "../Settings";
+import Switch from "../Switch";
+import { Subheading } from "../Subheading";
 
 type Props = {
   label: string;
-  value: boolean;
   onValueChange: () => void;
+  value: boolean;
 };
 
-export default function SettingsItem({ label, value, onValueChange }: Props) {
+export default function SettingsItem({ label, onValueChange, value }: Props) {
   return (
     <SettingsView>
       <Subheading>{label}</Subheading>

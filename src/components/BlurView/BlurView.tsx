@@ -1,12 +1,17 @@
-import * as React from 'react';
-import { View, ViewProps } from 'react-native';
+import * as React from "react";
+import { View, ViewProps } from "react-native";
 
-type Props = ViewProps & {
-  tint: 'light' | 'dark';
+interface IBlurViewProps extends ViewProps {
   intensity: number;
-};
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function BlurView({ tint, intensity, ...rest }: Props) {
-  return <View {...rest} />;
+  tint: "light" | "dark";
 }
+
+const BlurView: React.FC<IBlurViewProps> = ({
+  intensity,
+  tint,
+  ...rest
+}: IBlurViewProps) => (
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  <View {...rest} />
+);
+export default BlurView;

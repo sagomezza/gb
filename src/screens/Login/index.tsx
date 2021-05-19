@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { navigator } from 'navigation';
-import DefaultLayout, { Header, Body, Footer } from 'layout/default';
-import { LinkButton, Spacing, Paragraph } from 'components';
-import LoginForm from './Form';
-import routes from 'config/routes';
-import { Container } from './styled';
+import * as React from "react";
+import { navigator } from "navigation";
+import DefaultLayout, { Body, Footer } from "layout/default";
+import { LinkButton, Spacing, Paragraph } from "components";
+import routes from "config/routes";
+import LoginForm from "./Form";
+import { Container } from "./styled";
 
 const LoginScreen = () => {
   const { goToPage } = navigator();
@@ -19,8 +19,10 @@ const LoginScreen = () => {
       <Footer>
         <Container>
           <Spacing size={20} />
-          <Paragraph center>GO TO STYLEGUIDE</Paragraph>
-          <LinkButton onPress={() => goToPage(routes.STYLEGUIDE)}>Styleguide</LinkButton>
+          <Paragraph>GO TO STYLEGUIDE</Paragraph>
+          <LinkButton onPress={() => goToPage(routes.STYLEGUIDE)}>
+            Styleguide
+          </LinkButton>
           <Spacing size={60} />
         </Container>
       </Footer>

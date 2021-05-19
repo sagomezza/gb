@@ -1,7 +1,8 @@
-import { CommonActions, useNavigation } from '@react-navigation/native';
-import { RoutesTypes } from 'config/routes';
+import { CommonActions, useNavigation } from "@react-navigation/native";
+import { RoutesTypes } from "config/routes";
 
 export const navigator = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const navigation = useNavigation();
   const goBack = () => {
     navigation.dispatch(CommonActions.goBack());
@@ -12,7 +13,7 @@ export const navigator = () => {
       CommonActions.navigate({
         name,
         params,
-      }),
+      })
     );
   };
 
@@ -20,8 +21,8 @@ export const navigator = () => {
     navigation.dispatch(
       CommonActions.reset({
         index: 1,
-        routes: [{ name: name }],
-      }),
+        routes: [{ name }],
+      })
     );
   };
 

@@ -1,14 +1,15 @@
-import * as React from 'react';
-import { _Spacing } from './styles';
-import { rs } from 'utils/dimensions';
+import * as React from "react";
+import { rs } from "utils/dimensions";
+import { SpacingStyled } from "./styles";
 
-const Spacing = ({ size, isHorizontal }: { size: number; isHorizontal: boolean }) => {
-  return <_Spacing size={rs(size)} isHorizontal={isHorizontal} />;
-};
-
-Spacing.defaultProps = {
-  size: 20,
-  isHorizontal: false,
-};
+const Spacing = ({
+  isHorizontal,
+  size,
+}: {
+  isHorizontal?: boolean;
+  size?: number;
+}) => (
+  <SpacingStyled isHorizontal={isHorizontal || false} size={rs(size || 20)} />
+);
 
 export default Spacing;

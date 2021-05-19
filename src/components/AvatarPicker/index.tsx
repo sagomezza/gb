@@ -1,30 +1,31 @@
-import ImagePicker from 'components/ImagePicker';
-import React, { useEffect, useState } from 'react';
+import ImagePicker from "components/ImagePicker";
+import React, { useEffect, useState } from "react";
 import { Avatar } from "react-native-paper";
-import { Image } from 'react-native';
 
 interface IAvatarPickerProps {
   defaultUri?: string;
-  size?: number;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onChange: (newImageUri: string) => void;
+  size?: number;
 }
 
-const AvatarPicker: React.FC<IAvatarPickerProps> = ({ defaultUri, size = 128, onChange }: IAvatarPickerProps) => {
-
-  const [selectedUri, setUri] = useState(defaultUri || '');
+const AvatarPicker: React.FC<IAvatarPickerProps> = ({
+  defaultUri,
+  onChange,
+  size = 128,
+}: IAvatarPickerProps) => {
+  const [selectedUri, setUri] = useState(defaultUri || "");
 
   useEffect(() => {
     if (onChange) {
       onChange(selectedUri);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedUri]);
 
   return (
     <ImagePicker onChange={(newImageUri) => setUri(newImageUri)}>
-      <Avatar.Image
-        size={size}
-        source={{ uri: selectedUri }}
-      />
+      <Avatar.Image size={size} source={{ uri: selectedUri }} />
     </ImagePicker>
   );
 };

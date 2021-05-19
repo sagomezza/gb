@@ -1,10 +1,10 @@
-//Libs
-import { configureStore, getDefaultMiddleware, Action } from '@reduxjs/toolkit';
-import logger from 'redux-logger';
-import { ThunkAction } from 'redux-thunk';
-import { useDispatch } from 'react-redux';
-//Reducers
-import rootReducer from './rootReducer';
+// Libs
+import { configureStore, getDefaultMiddleware, Action } from "@reduxjs/toolkit";
+import logger from "redux-logger";
+import { ThunkAction } from "redux-thunk";
+import { useDispatch } from "react-redux";
+// Reducers
+import rootReducer from "./rootReducer";
 
 export const store = configureStore({
   reducer: rootReducer,

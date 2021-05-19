@@ -26,7 +26,6 @@ export const CardTitle = styled(Typography)`
 
 export const OptionButton = styled(Button).attrs({
   color: "gray",
-
 })`
   display: flex;
   flex-direction: row;

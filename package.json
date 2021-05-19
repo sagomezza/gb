@@ -8,16 +8,20 @@
     "start": "react-native start",
     "test": "jest",
     "ts": "tsc --watch --noEmit --skipLibCheck",
+    "lint": "eslint . --ext .ts --ext .tsx --max-warnings 0",
     "eslint-fix-all": "eslint --fix src/**/*.{js,ts,tsx}",
     "prettier-fix-all": "prettier --write src/**/*.{js,ts,tsx,json}",
     "eslint-check-all": "eslint src/**/*.{js,ts,tsx}",
     "prettier-check-all": "prettier --check src/**/*.{js,ts,tsx,json}",
     "clean-modules": "rm -rf node_modules/ && yarn cache clean",
-    "pod-clear": "rm -rf ~/Library/Caches/CocoaPods && rm -rf Pods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && cd ios && pod deintegrate && pod setup"
+    "pod-clear": "rm -rf ~/Library/Caches/CocoaPods && rm -rf Pods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && cd ios && pod deintegrate && pod setup",
+    "prepare-husky": "husky install",
+    "gitflow:husky": "git config gitflow.path.hooks .husky",
+    "chmod:husky": "chmod +x .husky/pre-commit"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
-      "eslint --fix"
+      "eslint . --ext .ts --ext .tsx --max-warnings 0"
     ],
     "*.{json}": [
       "prettier --write"
@@ -25,6 +29,7 @@
   },
   "dependencies": {
     "@react-navigation/native": "^5.9.3",
+    "@react-navigation/routers": "^5.7.2",
     "@react-navigation/stack": "^5.14.3",
     "@reduxjs/toolkit": "^1.5.1",
     "husky": "^6.0.0",
@@ -41,6 +46,7 @@
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "^3.0.0",
     "react-native-vector-icons": "^8.1.0",
+    "react-navigation": "^4.4.4",
     "react-redux": "^7.2.3",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
@@ -61,11 +67,17 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-styled-components": "^1.12.0",
-    "eslint": "^6.5.1",
-    "eslint-config-prettier": "^8.1.0",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-better-styled-components": "^1.1.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-react": "^7.23.1",
+    "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-sort-destructure-keys": "^1.3.5",
+    "eslint-plugin-typescript-sort-keys": "^1.6.0",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
     "prettier": "^2.2.1",

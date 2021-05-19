@@ -1,19 +1,19 @@
-//Libs
-import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+// Libs
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import AuthNavigator from './AuthNavigator';
-import { MainStackNavigation } from './MainStackNavigation';
-import routes from 'config/routes';
+import routes from "config/routes";
+import AuthNavigator from "./AuthNavigator";
+import { MainStackNavigation } from "./MainStackNavigation";
 
 const Stack = createStackNavigator();
 
 const AppNavigator: React.FC = () => (
   <NavigationContainer>
     <Stack.Navigator headerMode="none">
-      <Stack.Screen name={routes.HOME} component={MainStackNavigation} />
-      <Stack.Screen name={routes.LOGIN} component={AuthNavigator} />
+      <Stack.Screen component={MainStackNavigation} name={routes.HOME} />
+      <Stack.Screen component={AuthNavigator} name={routes.LOGIN} />
     </Stack.Navigator>
   </NavigationContainer>
 );

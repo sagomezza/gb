@@ -1,9 +1,8 @@
-import styled from 'styled-components';
-import { StyleSheet } from 'react-native';
-import { Typography } from 'components';
-import { PrimaryButton } from 'components';
-import { TextInput } from 'components';
-import { rs } from 'utils/dimensions';
+import styled from "styled-components";
+import { StyleSheet } from "react-native";
+import { Typography, PrimaryButton, TextInput } from "components";
+
+import { rs } from "utils/dimensions";
 
 export const NameLabel = styled(Typography)`
   font-weight: bold;
@@ -35,31 +34,34 @@ export const EditionLinkContainer = styled.View`
   width: 100%;
 `;
 
-export const EditionLinkLabel= styled(Typography)`
-`;
+export const EditionLinkLabel = styled(Typography)``;
 
 export const styles = StyleSheet.create({
   mainScrollViewContainer: {
-    alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
+    alignItems: "center",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
     paddingBottom: rs(30),
     paddingTop: rs(30),
-  }
+  },
 });
 
 export const SampleView = styled.View`
   padding: ${rs(40)}px;
-  padding-top: ${rs(20)}px;
   padding-bottom: ${rs(5)}px;
+  padding-top: ${rs(20)}px;
   width: 100%;
 `;
 
-export const InputLabel= styled(Typography)`
+export const InputLabel = styled(Typography)`
   margin-bottom: ${rs(5)}px;
 `;
 
 export const ProfileInput = styled(TextInput)`
   margin-left: ${rs(5)}px;
+`;
+
+export const LineBreak = styled.View`
+  margin-top: ${rs(20)}px;
 `;

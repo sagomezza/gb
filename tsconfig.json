@@ -1,14 +1,24 @@
 {
   "link": "https://www.typescriptlang.org/docs/handbook/compiler-options.html",
-  "include": ["src", "types"],
+  "include": [
+    "src",
+    "types",
+    "aws-exports.js",
+    "App.tsx",
+  ],
   "compilerOptions": {
-    "lib": ["dom", "es7"],
+    "lib": [
+      "dom",
+      "es7"
+    ],
     "target": "es5",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
+    "strict": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -20,14 +30,30 @@
     "baseUrl": "./src",
     /* Base directory to resolve non-absolute module names. */
     "paths": {
-      "@screens": ["./screens"],
-      "@components": ["./components"],
-      "@navigation": ["./navigation"],
-      "@layout": ["./layout"],
-      "@config": ["./config"],
-      "@utils": ["./utils"],
-      "@store": ["./store"],
-      "@context": ["./context"],
+      "@screens": [
+        "./screens"
+      ],
+      "@components": [
+        "./components"
+      ],
+      "@navigation": [
+        "./navigation"
+      ],
+      "@layout": [
+        "./layout"
+      ],
+      "@config": [
+        "./config"
+      ],
+      "@utils": [
+        "./utils"
+      ],
+      "@store": [
+        "./store"
+      ],
+      "@context": [
+        "./context"
+      ],
     }
   },
   "exclude": [
@@ -35,6 +61,7 @@
     "./node_modules",
     "./node_modules/*",
     "./node_modules/@types/node/index.d.ts",
+    "__tests__/**/*-test.ts",
   ],
   "plugins": [
     {

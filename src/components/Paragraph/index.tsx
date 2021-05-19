@@ -1,22 +1,23 @@
-import React from 'react';
-import { Paragraph as PaperElement } from 'react-native-paper';
-import styled from 'styled-components/native';
-import { theme } from 'config/theme';
+/* eslint-disable react/jsx-props-no-spreading */
+import React from "react";
+import { Paragraph as PaperElement } from "react-native-paper";
+import styled from "styled-components/native";
+import { theme } from "config/theme";
+import { IWithChildren } from "utils/types";
 
 const StyledParagraphPaper = styled(PaperElement)`
-  font-family: ${theme.fonts.regular.fontFamily};
   color: #000000;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
-
   color: ${(props: any) => props.color || theme.colors.text};
-  width: ${(props: any) => (props.maxWidth ? `${props.maxWidth}px` : 'auto')};
-  text-align: ${(props: any) => (props.center ? 'center' : 'left')};
-
-  ${(props: any) => (props.center ? 'margin: 0 auto;' : '')};
+  font-family: ${theme.fonts.regular.fontFamily};
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: ${(props: any) => (props.center ? "center" : "left")};
+  width: ${(props: any) => (props.maxWidth ? `${props.maxWidth}px` : "auto")};
+  ${(props: any) => (props.center ? "margin: 0 auto;" : "")};
 `;
 
-export const Paragraph = (props) => (
-  <StyledParagraphPaper {...props}>{props.children}</StyledParagraphPaper>
-);
+export const Paragraph: React.FC<IWithChildren> = (props: IWithChildren) => {
+  const { children } = props;
+  return <StyledParagraphPaper {...props}>{children}</StyledParagraphPaper>;
+};

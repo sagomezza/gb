@@ -1,7 +1,6 @@
-// REACT
-import React, { ReactElement } from 'react';
-
-// STYLES
+import React, { ReactElement } from "react";
+import { theme } from "config/theme";
+import { Pressable } from "react-native";
 import {
   Icon,
   IconAwesome,
@@ -17,87 +16,128 @@ import {
   IconOcticons,
   IconSimpleLine,
   IconZocial,
-} from './styles';
-import { theme } from 'config/theme';
+} from "./styles";
 
-import { Pressable } from 'react-native';
-
-export enum fontFamily {
-  MaterialIcons = 'MaterialIcons',
-  FontAwesome = 'FontAwesome',
-  AntDesign = 'AntDesign',
-  Entypo = 'Entypo',
-  EvilIcons = 'EvilIcons',
-  Feather = 'Feather',
-  FontAwesome5 = 'FontAwesome5',
-  Fontisto = 'Fontisto',
-  Foundation = 'Foundation',
-  Ionicons = 'Ionicons',
-  MaterialCommunityIcons = 'MaterialCommunityIcons',
-  Octicons = 'Octicons',
-  Zocial = 'Zocial',
-  SimpleLineIcons = 'SimpleLineIcons',
+export enum FontFamily {
+  AntDesign = "AntDesign",
+  Entypo = "Entypo",
+  EvilIcons = "EvilIcons",
+  Feather = "Feather",
+  FontAwesome = "FontAwesome",
+  FontAwesome5 = "FontAwesome5",
+  Fontisto = "Fontisto",
+  Foundation = "Foundation",
+  Ionicons = "Ionicons",
+  MaterialCommunityIcons = "MaterialCommunityIcons",
+  MaterialIcons = "MaterialIcons",
+  Octicons = "Octicons",
+  SimpleLineIcons = "SimpleLineIcons",
+  Zocial = "Zocial",
 }
-type FontFamily = keyof typeof fontFamily;
+type FontFamilyType = keyof typeof FontFamily;
 
 interface Props {
   color: keyof typeof theme.colors;
+  iconFamily?: FontFamilyType;
+  margin?: number;
   name: string;
-  margin: number;
-  size: number;
-  onPress?: () => void;
   onLongPress?: () => void;
-  iconFamily?: FontFamily;
+  onPress?: () => void;
+  size: number;
 }
 
-const DefaultIcon = ({ iconFamily, color, size, margin, name, onPress, onLongPress }: Props) => {
+const DefaultIcon = ({
+  color,
+  iconFamily,
+  margin = 0,
+  name,
+  onLongPress,
+  onPress,
+  size,
+}: Props) => {
   const RenderIcon = (): ReactElement => {
     switch (iconFamily) {
-      case fontFamily.AntDesign:
-        return <IconAntDesign name={name} color={color} size={size} margin={margin} />;
-      case fontFamily.Entypo:
-        return <IconEntypo name={name} color={color} size={size} margin={margin} />;
-      case fontFamily.EvilIcons:
-        return <IconEvil name={name} color={color} size={size} margin={margin} />;
-      case fontFamily.Feather:
-        return <IconFeather name={name} color={color} size={size} margin={margin} />;
-      case fontFamily.FontAwesome:
-        return <IconAwesome name={name} color={color} size={size} margin={margin} />;
-      case fontFamily.FontAwesome5:
-        return <IconAwesome5 name={name} color={color} size={size} margin={margin} />;
-      case fontFamily.Fontisto:
-        return <IconFontisto name={name} color={color} size={size} margin={margin} />;
-      case fontFamily.Foundation:
-        return <IconFoundation name={name} color={color} size={size} margin={margin} />;
-      case fontFamily.Ionicons:
-        return <IconIonicons name={name} color={color} size={size} margin={margin} />;
-      case fontFamily.MaterialCommunityIcons:
-        return <IconMaterialCommunity name={name} color={color} size={size} margin={margin} />;
-      case fontFamily.Octicons:
-        return <IconOcticons name={name} color={color} size={size} margin={margin} />;
-      case fontFamily.SimpleLineIcons:
-        return <IconSimpleLine name={name} color={color} size={size} margin={margin} />;
-      case fontFamily.Zocial:
-        return <IconZocial name={name} color={color} size={size} margin={margin} />;
+      case FontFamily.AntDesign:
+        return (
+          <IconAntDesign
+            color={color}
+            margin={margin}
+            name={name}
+            size={size}
+          />
+        );
+      case FontFamily.Entypo:
+        return (
+          <IconEntypo color={color} margin={margin} name={name} size={size} />
+        );
+      case FontFamily.EvilIcons:
+        return (
+          <IconEvil color={color} margin={margin} name={name} size={size} />
+        );
+      case FontFamily.Feather:
+        return (
+          <IconFeather color={color} margin={margin} name={name} size={size} />
+        );
+      case FontFamily.FontAwesome:
+        return (
+          <IconAwesome color={color} margin={margin} name={name} size={size} />
+        );
+      case FontFamily.FontAwesome5:
+        return (
+          <IconAwesome5 color={color} margin={margin} name={name} size={size} />
+        );
+      case FontFamily.Fontisto:
+        return (
+          <IconFontisto color={color} margin={margin} name={name} size={size} />
+        );
+      case FontFamily.Foundation:
+        return (
+          <IconFoundation
+            color={color}
+            margin={margin}
+            name={name}
+            size={size}
+          />
+        );
+      case FontFamily.Ionicons:
+        return (
+          <IconIonicons color={color} margin={margin} name={name} size={size} />
+        );
+      case FontFamily.MaterialCommunityIcons:
+        return (
+          <IconMaterialCommunity
+            color={color}
+            margin={margin}
+            name={name}
+            size={size}
+          />
+        );
+      case FontFamily.Octicons:
+        return (
+          <IconOcticons color={color} margin={margin} name={name} size={size} />
+        );
+      case FontFamily.SimpleLineIcons:
+        return (
+          <IconSimpleLine
+            color={color}
+            margin={margin}
+            name={name}
+            size={size}
+          />
+        );
+      case FontFamily.Zocial:
+        return (
+          <IconZocial color={color} margin={margin} name={name} size={size} />
+        );
       default:
-        return <Icon name={name} color={color} size={size} margin={margin} />;
+        return <Icon color={color} margin={margin} name={name} size={size} />;
     }
   };
   return (
-    <Pressable onPress={onPress} onLongPress={onLongPress}>
+    <Pressable onLongPress={onLongPress} onPress={onPress}>
       <RenderIcon />
     </Pressable>
   );
-};
-
-DefaultIcon.defaultProps = {
-  color: theme.colors.white,
-  name: 'arrow',
-  margin: 0,
-  size: 15,
-  font: 'MaterialIcons',
-  onPress: () => {},
-  onLongPress: () => {},
 };
 
 export default DefaultIcon;

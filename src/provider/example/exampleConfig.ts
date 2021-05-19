@@ -1,5 +1,5 @@
-import APIConnector from '../apiConnector';
-import config from '../../config';
+import APIConnector from "../apiConnector";
+import config from "../../config";
 
 const apiConnector = new APIConnector({ timeout: 50000 });
 

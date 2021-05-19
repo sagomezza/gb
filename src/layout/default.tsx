@@ -1,15 +1,15 @@
-import React from 'react';
-import { View, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import styled from 'styled-components/native';
-import { Provider as PaperProvider } from 'react-native-paper';
-import { StatusBar } from 'components';
-import { ModalProvider } from 'components/Modal';
+import React from "react";
+import { View, TouchableWithoutFeedback, Keyboard } from "react-native";
+import styled from "styled-components/native";
+import { Provider as PaperProvider } from "react-native-paper";
+import { StatusBar } from "components";
+import { IWithChildren, IWithStyle } from "utils/types";
 
 const Container = styled.View`
-  flex: 1;
-  padding: 0px 20px 20px 20px;
-  justify-content: space-evenly;
   background-color: #ffffff;
+  flex: 1;
+  justify-content: space-evenly;
+  padding: 0px 20px 20px 20px;
 `;
 
 const BodyContainer = styled.View`
@@ -17,20 +17,30 @@ const BodyContainer = styled.View`
   justify-content: flex-start;
 `;
 
-export const Header = (props) => <View>{props.children}</View>;
-export const Footer = (props) => <View>{props.children}</View>;
-export const Body = (props) => <BodyContainer style={props.style}>{props.children}</BodyContainer>;
+export const Header: React.FC<IWithChildren> = ({
+  children,
+}: IWithChildren) => <View>{children}</View>;
+export const Footer = ({ children }: IWithChildren) => <View>{children}</View>;
 
-const OnboardingLayout = (props) => (
+interface IBodyProps extends IWithChildren, IWithStyle {}
+
+export const Body: React.FC<IBodyProps> = ({ children, style }: IBodyProps) => (
+  <BodyContainer style={style}>{children}</BodyContainer>
+);
+
+const OnboardingLayout: React.FC<IWithChildren> = ({
+  children,
+}: IWithChildren) => (
   <PaperProvider>
-    <ModalProvider>
-      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} accessible={false}>
-        <Container>
-          <StatusBar />
-          {props.children}
-        </Container>
-      </TouchableWithoutFeedback>
-    </ModalProvider>
+    <TouchableWithoutFeedback
+      accessible={false}
+      onPress={() => Keyboard.dismiss()}
+    >
+      <Container>
+        <StatusBar />
+        {children}
+      </Container>
+    </TouchableWithoutFeedback>
   </PaperProvider>
 );
 

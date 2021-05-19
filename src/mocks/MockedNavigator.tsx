@@ -1,6 +1,6 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
 const Stack = createStackNavigator();
 const MockedNavigator = ({
@@ -9,14 +9,16 @@ const MockedNavigator = ({
 }: {
   component: () => JSX.Element;
   params?: Object;
-}) => {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="MockedScreen" component={component} initialParams={params} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-};
+}) => (
+  <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen
+        component={component}
+        initialParams={params}
+        name="MockedScreen"
+      />
+    </Stack.Navigator>
+  </NavigationContainer>
+);
 
 export default MockedNavigator;

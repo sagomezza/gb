@@ -1,3 +1,3 @@
-import BlurView from './BlurView';
+import BlurView from "./BlurView";
 
 export default BlurView;

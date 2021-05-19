@@ -1,26 +1,21 @@
-import React from 'react';
-import { ActivityIndicator, View } from 'react-native';
-
-import { theme } from 'config/theme';
-import Typography from '../Typography';
+import React from "react";
+import { ActivityIndicator, View } from "react-native";
+import Typography from "../Typography";
 
 interface Props {
-  text: string;
   spinnerColor: string;
   testID?: string;
+  text: string;
 }
 
-const EmptyContent = ({ text, spinnerColor, testID }: Props) => {
-  return (
-    <View testID={testID}>
-      {text ? <Typography>{text}</Typography> : <ActivityIndicator color={spinnerColor} />}
-    </View>
-  );
-};
-
-EmptyContent.defaultProps = {
-  text: 'Empty content',
-  spinnerColor: theme.colors.primary,
-};
+const EmptyContent = ({ spinnerColor, testID, text }: Props) => (
+  <View testID={testID}>
+    {text ? (
+      <Typography>{text}</Typography>
+    ) : (
+      <ActivityIndicator color={spinnerColor} />
+    )}
+  </View>
+);
 
 export default EmptyContent;

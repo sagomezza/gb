@@ -5,20 +5,20 @@ export type ExampleState = {
 };
 
 export type FetchExampleEntity = {
-  name: string;
-  height: string;
-  mass: string;
-  hair_color: string;
-  skin_color: string;
-  eye_color: string;
   birth_year: string;
-  gender: string;
-  homeworld: string;
-  films: [string];
-  species: [string];
-  vehicles: [];
-  starships: [];
   created: string;
   edited: string;
+  eye_color: string;
+  films: [string];
+  gender: string;
+  hair_color: string;
+  height: string;
+  homeworld: string;
+  mass: string;
+  name: string;
+  skin_color: string;
+  species: [string];
+  starships: [];
   url: string;
+  vehicles: [];
 };

@@ -1,22 +1,26 @@
-import * as React from 'react';
-import styled from 'styled-components/native';
-import { Switch as SwitchPaper } from 'react-native-paper';
-import { theme } from 'config/theme';
-import { Paragraph } from '../Paragraph';
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-props-no-spreading */
+import * as React from "react";
+import styled from "styled-components/native";
+import { Switch as SwitchPaper } from "react-native-paper";
+import { theme } from "config/theme";
+import { Paragraph } from "../Paragraph";
 
 const SwitchContainer = styled.View`
+  align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
 `;
 
-export const SwitchGroup = (props) => (
+export const SwitchGroup = ({ text, ...otherProps }) => (
   <SwitchContainer>
-    <Paragraph>{props.text}</Paragraph>
-    <SwitchPaper color={theme.colors.primary} {...props} />
+    <Paragraph>{text}</Paragraph>
+    <SwitchPaper color={theme.colors.primary} {...otherProps} />
   </SwitchContainer>
 );
 
-const Switch = (props) => <SwitchPaper color={theme.colors.primary} {...props} />;
+const Switch = (props) => (
+  <SwitchPaper color={theme.colors.primary} {...props} />
+);
 
 export default Switch;

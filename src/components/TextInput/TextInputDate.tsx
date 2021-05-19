@@ -1,29 +1,23 @@
-import React from 'react';
-import { View } from 'react-native';
-import styled from 'styled-components/native';
-import { TextInputNumber } from './TextInputNumber';
-import { Label } from './Label';
-// COMPONENTS
-import Typography from 'components/Typography';
-import { TextInput } from 'react-native';
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-props-no-spreading */
+import React from "react";
+import { View, TextInput } from "react-native";
+import { TextInputNumberDate, TextInputDateError } from "./styles";
+import { Label } from "./Label";
 
 export const TextInputDate = (props) => {
+  const { errorMsg, hasError, textLabel } = props;
   return (
     <View>
-      <Label textLabel={props?.textLabel} />
-      <TextInputNumber
-        style={{
-          flexGrow: 1,
-          width: '100%',
-          maxHeight: 50,
-        }}
+      <Label textLabel={textLabel} />
+      <TextInputNumberDate
         {...props}
         render={(renderProps) => <TextInput {...renderProps} />}
       />
-      {!!props.hasError && (
-        <Typography color="error" size={11} style={{ marginTop: 16 }}>
-          {props.errorMsg}
-        </Typography>
+      {!!hasError && (
+        <TextInputDateError color="error" size={11}>
+          {errorMsg}
+        </TextInputDateError>
       )}
     </View>
   );

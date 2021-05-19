@@ -1,61 +1,59 @@
-import * as React from 'react';
-import { TouchableOpacity, ViewStyle, TextStyle } from 'react-native';
-import { Icon, Typography, Container, IconContainer, TextContainer } from './styles';
-import { theme } from 'config/theme';
-import { navigator } from 'navigation';
+import * as React from "react";
+import { ViewStyle, TextStyle } from "react-native";
+import { theme } from "config/theme";
+import { navigator } from "navigation";
+import {
+  Icon,
+  Typography,
+  Container,
+  IconContainer,
+  TextContainer,
+  FullWidthTouchable,
+} from "./styles";
 
 interface Props {
-  text: string;
-  style: ViewStyle;
-  iconStyle: TextStyle;
-  textSize: number;
-  size: number;
   iconColor: keyof typeof theme.colors;
-  onPress: () => void;
-  textColor: keyof typeof theme.colors;
+  iconStyle: TextStyle;
+  size: number;
+  style: ViewStyle;
   testID?: string;
+  text: string;
+  textColor: keyof typeof theme.colors;
+  textSize: number;
 }
 
 const BackButton = ({
-  text,
-  style,
-  iconStyle,
-  textSize,
-  size,
   iconColor,
-  onPress,
-  textColor,
+  iconStyle,
+  size,
+  style,
   testID,
+  text,
+  textColor,
+  textSize,
 }: Props) => {
   const { goBack } = navigator();
   return (
-    <TouchableOpacity testID={testID} onPress={goBack} style={{ width: '100%' }}>
+    <FullWidthTouchable testID={testID} onPress={goBack}>
       <Container style={style}>
         <IconContainer>
-          <Icon name="arrow-back" size={size} color={iconColor} style={iconStyle} />
+          <Icon
+            color={iconColor}
+            name="arrow-back"
+            size={size}
+            style={iconStyle}
+          />
         </IconContainer>
         {!!text && (
           <TextContainer>
-            <Typography size={textSize} color={textColor}>
+            <Typography color={textColor} size={textSize}>
               {text}
             </Typography>
           </TextContainer>
         )}
       </Container>
-    </TouchableOpacity>
+    </FullWidthTouchable>
   );
-};
-
-BackButton.defaultProps = {
-  text: '',
-  style: {},
-  iconStyle: {},
-  textSize: 18,
-  size: 20,
-  iconColor: theme.colors.primary,
-  textColor: 'primary',
-  onPress: () => {},
-  testID: null,
 };
 
 export default BackButton;
