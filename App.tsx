@@ -1,8 +1,9 @@
 // @ts-nocheck
-import React from "react";
-import { Provider as PaperProvider } from "react-native-paper";
-import { Provider as StoreProvider } from "react-redux";
-import { store } from "store";
+import React from 'react';
+import { Provider as PaperProvider } from 'react-native-paper';
+import { Provider as StoreProvider } from 'react-redux';
+import { store } from 'store';
+import { ThemeProvider } from "styled-components/native";
 import RNBootSplash from "react-native-bootsplash";
 
 // UI
@@ -28,7 +29,9 @@ const App = () => {
   return (
     <StoreProvider store={store}>
       <PaperProvider theme={themePaper}>
-        <AppNavigator />
+        <ThemeProvider theme={themePaper}>
+          <AppNavigator />
+        </ThemeProvider>
       </PaperProvider>
     </StoreProvider>
   );
