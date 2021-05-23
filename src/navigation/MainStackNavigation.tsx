@@ -12,6 +12,7 @@ const Stack = createStackNavigator();
 export const MainStackNavigation = () => (
   <Stack.Navigator
     headerMode="screen"
+    initialRouteName={routes.HOME}
     screenOptions={{
       header: ({ navigation, previous }: StackHeaderProps) => (
         <Appbar.Header statusBarHeight={0} theme={themePaperBar}>

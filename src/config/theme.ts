@@ -39,6 +39,10 @@ export const theme = {
     activeIconColor: "#FFFFFF",
     backgroundColor: "#00AEFF",
   },
+  input: {
+    border: "#dddddd",
+    placeholder: "#626262",
+  },
   menu: {
     backgroundColor: "#FFFFFF",
     borderColor: "#BDBDBD",

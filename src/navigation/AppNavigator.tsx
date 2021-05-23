@@ -9,9 +9,9 @@ import { MainStackNavigation } from "./MainStackNavigation";
 
 const Stack = createStackNavigator();
 
-const AppNavigator: React.FC = () => (
+const AppNavigator: React.FC = (): React.ReactElement => (
   <NavigationContainer>
-    <Stack.Navigator headerMode="none">
+    <Stack.Navigator headerMode="none" initialRouteName={routes.LOGIN}>
       <Stack.Screen component={MainStackNavigation} name={routes.HOME} />
       <Stack.Screen component={AuthNavigator} name={routes.LOGIN} />
     </Stack.Navigator>

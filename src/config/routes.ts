@@ -1,5 +1,7 @@
 export enum RoutesAuth {
+  FORGOTPASSWORD = "FORGOTPASSWORD",
   LOGIN = "LOGIN",
+  SIGNUP = "SIGNUP",
   STYLEGUIDE = "STYLEGUIDE",
 }
 

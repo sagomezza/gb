@@ -43,3 +43,7 @@ export { default as ShowSecureEntry } from "./ShowSecureEntry";
 export { default as WarningIcon } from "./WarningIcon";
 export { default as FormInput } from "./FormInput";
 export { default as Alert } from "./Alert";
+export {
+  KeyboardAwareScrollViewContainer,
+  ContentStyles,
+} from "./keyboard-aware-scrollview";

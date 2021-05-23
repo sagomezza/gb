@@ -14,6 +14,11 @@ export interface IWithChildren {
     | null;
 }
 
+export interface IWithChildrenAndProps extends IWithChildren {
+  center?: boolean;
+  maxWidth?: boolean;
+}
+
 export interface IWithStyle {
   style?: React.CSSProperties;
 }
