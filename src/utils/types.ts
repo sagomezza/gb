@@ -10,6 +10,8 @@ export interface IWithChildren {
     | React.ReactChildren
     | React.ReactElement
     | React.ReactElement[]
+    | JSX.Element[]
+    | JSX.Element
     | string
     | null;
 }

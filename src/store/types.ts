@@ -4,6 +4,10 @@ export type ExampleState = {
   homeWord: string;
 };
 
+export type SearchState = {
+  recentSearches: string[];
+};
+
 export type FetchExampleEntity = {
   birth_year: string;
   created: string;

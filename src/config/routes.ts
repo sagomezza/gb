@@ -9,6 +9,7 @@ export enum RotuesMain {
   CHANGEPASSWORD = "CHANGEPASSWORD",
   HOME = "HOME",
   PROFILE = "PROFILE",
+  SEARCH = "SEARCH",
 }
 
 const routes = {

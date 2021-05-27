@@ -6,6 +6,7 @@ import {
   Text,
   useColorScheme,
   View,
+  Button,
 } from "react-native";
 
 import {
@@ -78,6 +79,10 @@ const App = () => {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}
         >
+          <Button
+            title="Search screen"
+            onPress={() => goToPage(routes.SEARCH)}
+          />
           <PrimaryButton onPress={() => goToPage(routes.CHANGEPASSWORD)}>
             Change password
           </PrimaryButton>
