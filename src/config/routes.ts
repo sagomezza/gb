@@ -6,6 +6,7 @@ export enum RoutesAuth {
 }
 
 export enum RotuesMain {
+  CHANGEPASSWORD = "CHANGEPASSWORD",
   HOME = "HOME",
   PROFILE = "PROFILE",
 }

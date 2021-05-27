@@ -15,7 +15,10 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from "react-native/Libraries/NewAppScreen";
+import routes from "config/routes";
 import { IWithChildren } from "utils/types";
+import { PrimaryButton } from "components";
+import { navigator } from "navigation";
 
 import { styles } from "./styles";
 
@@ -55,6 +58,7 @@ const Section: React.FC<ISectionProps> = ({
 };
 
 const App = () => {
+  const { goToPage } = navigator();
   const isDarkMode = useColorScheme() === "dark";
 
   const backgroundStyle = {
@@ -74,6 +78,9 @@ const App = () => {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}
         >
+          <PrimaryButton onPress={() => goToPage(routes.CHANGEPASSWORD)}>
+            Change password
+          </PrimaryButton>
           <Section title="Step One">
             Edit to change this screen and then come back to see your edits.
           </Section>

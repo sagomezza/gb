@@ -5,7 +5,7 @@ import { themePaperBar } from "config/theme";
 import routes from "config/routes";
 import ProfileScreen from "screens/Profile";
 import { StackHeaderProps } from "@react-navigation/stack/lib/typescript/src/types";
-import { HomeScreen } from "../screens";
+import { HomeScreen, ChangePasswordScreen } from "../screens";
 
 const Stack = createStackNavigator();
 
@@ -25,6 +25,13 @@ export const MainStackNavigation = () => (
   >
     <Stack.Screen component={HomeScreen} name={routes.HOME} />
     <Stack.Screen component={ProfileScreen} name={routes.PROFILE} />
+    <Stack.Screen
+      component={ChangePasswordScreen}
+      name={routes.CHANGEPASSWORD}
+      options={{
+        headerShown: false,
+      }}
+    />
   </Stack.Navigator>
 );
 

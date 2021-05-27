@@ -82,6 +82,7 @@ export default ({
   pattern = {},
   placeholder = "",
   returnKeyType = "default",
+  rules,
 }: IInputProps): ReactElement => {
   const [focused, setFocused] = React.useState(false);
   return (
@@ -116,6 +117,7 @@ export default ({
             message: `Enter a valid ${name}`,
             ...pattern,
           },
+          ...rules,
         }}
       />
       <Spacing size={8} />
