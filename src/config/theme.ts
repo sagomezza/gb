@@ -1,8 +1,34 @@
 // @ts-nocheck
-import { DefaultTheme } from "react-native-paper";
+import { DefaultTheme, configureFonts } from "react-native-paper";
+import * as typography from "utils/typography";
+
+const fontConfig = {
+  default: {
+    regular: {
+      fontFamily: typography.FONT_FAMILY_REGULAR,
+      fontWeight: "normal",
+    },
+    medium: {
+      fontFamily: typography.FONT_FAMILY_BOLD,
+      fontWeight: "normal",
+    },
+    light: {
+      fontFamily: typography.FONT_FAMILY_LIGHT,
+      fontWeight: "normal",
+    },
+    thin: {
+      fontFamily: typography.FONT_FAMILY_EXTRA_LIGHT,
+      fontWeight: "normal",
+    },
+  },
+};
+
+fontConfig.ios = fontConfig.default;
+fontConfig.android = fontConfig.default;
 
 export const theme = {
   ...DefaultTheme,
+  fonts: configureFonts(fontConfig),
   roundness: 5,
   colors: {
     ...DefaultTheme.colors,
