@@ -41,13 +41,8 @@ class AnimatedSqueeze extends Component<Props> {
   };
 
   render() {
-    const {
-      children,
-      disabled,
-      testID,
-      touchableStyle,
-      viewStyle,
-    } = this.props;
+    const { children, disabled, testID, touchableStyle, viewStyle } =
+      this.props;
     const squeezee = this.SqueezeValue.interpolate({
       inputRange: [0, 0.3, 0.6, 1],
       outputRange: [1, 0.99, 0.98, 0.96],

@@ -26,37 +26,39 @@ const fontConfig = {
 fontConfig.ios = fontConfig.default;
 fontConfig.android = fontConfig.default;
 
+const colors = {
+  ...DefaultTheme.colors,
+  white: "#ffffff",
+  primary: "#00AEFF",
+  onPrimary: "#008BFF",
+  secondary: "#FF8C00",
+  onSecondary: "#FF6E22",
+  text: "#545454",
+  error: "#CE2B15",
+  // activeBlue: '#329cfc',
+  // almostWhite: '#fffffe', // for shadows
+  beige: "#F9F9F9",
+  black: "#000000",
+  borderColor: "#DCDCDC",
+  green: "#78ab78",
+  darkBlue: "#004472",
+  disabled: "#B8B8B8",
+  gray1: "#A6A3A3",
+  gray2: "#545454",
+  gray3: "#626262",
+  gray4: "#C4C4C4",
+  gray5: "#545454",
+  lightBlue: "#E4EFF8",
+  lighterGrey: "#dddddd",
+  lightGrey: "#cccccc",
+  orange: "#F88C02",
+};
+
 export const theme = {
   ...DefaultTheme,
   fonts: configureFonts(fontConfig),
   roundness: 5,
-  colors: {
-    ...DefaultTheme.colors,
-    white: "#ffffff",
-    primary: "#00AEFF",
-    onPrimary: "#008BFF",
-    secondary: "#FF8C00",
-    onSecondary: "#FF6E22",
-    text: "#545454",
-    error: "#CE2B15",
-    // activeBlue: '#329cfc',
-    // almostWhite: '#fffffe', // for shadows
-    beige: "#F9F9F9",
-    black: "#000000",
-    borderColor: "#DCDCDC",
-    green: "#78ab78",
-    darkBlue: "#004472",
-    disabled: "#B8B8B8",
-    gray1: "#A6A3A3",
-    gray2: "#545454",
-    gray3: "#626262",
-    gray4: "#C4C4C4",
-    gray5: "#545454",
-    lightBlue: "#E4EFF8",
-    lighterGrey: "#dddddd",
-    lightGrey: "#cccccc",
-    orange: "#F88C02",
-  },
+  colors,
   animation: {
     scale: 2,
   },
@@ -76,6 +78,14 @@ export const theme = {
   },
   menuActiveOption: {
     backgroundColor: "rgba(0,174,255,0.15)",
+  },
+  onboardingScreen: {
+    backgroundColor: colors.beige,
+    controlsDotSize: 10,
+    descriptionColor: colors.black,
+    descriptionSize: 12,
+    titleColor: colors.primary,
+    titleSize: 40,
   },
 };
 

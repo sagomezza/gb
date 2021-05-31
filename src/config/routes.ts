@@ -3,6 +3,7 @@ import { HomeScreen, Profile, StyleguideScreen } from "screens";
 export enum RoutesAuth {
   FORGOTPASSWORD = "FORGOTPASSWORD",
   LOGIN = "LOGIN",
+  ONBOARDING = "ONBOARDING",
   SIGNUP = "SIGNUP",
   STYLEGUIDE = "STYLEGUIDE",
 }
