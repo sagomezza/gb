@@ -1,12 +1,12 @@
 import React from "react";
 import {
+  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
   Text,
   useColorScheme,
   View,
-  Button,
 } from "react-native";
 
 import {
@@ -20,7 +20,6 @@ import routes from "config/routes";
 import { IWithChildren } from "utils/types";
 import { PrimaryButton } from "components";
 import { navigator } from "navigation";
-
 import { styles } from "./styles";
 
 interface ISectionProps extends IWithChildren {
@@ -82,6 +81,10 @@ const App = () => {
           <Button
             title="Search screen"
             onPress={() => goToPage(routes.SEARCH)}
+          />
+          <Button
+            title="Messages screen"
+            onPress={() => goToPage(routes.MESSAGES)}
           />
           <PrimaryButton onPress={() => goToPage(routes.CHANGEPASSWORD)}>
             Change password

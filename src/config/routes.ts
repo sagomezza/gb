@@ -1,4 +1,4 @@
-import { HomeScreen, Profile, StyleguideScreen } from "screens";
+import { HomeScreen, MessagesScreen, Profile, StyleguideScreen } from "screens";
 
 export enum RoutesAuth {
   FORGOTPASSWORD = "FORGOTPASSWORD",
@@ -10,7 +10,9 @@ export enum RoutesAuth {
 
 export enum RotuesMain {
   CHANGEPASSWORD = "CHANGEPASSWORD",
+  CHAT = "CHAT",
   HOME = "HOME",
+  MESSAGES = "MESSAGES",
   PROFILE = "PROFILE",
   SEARCH = "SEARCH",
 }
@@ -20,6 +22,7 @@ export const RoutesDrawer = {
   routes: [
     { name: "Home", icon: "home", screen: HomeScreen },
     { name: "Profile", icon: "person", screen: Profile },
+    { name: "Messages", icon: "chatbubble", screen: MessagesScreen },
     { name: "Styleguide", icon: "list", screen: StyleguideScreen },
   ],
 };
