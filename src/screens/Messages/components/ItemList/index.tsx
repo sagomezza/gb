@@ -1,7 +1,10 @@
 import React from "react";
 import { TouchableOpacity, View } from "react-native";
+import { navigator } from "navigation";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import Swipeable from "react-native-gesture-handler/Swipeable";
+// import ChatScreen from "screens/Chat";
+import routes from "config/routes";
 import { theme } from "config/theme";
 import { colors } from "../../utils/colors";
 import {
@@ -46,6 +49,8 @@ const ItemList: React.FC<IItemListProps> = ({
     start: message.createdAt,
     end: new Date(),
   });
+  const itemString = JSON.stringify(item);
+  const { goToPage } = navigator();
 
   const contactPhotoLeft = () => {
     if (photoPosition === "left") {
@@ -96,7 +101,9 @@ const ItemList: React.FC<IItemListProps> = ({
         />
       )}
     >
-      <TouchableOpacity onPress={() => {}}>
+      <TouchableOpacity
+        onPress={() => goToPage(routes.CHAT, { item: itemString })}
+      >
         <MessageContainer>
           {contactPhotoLeft()}
           <DetailsContainer>

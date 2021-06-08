@@ -1,5 +1,5 @@
 import Dots from "components/Dots";
-import { ISwipeCarouselControlProps } from "components/SwipeCarousel/SwipeCarousel";
+import { ISwipeCarouselControlProps } from "components/SwipeCarousel";
 import { theme } from "config/theme";
 import React from "react";
 import { OnboardingControlsContainer } from "./style";

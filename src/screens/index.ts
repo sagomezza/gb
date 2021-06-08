@@ -7,3 +7,4 @@ export { default as MessagesScreen } from "./Messages";
 export { default as SearchScreen } from "./Search";
 export { default as ChangePasswordScreen } from "./ChangePassword";
 export { default as Profile } from "./Profile";
+export { default as ChatScreen } from "./Chat";

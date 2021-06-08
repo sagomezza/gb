@@ -47,3 +47,4 @@ export {
   KeyboardAwareScrollViewContainer,
   ContentStyles,
 } from "./keyboard-aware-scrollview";
+export { default as SwipeCarousel } from "./SwipeCarousel";

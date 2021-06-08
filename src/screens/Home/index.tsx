@@ -84,7 +84,7 @@ const App = () => {
           />
           <Button
             title="Messages screen"
-            onPress={() => goToPage(routes.MESSAGES)}
+            onPress={() => goToPage(routes.MessagesNavigator)}
           />
           <PrimaryButton onPress={() => goToPage(routes.CHANGEPASSWORD)}>
             Change password

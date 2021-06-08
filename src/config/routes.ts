@@ -1,4 +1,11 @@
-import { HomeScreen, MessagesScreen, Profile, StyleguideScreen } from "screens";
+import MessagesStackNavigator from "navigation/MessagesNavigator";
+import {
+  ChangePasswordScreen,
+  HomeScreen,
+  Profile,
+  SearchScreen,
+  StyleguideScreen,
+} from "screens";
 
 export enum RoutesAuth {
   FORGOTPASSWORD = "FORGOTPASSWORD",
@@ -22,7 +29,13 @@ export const RoutesDrawer = {
   routes: [
     { name: "Home", icon: "home", screen: HomeScreen },
     { name: "Profile", icon: "person", screen: Profile },
-    { name: "Messages", icon: "chatbubble", screen: MessagesScreen },
+    { name: "SEARCH", icon: "person", screen: SearchScreen },
+    { name: "MESSAGES", icon: "chatbubble", screen: MessagesStackNavigator },
+    {
+      name: "CHANGEPASSWORD",
+      icon: "password",
+      screen: ChangePasswordScreen,
+    },
     { name: "Styleguide", icon: "list", screen: StyleguideScreen },
   ],
 };

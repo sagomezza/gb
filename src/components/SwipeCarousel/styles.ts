@@ -2,7 +2,7 @@ import styled from "styled-components";
 import PagerView from "react-native-pager-view";
 
 // eslint-disable-next-line import/no-cycle
-import { CONTROLS_POSITION_BOTTOM } from "./SwipeCarousel";
+import { CONTROLS_POSITION_BOTTOM } from "./index";
 
 export const CarouselMainContainer = styled.View`
   align-items: center;

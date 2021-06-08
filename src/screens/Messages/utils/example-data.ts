@@ -1,6 +1,6 @@
 export const messagesData = [
   {
-    id: 1,
+    id: 15,
     user: "Annie Hall",
     avatar: "https://reactnative.dev/img/tiny_logo.png",
     messages: [
@@ -27,13 +27,13 @@ export const messagesData = [
     avatar: "",
     messages: [
       {
-        id: 1,
-        text: "New message",
+        id: 2,
+        text: "There are many variations of passages of Lorem Ipsum available",
         createdAt: new Date(Date.UTC(2021, 3, 28, 17, 20, 0)),
       },
       {
-        id: 2,
-        text: "There are many variations of passages of Lorem Ipsum available",
+        id: 1,
+        text: "New message",
         createdAt: new Date(Date.UTC(2021, 4, 15, 17, 21, 0)),
       },
     ],
@@ -45,13 +45,12 @@ export const messagesData = [
     messages: [
       {
         id: 1,
-        text: "New message",
+        text: "Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
         createdAt: new Date(Date.UTC(2021, 3, 10, 17, 20, 0)),
       },
       {
         id: 2,
-        text:
-          "Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+        text: "New message",
         createdAt: new Date(Date.UTC(2021, 4, 22, 17, 21, 0)),
       },
     ],
@@ -68,8 +67,7 @@ export const messagesData = [
       },
       {
         id: 2,
-        text:
-          "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
+        text: "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
         createdAt: new Date(Date.UTC(2021, 4, 23, 17, 21, 0)),
       },
     ],
@@ -86,8 +84,7 @@ export const messagesData = [
       },
       {
         id: 2,
-        text:
-          "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
+        text: "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
         createdAt: new Date(Date.UTC(2021, 4, 23, 17, 21, 0)),
       },
     ],
@@ -104,8 +101,7 @@ export const messagesData = [
       },
       {
         id: 2,
-        text:
-          "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
+        text: "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
         createdAt: new Date(Date.UTC(2021, 4, 23, 17, 21, 0)),
       },
     ],
@@ -122,8 +118,7 @@ export const messagesData = [
       },
       {
         id: 2,
-        text:
-          "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
+        text: "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
         createdAt: new Date(Date.UTC(2021, 4, 23, 17, 21, 0)),
       },
     ],
@@ -140,8 +135,7 @@ export const messagesData = [
       },
       {
         id: 2,
-        text:
-          "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
+        text: "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
         createdAt: new Date(Date.UTC(2021, 4, 25, 17, 21, 0)),
       },
     ],
@@ -158,8 +152,7 @@ export const messagesData = [
       },
       {
         id: 2,
-        text:
-          "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
+        text: "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
         createdAt: new Date(Date.UTC(2021, 4, 25, 17, 21, 0)),
       },
     ],
@@ -176,8 +169,7 @@ export const messagesData = [
       },
       {
         id: 2,
-        text:
-          "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
+        text: "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
         createdAt: new Date(Date.UTC(2021, 4, 25, 17, 21, 0)),
       },
     ],
@@ -194,8 +186,7 @@ export const messagesData = [
       },
       {
         id: 2,
-        text:
-          "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
+        text: "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
         createdAt: new Date(Date.UTC(2021, 4, 25, 17, 21, 0)),
       },
     ],
@@ -212,8 +203,7 @@ export const messagesData = [
       },
       {
         id: 2,
-        text:
-          "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
+        text: "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
         createdAt: new Date(Date.UTC(2021, 4, 25, 17, 21, 0)),
       },
     ],

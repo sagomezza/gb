@@ -1,7 +1,7 @@
 import React from "react";
-import SwipeCarousel from "components/SwipeCarousel";
+import { SwipeCarousel } from "components";
+import { ISwipeCarouselItemProps } from "components/SwipeCarousel";
 import { SafeArea } from "components/SafeArea/styles";
-import { ISwipeCarouselItemProps } from "components/SwipeCarousel/SwipeCarousel";
 import { OnboardingMainContainer } from "./style";
 import OnboardingPage from "./OnboardingPage";
 import onboardingPagesConfig from "./pagesConfig";
