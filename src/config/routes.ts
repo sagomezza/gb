@@ -1,11 +1,11 @@
-import MessagesStackNavigator from "navigation/MessagesNavigator";
+import MessagesStackNavigator from "core/navigation/MessagesNavigator";
 import {
   ChangePasswordScreen,
   HomeScreen,
   Profile,
   SearchScreen,
   StyleguideScreen,
-} from "screens";
+} from "core/screens";
 
 export enum RoutesAuth {
   FORGOTPASSWORD = "FORGOTPASSWORD",

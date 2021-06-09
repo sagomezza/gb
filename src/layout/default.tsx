@@ -2,7 +2,7 @@ import React from "react";
 import { View, TouchableWithoutFeedback, Keyboard } from "react-native";
 import styled from "styled-components/native";
 import { Provider as PaperProvider } from "react-native-paper";
-import { StatusBar } from "components";
+import { StatusBar } from "core/components";
 import { IWithChildren, IWithStyle } from "utils/types";
 
 const Container = styled.View`

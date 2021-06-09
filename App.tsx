@@ -8,7 +8,7 @@ import { ThemeProvider } from "styled-components/native";
 
 // UI
 import { theme as themePaper } from "./src/config/theme";
-import AppNavigator from "./src/navigation/AppNavigator";
+import AppNavigator from "./src/core/navigation/AppNavigator";
 
 // Uncomment line 16 when doing tests
 // LogBox.ignoreAllLogs(true);
