@@ -1,5 +1,6 @@
 export enum RoutesAuth {
   ONBOARDING = 'ONBOARDING',
+  SIGNUP = 'SIGNUP',
 }
 
 const routes = {
