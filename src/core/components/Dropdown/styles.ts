@@ -1,17 +1,17 @@
-import { StyleSheet, View } from "react-native";
-import DropDownPicker from "react-native-dropdown-picker";
-import styled from "styled-components/native";
-import { theme } from "../../../config/theme";
-import { nlz, rs } from "../../../utils/dimensions";
+import { StyleSheet, View } from 'react-native';
+import DropDownPicker from 'react-native-dropdown-picker';
+import styled from 'styled-components/native';
+import { theme } from '../../../config/theme';
+import { nlz, rs } from '../../../utils/dimensions';
 
 export const DropDown = styled(DropDownPicker)({
   backgroundColor: theme.colors.white,
-  width: "100%",
+  width: '100%',
 });
 
 export const RightDropDownContent = styled(View)({
-  flexDirection: "row",
-  height: "100%",
+  flexDirection: 'row',
+  height: '100%',
 });
 
 export const VerticalLine = styled(View)({
@@ -24,7 +24,7 @@ export const VerticalLine = styled(View)({
 export const styles = StyleSheet.create({
   containerStyle: { height: rs(48) },
   itemStyle: {
-    justifyContent: "flex-start",
+    justifyContent: 'flex-start',
     paddingHorizontal: rs(10),
     height: rs(38),
   },

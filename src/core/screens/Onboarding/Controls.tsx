@@ -1,8 +1,8 @@
-import Dots from "core/components/Dots";
-import { ISwipeCarouselControlProps } from "core/components/SwipeCarousel";
-import { theme } from "config/theme";
-import React from "react";
-import { OnboardingControlsContainer } from "./style";
+import Dots from 'core/components/Dots';
+import { ISwipeCarouselControlProps } from 'core/components/SwipeCarousel';
+import { theme } from 'config/theme';
+import React from 'react';
+import { OnboardingControlsContainer } from './style';
 
 const Controls: React.FC<ISwipeCarouselControlProps> = ({
   currentPage,

@@ -1,7 +1,7 @@
-import * as React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import routes from "config/routes";
-import { MessagesScreen, ChatScreen } from "../screens";
+import * as React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import routes from 'config/routes';
+import { MessagesScreen, ChatScreen } from '../screens';
 
 const Stack = createStackNavigator();
 

@@ -1,6 +1,6 @@
-import { theme } from "config/theme";
-import { Bubble } from "react-native-gifted-chat";
-import styled from "styled-components/native";
+import { theme } from 'config/theme';
+import { Bubble } from 'react-native-gifted-chat';
+import styled from 'styled-components/native';
 
 export const ChatBubble = styled(Bubble).attrs(() => ({
   textStyle: {

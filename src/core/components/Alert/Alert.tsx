@@ -1,10 +1,10 @@
-import { PrimaryButton } from "core/components/Button";
-import Spacing from "core/components/Spacing";
-import * as React from "react";
-import { Modal, Portal, Provider } from "react-native-paper";
-import { AlertIconImage, CaptionAlert, styles } from "./styles";
+import { PrimaryButton } from 'core/components/Button';
+import Spacing from 'core/components/Spacing';
+import * as React from 'react';
+import { Modal, Portal, Provider } from 'react-native-paper';
+import { AlertIconImage, CaptionAlert, styles } from './styles';
 
-const alertSrc = require("./alert.png");
+const alertSrc = require('./alert.png');
 
 interface Props {
   hideModal: () => void;
@@ -17,11 +17,7 @@ interface Props {
 const Alert = ({ hideModal, onDismiss, text, textButton, visible }: Props) => (
   <Provider>
     <Portal>
-      <Modal
-        contentContainerStyle={styles.container}
-        visible={visible}
-        onDismiss={onDismiss}
-      >
+      <Modal contentContainerStyle={styles.container} visible={visible} onDismiss={onDismiss}>
         <AlertIconImage source={alertSrc} />
         <Spacing />
         <CaptionAlert>{text}</CaptionAlert>

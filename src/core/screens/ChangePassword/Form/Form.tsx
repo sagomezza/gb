@@ -1,9 +1,9 @@
-import React from "react";
-import { View } from "react-native";
-import { useForm, useWatch, SubmitHandler } from "react-hook-form";
-import { Spacing, CaptionLabel, PrimaryButton, Title } from "core/components";
-import { Activity, Input } from "./Form.styles";
-import { IChangePasswordData } from "./types";
+import React from 'react';
+import { View } from 'react-native';
+import { useForm, useWatch, SubmitHandler } from 'react-hook-form';
+import { Spacing, CaptionLabel, PrimaryButton, Title } from 'core/components';
+import { Activity, Input } from './Form.styles';
+import { IChangePasswordData } from './types';
 
 interface IFormProps {
   hideLabels?: boolean;
@@ -28,12 +28,12 @@ const Form: React.FC<IFormProps> = ({
 
   const newPassword = useWatch({
     control,
-    name: "NewPassword",
-    defaultValue: "",
+    name: 'NewPassword',
+    defaultValue: '',
   });
 
   const combineHandleWithSubmit: SubmitHandler<IChangePasswordData> = (
-    data: IChangePasswordData
+    data: IChangePasswordData,
   ) => {
     onSubmit(data);
   };
@@ -47,7 +47,7 @@ const Form: React.FC<IFormProps> = ({
         control={control}
         errors={errors}
         input={{
-          textContentType: "password",
+          textContentType: 'password',
           secureTextEntry: true,
         }}
         name="CurrentPassword"
@@ -59,7 +59,7 @@ const Form: React.FC<IFormProps> = ({
           control={control}
           errors={errors}
           input={{
-            textContentType: "password",
+            textContentType: 'password',
             secureTextEntry: true,
           }}
           name="NewPassword"
@@ -72,14 +72,13 @@ const Form: React.FC<IFormProps> = ({
           control={control}
           errors={errors}
           input={{
-            textContentType: "password",
+            textContentType: 'password',
             secureTextEntry: true,
           }}
           name="RepeatPassword"
           placeholder="password"
           rules={{
-            validate: (value) =>
-              value === newPassword || "The passwords do not match",
+            validate: (value) => value === newPassword || 'The passwords do not match',
           }}
         />
       )}
@@ -87,9 +86,7 @@ const Form: React.FC<IFormProps> = ({
       {isLoading ? (
         <Activity animating />
       ) : (
-        <PrimaryButton onPress={handleSubmit(combineHandleWithSubmit)}>
-          {title}
-        </PrimaryButton>
+        <PrimaryButton onPress={handleSubmit(combineHandleWithSubmit)}>{title}</PrimaryButton>
       )}
     </View>
   );

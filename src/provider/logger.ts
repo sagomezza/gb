@@ -1,10 +1,10 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-underscore-dangle */
 export const LogLevels = {
-  LOG: "log",
-  INFO: "info",
-  WARN: "warn",
-  ERROR: "error",
+  LOG: 'log',
+  INFO: 'info',
+  WARN: 'warn',
+  ERROR: 'error',
 };
 
 export default class Logger {
@@ -14,7 +14,7 @@ export default class Logger {
 
   _console;
 
-  constructor(name = "main", printTimestamp = false) {
+  constructor(name = 'main', printTimestamp = false) {
     this._name = name;
     this._printTimestamp = !!printTimestamp;
     this._console = console;
@@ -46,7 +46,7 @@ export default class Logger {
   }
 
   _log(level = LogLevels.INFO, ...args) {
-    const ts = this._printTimestamp ? `${+new Date()} ` : "";
+    const ts = this._printTimestamp ? `${+new Date()} ` : '';
     try {
       this._console[level](`[${this._name}] ${ts}${level}:`, ...args);
     } catch (e) {

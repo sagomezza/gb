@@ -1,10 +1,9 @@
-import { Typography } from "core/components";
-import styled from "styled-components";
-import { nlz, rs } from "utils/dimensions";
+import { Typography } from 'core/components';
+import styled from 'styled-components';
+import { nlz, rs } from 'utils/dimensions';
 
 export const OnboardingMainContainer = styled.View`
-  background-color: ${({ theme: { onboardingScreen } }) =>
-    onboardingScreen.backgroundColor};
+  background-color: ${({ theme: { onboardingScreen } }) => onboardingScreen.backgroundColor};
   flex: 1;
 `;
 
@@ -36,17 +35,14 @@ export const OnboardingTextContainer = styled.View`
 
 export const OnboardingTitle = styled(Typography)`
   color: ${({ theme: { onboardingScreen } }) => onboardingScreen.titleColor};
-  font-size: ${({ theme: { onboardingScreen } }) =>
-    nlz(onboardingScreen.titleSize)}px;
+  font-size: ${({ theme: { onboardingScreen } }) => nlz(onboardingScreen.titleSize)}px;
   margin-bottom: ${() => rs(15)}px;
   margin-top: ${() => rs(5)}px;
 `;
 
 export const OnboardingDescription = styled(Typography)`
-  color: ${({ theme: { onboardingScreen } }) =>
-    onboardingScreen.descriptionColor};
-  font-size: ${({ theme: { onboardingScreen } }) =>
-    nlz(onboardingScreen.descriptionSize)}px;
+  color: ${({ theme: { onboardingScreen } }) => onboardingScreen.descriptionColor};
+  font-size: ${({ theme: { onboardingScreen } }) => nlz(onboardingScreen.descriptionSize)}px;
   text-align: center;
 `;
 

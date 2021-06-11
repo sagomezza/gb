@@ -5,7 +5,7 @@ import {
   PRODUCTION_API_URL,
   // @ts-ignore'
   API_CONNECTOR_LOGS_ACTIVATED,
-} from "@env";
+} from '@env';
 
 export const isProduction = false;
 

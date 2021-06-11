@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { ScrollView, View, Text } from "react-native";
-import Container from "core/components/Container";
-import { rs } from "utils/dimensions";
+import styled from 'styled-components';
+import { ScrollView, View, Text } from 'react-native';
+import Container from 'core/components/Container';
+import { rs } from 'utils/dimensions';
 
 export const StyleguideContainer = styled(Container)`
   flex: 1;

@@ -1,9 +1,9 @@
 // Libs
-import React from "react";
-import styled from "styled-components/native";
+import React from 'react';
+import styled from 'styled-components/native';
 // Components
-import { LinkButton } from "../Button";
-import Spacing from "../Spacing";
+import { LinkButton } from '../Button';
+import Spacing from '../Spacing';
 
 type Props = {
   label: string;
@@ -18,7 +18,7 @@ const Container = styled.View`
 export default function ShowSecureEntry({ label, onPress, show }: Props) {
   return (
     <Container>
-      <LinkButton icon={show ? "eye-off" : "eye"} onPress={onPress}>
+      <LinkButton icon={show ? 'eye-off' : 'eye'} onPress={onPress}>
         <Spacing isHorizontal />
         {label}
       </LinkButton>

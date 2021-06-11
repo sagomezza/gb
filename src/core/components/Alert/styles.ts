@@ -1,7 +1,7 @@
-import { StyleSheet, Image } from "react-native";
-import styled from "styled-components/native";
-import { Caption } from "core/components/Caption";
-import { rs } from "../../../utils/dimensions";
+import { StyleSheet, Image } from 'react-native';
+import styled from 'styled-components/native';
+import { Caption } from 'core/components/Caption';
+import { rs } from '../../../utils/dimensions';
 
 export const AlertIconImage = styled(Image)({
   width: rs(67),
@@ -9,16 +9,16 @@ export const AlertIconImage = styled(Image)({
 });
 
 export const CaptionAlert = styled(Caption)({
-  textAlign: "center",
+  textAlign: 'center',
 });
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
     padding: rs(20),
     margin: rs(60),
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   contentStyleButton: { width: rs(200) },
 });

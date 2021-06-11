@@ -1,20 +1,20 @@
-import styled from "styled-components/native";
-import { StyleSheet, View } from "react-native";
-import Typography from "core/components/Typography";
-import { rs } from "../../../utils/dimensions";
-import { theme } from "../../../config/theme";
+import styled from 'styled-components/native';
+import { StyleSheet, View } from 'react-native';
+import Typography from 'core/components/Typography';
+import { rs } from '../../../utils/dimensions';
+import { theme } from '../../../config/theme';
 // eslint-disable-next-line import/no-cycle
-import { TextInputNumber } from "./TextInputNumber";
+import { TextInputNumber } from './TextInputNumber';
 
 export const IconContainer = styled(View)({
-  position: "absolute",
+  position: 'absolute',
   top: rs(20),
   right: rs(8),
   zIndex: 10,
 });
 
 export const CalendarContainer = styled(View)({
-  position: "absolute",
+  position: 'absolute',
   top: rs(80),
   right: 0,
   zIndex: 10,
@@ -24,13 +24,13 @@ export const CalendarContainer = styled(View)({
 });
 
 export const Container = styled(View)({
-  position: "relative",
+  position: 'relative',
   zIndex: 2,
 });
 
 export const TextInputNumberDate = styled(TextInputNumber)({
   flexGrow: 1,
-  width: "100%",
+  width: '100%',
   maxHeight: rs(50),
 });
 
@@ -39,9 +39,9 @@ export const TextInputDateError = styled(Typography)({
 });
 
 export const PassCodeContainer = styled(Typography)({
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "space-around",
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-around',
 });
 
 export const styles = StyleSheet.create({
@@ -63,7 +63,7 @@ export const styles = StyleSheet.create({
     fontSize: rs(28),
     fontWeight: theme.fonts.regular.fontWeight,
     height: rs(90),
-    textAlign: "center",
+    textAlign: 'center',
     width: rs(55),
   },
   zeroSizes: {

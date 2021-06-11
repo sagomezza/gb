@@ -1,9 +1,9 @@
 // Libs
-import React from "react";
+import React from 'react';
 // Components
-import SettingsView from "../Settings";
-import Switch from "../Switch";
-import { Subheading } from "../Subheading";
+import SettingsView from '../Settings';
+import Switch from '../Switch';
+import { Subheading } from '../Subheading';
 
 type Props = {
   label: string;

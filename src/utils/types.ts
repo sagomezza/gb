@@ -1,5 +1,5 @@
-import React from "react";
-import { NavigationScreenProp } from "react-navigation";
+import React from 'react';
+import { NavigationScreenProp } from 'react-navigation';
 
 export interface IWithNavigation {
   navigation: NavigationScreenProp<any, any>;

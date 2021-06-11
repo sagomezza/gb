@@ -1,11 +1,11 @@
-import { theme } from "config/theme";
-import { TextStyle, TextProps } from "react-native";
+import { theme } from 'config/theme';
+import { TextStyle, TextProps } from 'react-native';
 
 export const TypographyVariant = {
-  regular: "Roboto",
-  bold: "Roboto",
-  extraBold: "Roboto",
-  light: "Roboto",
+  regular: 'Roboto',
+  bold: 'Roboto',
+  extraBold: 'Roboto',
+  light: 'Roboto',
 };
 
 export type StyledTextProps = {
@@ -15,7 +15,7 @@ export type StyledTextProps = {
   marginEnd: number;
   marginStart: number;
   size: number;
-  textAlign: "left" | "right" | "center";
+  textAlign: 'left' | 'right' | 'center';
   variant: keyof typeof TypographyVariant;
 } & TextProps;
 
@@ -28,6 +28,6 @@ export interface TypographyProps {
   marginStart: number;
   size: number;
   style: TextStyle;
-  textAlign: "left" | "right" | "center";
+  textAlign: 'left' | 'right' | 'center';
   variant: keyof typeof TypographyVariant;
 }
