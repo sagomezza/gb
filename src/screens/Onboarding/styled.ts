@@ -52,5 +52,6 @@ export const OnboardingTitle = styled.Text`
   font-size: ${nlz(34)}px;
   font-weight: 500;
   line-height: ${rs(62)}px;
+  margin-horizontal: 40px;
   text-align: center;
 `;
