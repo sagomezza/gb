@@ -1,8 +1,8 @@
-import DefaultIcon from "core/components/DefaultIcon";
-import { theme } from "config/theme";
-import React, { useEffect, useState } from "react";
-import { StyleProp, View, ViewStyle } from "react-native";
-import { CornerContainer, Input, SearchInputMainContainer } from "./styles";
+import DefaultIcon from 'core/components/DefaultIcon';
+import { theme } from 'config/theme';
+import React, { useEffect, useState } from 'react';
+import { StyleProp, View, ViewStyle } from 'react-native';
+import { CornerContainer, Input, SearchInputMainContainer } from './styles';
 
 type ISearchInputProps = {
   clearButton?: boolean;
@@ -17,7 +17,7 @@ const SearchInput = ({
   onChange,
   placeholder,
 }: ISearchInputProps) => {
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = useState<string>('');
 
   useEffect(() => {
     if (onChange) {
@@ -28,15 +28,10 @@ const SearchInput = ({
   return (
     <SearchInputMainContainer style={[containerStyle]}>
       <CornerContainer>
-        <DefaultIcon
-          color="gray3"
-          iconFamily="FontAwesome5"
-          name="search"
-          size={18}
-        />
+        <DefaultIcon color="gray3" iconFamily="FontAwesome5" name="search" size={18} />
       </CornerContainer>
       <Input
-        placeholder={placeholder || "Search"}
+        placeholder={placeholder || 'Search'}
         placeholderTextColor={theme.colors.placeholder}
         value={value}
         onChangeText={setValue}
@@ -49,7 +44,7 @@ const SearchInput = ({
             margin={10}
             name="times"
             size={12}
-            onPress={() => setValue("")}
+            onPress={() => setValue('')}
           />
         </CornerContainer>
       ) : (

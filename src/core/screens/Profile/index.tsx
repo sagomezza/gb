@@ -1,36 +1,24 @@
-import React, { useMemo } from "react";
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  useColorScheme,
-} from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
-import {
-  EmailLabel,
-  NameLabel,
-  SignOutButton,
-  styles,
-  SampleView,
-  LineBreak,
-} from "./styles";
-import EditionLink from "./EditionLink";
-import ProfilePicture from "./Picture";
-import Input from "./Input";
+import React, { useMemo } from 'react';
+import { SafeAreaView, ScrollView, StatusBar, useColorScheme } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { EmailLabel, NameLabel, SignOutButton, styles, SampleView, LineBreak } from './styles';
+import EditionLink from './EditionLink';
+import ProfilePicture from './Picture';
+import Input from './Input';
 
 const ProfileScreen = () => {
-  const isDarkMode = useColorScheme() === "dark";
+  const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = useMemo(
     () => ({
       backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
     }),
-    [isDarkMode]
+    [isDarkMode],
   );
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} />
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView
         contentContainerStyle={styles.mainScrollViewContainer}
         contentInsetAdjustmentBehavior="automatic"
@@ -54,12 +42,7 @@ const ProfileScreen = () => {
         </SampleView>
 
         <SampleView>
-          <Input
-            label="First name"
-            placeholder="John"
-            value=""
-            onChange={() => {}}
-          />
+          <Input label="First name" placeholder="John" value="" onChange={() => {}} />
         </SampleView>
       </ScrollView>
     </SafeAreaView>

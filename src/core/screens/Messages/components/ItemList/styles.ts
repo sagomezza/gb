@@ -1,5 +1,5 @@
-import styled from "styled-components/native";
-import { nlz, rs } from "utils/dimensions";
+import styled from 'styled-components/native';
+import { nlz, rs } from 'utils/dimensions';
 
 interface IPhotoBackgroundProps {
   background: string;
@@ -32,8 +32,7 @@ export const MessageTitleContainer = styled.View`
 
 export const PhotoBackground = styled.ImageBackground<IPhotoBackgroundProps>`
   align-items: center;
-  background-color: ${(props) =>
-    props.background ? props.background : "black"};
+  background-color: ${(props) => (props.background ? props.background : 'black')};
   border-radius: 25px;
   height: ${rs(50)}px;
   justify-content: center;

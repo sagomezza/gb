@@ -1,18 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { SearchState } from "../types";
+import { createSlice } from '@reduxjs/toolkit';
+import { SearchState } from '../types';
 
 const initialState = {
   recentSearches: [],
 } as SearchState;
 
 const searchSlice = createSlice({
-  name: "search",
+  name: 'search',
   initialState,
   reducers: {
     saveRecentSearches: (state, { payload }) => {
-      const foundText = state.recentSearches.findIndex(
-        (text) => text === payload.text
-      );
+      const foundText = state.recentSearches.findIndex((text) => text === payload.text);
       if (foundText === -1)
         return {
           ...state,

@@ -1,8 +1,8 @@
 // Libs
-import { combineReducers } from "@reduxjs/toolkit";
+import { combineReducers } from '@reduxjs/toolkit';
 // Slices
-import example from "./example/exampleReducer";
-import search from "./search/searchReducer";
+import example from './example/exampleReducer';
+import search from './search/searchReducer';
 
 const rootReducer = combineReducers({
   example,

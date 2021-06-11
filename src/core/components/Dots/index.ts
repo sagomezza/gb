@@ -1,3 +1,3 @@
-import Dots from "./Dots";
+import Dots from './Dots';
 
 export default Dots;

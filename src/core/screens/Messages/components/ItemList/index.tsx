@@ -1,12 +1,12 @@
-import React from "react";
-import { TouchableOpacity, View } from "react-native";
-import { navigator } from "core/navigation";
-import Icon from "react-native-vector-icons/MaterialIcons";
-import Swipeable from "react-native-gesture-handler/Swipeable";
+import React from 'react';
+import { TouchableOpacity, View } from 'react-native';
+import { navigator } from 'core/navigation';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
 // import ChatScreen from "screens/Chat";
-import routes from "config/routes";
-import { theme } from "config/theme";
-import { colors } from "../../utils/colors";
+import routes from 'config/routes';
+import { theme } from 'config/theme';
+import { colors } from '../../utils/colors';
 import {
   ContactName,
   ContactPhoto,
@@ -19,10 +19,10 @@ import {
   MessageTitleContainer,
   PhotoBackground,
   PhotoTitle,
-} from "./styles";
-import SwipeableAction from "../SwipeableAction";
+} from './styles';
+import SwipeableAction from '../SwipeableAction';
 
-const intervalToDuration = require("date-fns/intervalToDuration");
+const intervalToDuration = require('date-fns/intervalToDuration');
 
 interface IItemListProps {
   item: {
@@ -35,14 +35,11 @@ interface IItemListProps {
     }[];
     user: string;
   };
-  photoPosition: "rigth" | "left";
+  photoPosition: 'rigth' | 'left';
 }
 
-const ItemList: React.FC<IItemListProps> = ({
-  item,
-  photoPosition = "left",
-}: IItemListProps) => {
-  const splitName = item.user.split(" ");
+const ItemList: React.FC<IItemListProps> = ({ item, photoPosition = 'left' }: IItemListProps) => {
+  const splitName = item.user.split(' ');
   const userName = splitName[0].charAt(0) + splitName[1].charAt(0);
   const message = item.messages[item.messages.length - 1];
   const interval = intervalToDuration({
@@ -53,14 +50,12 @@ const ItemList: React.FC<IItemListProps> = ({
   const { goToPage } = navigator();
 
   const contactPhotoLeft = () => {
-    if (photoPosition === "left") {
-      if (item.avatar !== "") {
+    if (photoPosition === 'left') {
+      if (item.avatar !== '') {
         return <ContactPhoto source={{ uri: item.avatar }} />;
       }
       return (
-        <PhotoBackground
-          background={colors[Math.floor(Math.random() * colors.length)]}
-        >
+        <PhotoBackground background={colors[Math.floor(Math.random() * colors.length)]}>
           <PhotoTitle>{userName}</PhotoTitle>
         </PhotoBackground>
       );
@@ -69,14 +64,12 @@ const ItemList: React.FC<IItemListProps> = ({
   };
 
   const contactPhotoRigth = () => {
-    if (photoPosition === "rigth") {
-      if (item.avatar !== "") {
+    if (photoPosition === 'rigth') {
+      if (item.avatar !== '') {
         return <ContactPhoto source={{ uri: item.avatar }} />;
       }
       return (
-        <PhotoBackground
-          background={colors[Math.floor(Math.random() * colors.length)]}
-        >
+        <PhotoBackground background={colors[Math.floor(Math.random() * colors.length)]}>
           <PhotoTitle>{userName}</PhotoTitle>
         </PhotoBackground>
       );
@@ -87,23 +80,13 @@ const ItemList: React.FC<IItemListProps> = ({
   return (
     <Swipeable
       renderLeftActions={() => (
-        <SwipeableAction
-          backgroundColor={theme.colors.darkBlue}
-          text="Move"
-          onPress={() => {}}
-        />
+        <SwipeableAction backgroundColor={theme.colors.darkBlue} text="Move" onPress={() => {}} />
       )}
       renderRightActions={() => (
-        <SwipeableAction
-          backgroundColor={theme.colors.error}
-          text="Delete"
-          onPress={() => {}}
-        />
+        <SwipeableAction backgroundColor={theme.colors.error} text="Delete" onPress={() => {}} />
       )}
     >
-      <TouchableOpacity
-        onPress={() => goToPage(routes.CHAT, { item: itemString })}
-      >
+      <TouchableOpacity onPress={() => goToPage(routes.CHAT, { item: itemString })}>
         <MessageContainer>
           {contactPhotoLeft()}
           <DetailsContainer>
@@ -113,16 +96,10 @@ const ItemList: React.FC<IItemListProps> = ({
               </View>
               <DateContainer>
                 <MessageDate>
-                  {interval.days > 1
-                    ? `${interval.days} days ago`
-                    : "Yesterday"}
+                  {interval.days > 1 ? `${interval.days} days ago` : 'Yesterday'}
                 </MessageDate>
                 <IconContainer>
-                  <Icon
-                    color={theme.colors.lightGrey}
-                    name="arrow-forward-ios"
-                    size={20}
-                  />
+                  <Icon color={theme.colors.lightGrey} name="arrow-forward-ios" size={20} />
                 </IconContainer>
               </DateContainer>
             </MessageTitleContainer>

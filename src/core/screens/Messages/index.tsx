@@ -1,9 +1,9 @@
-import React from "react";
-import { FlatList } from "react-native";
-import DefaultLayout from "layout/default";
-import { messagesData } from "./utils/example-data";
-import { Separator } from "./styles";
-import ItemList from "./components/ItemList";
+import React from 'react';
+import { FlatList } from 'react-native';
+import DefaultLayout from 'layout/default';
+import { messagesData } from './utils/example-data';
+import { Separator } from './styles';
+import ItemList from './components/ItemList';
 
 const dataSource = messagesData;
 

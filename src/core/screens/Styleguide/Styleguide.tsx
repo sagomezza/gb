@@ -1,8 +1,8 @@
-import React from "react";
-import { theme } from "config/theme";
-import { Color, StyleguideColorsContainer } from "./styles";
+import React from 'react';
+import { theme } from 'config/theme';
+import { Color, StyleguideColorsContainer } from './styles';
 
-export { StyleguideTitle } from "./styles";
+export { StyleguideTitle } from './styles';
 
 export const StyleguideColors = () => (
   <StyleguideColorsContainer>

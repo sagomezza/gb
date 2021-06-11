@@ -1,9 +1,9 @@
-import React from "react";
-import { LinkButton } from "core/components";
-import { useNavigation } from "@react-navigation/native";
-import { RotuesMain } from "config/routes";
+import React from 'react';
+import { LinkButton } from 'core/components';
+import { useNavigation } from '@react-navigation/native';
+import { RotuesMain } from 'config/routes';
 
-const SKIP_BUTTON_LABEL = "Skip";
+const SKIP_BUTTON_LABEL = 'Skip';
 
 const SkipButton: React.FC = () => {
   const navigation = useNavigation();

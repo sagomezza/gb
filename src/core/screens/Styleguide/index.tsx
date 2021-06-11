@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Caption,
   Caption12,
@@ -9,11 +9,11 @@ import {
   Spacing,
   Subheading,
   Title,
-} from "core/components";
-import Alert from "core/components/Alert";
-import { IWithNavigation } from "utils/types";
-import { StyleguideTitle } from "./Styleguide";
-import { MainScrollView, StyleguideContainer } from "./styles";
+} from 'core/components';
+import Alert from 'core/components/Alert';
+import { IWithNavigation } from 'utils/types';
+import { StyleguideTitle } from './Styleguide';
+import { MainScrollView, StyleguideContainer } from './styles';
 
 interface IStyleguideScreenProps extends IWithNavigation {}
 

@@ -1,6 +1,6 @@
-import React from "react";
-import { ActivityIndicator, View } from "react-native";
-import Typography from "../Typography";
+import React from 'react';
+import { ActivityIndicator, View } from 'react-native';
+import Typography from '../Typography';
 
 interface Props {
   spinnerColor: string;
@@ -10,11 +10,7 @@ interface Props {
 
 const EmptyContent = ({ spinnerColor, testID, text }: Props) => (
   <View testID={testID}>
-    {text ? (
-      <Typography>{text}</Typography>
-    ) : (
-      <ActivityIndicator color={spinnerColor} />
-    )}
+    {text ? <Typography>{text}</Typography> : <ActivityIndicator color={spinnerColor} />}
   </View>
 );
 

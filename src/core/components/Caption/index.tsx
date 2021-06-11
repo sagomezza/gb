@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
-import React from "react";
-import { Caption as CaptionPaper } from "react-native-paper";
-import styled from "styled-components/native";
-import { theme } from "config/theme";
+import React from 'react';
+import { Caption as CaptionPaper } from 'react-native-paper';
+import styled from 'styled-components/native';
+import { theme } from 'config/theme';
 
 const StyledCaptionPaper = styled(CaptionPaper)`
   color: ${(props: any) => props.color || theme.colors.text};
@@ -11,10 +11,10 @@ const StyledCaptionPaper = styled(CaptionPaper)`
   font-size: 16px;
   font-weight: 400;
   line-height: 18.75px;
-  text-align: ${(props: any) => (props.center ? "center" : "left")};
-  width: ${(props: any) => (props.maxWidth ? `${props.maxWidth}px` : "auto")};
+  text-align: ${(props: any) => (props.center ? 'center' : 'left')};
+  width: ${(props: any) => (props.maxWidth ? `${props.maxWidth}px` : 'auto')};
 
-  ${(props: any) => (props.center ? "margin: 0 auto;" : "")};
+  ${(props: any) => (props.center ? 'margin: 0 auto;' : '')};
 `;
 
 // const StyledCaptionPaperButton = styled(StyledCaptionPaper)`

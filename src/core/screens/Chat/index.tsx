@@ -1,7 +1,7 @@
-import React, { useState, useCallback, useEffect } from "react";
-import { GiftedChat } from "react-native-gifted-chat";
-import { RouteProp } from "@react-navigation/native";
-import { ChatBubble } from "./styled";
+import React, { useState, useCallback, useEffect } from 'react';
+import { GiftedChat } from 'react-native-gifted-chat';
+import { RouteProp } from '@react-navigation/native';
+import { ChatBubble } from './styled';
 
 type MessagesStackParamList = {
   Messages: {
@@ -9,15 +9,13 @@ type MessagesStackParamList = {
   };
 };
 
-type ChatScreenRouteProp = RouteProp<MessagesStackParamList, "Messages">;
+type ChatScreenRouteProp = RouteProp<MessagesStackParamList, 'Messages'>;
 
 interface IChatScreenProps {
   route: ChatScreenRouteProp;
 }
 
-const ChatScreen: React.FC<IChatScreenProps> = ({
-  route,
-}: IChatScreenProps) => {
+const ChatScreen: React.FC<IChatScreenProps> = ({ route }: IChatScreenProps) => {
   const [messages, setMessages] = useState([]);
 
   const { item } = route.params;
@@ -50,9 +48,7 @@ const ChatScreen: React.FC<IChatScreenProps> = ({
   }, [item]);
 
   const onSend = useCallback((messages = []) => {
-    setMessages((previousMessages) =>
-      GiftedChat.append(previousMessages, messages)
-    );
+    setMessages((previousMessages) => GiftedChat.append(previousMessages, messages));
   }, []);
 
   function renderBubble(props) {

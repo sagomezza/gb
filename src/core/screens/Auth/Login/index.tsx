@@ -1,18 +1,18 @@
-import * as React from "react";
-import { navigator } from "core/navigation";
-import DefaultLayout, { Body, Footer } from "layout/default";
+import * as React from 'react';
+import { navigator } from 'core/navigation';
+import DefaultLayout, { Body, Footer } from 'layout/default';
 import {
   LinkButton,
   Spacing,
   Paragraph,
   KeyboardAwareScrollViewContainer,
   ContentStyles,
-} from "core/components";
-import routes from "config/routes";
-import Form from "../components/Form/Form";
-import { Container } from "./styled";
+} from 'core/components';
+import routes from 'config/routes';
+import Form from '../components/Form/Form';
+import { Container } from './styled';
 
-import { IAuthData } from "../types/auth.types";
+import { IAuthData } from '../types/auth.types';
 
 const LoginScreen: React.FC = (): React.ReactElement => {
   const { goToPage } = navigator();
@@ -35,14 +35,10 @@ const LoginScreen: React.FC = (): React.ReactElement => {
         <Footer>
           <Container>
             <Spacing size={20} />
-            <LinkButton onPress={() => goToPage(routes.FORGOTPASSWORD)}>
-              Forgot Password
-            </LinkButton>
+            <LinkButton onPress={() => goToPage(routes.FORGOTPASSWORD)}>Forgot Password</LinkButton>
             <Spacing size={20} />
             <Paragraph center>You don&#39;t have an account?</Paragraph>
-            <LinkButton onPress={() => goToPage(routes.SIGNUP)}>
-              Signup
-            </LinkButton>
+            <LinkButton onPress={() => goToPage(routes.SIGNUP)}>Signup</LinkButton>
           </Container>
         </Footer>
       </KeyboardAwareScrollViewContainer>

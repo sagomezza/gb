@@ -1,9 +1,9 @@
-import { StyleSheet, View } from "react-native";
-import { theme } from "config/theme";
+import { StyleSheet, View } from 'react-native';
+import { theme } from 'config/theme';
 
-import styled from "styled-components/native";
-import { TextInput } from "react-native-paper";
-import { nlz, rs } from "../../../utils/dimensions";
+import styled from 'styled-components/native';
+import { TextInput } from 'react-native-paper';
+import { nlz, rs } from '../../../utils/dimensions';
 
 export const FormInput = styled(TextInput)`
   background-color: transparent;
@@ -22,7 +22,7 @@ export const ContainerFormInput = styled(View)`
 
 export const styles = StyleSheet.create({
   label: {
-    alignSelf: "flex-start",
+    alignSelf: 'flex-start',
   },
   textPaperInput: {
     fontSize: 14,

@@ -1,3 +1,3 @@
-import ModalInfo from "./ModalInfo";
+import ModalInfo from './ModalInfo';
 
 export default ModalInfo;

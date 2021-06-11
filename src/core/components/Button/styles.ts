@@ -1,6 +1,6 @@
-import { StyleSheet } from "react-native";
-import { nlz, rs } from "utils/dimensions";
-import { theme } from "../../../config/theme";
+import { StyleSheet } from 'react-native';
+import { nlz, rs } from 'utils/dimensions';
+import { theme } from '../../../config/theme';
 
 const baseLabelStyle = {
   fontSize: 16,
@@ -14,11 +14,11 @@ const baseLabelStyle = {
 
 export const styles = StyleSheet.create({
   buttonContainer: {
-    justifyContent: "center",
+    justifyContent: 'center',
     marginHorizontal: rs(7),
   },
   buttonContainerBorder: {
-    justifyContent: "center",
+    justifyContent: 'center',
     marginHorizontal: rs(7),
     borderColor: theme.colors.primaryButtonColor,
   },
@@ -48,7 +48,7 @@ export const styles = StyleSheet.create({
   },
   contentStylePrimary: {
     height: rs(60),
-    justifyContent: "center",
+    justifyContent: 'center',
     marginHorizontal: rs(7),
   },
   contentStyleSecondary: {

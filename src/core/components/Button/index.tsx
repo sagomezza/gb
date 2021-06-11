@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import * as React from "react";
-import { Button } from "react-native-paper";
-import { ViewStyle, TextStyle } from "react-native";
-import { theme } from "config/theme";
-import { rs } from "utils/dimensions";
-import { styles } from "./styles";
+import * as React from 'react';
+import { Button } from 'react-native-paper';
+import { ViewStyle, TextStyle } from 'react-native';
+import { theme } from 'config/theme';
+import { rs } from 'utils/dimensions';
+import { styles } from './styles';
 
 type ButtonProps = {
   children: any;
@@ -15,24 +15,18 @@ type ButtonProps = {
   height?: number | string;
   icon?: string;
   labelStyle?: TextStyle;
-  mode?: "contained" | "text" | "outlined" | undefined;
+  mode?: 'contained' | 'text' | 'outlined' | undefined;
   onPress?: () => void;
   rippleColor?: string;
   style?: ViewStyle;
   uppercase?: boolean;
 };
 
-export const PrimaryButton: React.FC<ButtonProps> = (props: ButtonProps) => (
-  <Button {...props} />
-);
+export const PrimaryButton: React.FC<ButtonProps> = (props: ButtonProps) => <Button {...props} />;
 
-export const BorderButton: React.FC<ButtonProps> = (props: ButtonProps) => (
-  <Button {...props} />
-);
+export const BorderButton: React.FC<ButtonProps> = (props: ButtonProps) => <Button {...props} />;
 
-export const SecondaryButton: React.FC<ButtonProps> = (props: ButtonProps) => (
-  <Button {...props} />
-);
+export const SecondaryButton: React.FC<ButtonProps> = (props: ButtonProps) => <Button {...props} />;
 
 export const LinkButton: React.FC<ButtonProps> = (props: ButtonProps) => {
   const { fontRegular } = props;
@@ -40,19 +34,15 @@ export const LinkButton: React.FC<ButtonProps> = (props: ButtonProps) => {
   return (
     <Button
       {...props}
-      labelStyle={
-        fontRegular ? styles.labelStyleWithRegular : styles.labelStyleWithMedium
-      }
+      labelStyle={fontRegular ? styles.labelStyleWithRegular : styles.labelStyleWithMedium}
     />
   );
 };
 
-export const OutlinedButton: React.FC<ButtonProps> = (props: ButtonProps) => (
-  <Button {...props} />
-);
+export const OutlinedButton: React.FC<ButtonProps> = (props: ButtonProps) => <Button {...props} />;
 
 PrimaryButton.defaultProps = {
-  mode: "contained",
+  mode: 'contained',
   height: rs(60),
   uppercase: false,
   rippleColor: theme.colors.primaryButtonColor,
@@ -64,7 +54,7 @@ PrimaryButton.defaultProps = {
 };
 
 BorderButton.defaultProps = {
-  mode: "outlined",
+  mode: 'outlined',
   height: rs(60),
   uppercase: false,
   rippleColor: theme.colors.primaryButtonColor,
@@ -76,7 +66,7 @@ BorderButton.defaultProps = {
 };
 
 SecondaryButton.defaultProps = {
-  mode: "contained",
+  mode: 'contained',
   uppercase: false,
   rippleColor: theme.colors.onSecondary,
   labelStyle: styles.labelStyleSecondary,
@@ -85,16 +75,16 @@ SecondaryButton.defaultProps = {
 };
 
 LinkButton.defaultProps = {
-  mode: "text",
-  rippleColor: "transparent",
+  mode: 'text',
+  rippleColor: 'transparent',
   uppercase: false,
   fontRegular: false,
   contentStyle: styles.contentStyleLink,
 };
 
 OutlinedButton.defaultProps = {
-  mode: "outlined",
-  rippleColor: "transparent",
+  mode: 'outlined',
+  rippleColor: 'transparent',
   uppercase: false,
   labelStyle: styles.labelStyleOutlined,
   contentStyle: styles.contentStyleOutlined,

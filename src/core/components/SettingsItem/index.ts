@@ -1,3 +1,3 @@
-import SettingsItem from "./SettingsItem";
+import SettingsItem from './SettingsItem';
 
 export default SettingsItem;

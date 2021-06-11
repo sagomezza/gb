@@ -1,16 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { getErrorMessage } from "utils/general";
-import { ExampleState } from "../types";
-import { fetchExample } from "./exampleActions";
+import { createSlice } from '@reduxjs/toolkit';
+import { getErrorMessage } from 'utils/general';
+import { ExampleState } from '../types';
+import { fetchExample } from './exampleActions';
 
 const initialState = {
   exampleError: null,
   fetchExample: null,
-  homeWord: "",
+  homeWord: '',
 } as ExampleState;
 
 const exampleSlice = createSlice({
-  name: "example",
+  name: 'example',
   initialState,
   reducers: {
     updateHomeWordExample: (state, { payload }) => ({

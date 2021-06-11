@@ -1,5 +1,5 @@
-import styled from "styled-components/native";
-import { nlz, rs } from "utils/dimensions";
+import styled from 'styled-components/native';
+import { nlz, rs } from 'utils/dimensions';
 
 export const TitleItemList = styled.Text`
   color: ${({ theme: { colors } }) => colors.error};

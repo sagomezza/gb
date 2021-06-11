@@ -1,10 +1,10 @@
-import React from "react";
-import { View } from "react-native";
-import { useForm } from "react-hook-form";
-import { Spacing, CaptionLabel, PrimaryButton, Title } from "core/components";
-import { EMAIL_REGEX } from "utils/input-regex";
-import { Activity, Input } from "./Form.styles";
-import { IAuthData } from "../../types/auth.types";
+import React from 'react';
+import { View } from 'react-native';
+import { useForm } from 'react-hook-form';
+import { Spacing, CaptionLabel, PrimaryButton, Title } from 'core/components';
+import { EMAIL_REGEX } from 'utils/input-regex';
+import { Activity, Input } from './Form.styles';
+import { IAuthData } from '../../types/auth.types';
 
 interface IFormProps {
   hideLabels?: boolean;
@@ -50,7 +50,7 @@ const Form: React.FC<IFormProps> = ({
           control={control}
           errors={errors}
           input={{
-            textContentType: "password",
+            textContentType: 'password',
             secureTextEntry: true,
           }}
           name="Password"
@@ -60,9 +60,7 @@ const Form: React.FC<IFormProps> = ({
       {isLoading ? (
         <Activity animating />
       ) : (
-        <PrimaryButton onPress={handleSubmit(combineHandleWithSubmit)}>
-          {title}
-        </PrimaryButton>
+        <PrimaryButton onPress={handleSubmit(combineHandleWithSubmit)}>{title}</PrimaryButton>
       )}
     </View>
   );

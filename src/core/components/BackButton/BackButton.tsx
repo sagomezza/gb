@@ -1,7 +1,7 @@
-import * as React from "react";
-import { ViewStyle, TextStyle } from "react-native";
-import { theme } from "config/theme";
-import { navigator } from "core/navigation";
+import * as React from 'react';
+import { ViewStyle, TextStyle } from 'react-native';
+import { theme } from 'config/theme';
+import { navigator } from 'core/navigation';
 import {
   Icon,
   Typography,
@@ -9,7 +9,7 @@ import {
   IconContainer,
   TextContainer,
   FullWidthTouchable,
-} from "./styles";
+} from './styles';
 
 interface Props {
   iconColor: keyof typeof theme.colors;
@@ -37,12 +37,7 @@ const BackButton = ({
     <FullWidthTouchable testID={testID} onPress={goBack}>
       <Container style={style}>
         <IconContainer>
-          <Icon
-            color={iconColor}
-            name="arrow-back"
-            size={size}
-            style={iconStyle}
-          />
+          <Icon color={iconColor} name="arrow-back" size={size} style={iconStyle} />
         </IconContainer>
         {!!text && (
           <TextContainer>

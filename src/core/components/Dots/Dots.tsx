@@ -1,5 +1,5 @@
-import React from "react";
-import { Dot, DotsMainContainer } from "./style";
+import React from 'react';
+import { Dot, DotsMainContainer } from './style';
 
 export interface IDotsProps {
   dotSize?: number;

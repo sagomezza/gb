@@ -1,50 +1,50 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @typescript-eslint/naming-convention */
-import { INTERNAL_SERVER_ERROR } from "utils/constants";
-import Logger from "./logger";
-import config from "../config";
+import { INTERNAL_SERVER_ERROR } from 'utils/constants';
+import Logger from './logger';
+import config from '../config';
 
-const logger = new Logger("api-connector");
+const logger = new Logger('api-connector');
 
 const Methods = {
-  HEAD: "HEAD",
-  GET: "GET",
-  POST: "POST",
-  PUT: "PUT",
-  PATCH: "PATCH",
-  DELETE: "DELETE",
+  HEAD: 'HEAD',
+  GET: 'GET',
+  POST: 'POST',
+  PUT: 'PUT',
+  PATCH: 'PATCH',
+  DELETE: 'DELETE',
 };
 
 let _defaultHeaders = {
-  "Content-Type": "application/json",
-  Accept: "application/json",
+  'Content-Type': 'application/json',
+  Accept: 'application/json',
 };
 
 const Errors = {
-  NO_CONNECTION: "000",
-  NO_CONNECTION_MSG: "Network request failed",
+  NO_CONNECTION: '000',
+  NO_CONNECTION_MSG: 'Network request failed',
 
-  TIMEOUT: "001",
-  TIMEOUT_MSG: "Request Timeout",
+  TIMEOUT: '001',
+  TIMEOUT_MSG: 'Request Timeout',
 
-  SERVERError502: "502",
-  SERVERError_MSG502: "Bad Gateway",
+  SERVERError502: '502',
+  SERVERError_MSG502: 'Bad Gateway',
 
-  SERVERError: "503",
+  SERVERError: '503',
   SERVERError_MSG: INTERNAL_SERVER_ERROR,
 
   NOT_FOUND: 404,
-  NOT_FOUND_MSG: "Not found",
+  NOT_FOUND_MSG: 'Not found',
 
   REQUEST_ENTITY_TOO_LARGE: 413,
-  REQUEST_ENTITY_TOO_LARGE_MSG: "Request entity too large",
+  REQUEST_ENTITY_TOO_LARGE_MSG: 'Request entity too large',
 
-  UNAUTHORIZEDError: "401",
-  UNAUTHORIZEDError_MSG: "Unauthorized",
+  UNAUTHORIZEDError: '401',
+  UNAUTHORIZEDError_MSG: 'Unauthorized',
 
   ID_DUPLICATED: 400,
-  ID_DUPLICATED_MSG: "Duplicate Name",
+  ID_DUPLICATED_MSG: 'Duplicate Name',
 };
 
 export default class APIConnector {
@@ -56,11 +56,7 @@ export default class APIConnector {
 
   _requestUpload: Function;
 
-  static _requestUpload(
-    uri: string,
-    options: Record<string, any>,
-    uploadFormData: FormData
-  ) {
+  static _requestUpload(uri: string, options: Record<string, any>, uploadFormData: FormData) {
     const formData = uploadFormData;
     const time = +new Date();
 
@@ -68,38 +64,26 @@ export default class APIConnector {
       const xhr = new XMLHttpRequest();
       xhr.open(options.method, uri);
 
-      if (options.headers["X-Session"]) {
-        xhr.setRequestHeader("X-Session", options.headers["X-Session"]);
+      if (options.headers['X-Session']) {
+        xhr.setRequestHeader('X-Session', options.headers['X-Session']);
       }
-      xhr.setRequestHeader("X-ApiKey", options.headers["X-ApiKey"]);
-      xhr.setRequestHeader("X-RequestId", options.headers["X-RequestId"]);
-      xhr.setRequestHeader("X-TrackingId", options.headers["X-TrackingId"]);
+      xhr.setRequestHeader('X-ApiKey', options.headers['X-ApiKey']);
+      xhr.setRequestHeader('X-RequestId', options.headers['X-RequestId']);
+      xhr.setRequestHeader('X-TrackingId', options.headers['X-TrackingId']);
       xhr.onload = () => {
         if (config.API_CONNECTOR_LOGS_ACTIVATED) {
-          logger.info(
-            `request ${options.method}: ${uri} completed, took: ${
-              +new Date() - time
-            }ms`
-          );
+          logger.info(`request ${options.method}: ${uri} completed, took: ${+new Date() - time}ms`);
         }
         if (xhr.status !== 200) {
-          reject(
-            new Error(
-              JSON.stringify({ code: xhr.status, message: xhr.responseText })
-            )
-          );
+          reject(new Error(JSON.stringify({ code: xhr.status, message: xhr.responseText })));
         }
         if (!xhr.responseText) {
-          console.log("Upload failed No response payload."); // eslint-disable-line no-console
-          reject(
-            new Error(JSON.stringify({ code: 500, message: xhr.responseText }))
-          );
+          console.log('Upload failed No response payload.'); // eslint-disable-line no-console
+          reject(new Error(JSON.stringify({ code: 500, message: xhr.responseText })));
         }
-        const index = xhr.responseText.indexOf("arcor.com");
+        const index = xhr.responseText.indexOf('arcor.com');
         if (index !== -1) {
-          reject(
-            new Error(JSON.stringify({ code: 500, message: xhr.responseText }))
-          );
+          reject(new Error(JSON.stringify({ code: 500, message: xhr.responseText })));
         }
         resolve(xhr.responseText);
       };
@@ -176,14 +160,12 @@ export default class APIConnector {
     if (!body) delete options.body;
 
     const time = +new Date();
-    const bodyLog = options.body
-      ? ` & body: ${JSON.stringify(options.body).substr(0, 80)}...`
-      : "";
+    const bodyLog = options.body ? ` & body: ${JSON.stringify(options.body).substr(0, 80)}...` : '';
     if (config.API_CONNECTOR_LOGS_ACTIVATED) {
       logger.info(
         `request ${options.method}: ${uri} sent, headers: ${JSON.stringify(
-          options.headers
-        )}${bodyLog}`
+          options.headers,
+        )}${bodyLog}`,
       );
     }
 
@@ -201,9 +183,7 @@ export default class APIConnector {
           const err: any = new TypeError(Errors.TIMEOUT_MSG);
           err.code = Errors.TIMEOUT;
           if (config.API_CONNECTOR_LOGS_ACTIVATED) {
-            logger.info(
-              `request ${method}: ${uri} timeout after ${+new Date() - time}ms`
-            );
+            logger.info(`request ${method}: ${uri} timeout after ${+new Date() - time}ms`);
           }
           reject(err);
         }, this._timeout);
@@ -218,11 +198,7 @@ export default class APIConnector {
           requestDone = true;
           if (timeoutReached) return;
           if (config.API_CONNECTOR_LOGS_ACTIVATED) {
-            logger.info(
-              `request ${method}: ${uri} completed, took: ${
-                +new Date() - time
-              }ms`
-            );
+            logger.info(`request ${method}: ${uri} completed, took: ${+new Date() - time}ms`);
           }
 
           if (!response.ok && response.status === 502) {
@@ -231,26 +207,18 @@ export default class APIConnector {
                 JSON.stringify({
                   code: 502,
                   message: Errors.SERVERError_MSG502,
-                })
-              )
+                }),
+              ),
             );
           }
 
           if (!response.ok && response.status === 503) {
-            reject(
-              new Error(
-                JSON.stringify({ code: 503, message: Errors.SERVERError_MSG })
-              )
-            );
+            reject(new Error(JSON.stringify({ code: 503, message: Errors.SERVERError_MSG })));
           }
 
           if (response && response.status === Errors.NOT_FOUND) {
             checkResponseCode = true;
-            reject(
-              new Error(
-                JSON.stringify({ code: 404, message: Errors.NOT_FOUND_MSG })
-              )
-            );
+            reject(new Error(JSON.stringify({ code: 404, message: Errors.NOT_FOUND_MSG })));
           }
 
           if (response && response.status === 500) {
@@ -260,8 +228,8 @@ export default class APIConnector {
                 JSON.stringify({
                   code: 500,
                   message: Errors.SERVERError_MSG,
-                })
-              )
+                }),
+              ),
             );
           }
 
@@ -273,8 +241,8 @@ export default class APIConnector {
                 JSON.stringify({
                   code: Errors.REQUEST_ENTITY_TOO_LARGE,
                   message: responseBody.debugMessage,
-                })
-              )
+                }),
+              ),
             );
           }
 
@@ -290,8 +258,8 @@ export default class APIConnector {
                 JSON.stringify({
                   code: Errors.ID_DUPLICATED,
                   message: responseBody.debugMessage,
-                })
-              )
+                }),
+              ),
             );
           }
 
@@ -302,8 +270,8 @@ export default class APIConnector {
                 JSON.stringify({
                   code: Errors.UNAUTHORIZEDError,
                   message: responseBody.debugMessage,
-                })
-              )
+                }),
+              ),
             );
           }
           if (response.status === 204) {
@@ -323,9 +291,7 @@ export default class APIConnector {
           if (timeoutReached) return;
           if (config.API_CONNECTOR_LOGS_ACTIVATED) {
             logger.error(
-              `request ${method}: ${uri} raised error: ${err}, took ${
-                +new Date() - time
-              }ms`
+              `request ${method}: ${uri} raised error: ${err}, took ${+new Date() - time}ms`,
             );
           }
           if (err.message === Errors.NO_CONNECTION_MSG) {

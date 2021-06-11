@@ -1,3 +1,3 @@
-import AnimatedSqueeze from "./AnimatedSqueeze";
+import AnimatedSqueeze from './AnimatedSqueeze';
 
 export default AnimatedSqueeze;
