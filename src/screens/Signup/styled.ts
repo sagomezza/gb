@@ -43,7 +43,7 @@ export const SocialContainer = styled.View`
   flex-direction: row;
   justify-content: space-evenly;
   margin-top: ${rs(20)}px;
-  padding-horizontal: 60px;
+  padding-horizontal: ${rs(50)}px;
 `;
 
 export const FbButton = styled.TouchableOpacity`
@@ -72,7 +72,7 @@ export const GoogleButton = styled.TouchableOpacity`
   width: ${rs(46)}px;
 `;
 
-export const ParagraphLogin = styled.Text`
+export const ParagraphSignup = styled.Text`
   color: ${({ theme: { colors } }) => colors.gray1};
   font-family: ${({ theme: { fonts } }) => fonts.regular.fontFamily};
   font-size: ${nlz(15)}px;

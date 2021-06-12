@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import Spacing from 'components/Spacing';
 import Fb from '../../../assets/imgs/FB.svg';
 import Google from '../../../assets/imgs/Google.svg';
-import { ButtonSignup, FbButton, GoogleButton, ParagraphLogin, SocialContainer } from './styled';
+import { ButtonSignup, FbButton, GoogleButton, ParagraphSignup, SocialContainer } from './styled';
 import { REGEX_EMAIL, REGEX_LETTERS } from '../../utils/regexes';
 import { IFormValuesSignup, ISignupFormProps } from './types';
 import InputSignup from '../../components/InputSignup';
@@ -97,7 +97,7 @@ const SignupForm: React.FC<ISignupFormProps> = ({ onSignup }: ISignupFormProps) 
         }}
       />
       <Spacing size={30} />
-      <ParagraphLogin>Sign Up with</ParagraphLogin>
+      <ParagraphSignup>Sign Up with</ParagraphSignup>
       <SocialContainer>
         <FbButton onPress={signupFb}>
           <Fb height={40} width={120} />
