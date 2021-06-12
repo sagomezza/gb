@@ -2,6 +2,9 @@
 
 Core Novacomp mobile app
 
+App center Android: https://build.appcenter.ms/v0.1/apps/ab44e50c-cac4-4a50-b806-d4e6c343837f/branches/QA-App-center/badge
+App center iOS: https://build.appcenter.ms/v0.1/apps/215ba403-74f0-4d67-ba8d-09f746b77130/branches/QA-App-center/badge
+
 ## Prerequisites to build
 
 - Android Studio ([Download](https://developer.android.com/studio))
