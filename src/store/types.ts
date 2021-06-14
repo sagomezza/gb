@@ -26,3 +26,17 @@ export type FetchExampleEntity = {
   url: string;
   vehicles: [];
 };
+
+export type ModalState = {
+  hideModal: () => void;
+  onDismiss: () => void;
+  text: string;
+  textButton: string;
+  title: string;
+  type: string;
+  visible: boolean;
+};
+
+export type AppState = {
+  modalAlert: ModalState;
+};

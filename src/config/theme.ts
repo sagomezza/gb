@@ -55,6 +55,7 @@ const colors = {
   greenPrimary: '#57e2c8',
   backgroundFbImage: '#085CA7',
   grayPlaceholder: '#C2C2C2',
+  darkGreen: '#213c46',
 };
 
 export const theme = {
