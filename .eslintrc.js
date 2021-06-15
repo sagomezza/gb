@@ -10,10 +10,10 @@ module.exports = {
     "@typescript-eslint/no-redeclare": "off",
     "@typescript-eslint/no-shadow": "off",
     "@typescript-eslint/no-use-before-define": "off",
-    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-unused-vars": 2,
     "better-styled-components/sort-declarations-alphabetically": 2,
-    "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
     "no-use-before-define": "off",
     "react/jsx-sort-props": [
       "error",
@@ -31,11 +31,7 @@ module.exports = {
     "typescript-sort-keys/interface": "error",
     "typescript-sort-keys/string-enum": "error",
   },
-  plugins: [
-    "better-styled-components",
-    "sort-destructure-keys",
-    "typescript-sort-keys",
-  ],
+  plugins: ["better-styled-components", "sort-destructure-keys", "typescript-sort-keys"],
   overrides: [
     {
       files: ["*.{ts,tsx}"],

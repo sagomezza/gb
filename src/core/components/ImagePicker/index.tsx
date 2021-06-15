@@ -1,13 +1,7 @@
-import React, { useCallback, useState } from "react";
-import { Modal, TouchableOpacity } from "react-native";
-import * as ImageSelector from "react-native-image-picker";
-import {
-  ButtonsCard,
-  CardTitle,
-  Fallback,
-  OptionButton,
-  OptionButtonContentStyle,
-} from "./styles";
+import React, { useCallback, useState } from 'react';
+import { Modal, TouchableOpacity } from 'react-native';
+import * as ImageSelector from 'react-native-image-picker';
+import { ButtonsCard, CardTitle, Fallback, OptionButton, OptionButtonContentStyle } from './styles';
 
 interface IImagePickerProps {
   children: React.ReactElement;
@@ -29,13 +23,13 @@ const ImagePicker: React.FC<IImagePickerProps> = ({
       }
       toggleModal(false);
     },
-    [onChange]
+    [onChange],
   );
 
   const pickImage = () => {
     ImageSelector.launchImageLibrary(
       {
-        mediaType: "photo",
+        mediaType: 'photo',
         quality: 1,
       },
       (result) => {
@@ -44,14 +38,14 @@ const ImagePicker: React.FC<IImagePickerProps> = ({
         } else {
           toggleModal(true);
         }
-      }
+      },
     );
   };
 
   const takePhoto = () => {
     ImageSelector.launchCamera(
       {
-        mediaType: "photo",
+        mediaType: 'photo',
         quality: 1,
       },
       (result) => {
@@ -60,7 +54,7 @@ const ImagePicker: React.FC<IImagePickerProps> = ({
         } else {
           toggleModal(true);
         }
-      }
+      },
     );
   };
 
@@ -109,9 +103,7 @@ const ImagePicker: React.FC<IImagePickerProps> = ({
         </Fallback>
       </Modal>
 
-      <TouchableOpacity onPress={() => toggleModal(true)}>
-        {children}
-      </TouchableOpacity>
+      <TouchableOpacity onPress={() => toggleModal(true)}>{children}</TouchableOpacity>
     </>
   );
 };

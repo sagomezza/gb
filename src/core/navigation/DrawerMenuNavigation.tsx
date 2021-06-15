@@ -1,7 +1,7 @@
-import * as React from "react";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import Icon from "react-native-vector-icons/Ionicons";
-import { RoutesDrawer } from "config/routes";
+import * as React from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { RoutesDrawer } from 'config/routes';
 
 const Drawer = createDrawerNavigator();
 

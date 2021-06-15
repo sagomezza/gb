@@ -1,14 +1,13 @@
-import { StyleSheet, TextInput } from "react-native";
-import styled from "styled-components/native";
-import { theme } from "config/theme";
-import { nlz, rs } from "utils/dimensions";
-import Typography from "core/components/Typography";
+import { StyleSheet, TextInput } from 'react-native';
+import styled from 'styled-components/native';
+import { theme } from 'config/theme';
+import { nlz, rs } from 'utils/dimensions';
+import Typography from 'core/components/Typography';
 
 export const Input = styled(TextInput)`
   background-color: transparent;
   border: 1px solid
-    ${({ isFocused, theme }) =>
-      isFocused ? theme.colors.primary : theme.colors.lightGrey};
+    ${({ isFocused, theme }) => (isFocused ? theme.colors.primary : theme.colors.lightGrey)};
   border-radius: ${rs(4)}px;
   color: ${theme.colors.black};
   font-family: ${theme.fonts.light.fontFamily};
@@ -32,7 +31,7 @@ export const Label = styled(Typography)`
 
 export const styles = StyleSheet.create({
   label: {
-    alignSelf: "flex-start",
+    alignSelf: 'flex-start',
   },
   textPaperInput: {
     fontSize: 14,

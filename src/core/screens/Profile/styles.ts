@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { StyleSheet } from "react-native";
-import { Typography, PrimaryButton, TextInput } from "core/components";
+import styled from 'styled-components';
+import { StyleSheet } from 'react-native';
+import { Typography, PrimaryButton, TextInput } from 'core/components';
 
-import { rs } from "utils/dimensions";
+import { rs } from 'utils/dimensions';
 
 export const NameLabel = styled(Typography)`
   font-weight: bold;
@@ -38,10 +38,10 @@ export const EditionLinkLabel = styled(Typography)``;
 
 export const styles = StyleSheet.create({
   mainScrollViewContainer: {
-    alignItems: "center",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
     paddingBottom: rs(30),
     paddingTop: rs(30),
   },

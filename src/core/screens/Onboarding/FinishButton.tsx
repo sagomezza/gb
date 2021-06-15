@@ -1,9 +1,9 @@
-import React from "react";
-import { PrimaryButton } from "core/components";
-import { useNavigation } from "@react-navigation/native";
-import { RotuesMain } from "config/routes";
+import React from 'react';
+import { PrimaryButton } from 'core/components';
+import { useNavigation } from '@react-navigation/native';
+import { RotuesMain } from 'config/routes';
 
-const FINISH_BUTTON_LABEL = "Go to app!";
+const FINISH_BUTTON_LABEL = 'Go to app!';
 
 const FinishButton: React.FC = () => {
   const navigation = useNavigation();

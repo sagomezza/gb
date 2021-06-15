@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import * as React from "react";
-import { TextInput as TextPaperInput } from "react-native-paper";
-import { theme } from "config/theme";
+import * as React from 'react';
+import { TextInput as TextPaperInput } from 'react-native-paper';
+import { theme } from 'config/theme';
 // eslint-disable-next-line import/no-cycle
-import { styles } from "./styles";
+import { styles } from './styles';
 
 export const TextInputNumber = ({ children, style, ...otherProps }: any) => (
   <TextPaperInput

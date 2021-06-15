@@ -1,6 +1,6 @@
-import React from "react";
-import { View } from "react-native";
-import { InputLabel, ProfileInput } from "./styles";
+import React from 'react';
+import { View } from 'react-native';
+import { InputLabel, ProfileInput } from './styles';
 
 interface IInputProps {
   defaultValue?: string;

@@ -1,8 +1,8 @@
-import React, { ReactNode, useMemo, useRef, useState } from "react";
-import { View } from "react-native";
+import React, { ReactNode, useMemo, useRef, useState } from 'react';
+import { View } from 'react-native';
 
 // eslint-disable-next-line import/no-cycle
-import { CarouselMainContainer, CarouselPager } from "./styles";
+import { CarouselMainContainer, CarouselPager } from './styles';
 
 export interface ISwipeCarouselControlProps {
   changeSelectedPage: (newCurrentPageIndex: number) => void;
@@ -15,22 +15,20 @@ export interface ISwipeCarouselItemProps {
   id: number | string;
 }
 
-export const CONTROLS_POSITION_BOTTOM = "BOTTOM";
-export const CONTROLS_POSITION_TOP = "TOP";
+export const CONTROLS_POSITION_BOTTOM = 'BOTTOM';
+export const CONTROLS_POSITION_TOP = 'TOP';
 
 export interface ISwipeCarouselProps {
-  controlsPosition?:
-    | typeof CONTROLS_POSITION_BOTTOM
-    | typeof CONTROLS_POSITION_TOP;
+  controlsPosition?: typeof CONTROLS_POSITION_BOTTOM | typeof CONTROLS_POSITION_TOP;
   controlsRenderer?: (controlProps: ISwipeCarouselControlProps) => ReactNode;
   keyPrefix?: string;
   pages: ISwipeCarouselItemProps[];
 }
 
 const SwipeCarousel: React.FC<ISwipeCarouselProps> = ({
-  controlsPosition = "BOTTOM",
+  controlsPosition = 'BOTTOM',
   controlsRenderer,
-  keyPrefix = "swipeCarousel",
+  keyPrefix = 'swipeCarousel',
   pages,
 }: ISwipeCarouselProps) => {
   const [currentPageIndex, setCurrentPageIndex] = useState<number>(0);
@@ -62,9 +60,7 @@ const SwipeCarousel: React.FC<ISwipeCarouselProps> = ({
       >
         {pages &&
           pages.length > 0 &&
-          pages.map((page) => (
-            <View key={`${keyPrefix}.${page.id}`}>{page.component}</View>
-          ))}
+          pages.map((page) => <View key={`${keyPrefix}.${page.id}`}>{page.component}</View>)}
       </CarouselPager>
 
       {controlsRenderer && RenderizedControls}

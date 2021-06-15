@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Button,
   SafeAreaView,
@@ -7,7 +7,7 @@ import {
   Text,
   useColorScheme,
   View,
-} from "react-native";
+} from 'react-native';
 
 import {
   Colors,
@@ -15,22 +15,19 @@ import {
   Header,
   LearnMoreLinks,
   ReloadInstructions,
-} from "react-native/Libraries/NewAppScreen";
-import routes from "config/routes";
-import { IWithChildren } from "utils/types";
-import { PrimaryButton } from "core/components";
-import { navigator } from "core/navigation";
-import { styles } from "./styles";
+} from 'react-native/Libraries/NewAppScreen';
+import routes from 'config/routes';
+import { IWithChildren } from 'utils/types';
+import { PrimaryButton } from 'core/components';
+import { navigator } from 'core/navigation';
+import { styles } from './styles';
 
 interface ISectionProps extends IWithChildren {
   title: string;
 }
 
-const Section: React.FC<ISectionProps> = ({
-  children,
-  title,
-}: ISectionProps) => {
-  const isDarkMode = useColorScheme() === "dark";
+const Section: React.FC<ISectionProps> = ({ children, title }: ISectionProps) => {
+  const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
       <Text
@@ -59,7 +56,7 @@ const Section: React.FC<ISectionProps> = ({
 
 const App = () => {
   const { goToPage } = navigator();
-  const isDarkMode = useColorScheme() === "dark";
+  const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -67,25 +64,16 @@ const App = () => {
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}
-      >
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <ScrollView contentInsetAdjustmentBehavior="automatic" style={backgroundStyle}>
         <Header />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}
         >
-          <Button
-            title="Search screen"
-            onPress={() => goToPage(routes.SEARCH)}
-          />
-          <Button
-            title="Messages screen"
-            onPress={() => goToPage(routes.MessagesNavigator)}
-          />
+          <Button title="Search screen" onPress={() => goToPage(routes.SEARCH)} />
+          <Button title="Messages screen" onPress={() => goToPage(routes.MessagesNavigator)} />
           <PrimaryButton onPress={() => goToPage(routes.CHANGEPASSWORD)}>
             Change password
           </PrimaryButton>
@@ -98,9 +86,7 @@ const App = () => {
           <Section title="Debug">
             <DebugInstructions />
           </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
+          <Section title="Learn More">Read the docs to discover what to do next:</Section>
           <LearnMoreLinks />
         </View>
       </ScrollView>

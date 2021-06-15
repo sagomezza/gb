@@ -1,6 +1,6 @@
-import ImagePicker from "core/components/ImagePicker";
-import React, { useEffect, useState } from "react";
-import { Avatar } from "react-native-paper";
+import ImagePicker from 'core/components/ImagePicker';
+import React, { useEffect, useState } from 'react';
+import { Avatar } from 'react-native-paper';
 
 interface IAvatarPickerProps {
   defaultUri?: string;
@@ -13,7 +13,7 @@ const AvatarPicker: React.FC<IAvatarPickerProps> = ({
   onChange,
   size = 128,
 }: IAvatarPickerProps) => {
-  const [selectedUri, setUri] = useState(defaultUri || "");
+  const [selectedUri, setUri] = useState(defaultUri || '');
 
   useEffect(() => {
     if (onChange) {

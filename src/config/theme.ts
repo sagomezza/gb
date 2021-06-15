@@ -1,24 +1,24 @@
 // @ts-nocheck
-import { DefaultTheme, configureFonts } from "react-native-paper";
-import * as typography from "utils/typography";
+import { DefaultTheme, configureFonts } from 'react-native-paper';
+import * as typography from 'utils/typography';
 
 const fontConfig = {
   default: {
     regular: {
       fontFamily: typography.FONT_FAMILY_REGULAR,
-      fontWeight: "normal",
+      fontWeight: 'normal',
     },
     medium: {
       fontFamily: typography.FONT_FAMILY_BOLD,
-      fontWeight: "normal",
+      fontWeight: 'normal',
     },
     light: {
       fontFamily: typography.FONT_FAMILY_LIGHT,
-      fontWeight: "normal",
+      fontWeight: 'normal',
     },
     thin: {
       fontFamily: typography.FONT_FAMILY_EXTRA_LIGHT,
-      fontWeight: "normal",
+      fontWeight: 'normal',
     },
   },
 };
@@ -28,30 +28,30 @@ fontConfig.android = fontConfig.default;
 
 const colors = {
   ...DefaultTheme.colors,
-  white: "#ffffff",
-  primary: "#00AEFF",
-  onPrimary: "#008BFF",
-  secondary: "#FF8C00",
-  onSecondary: "#FF6E22",
-  text: "#545454",
-  error: "#CE2B15",
+  white: '#ffffff',
+  primary: '#00AEFF',
+  onPrimary: '#008BFF',
+  secondary: '#FF8C00',
+  onSecondary: '#FF6E22',
+  text: '#545454',
+  error: '#CE2B15',
   // activeBlue: '#329cfc',
   // almostWhite: '#fffffe', // for shadows
-  beige: "#F9F9F9",
-  black: "#000000",
-  borderColor: "#DCDCDC",
-  green: "#78ab78",
-  darkBlue: "#004472",
-  disabled: "#B8B8B8",
-  gray1: "#A6A3A3",
-  gray2: "#545454",
-  gray3: "#626262",
-  gray4: "#C4C4C4",
-  gray5: "#545454",
-  lightBlue: "#E4EFF8",
-  lighterGrey: "#dddddd",
-  lightGrey: "#cccccc",
-  orange: "#F88C02",
+  beige: '#F9F9F9',
+  black: '#000000',
+  borderColor: '#DCDCDC',
+  green: '#78ab78',
+  darkBlue: '#004472',
+  disabled: '#B8B8B8',
+  gray1: '#A6A3A3',
+  gray2: '#545454',
+  gray3: '#626262',
+  gray4: '#C4C4C4',
+  gray5: '#545454',
+  lightBlue: '#E4EFF8',
+  lighterGrey: '#dddddd',
+  lightGrey: '#cccccc',
+  orange: '#F88C02',
 };
 
 export const theme = {
@@ -63,21 +63,21 @@ export const theme = {
     scale: 2,
   },
   bottomNavigationBar: {
-    iconColor: "#CEEFFF",
-    activeIconColor: "#FFFFFF",
-    backgroundColor: "#00AEFF",
+    iconColor: '#CEEFFF',
+    activeIconColor: '#FFFFFF',
+    backgroundColor: '#00AEFF',
   },
   input: {
-    border: "#dddddd",
-    placeholder: "#626262",
+    border: '#dddddd',
+    placeholder: '#626262',
   },
   menu: {
-    backgroundColor: "#FFFFFF",
-    borderColor: "#BDBDBD",
-    shadowColor: "rgba(0,0,0,0.25)",
+    backgroundColor: '#FFFFFF',
+    borderColor: '#BDBDBD',
+    shadowColor: 'rgba(0,0,0,0.25)',
   },
   menuActiveOption: {
-    backgroundColor: "rgba(0,174,255,0.15)",
+    backgroundColor: 'rgba(0,174,255,0.15)',
   },
   onboardingScreen: {
     backgroundColor: colors.beige,

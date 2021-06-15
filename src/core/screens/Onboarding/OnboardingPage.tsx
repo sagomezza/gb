@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode } from 'react';
 import {
   OnboardingDescription,
   OnboardingExtraItemsContainer,
@@ -7,7 +7,7 @@ import {
   OnboardingPageMainContainer,
   OnboardingTextContainer,
   OnboardingTitle,
-} from "./style";
+} from './style';
 
 export interface IOnboardingPageProps {
   description?: string;
@@ -32,11 +32,7 @@ const OnboardingPage: React.FC<IOnboardingPageProps> = ({
       <OnboardingTitle>{title}</OnboardingTitle>
       <OnboardingDescription>{description}</OnboardingDescription>
     </OnboardingTextContainer>
-    {extraContent && (
-      <OnboardingExtraItemsContainer>
-        {extraContent}
-      </OnboardingExtraItemsContainer>
-    )}
+    {extraContent && <OnboardingExtraItemsContainer>{extraContent}</OnboardingExtraItemsContainer>}
   </OnboardingPageMainContainer>
 );
 

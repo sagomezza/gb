@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { rs } from "utils/dimensions";
+import styled from 'styled-components';
+import { rs } from 'utils/dimensions';
 
 export const DotsMainContainer = styled.View`
   align-items: center;

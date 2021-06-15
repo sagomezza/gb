@@ -1,15 +1,11 @@
-import React from "react";
-import DefaultLayout, { Body } from "layout/default";
-import { navigator } from "core/navigation";
-import {
-  Spacing,
-  KeyboardAwareScrollViewContainer,
-  ContentStyles,
-} from "core/components";
-import routes from "config/routes";
-import Form from "./Form";
-import { Container } from "./styled";
-import { IChangePasswordData } from "./Form/types";
+import React from 'react';
+import DefaultLayout, { Body } from 'layout/default';
+import { navigator } from 'core/navigation';
+import { Spacing, KeyboardAwareScrollViewContainer, ContentStyles } from 'core/components';
+import routes from 'config/routes';
+import Form from './Form';
+import { Container } from './styled';
+import { IChangePasswordData } from './Form/types';
 
 const ChangePasswordScreen = () => {
   const { goToPage } = navigator();
@@ -29,11 +25,7 @@ const ChangePasswordScreen = () => {
         <Body>
           <Container>
             <Spacing size={108} />
-            <Form
-              isLoading={false}
-              title="Change Password"
-              onSubmit={onSubmit}
-            />
+            <Form isLoading={false} title="Change Password" onSubmit={onSubmit} />
           </Container>
         </Body>
       </KeyboardAwareScrollViewContainer>

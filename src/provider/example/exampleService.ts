@@ -1,5 +1,5 @@
 /* eslint-disable no-async-promise-executor */
-import ExampleConfig from "./exampleConfig";
+import ExampleConfig from './exampleConfig';
 
 export default class ExampleService {
   static fetchExample() {

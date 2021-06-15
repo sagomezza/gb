@@ -1,42 +1,42 @@
-import MessagesStackNavigator from "core/navigation/MessagesNavigator";
+import MessagesStackNavigator from 'core/navigation/MessagesNavigator';
 import {
   ChangePasswordScreen,
   HomeScreen,
   Profile,
   SearchScreen,
   StyleguideScreen,
-} from "core/screens";
+} from 'core/screens';
 
 export enum RoutesAuth {
-  FORGOTPASSWORD = "FORGOTPASSWORD",
-  LOGIN = "LOGIN",
-  ONBOARDING = "ONBOARDING",
-  SIGNUP = "SIGNUP",
-  STYLEGUIDE = "STYLEGUIDE",
+  FORGOTPASSWORD = 'FORGOTPASSWORD',
+  LOGIN = 'LOGIN',
+  ONBOARDING = 'ONBOARDING',
+  SIGNUP = 'SIGNUP',
+  STYLEGUIDE = 'STYLEGUIDE',
 }
 
 export enum RotuesMain {
-  CHANGEPASSWORD = "CHANGEPASSWORD",
-  CHAT = "CHAT",
-  HOME = "HOME",
-  MESSAGES = "MESSAGES",
-  PROFILE = "PROFILE",
-  SEARCH = "SEARCH",
+  CHANGEPASSWORD = 'CHANGEPASSWORD',
+  CHAT = 'CHAT',
+  HOME = 'HOME',
+  MESSAGES = 'MESSAGES',
+  PROFILE = 'PROFILE',
+  SEARCH = 'SEARCH',
 }
 
 export const RoutesDrawer = {
-  initialRouteName: "Home",
+  initialRouteName: 'Home',
   routes: [
-    { name: "Home", icon: "home", screen: HomeScreen },
-    { name: "Profile", icon: "person", screen: Profile },
-    { name: "SEARCH", icon: "person", screen: SearchScreen },
-    { name: "MESSAGES", icon: "chatbubble", screen: MessagesStackNavigator },
+    { name: 'Home', icon: 'home', screen: HomeScreen },
+    { name: 'Profile', icon: 'person', screen: Profile },
+    { name: 'SEARCH', icon: 'person', screen: SearchScreen },
+    { name: 'MESSAGES', icon: 'chatbubble', screen: MessagesStackNavigator },
     {
-      name: "CHANGEPASSWORD",
-      icon: "password",
+      name: 'CHANGEPASSWORD',
+      icon: 'password',
       screen: ChangePasswordScreen,
     },
-    { name: "Styleguide", icon: "list", screen: StyleguideScreen },
+    { name: 'Styleguide', icon: 'list', screen: StyleguideScreen },
   ],
 };
 

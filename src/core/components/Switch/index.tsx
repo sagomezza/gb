@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
-import * as React from "react";
-import styled from "styled-components/native";
-import { Switch as SwitchPaper } from "react-native-paper";
-import { theme } from "config/theme";
-import { Paragraph } from "../Paragraph";
+import * as React from 'react';
+import styled from 'styled-components/native';
+import { Switch as SwitchPaper } from 'react-native-paper';
+import { theme } from 'config/theme';
+import { Paragraph } from '../Paragraph';
 
 const SwitchContainer = styled.View`
   align-items: center;
@@ -19,8 +19,6 @@ export const SwitchGroup = ({ text, ...otherProps }) => (
   </SwitchContainer>
 );
 
-const Switch = (props) => (
-  <SwitchPaper color={theme.colors.primary} {...props} />
-);
+const Switch = (props) => <SwitchPaper color={theme.colors.primary} {...props} />;
 
 export default Switch;

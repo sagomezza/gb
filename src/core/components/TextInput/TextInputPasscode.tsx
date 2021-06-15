@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useEffect } from "react";
-import { TextInput as TextPaperInput } from "react-native-paper";
-import { theme } from "config/theme";
-import { PassCodeContainer, styles } from "./styles";
+import React, { useState, useEffect } from 'react';
+import { TextInput as TextPaperInput } from 'react-native-paper';
+import { theme } from 'config/theme';
+import { PassCodeContainer, styles } from './styles';
 
 export const TextInputHidden = (props) => {
   const { children, style } = props;
@@ -44,16 +44,14 @@ export const TextInputPasscode = (props: ITextInputPasscodeProps) => {
   const { onChange, secureTextEntry, value } = props;
 
   const [data, setData] = useState({
-    input1: "",
-    input2: "",
-    input3: "",
-    input4: "",
+    input1: '',
+    input2: '',
+    input3: '',
+    input4: '',
   });
 
   useEffect(() => {
-    onChange(
-      data.input1.concat(data.input2).concat(data.input3).concat(data.input4)
-    );
+    onChange(data.input1.concat(data.input2).concat(data.input3).concat(data.input4));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
@@ -66,25 +64,25 @@ export const TextInputPasscode = (props: ITextInputPasscodeProps) => {
         maxLength={1}
         secureTextEntry={secureTextEntry}
         value={value?.slice(0, 1)}
-        onChangeText={(value: string) => handleOnChangeText(value, "input1")}
+        onChangeText={(value: string) => handleOnChangeText(value, 'input1')}
       />
       <Input
         maxLength={1}
         secureTextEntry={secureTextEntry}
         value={value?.slice(1, 2)}
-        onChangeText={(value: string) => handleOnChangeText(value, "input2")}
+        onChangeText={(value: string) => handleOnChangeText(value, 'input2')}
       />
       <Input
         maxLength={1}
         secureTextEntry={secureTextEntry}
         value={value?.slice(2, 3)}
-        onChangeText={(value: string) => handleOnChangeText(value, "input3")}
+        onChangeText={(value: string) => handleOnChangeText(value, 'input3')}
       />
       <Input
         maxLength={1}
         secureTextEntry={secureTextEntry}
         value={value?.slice(3, 4)}
-        onChangeText={(value: string) => handleOnChangeText(value, "input4")}
+        onChangeText={(value: string) => handleOnChangeText(value, 'input4')}
       />
     </PassCodeContainer>
   );
@@ -97,12 +95,12 @@ interface ITextInput6DigitProps {
 
 export const TextInput6Digit = (props: ITextInput6DigitProps) => {
   const [data, setData] = useState({
-    input1: "",
-    input2: "",
-    input3: "",
-    input4: "",
-    input5: "",
-    input6: "",
+    input1: '',
+    input2: '',
+    input3: '',
+    input4: '',
+    input5: '',
+    input6: '',
   });
 
   const { onChange, value } = props;
@@ -114,7 +112,7 @@ export const TextInput6Digit = (props: ITextInput6DigitProps) => {
         .concat(data.input3)
         .concat(data.input4)
         .concat(data.input5)
-        .concat(data.input6)
+        .concat(data.input6),
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
@@ -128,32 +126,32 @@ export const TextInput6Digit = (props: ITextInput6DigitProps) => {
       <Input
         maxLength={1}
         value={value?.slice(0, 1)}
-        onChangeText={(value: string) => handleOnChangeText(value, "input1")}
+        onChangeText={(value: string) => handleOnChangeText(value, 'input1')}
       />
       <Input
         maxLength={1}
         value={value?.slice(1, 2)}
-        onChangeText={(value: string) => handleOnChangeText(value, "input2")}
+        onChangeText={(value: string) => handleOnChangeText(value, 'input2')}
       />
       <Input
         maxLength={1}
         value={value?.slice(2, 3)}
-        onChangeText={(value: string) => handleOnChangeText(value, "input3")}
+        onChangeText={(value: string) => handleOnChangeText(value, 'input3')}
       />
       <Input
         maxLength={1}
         value={value?.slice(3, 4)}
-        onChangeText={(value: string) => handleOnChangeText(value, "input4")}
+        onChangeText={(value: string) => handleOnChangeText(value, 'input4')}
       />
       <Input
         maxLength={1}
         value={value?.slice(4, 5)}
-        onChangeText={(value: string) => handleOnChangeText(value, "input5")}
+        onChangeText={(value: string) => handleOnChangeText(value, 'input5')}
       />
       <Input
         maxLength={1}
         value={value?.slice(5, 6)}
-        onChangeText={(value: string) => handleOnChangeText(value, "input6")}
+        onChangeText={(value: string) => handleOnChangeText(value, 'input6')}
       />
     </PassCodeContainer>
   );

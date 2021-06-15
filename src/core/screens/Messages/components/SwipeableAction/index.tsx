@@ -1,6 +1,6 @@
-import React from "react";
-import { TouchableOpacity } from "react-native";
-import { ActionContainer, ActionText } from "./styles";
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
+import { ActionContainer, ActionText } from './styles';
 
 type SwipeableActionProps = {
   backgroundColor: string;

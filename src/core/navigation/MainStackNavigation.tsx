@@ -1,5 +1,5 @@
-import React from "react";
-import { MenuDrawerNavigation } from "./DrawerMenuNavigation";
+import React from 'react';
+import { MenuDrawerNavigation } from './DrawerMenuNavigation';
 
 export const MainStackNavigation = () => <MenuDrawerNavigation />;
 

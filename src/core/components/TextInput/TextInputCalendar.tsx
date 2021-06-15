@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import * as React from "react";
-import Icon from "react-native-vector-icons/AntDesign";
-import { Calendar } from "react-native-calendars";
-import { TextInputNumber } from "./TextInputNumber";
-import { IconContainer, CalendarContainer, Container } from "./styles";
-import { theme } from "../../../config/theme";
+import * as React from 'react';
+import Icon from 'react-native-vector-icons/AntDesign';
+import { Calendar } from 'react-native-calendars';
+import { TextInputNumber } from './TextInputNumber';
+import { IconContainer, CalendarContainer, Container } from './styles';
+import { theme } from '../../../config/theme';
 
 // TODO
 // LocaleConfig.locales['en'] = {
@@ -14,7 +14,7 @@ import { theme } from "../../../config/theme";
 export const TextInputCalendar = (props) => {
   const { onChange } = props;
 
-  const [selected, setSelectedDate] = React.useState({ dateString: "" });
+  const [selected, setSelectedDate] = React.useState({ dateString: '' });
   const [isShow, setIsShow] = React.useState(false);
 
   const onSelect = (date) => {
@@ -32,12 +32,7 @@ export const TextInputCalendar = (props) => {
   return (
     <Container>
       <IconContainer>
-        <Icon
-          color={theme.colors.lightGray}
-          name="calendar"
-          size={30}
-          onPress={onToggleCalendar}
-        />
+        <Icon color={theme.colors.lightGray} name="calendar" size={30} onPress={onToggleCalendar} />
       </IconContainer>
       {isShow ? (
         <CalendarContainer>

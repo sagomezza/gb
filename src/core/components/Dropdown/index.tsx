@@ -1,13 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import DropDownPicker, {
-  DropDownPickerProps,
-} from "react-native-dropdown-picker";
-import { Keyboard } from "react-native";
-import Icon from "react-native-vector-icons/Octicons";
-import { theme } from "config/theme";
+import DropDownPicker, { DropDownPickerProps } from 'react-native-dropdown-picker';
+import { Keyboard } from 'react-native';
+import Icon from 'react-native-vector-icons/Octicons';
+import { theme } from 'config/theme';
 
-import { styles, RightDropDownContent, VerticalLine } from "./styles";
+import { styles, RightDropDownContent, VerticalLine } from './styles';
 
 export const Dropdown = (props: DropDownPickerProps) => (
   <DropDownPicker

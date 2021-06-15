@@ -1,6 +1,6 @@
-import styled from "styled-components/native";
-import { Button } from "react-native-paper";
-import Typography from "core/components/Typography";
+import styled from 'styled-components/native';
+import { Button } from 'react-native-paper';
+import Typography from 'core/components/Typography';
 
 export const Fallback = styled.View`
   align-items: center;
@@ -25,7 +25,7 @@ export const CardTitle = styled(Typography)`
 `;
 
 export const OptionButton = styled(Button).attrs({
-  color: "gray",
+  color: 'gray',
 })`
   display: flex;
   flex-direction: row;
@@ -37,10 +37,10 @@ export const OptionButton = styled(Button).attrs({
 `;
 
 export const OptionButtonContentStyle = {
-  color: "gray",
-  display: "flex",
-  flexDirection: "row",
-  height: "100%",
-  justifyContent: "center",
-  width: "100%",
+  color: 'gray',
+  display: 'flex',
+  flexDirection: 'row',
+  height: '100%',
+  justifyContent: 'center',
+  width: '100%',
 };
