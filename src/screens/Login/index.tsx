@@ -61,7 +61,7 @@ const LoginScreen: React.FC = () => {
     <>
       <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
       <ContainerLogin>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
           <View>
             <ContainerTitle>
               <TitleLogin>Welcome back!</TitleLogin>

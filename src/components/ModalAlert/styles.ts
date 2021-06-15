@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import { Caption } from 'components/Caption';
 import { PrimaryButton } from 'components/Button';
 import { Modal } from 'react-native-paper';
 import { nlz, rs } from '../../utils/dimensions';
@@ -28,10 +27,11 @@ export const TitleInput = styled.Text`
   text-align: center;
 `;
 
-export const CaptionAlert = styled(Caption)`
-  font-family: ${theme.fonts.light.fontFamily};
+export const TextAlert = styled.Text`
+  color: ${({ theme: { colors } }) => colors.text};
+  font-family: ${({ theme: { fonts } }) => fonts.light.fontFamily};
   font-size: ${nlz(16)}px;
-  font-weight: ${theme.fonts.light.fontWeight};
+  font-weight: ${({ theme: { fonts } }) => fonts.light.fontWeight};
   text-align: center;
 `;
 

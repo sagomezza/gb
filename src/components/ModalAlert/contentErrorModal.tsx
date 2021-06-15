@@ -2,7 +2,7 @@ import React from 'react';
 import Spacing from 'components/Spacing';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { theme } from 'config/theme';
-import { ButtonModal, CaptionAlert, ContainerContentModal, TitleAlertError } from './styles';
+import { ButtonModal, TextAlert, ContainerContentModal, TitleAlertError } from './styles';
 
 type ContentModalErrorProps = {
   hideModal: () => void;
@@ -16,7 +16,7 @@ const ContentModalError = ({ hideModal, text, textButton, title }: ContentModalE
     <Icon color={theme.colors.error} name="cancel" size={50} />
     <TitleAlertError>{title}</TitleAlertError>
     <Spacing />
-    <CaptionAlert>{text}</CaptionAlert>
+    <TextAlert>{text}</TextAlert>
     <Spacing />
     <ButtonModal isError onPress={hideModal}>
       {textButton}

@@ -9,6 +9,7 @@ import { Body } from 'layout/default';
 export const LinearGradientStyled = styled(LinearGradient)`
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
+  padding-bottom: ${rs(30)}px;
 `;
 
 export const ParagraphLogin = styled.Text`
