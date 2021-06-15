@@ -11,7 +11,7 @@
     "bundle-android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
     "clean-android-assets": "rm -rf android/app/src/main/res/drawable-* && rm -rf android/app/src/main/res/raw",
     "ts": "tsc --watch --noEmit --skipLibCheck",
-    "lint": "eslint . --ext .ts --ext .tsx --max-warnings 0",
+    "lint": "eslint . --ext .ts --ext .tsx --max-warnings 0 --fix",
     "eslint-fix-all": "eslint --fix src/**/*.{js,ts,tsx}",
     "prettier-fix-all": "prettier --write src/**/*.{js,ts,tsx,json}",
     "eslint-check-all": "eslint src/**/*.{js,ts,tsx}",

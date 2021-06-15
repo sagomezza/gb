@@ -31,7 +31,8 @@
       "@utils": ["./utils"],
       "@store": ["./store"],
       "@context": ["./context"],
-      "@core": ["./core"]
+      "@core": ["./core"],
+      "@hooks": ["./hooks"]
     }
   },
   "exclude": [

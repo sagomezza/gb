@@ -1,1 +1,5 @@
 react-native.config.js
+node_modules
+android
+ios
+react-native.config.js
