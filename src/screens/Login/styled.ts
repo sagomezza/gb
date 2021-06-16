@@ -26,10 +26,10 @@ export const BodyLogin = styled(Body)`
 
 export const ButtonLogin = styled(PrimaryButton).attrs(() => ({
   labelStyle: {
+    color: theme.colors.white,
     fontFamily: theme.fonts.medium.fontFamily,
     fontWeight: '800',
     fontSize: nlz(20),
-    color: theme.colors.white,
   },
 }))`
   background-color: #57e2c8;
@@ -41,10 +41,11 @@ export const ButtonLogin = styled(PrimaryButton).attrs(() => ({
 
 export const ButtonSignup = styled(OutlinedButton).attrs(() => ({
   labelStyle: {
+    color: theme.colors.white,
     fontFamily: theme.fonts.medium.fontFamily,
     fontWeight: '800',
     fontSize: nlz(20),
-    color: theme.colors.white,
+    height: rs(40),
   },
 }))`
   border-color: ${({ theme: { colors } }) => colors.greenPrimary};
