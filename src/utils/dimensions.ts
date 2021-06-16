@@ -1,7 +1,7 @@
 import { Dimensions, Platform, PixelRatio } from 'react-native';
 import { REF_RATIO } from './responsive';
 
-const { height, width } = Dimensions.get('window');
+const { height, width } = Dimensions.get('screen');
 
 export const H = height;
 export const W = width;

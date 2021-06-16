@@ -23,7 +23,7 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 ios/Pods/
-# ios/Podfile.lock
+ios/Podfile.lock
 ios/*/Supporting/EXBuildConstants.*
 
 # Android/IntelliJ
@@ -79,3 +79,4 @@ __generated__
 
 # env files
 .env
+ios/Podfile.lock

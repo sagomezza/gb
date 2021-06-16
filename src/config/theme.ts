@@ -52,6 +52,7 @@ const colors = {
   lighterGrey: '#dddddd',
   lightGrey: '#cccccc',
   orange: '#F88C02',
+  greenPrimary: '#57e2c8',
 };
 
 export const theme = {
