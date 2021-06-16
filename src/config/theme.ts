@@ -53,6 +53,8 @@ const colors = {
   lightGrey: '#cccccc',
   orange: '#F88C02',
   greenPrimary: '#57e2c8',
+  backgroundFbImage: '#085CA7',
+  grayPlaceholder: '#C2C2C2',
 };
 
 export const theme = {
