@@ -63,3 +63,7 @@ export const TitleAlertError = styled.Text`
   font-weight: ${({ theme: { fonts } }) => fonts.medium.fontWeight};
   margin-top: ${rs(5)}px;
 `;
+
+export const IconContainer = styled.TouchableOpacity`
+  align-items: flex-end;
+`;

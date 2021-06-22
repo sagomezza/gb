@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { ScrollView, StatusBar, View } from 'react-native';
+import { StatusBar } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import NetInfo from '@react-native-community/netinfo';
 import Spacing from 'components/Spacing';
 import { showModalAlert, hideModalAlert } from 'store/app/appActions';
-import { RootState } from '@store';
 import { ModalAlert } from 'components/ModalAlert';
+import { getModalAlertState } from 'store/app/appSelectors';
 import LoginForm from './Form';
 import {
   ContainerForm,
@@ -18,8 +18,8 @@ import {
   SocialContainer,
   TitleLogin,
 } from './styled';
-import Fb from '../../../assets/imgs/FB.svg';
-import Google from '../../../assets/imgs/Google.svg';
+import FbLogo from '../../../assets/imgs/FB.svg';
+import GoogleLogo from '../../../assets/imgs/Google.svg';
 import { IFormValuesLogin } from './types';
 
 const LoginScreen: React.FC = () => {
@@ -37,11 +37,10 @@ const LoginScreen: React.FC = () => {
   };
   const dispatch = useDispatch();
 
-  const modalAlertState = useSelector((state: RootState) => state.app.modalAlert);
+  const modalAlertState = useSelector(getModalAlertState);
 
-  const onLogin = (data: IFormValuesLogin) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const onLogin = (_data: IFormValuesLogin) => {
     NetInfo.fetch().then((state) => {
       if (!state.isConnected) {
         dispatch(
@@ -61,30 +60,26 @@ const LoginScreen: React.FC = () => {
     <>
       <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
       <ContainerLogin>
-        <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
-          <View>
-            <ContainerTitle>
-              <TitleLogin>Welcome back!</TitleLogin>
-            </ContainerTitle>
-            <LinearGradientStyled colors={['#42BAA4', '#203944']}>
-              <ContainerForm>
-                <Spacing size={10} />
-                <LoginForm onLogin={onLogin} />
-                <Spacing size={40} />
-                <ParagraphLogin>Log In with</ParagraphLogin>
-                <Spacing />
-                <SocialContainer>
-                  <FbButton onPress={loginFb}>
-                    <Fb />
-                  </FbButton>
-                  <GoogleButton onPress={loginGoogle}>
-                    <Google />
-                  </GoogleButton>
-                </SocialContainer>
-              </ContainerForm>
-            </LinearGradientStyled>
-          </View>
-        </ScrollView>
+        <ContainerTitle>
+          <TitleLogin>Welcome back!</TitleLogin>
+        </ContainerTitle>
+        <LinearGradientStyled>
+          <ContainerForm>
+            <Spacing size={10} />
+            <LoginForm onLogin={onLogin} />
+            <Spacing size={40} />
+            <ParagraphLogin>Log In with</ParagraphLogin>
+            <Spacing size={2} />
+            <SocialContainer>
+              <FbButton onPress={loginFb}>
+                <FbLogo />
+              </FbButton>
+              <GoogleButton onPress={loginGoogle}>
+                <GoogleLogo />
+              </GoogleButton>
+            </SocialContainer>
+          </ContainerForm>
+        </LinearGradientStyled>
       </ContainerLogin>
 
       <ModalAlert

@@ -1,6 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
-import { ContainerModal } from './styles';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { hideModalAlert } from 'store/app/appActions';
+import { useDispatch } from 'react-redux';
+import { ContainerModal, IconContainer } from './styles';
 import ContentModalError from './contentErrorModal';
 
 type ModalAlertProps = {
@@ -36,8 +39,13 @@ const ModalAlert = ({
     return <View />;
   };
 
+  const dispatch = useDispatch();
+
   return (
     <ContainerModal visible={visible} onDismiss={onDismiss}>
+      <IconContainer onPress={() => dispatch(hideModalAlert())}>
+        <Icon color="black" name="close" size={24} />
+      </IconContainer>
       {bodyModal()}
     </ContainerModal>
   );
