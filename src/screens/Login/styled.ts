@@ -76,6 +76,7 @@ export const ContainerLogin = styled.View`
 export const ContainerTitle = styled.View`
   height: ${H * 0.2}px;
   justify-content: center;
+  padding-top: ${rs(16)}px;
 `;
 
 export const TitleLogin = styled.Text`
