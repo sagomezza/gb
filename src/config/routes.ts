@@ -1,4 +1,5 @@
 export enum RoutesAuth {
+  LOGIN = 'LOGIN',
   ONBOARDING = 'ONBOARDING',
   SIGNUP = 'SIGNUP',
 }

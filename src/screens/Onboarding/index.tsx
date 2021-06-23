@@ -19,7 +19,7 @@ const OnboardingScreen: React.FC = () => {
           <OnboardingTitle>Find New Gym Buddies Nearby</OnboardingTitle>
         </View>
         <View>
-          <ButtonLogin onPress={() => {}}>Log In</ButtonLogin>
+          <ButtonLogin onPress={() => goToPage(routes.LOGIN)}>Log In</ButtonLogin>
           <Spacing size={32} />
           <ButtonSignup onPress={() => goToPage(routes.SIGNUP)}>Sign Up</ButtonSignup>
         </View>
