@@ -27,7 +27,7 @@ export type FetchExampleEntity = {
   vehicles: [];
 };
 
-export type ModalState = {
+export interface IModalState {
   hideModal: () => void;
   onDismiss: () => void;
   text: string;
@@ -35,8 +35,8 @@ export type ModalState = {
   title: string;
   type: string;
   visible: boolean;
-};
+}
 
 export type AppState = {
-  modalAlert: ModalState;
+  modalAlert: IModalState;
 };

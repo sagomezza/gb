@@ -56,6 +56,7 @@ const colors = {
   backgroundFbImage: '#085CA7',
   grayPlaceholder: '#C2C2C2',
   darkGreen: '#213c46',
+  gradientColors: ['#42BAA4', '#203944'],
 };
 
 export const theme = {

@@ -1,14 +1,15 @@
+import BaseGradient from 'components/BaseGradient';
 import styled from 'styled-components/native';
-import LinearGradient from 'react-native-linear-gradient';
 import { theme } from 'config/theme';
 import { H, nlz, rs } from 'utils/dimensions';
 
 import { PrimaryButton, OutlinedButton, LinkButton } from 'components/Button';
 import { Body } from 'layout/default';
 
-export const LinearGradientStyled = styled(LinearGradient)`
+export const LinearGradientStyled = styled(BaseGradient)`
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
+  height: ${H * 0.8}px;
   padding-bottom: ${rs(30)}px;
 `;
 
@@ -63,18 +64,19 @@ export const ButtonForgotPass = styled(LinkButton).attrs(() => ({
 }))``;
 
 export const ContainerForm = styled.View`
-  height: ${H * 0.75}px;
   margin: 0 auto;
   min-width: ${rs(280)}px;
 `;
 
 export const ContainerLogin = styled.View`
   background-color: ${({ theme: { colors } }) => colors.white};
+  height: 100%;
 `;
 
 export const ContainerTitle = styled.View`
-  height: ${H * 0.25}px;
+  height: ${H * 0.2}px;
   justify-content: center;
+  padding-top: ${rs(16)}px;
 `;
 
 export const TitleLogin = styled.Text`
