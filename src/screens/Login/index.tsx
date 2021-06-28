@@ -1,11 +1,13 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import NetInfo from '@react-native-community/netinfo';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import Spacing from 'components/Spacing';
 import { showModalAlert, hideModalAlert } from 'store/app/appActions';
 import { ModalAlert } from 'components/ModalAlert';
 import { getModalAlertState } from 'store/app/appSelectors';
+import InputSignup from 'components/InputSignup';
 import LoginForm from './Form';
 import {
   ContainerForm,
@@ -21,8 +23,24 @@ import {
 import FbLogo from '../../../assets/imgs/FB.svg';
 import GoogleLogo from '../../../assets/imgs/Google.svg';
 import { IFormValuesLogin } from './types';
+import { REGEX_EMAIL } from '../../utils/regexes';
 
 const LoginScreen: React.FC = () => {
+  const [modalForgotVisible, setModalForgotVisible] = useState(false);
+  const {
+    clearErrors,
+    control,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm({ mode: 'onBlur' });
+  const dispatch = useDispatch();
+  const modalAlertState = useSelector(getModalAlertState);
+
+  type FormValues = {
+    email: string;
+  };
+
   const loginFb = () => {};
   const loginGoogle = () => {
     dispatch(
@@ -35,9 +53,6 @@ const LoginScreen: React.FC = () => {
       }),
     );
   };
-  const dispatch = useDispatch();
-
-  const modalAlertState = useSelector(getModalAlertState);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onLogin = (_data: IFormValuesLogin) => {
@@ -56,6 +71,27 @@ const LoginScreen: React.FC = () => {
     });
   };
 
+  const onSubmitModal: SubmitHandler<FormValues> = (data: FormValues) => {
+    setModalForgotVisible(false);
+    reset();
+    clearErrors();
+    dispatch(
+      showModalAlert({
+        title: 'Link sent!',
+        text: `A password reset link has been sent to ${data.email}`,
+        textButton: 'Ok',
+        type: 'success',
+        visible: true,
+      }),
+    );
+  };
+
+  const onCloseModal = () => {
+    setModalForgotVisible(!modalForgotVisible);
+    reset();
+    clearErrors();
+  };
+
   return (
     <>
       <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
@@ -66,7 +102,7 @@ const LoginScreen: React.FC = () => {
         <LinearGradientStyled>
           <ContainerForm>
             <Spacing size={10} />
-            <LoginForm onLogin={onLogin} />
+            <LoginForm onLogin={onLogin} onPressForgot={() => setModalForgotVisible(true)} />
             <Spacing size={40} />
             <ParagraphLogin>Log In with</ParagraphLogin>
             <Spacing size={2} />
@@ -83,12 +119,42 @@ const LoginScreen: React.FC = () => {
       </ContainerLogin>
 
       <ModalAlert
+        hideModal={onCloseModal}
+        text="Enter the email you registered with"
+        textButton="Send"
+        title="Forgot your Password?"
+        type="content"
+        visible={modalForgotVisible}
+        onDismiss={onCloseModal}
+        onSubmit={handleSubmit(onSubmitModal)}
+      >
+        <InputSignup
+          control={control}
+          error={errors.email}
+          errorText={errors.email?.message}
+          keyboardType="email-address"
+          name="email"
+          placeholder="Email"
+          rules={{
+            required: {
+              value: true,
+              message: 'Email is required',
+            },
+            pattern: {
+              value: REGEX_EMAIL,
+              message: 'Invalid email',
+            },
+          }}
+        />
+      </ModalAlert>
+
+      <ModalAlert
         hideModal={() => dispatch(hideModalAlert())}
         text={modalAlertState.text}
         textButton={modalAlertState.textButton}
         title={modalAlertState.title}
         type={modalAlertState.type}
-        visible={modalAlertState.visible}
+        visible={modalAlertState.visible && modalAlertState.type !== 'content'}
         onDismiss={() => dispatch(hideModalAlert())}
       />
     </>

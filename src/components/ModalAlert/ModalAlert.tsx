@@ -1,14 +1,15 @@
 import React from 'react';
-import { View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { hideModalAlert } from 'store/app/appActions';
-import { useDispatch } from 'react-redux';
 import { ContainerModal, IconContainer } from './styles';
 import ContentModalError from './contentErrorModal';
+import ContentModalChildren from './contentChildrenModal';
+import ContentModalSuccess from './contentSuccessModal';
 
 type ModalAlertProps = {
+  children?: React.ReactNode | React.ReactNodeArray;
   hideModal: () => void;
   onDismiss: () => void;
+  onSubmit?: () => void;
   text: string;
   textButton: string;
   title: string;
@@ -17,8 +18,10 @@ type ModalAlertProps = {
 };
 
 const ModalAlert = ({
+  children,
   hideModal,
   onDismiss,
+  onSubmit,
   text,
   textButton,
   title,
@@ -36,14 +39,19 @@ const ModalAlert = ({
         />
       );
     }
-    return <View />;
+    if (type === 'content') {
+      return (
+        <ContentModalChildren text={text} textButton={textButton} title={title} onSubmit={onSubmit}>
+          {children}
+        </ContentModalChildren>
+      );
+    }
+    return <ContentModalSuccess text={text} title={title} />;
   };
-
-  const dispatch = useDispatch();
 
   return (
     <ContainerModal visible={visible} onDismiss={onDismiss}>
-      <IconContainer onPress={() => dispatch(hideModalAlert())}>
+      <IconContainer onPress={onDismiss}>
         <Icon color="black" name="close" size={24} />
       </IconContainer>
       {bodyModal()}

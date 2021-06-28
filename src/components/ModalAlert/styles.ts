@@ -19,16 +19,15 @@ export const ContainerModal = styled(Modal).attrs(() => ({
 }))``;
 
 export const TitleInput = styled.Text`
-  color: #3ea997;
+  color: ${({ theme: { colors } }) => colors.darkGreenModal};
   font-family: ${({ theme: { fonts } }) => fonts.medium.fontFamily};
-  font-size: ${nlz(20)}px;
-  font-weight: 500;
-  margin-top: ${rs(5)}px;
+  font-size: ${nlz(24)}px;
+  font-weight: 600;
   text-align: center;
 `;
 
 export const TextAlert = styled.Text`
-  color: ${({ theme: { colors } }) => colors.text};
+  color: ${({ theme: { colors } }) => colors.textModal};
   font-family: ${({ theme: { fonts } }) => fonts.light.fontFamily};
   font-size: ${nlz(16)}px;
   font-weight: ${({ theme: { fonts } }) => fonts.light.fontWeight};
@@ -43,6 +42,7 @@ export const ButtonModal = styled(PrimaryButton).attrs(() => ({
     fontWeight: theme.fonts.medium.fontWeight,
   },
 }))<ButtonModalProps>`
+  align-self: center;
   background-color: ${(props) => (props.isError ? theme.colors.error : '#57E2C8')};
   border-radius: 10px;
   height: ${rs(62)}px;
@@ -58,9 +58,9 @@ export const ContainerContentModal = styled.View`
 
 export const TitleAlertError = styled.Text`
   color: ${({ theme: { colors } }) => colors.error};
-  font-family: ${({ theme: { fonts } }) => fonts.medium.fontFamily};
+  font-family: ${({ theme: { fonts } }) => fonts.light.fontFamily};
   font-size: ${nlz(20)}px;
-  font-weight: ${({ theme: { fonts } }) => fonts.medium.fontWeight};
+  font-weight: ${({ theme: { fonts } }) => fonts.light.fontWeight};
   margin-top: ${rs(5)}px;
 `;
 

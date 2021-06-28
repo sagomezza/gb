@@ -5,4 +5,5 @@ export interface IFormValuesLogin {
 
 export interface ILoginFormProps {
   onLogin: (data: IFormValuesLogin) => void;
+  onPressForgot: () => void;
 }

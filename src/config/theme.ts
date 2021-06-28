@@ -56,6 +56,8 @@ const colors = {
   backgroundFbImage: '#085CA7',
   grayPlaceholder: '#C2C2C2',
   darkGreen: '#213c46',
+  darkGreenModal: '#3ea997',
+  textModal: '#525252',
   gradientColors: ['#42BAA4', '#203944'],
 };
 

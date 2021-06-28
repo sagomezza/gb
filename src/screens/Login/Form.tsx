@@ -10,7 +10,7 @@ import InputLogin from '../../components/InputLogin';
 import { ButtonForgotPass, ButtonLogin, ButtonSignup } from './styled';
 import { IFormValuesLogin, ILoginFormProps } from './types';
 
-const LoginForm: React.FC<ILoginFormProps> = ({ onLogin }: ILoginFormProps) => {
+const LoginForm: React.FC<ILoginFormProps> = ({ onLogin, onPressForgot }: ILoginFormProps) => {
   const {
     control,
     formState: { errors },
@@ -61,7 +61,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ onLogin }: ILoginFormProps) => {
         }}
       />
       <Spacing size={15} />
-      <ButtonForgotPass color={theme.colors.white} onPress={() => {}}>
+      <ButtonForgotPass color={theme.colors.white} onPress={onPressForgot}>
         Forgot your password?
       </ButtonForgotPass>
       <Spacing size={40} />
