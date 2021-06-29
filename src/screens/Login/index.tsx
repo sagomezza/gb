@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { navigator } from 'navigation';
 import NetInfo from '@react-native-community/netinfo';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Spacing from 'components/Spacing';
 import { showModalAlert, hideModalAlert } from 'store/app/appActions';
 import { ModalAlert } from 'components/ModalAlert';
 import { getModalAlertState } from 'store/app/appSelectors';
+import routes from 'config/routes';
 import InputSignup from 'components/InputSignup';
 import LoginForm from './Form';
 import {
@@ -26,6 +28,7 @@ import { IFormValuesLogin } from './types';
 import { REGEX_EMAIL } from '../../utils/regexes';
 
 const LoginScreen: React.FC = () => {
+  const { goToPage } = navigator();
   const [modalForgotVisible, setModalForgotVisible] = useState(false);
   const {
     clearErrors,
@@ -54,8 +57,7 @@ const LoginScreen: React.FC = () => {
     );
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const onLogin = (_data: IFormValuesLogin) => {
+  const onLogin = (data: IFormValuesLogin) => {
     NetInfo.fetch().then((state) => {
       if (!state.isConnected) {
         dispatch(
@@ -67,6 +69,8 @@ const LoginScreen: React.FC = () => {
             visible: true,
           }),
         );
+      } else {
+        goToPage(routes.ONBOARDINGSKILLS, { data });
       }
     });
   };

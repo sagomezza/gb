@@ -3,9 +3,13 @@ export enum RoutesAuth {
   ONBOARDING = 'ONBOARDING',
   SIGNUP = 'SIGNUP',
 }
+export enum RoutesMain {
+  ONBOARDINGSKILLS = 'ONBOARDINGSKILLS',
+}
 
 const routes = {
   ...RoutesAuth,
+  ...RoutesMain,
 };
 
 export default routes;
