@@ -2,10 +2,10 @@ import { theme } from 'config/theme';
 import { TextStyle, TextProps } from 'react-native';
 
 export const TypographyVariant = {
-  regular: 'Roboto-Regular',
-  bold: 'Roboto-Bold',
-  extraBold: 'Roboto-Black',
-  light: 'Roboto-Light',
+  regular: 'Poppins-Regular',
+  bold: 'Poppins-SemiBold',
+  extraBold: 'Poppins-Bold',
+  light: 'Poppins-Light',
 };
 
 export type StyledTextProps = {

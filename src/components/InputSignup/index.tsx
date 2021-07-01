@@ -14,10 +14,10 @@ import { styles, ContainerInputLogin, InputSignup } from './styled';
 import { TypographyProps } from '../Typography/types';
 
 export const TypographyVariant = {
-  regular: 'Gibson-Regular',
-  bold: 'Gibson-bold',
-  extraBold: 'Gibson-Black',
-  light: 'Gibson-Light',
+  regular: 'Poppins-Regular',
+  bold: 'Poppins-SemiBold',
+  extraBold: 'Poppins-Bold',
+  light: 'Poppins-Light',
 };
 
 export interface ILabelProps {

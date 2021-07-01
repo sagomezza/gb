@@ -1,5 +1,6 @@
 import BaseGradient from 'components/BaseGradient';
 import styled from 'styled-components/native';
+import { Platform } from 'react-native';
 import { theme } from 'config/theme';
 import { H, nlz, rs } from 'utils/dimensions';
 
@@ -118,4 +119,8 @@ export const GoogleButton = styled.TouchableOpacity`
   shadow-opacity: 0.2;
   shadow-radius: 3px;
   width: ${rs(46)}px;
+`;
+
+export const HeaderContainer = styled.View`
+  margin-top: ${Platform.OS === 'ios' ? rs(40) : rs(10)}px;
 `;

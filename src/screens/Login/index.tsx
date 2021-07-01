@@ -10,6 +10,7 @@ import { ModalAlert } from 'components/ModalAlert';
 import { getModalAlertState } from 'store/app/appSelectors';
 import routes from 'config/routes';
 import InputSignup from 'components/InputSignup';
+import ScreensHeader from 'components/ScreensHeader';
 import LoginForm from './Form';
 import {
   ContainerForm,
@@ -17,6 +18,7 @@ import {
   ContainerTitle,
   FbButton,
   GoogleButton,
+  HeaderContainer,
   LinearGradientStyled,
   ParagraphLogin,
   SocialContainer,
@@ -99,6 +101,9 @@ const LoginScreen: React.FC = () => {
   return (
     <>
       <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
+      <HeaderContainer>
+        <ScreensHeader />
+      </HeaderContainer>
       <ContainerLogin>
         <ContainerTitle>
           <TitleLogin>Welcome back!</TitleLogin>
