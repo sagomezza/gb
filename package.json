@@ -20,7 +20,8 @@
     "pod-clear": "rm -rf ~/Library/Caches/CocoaPods && rm -rf Pods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && cd ios && pod deintegrate && pod setup",
     "prepare-husky": "husky install",
     "gitflow:husky": "git config gitflow.path.hooks .husky",
-    "chmod:husky": "chmod +x .husky/pre-commit"
+    "chmod:husky": "chmod +x .husky/pre-commit",
+    "link":"react-native link"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
@@ -33,6 +34,7 @@
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-community/netinfo": "^6.0.0",
+    "@react-navigation/bottom-tabs": "^5.11.11",
     "@react-navigation/drawer": "^5.12.5",
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/routers": "^5.7.2",

@@ -34,7 +34,7 @@ export enum FontFamily {
   SimpleLineIcons = 'SimpleLineIcons',
   Zocial = 'Zocial',
 }
-type FontFamilyType = keyof typeof FontFamily;
+export type FontFamilyType = keyof typeof FontFamily;
 
 interface Props {
   color: keyof typeof theme.colors;
@@ -87,11 +87,16 @@ const DefaultIcon = ({
         return <Icon color={color} margin={margin} name={name} size={size} />;
     }
   };
-  return (
-    <Pressable onLongPress={onLongPress} onPress={onPress}>
-      <RenderIcon />
-    </Pressable>
-  );
+
+  if (onPress) {
+    return (
+      <Pressable onLongPress={onLongPress} onPress={onPress}>
+        <RenderIcon />
+      </Pressable>
+    );
+  }
+
+  return <RenderIcon />;
 };
 
 export default DefaultIcon;
