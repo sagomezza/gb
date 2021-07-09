@@ -50,7 +50,7 @@ const colors = {
   gray4: '#C4C4C4',
   gray5: '#545454',
   lightBlue: '#E4EFF8',
-  lighterGrey: '#dddddd',
+  lighterGrey: '#D3D2D6',
   lightGrey: '#cccccc',
   orange: '#F88C02',
   greenPrimary: '#57e2c8',
