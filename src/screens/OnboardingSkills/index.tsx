@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'react-native';
+import { navigator } from 'navigation';
 import { xorBy } from 'lodash';
+import routes from 'config/routes';
 import { Data } from './example-data';
 import {
   ButtonSignup,
@@ -12,6 +14,7 @@ import {
 
 const OnboardingSkillsScreen: React.FC = () => {
   const [selectedTeams, setSelectedTeams] = useState([]);
+  const { goToPage } = navigator();
 
   function onMultiChange() {
     return (item) => setSelectedTeams(xorBy(selectedTeams, [item], 'id'));
@@ -35,7 +38,7 @@ const OnboardingSkillsScreen: React.FC = () => {
             onTapClose={onMultiChange()}
           />
         </SelectContainer>
-        <ButtonSignup onPress={() => {}}>Ready</ButtonSignup>
+        <ButtonSignup onPress={() => goToPage(routes.SEARCH)}>Ready</ButtonSignup>
       </OnboardingContainer>
     </>
   );
