@@ -34,7 +34,6 @@ export enum FontFamily {
   SimpleLineIcons = 'SimpleLineIcons',
   Zocial = 'Zocial',
 }
-
 type FontFamilyType = keyof typeof FontFamily;
 
 interface IDefaultIconProps {

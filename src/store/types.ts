@@ -8,6 +8,21 @@ export type SearchState = {
   recentSearches: string[];
 };
 
+export interface IItemMessage {
+  avatar: string;
+  id: number;
+  messages: {
+    createdAt: Date;
+    id: number;
+    text: string;
+  }[];
+  user: string;
+}
+
+export type MessagesState = {
+  recentConversations: IItemMessage[];
+};
+
 export type FetchExampleEntity = {
   birth_year: string;
   created: string;
