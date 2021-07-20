@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react';
 import { FlatList, View } from 'react-native';
 import { messagesData } from 'utils/messages-data';
+import { navigator } from 'navigation';
+import routes from 'config/routes';
 import { ContainerList, ConversationsTitle, Separator } from './styles';
 import ItemList from '../ItemList';
 
@@ -11,6 +13,7 @@ interface IConversationsProps {
 const dataSource = messagesData;
 
 const Conversations: React.FC<IConversationsProps> = ({ query }: IConversationsProps) => {
+  const { goToPage } = navigator();
   const filteredConversations = useMemo(
     () =>
       query.length > 0
@@ -30,7 +33,13 @@ const Conversations: React.FC<IConversationsProps> = ({ query }: IConversationsP
           data={filteredConversations}
           ItemSeparatorComponent={() => <Separator />}
           keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => <ItemList item={item} photoPosition="left" />}
+          renderItem={({ item }) => (
+            <ItemList
+              item={item}
+              photoPosition="left"
+              onPress={() => goToPage(routes.CHAT, { item: JSON.stringify(item) })}
+            />
+          )}
           showsHorizontalScrollIndicator={false}
         />
       </ContainerList>

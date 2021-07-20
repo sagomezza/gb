@@ -8,6 +8,7 @@ export enum RoutesMain {
   BUDDIES = 'BUDDIES',
   BULLETIN = 'BULLETIN',
   CALENDAR = 'CALENDAR',
+  CHAT = 'CHAT',
   HOME = 'HOME',
   MAIN = 'MAIN',
   MESSAGES = 'MESSAGES',
