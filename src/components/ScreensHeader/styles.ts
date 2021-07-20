@@ -7,7 +7,7 @@ type TitleContainerProps = {
 
 export const MainContainer = styled.View`
   padding-bottom: ${rs(5)}px;
-  padding-horizontal: ${rs(20)}px;
+  padding-horizontal: ${rs(10)}px;
   width: 100%;
 `;
 

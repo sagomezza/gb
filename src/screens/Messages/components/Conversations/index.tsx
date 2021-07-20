@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { FlatList, View } from 'react-native';
-import { messagesData } from '../../utils/example-data';
+import { messagesData } from 'utils/messages-data';
 import { ContainerList, ConversationsTitle, Separator } from './styles';
 import ItemList from '../ItemList';
 
@@ -13,9 +13,12 @@ const dataSource = messagesData;
 const Conversations: React.FC<IConversationsProps> = ({ query }: IConversationsProps) => {
   const filteredConversations = useMemo(
     () =>
-      dataSource.filter((conversation) =>
-        conversation.user.toLowerCase().includes(query.toLowerCase()),
-      ),
+      query.length > 0
+        ? dataSource.filter((conversation) => {
+            const fullName = `${conversation?.user?.firstName} ${conversation?.user?.lastName}`;
+            return fullName.toLowerCase().includes(query.toLowerCase());
+          })
+        : dataSource,
     [query],
   );
 

@@ -9,14 +9,21 @@ export type SearchState = {
 };
 
 export interface IItemMessage {
+  age: number;
   avatar: string;
+  gender: string;
   id: number;
+  interests: string[];
+  location: string;
   messages: {
     createdAt: Date;
     id: number;
     text: string;
   }[];
-  user: string;
+  user: {
+    firstName: string;
+    lastName: string;
+  };
 }
 
 export type MessagesState = {

@@ -60,6 +60,7 @@ const colors = {
   darkGreenModal: '#3ea997',
   textModal: '#525252',
   gradientColors: ['#42BAA4', '#203944'],
+  darkGreenNewMessage: '#16575D',
   darkGreenSecondary: '#3ea997',
 };
 

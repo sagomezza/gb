@@ -1,7 +1,11 @@
 export const messagesData = [
   {
     id: 15,
-    user: 'Annie Hall',
+    age: 29,
+    gender: 'Female',
+    location: 'Florida. USA',
+    interests: ['Crossfit', 'Running'],
+    user: { firstName: 'Annie', lastName: 'Hall' },
     avatar: 'https://reactnative.dev/img/tiny_logo.png',
     messages: [
       {
@@ -23,7 +27,11 @@ export const messagesData = [
   },
   {
     id: 2,
-    user: 'Jodee Furrow',
+    age: 28,
+    gender: 'Male',
+    location: 'Florida. USA',
+    interests: ['Crossfit', 'Running'],
+    user: { firstName: 'Jodee', lastName: 'Furrow' },
     avatar: '',
     messages: [
       {
@@ -40,7 +48,11 @@ export const messagesData = [
   },
   {
     id: 3,
-    user: 'Karl Nyland',
+    age: 29,
+    gender: 'Female',
+    location: 'Florida. USA',
+    interests: ['Yoga'],
+    user: { firstName: 'Karl', lastName: 'Nyland' },
     avatar: 'https://reactnative.dev/img/tiny_logo.png',
     messages: [
       {
@@ -57,7 +69,11 @@ export const messagesData = [
   },
   {
     id: 4,
-    user: 'Billie Janzen',
+    age: 29,
+    gender: 'Male',
+    location: 'Florida. USA',
+    interests: ['Crossfit', 'Running'],
+    user: { firstName: 'Billie', lastName: 'Janzen' },
     avatar: '',
     messages: [
       {
@@ -74,7 +90,11 @@ export const messagesData = [
   },
   {
     id: 5,
-    user: 'Jack Sparrow',
+    age: 29,
+    gender: 'Male',
+    location: 'Florida. USA',
+    interests: ['Crossfit', 'Running'],
+    user: { firstName: 'Jack', lastName: 'Sparrow' },
     avatar: '',
     messages: [
       {
@@ -91,7 +111,11 @@ export const messagesData = [
   },
   {
     id: 6,
-    user: 'Joe Biden',
+    age: 29,
+    gender: 'Male',
+    location: 'Florida. USA',
+    interests: ['Crossfit', 'Running'],
+    user: { firstName: 'Joe', lastName: 'Biden' },
     avatar: 'https://reactnative.dev/img/tiny_logo.png',
     messages: [
       {
@@ -108,7 +132,11 @@ export const messagesData = [
   },
   {
     id: 7,
-    user: 'Jeane Chenier',
+    age: 29,
+    gender: 'Female',
+    location: 'Florida. USA',
+    interests: ['Crossfit', 'Yoga'],
+    user: { firstName: 'Jeane', lastName: 'Chenier' },
     avatar: 'https://reactnative.dev/img/tiny_logo.png',
     messages: [
       {
@@ -125,7 +153,11 @@ export const messagesData = [
   },
   {
     id: 8,
-    user: 'Markus Musk',
+    age: 29,
+    gender: 'Male',
+    location: 'Florida. USA',
+    interests: ['Crossfit', 'Running'],
+    user: { firstName: 'Markus', lastName: 'Musk' },
     avatar: 'https://reactnative.dev/img/tiny_logo.png',
     messages: [
       {
@@ -142,7 +174,11 @@ export const messagesData = [
   },
   {
     id: 9,
-    user: 'Brad Pitt',
+    age: 29,
+    gender: 'Male',
+    location: 'Florida. USA',
+    interests: ['Crossfit', 'Running'],
+    user: { firstName: 'Brad', lastName: 'Pitt' },
     avatar: 'https://reactnative.dev/img/tiny_logo.png',
     messages: [
       {
@@ -159,7 +195,11 @@ export const messagesData = [
   },
   {
     id: 10,
-    user: 'Will Smmith',
+    age: 29,
+    gender: 'Male',
+    location: 'Florida. USA',
+    interests: ['Crossfit'],
+    user: { firstName: 'Will', lastName: 'Smmith' },
     avatar: 'https://reactnative.dev/img/tiny_logo.png',
     messages: [
       {
@@ -176,7 +216,11 @@ export const messagesData = [
   },
   {
     id: 11,
-    user: 'Angelina Jolie',
+    age: 29,
+    gender: 'Female',
+    location: 'Florida. USA',
+    interests: ['Crossfit', 'Yoga'],
+    user: { firstName: 'Angelina', lastName: 'Jolie' },
     avatar: '',
     messages: [
       {
@@ -193,7 +237,11 @@ export const messagesData = [
   },
   {
     id: 12,
-    user: 'Johnny Deep',
+    age: 29,
+    gender: 'Male',
+    location: 'Florida. USA',
+    interests: ['Crossfit', 'Running'],
+    user: { firstName: 'Johnny', lastName: 'Deep' },
     avatar: '',
     messages: [
       {

@@ -13,6 +13,7 @@ export enum RoutesMain {
   MESSAGES = 'MESSAGES',
   MORE = 'MORE',
   NEARME = 'NEARME',
+  NEWMESSAGE = 'NEWMESSAGE',
   ONBOARDINGSKILLS = 'ONBOARDINGSKILLS',
   PROFILE = 'PROFILE',
   SEARCH = 'SEARCH',
@@ -30,6 +31,7 @@ export enum RoutesLabels {
   HOME = 'Home',
   MORE = 'More',
   PROFILE = 'Profile',
+  SEARCH = 'Buddies',
 }
 
 export default routes;

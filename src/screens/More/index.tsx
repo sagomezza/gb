@@ -12,7 +12,7 @@ const MoreScreen: React.FC = () => (
       <MenuItem
         iconFamily="MaterialCommunityIcons"
         iconName="email-outline"
-        navigateTo={routes.ONBOARDINGSKILLS}
+        navigateTo={routes.MESSAGES}
         title="Messages"
       />
       <MenuItem

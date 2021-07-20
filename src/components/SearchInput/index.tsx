@@ -9,6 +9,7 @@ type ISearchInputProps = {
   containerStyle?: StyleProp<ViewStyle>;
   onChange: (value: string) => void;
   placeholder?: string;
+  searchButton?: boolean;
 };
 
 const SearchInput = ({
@@ -16,6 +17,7 @@ const SearchInput = ({
   containerStyle = {},
   onChange,
   placeholder,
+  searchButton = true,
 }: ISearchInputProps) => {
   const [value, setValue] = useState<string>('');
 
@@ -27,9 +29,14 @@ const SearchInput = ({
 
   return (
     <SearchInputMainContainer style={[containerStyle]}>
-      <CornerContainer>
-        <DefaultIcon color="gray3" iconFamily="FontAwesome5" name="search" size={18} />
-      </CornerContainer>
+      {searchButton ? (
+        <CornerContainer>
+          <DefaultIcon color="gray3" iconFamily="FontAwesome5" name="search" size={18} />
+        </CornerContainer>
+      ) : (
+        <></>
+      )}
+
       <Input
         placeholder={placeholder || 'Search'}
         placeholderTextColor={theme.colors.placeholder}

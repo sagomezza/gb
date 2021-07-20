@@ -16,5 +16,5 @@ export const ConversationsTitle = styled.Text`
 
 export const ContainerList = styled.View`
   height: ${H - 230}px;
-  padding-vertical: ${rs(10)}px;
+  padding-bottom: ${rs(40)}px;
 `;

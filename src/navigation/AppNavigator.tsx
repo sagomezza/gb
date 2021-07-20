@@ -13,7 +13,7 @@ const Stack = createStackNavigator();
 
 const AppNavigator: React.FC = (): React.ReactElement => (
   <NavigationContainer>
-    <Stack.Navigator headerMode="none" initialRouteName={routes.ONBOARDING}>
+    <Stack.Navigator headerMode="none" initialRouteName={routes.MAIN}>
       <Stack.Screen component={AuthStackNavigator} name={routes.ONBOARDING} />
       <Stack.Screen component={MessagesNavigator} name={routes.MESSAGES} />
       <Stack.Screen component={OnboardingSkillsScreen} name={routes.ONBOARDINGSKILLS} />

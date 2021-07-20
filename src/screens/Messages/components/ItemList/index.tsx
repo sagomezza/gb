@@ -1,6 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
+import { IItemMessage } from 'store/types';
 import { colors } from '../../utils/colors';
 import {
   ContactName,
@@ -14,16 +15,7 @@ import {
 } from './styles';
 
 type ItemListProps = {
-  item: {
-    avatar: string;
-    id: number;
-    messages: {
-      createdAt: Date;
-      id: number;
-      text: string;
-    }[];
-    user: string;
-  };
+  item: IItemMessage;
   onPress?: () => void;
   photoPosition: 'rigth' | 'left';
 };
@@ -33,8 +25,7 @@ const ItemList: React.FC<ItemListProps> = ({
   onPress,
   photoPosition = 'left',
 }: ItemListProps) => {
-  const splitName = item.user.split(' ');
-  const userName = splitName[0].charAt(0) + splitName[1].charAt(0);
+  const userName = `${item?.user?.firstName} ${item?.user?.lastName}`;
   const message = item.messages[item.messages.length - 1];
 
   return (
@@ -55,7 +46,9 @@ const ItemList: React.FC<ItemListProps> = ({
         <DetailsContainer>
           <MessageTitleContainer>
             <View>
-              <ContactName>{item.user}</ContactName>
+              <ContactName>
+                {item.user.firstName} {item.user.lastName}
+              </ContactName>
             </View>
           </MessageTitleContainer>
           <LastMessage numberOfLines={1}>{message.text}</LastMessage>

@@ -27,8 +27,8 @@ export const ContactsContainer = styled.View`
 `;
 
 export const MessagesTitleContainer = styled.View`
+  background-color: ${({ theme: { colors } }) => colors.white};
   border-bottom-width: 0.3px;
-  margin-top: ${rs(40)}px;
 `;
 
 export const MessagesTitle = styled.Text`
@@ -40,6 +40,7 @@ export const MessagesTitle = styled.Text`
 `;
 
 export const MessagesContainer = styled.View`
-  background-color: ${({ theme: { colors } }) => colors.white};
-  flex: 1;
+  height: 100%;
+  justify-content: center;
+  margin-vertical: ${rs(10)}px;
 `;
