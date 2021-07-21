@@ -1,8 +1,10 @@
 // @ts-nocheck
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { Provider as StoreProvider } from 'react-redux';
 import { store } from 'store';
+import { STRIPE_PUBLISHABLE_KEY } from '@env';
+import { initStripe } from '@stripe/stripe-react-native';
 import RNBootSplash from 'react-native-bootsplash';
 import { ThemeProvider } from 'styled-components/native';
 
@@ -15,6 +17,8 @@ import AppNavigator from './src/navigation/AppNavigator';
 
 // RNBootSplash.hide({ fade: true });
 
+const publishableKey = STRIPE_PUBLISHABLE_KEY;
+
 const App = () => {
   React.useEffect(() => {
     const init = async () => {
@@ -23,6 +27,13 @@ const App = () => {
 
     init().finally(async () => {
       await RNBootSplash.hide({ fade: true });
+    });
+  }, []);
+
+  useEffect(() => {
+    initStripe({
+      publishableKey,
+      merchantIdentifier: 'merchant.identifier',
     });
   }, []);
   return (

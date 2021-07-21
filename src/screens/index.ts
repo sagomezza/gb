@@ -9,3 +9,4 @@ export { default as OnboardingSkillsScreen } from './OnboardingSkills';
 export { default as MessagesScreen } from './Messages';
 export { default as ChatScreen } from './Chat';
 export { default as SubscribePricesScreen } from './SubscribePrices';
+export { default as SubscribePaymentsScreen } from './SubscribePayments';
