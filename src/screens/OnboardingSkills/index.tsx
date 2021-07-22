@@ -10,7 +10,7 @@ import {
   OnboardingTitle,
   SelectBoxStyled,
   SelectContainer,
-} from './styled';
+} from './styles';
 
 const OnboardingSkillsScreen: React.FC = () => {
   const [selectedTeams, setSelectedTeams] = useState([]);

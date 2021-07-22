@@ -5,6 +5,7 @@ import { TextAlert, TitleInput, ButtonModal } from './styles';
 
 type ContentModalChildrenProps = {
   children?: React.ReactNode | React.ReactNodeArray;
+  fullWidthButton?: boolean;
   onSubmit: () => void;
   text: string;
   textButton: string;
@@ -13,6 +14,7 @@ type ContentModalChildrenProps = {
 
 const ContentModalChildren = ({
   children,
+  fullWidthButton,
   onSubmit,
   text,
   textButton,
@@ -25,7 +27,9 @@ const ContentModalChildren = ({
     <Spacing />
     {children}
     <Spacing />
-    <ButtonModal onPress={onSubmit}>{textButton}</ButtonModal>
+    <ButtonModal fullWidth={fullWidthButton} onPress={onSubmit}>
+      {textButton}
+    </ButtonModal>
   </View>
 );
 

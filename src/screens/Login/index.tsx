@@ -23,7 +23,7 @@ import {
   ParagraphLogin,
   SocialContainer,
   TitleLogin,
-} from './styled';
+} from './styles';
 import FbLogo from '../../../assets/imgs/FB.svg';
 import GoogleLogo from '../../../assets/imgs/Google.svg';
 import { IFormValuesLogin } from './types';

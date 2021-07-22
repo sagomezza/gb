@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import Spacing from 'components/Spacing';
 import Fb from '../../../assets/imgs/FB.svg';
 import Google from '../../../assets/imgs/Google.svg';
-import { ButtonSignup, FbButton, GoogleButton, ParagraphSignup, SocialContainer } from './styled';
+import { ButtonSignup, FbButton, GoogleButton, ParagraphSignup, SocialContainer } from './styles';
 import { REGEX_EMAIL, REGEX_LETTERS } from '../../utils/regexes';
 import { IFormValuesSignup, ISignupFormProps } from './types';
 import InputSignup from '../../components/InputSignup';

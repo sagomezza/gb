@@ -3,7 +3,7 @@ import { StatusBar, View } from 'react-native';
 import { navigator } from 'navigation';
 import Spacing from 'components/Spacing';
 import routes from 'config/routes';
-import { Background, ButtonLogin, ButtonSignup, OnboardingTitle } from './styled';
+import { Background, ButtonLogin, ButtonSignup, OnboardingTitle } from './styles';
 
 const BackgroundImage = require('../../../assets/imgs/BgOnboarding.png');
 

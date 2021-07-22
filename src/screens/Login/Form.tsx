@@ -7,7 +7,7 @@ import routes from 'config/routes';
 import { theme } from 'config/theme';
 import { REGEX_EMAIL } from 'utils/regexes';
 import InputLogin from '../../components/InputLogin';
-import { ButtonForgotPass, ButtonLogin, ButtonSignup } from './styled';
+import { ButtonForgotPass, ButtonLogin, ButtonSignup } from './styles';
 import { IFormValuesLogin, ILoginFormProps } from './types';
 
 const LoginForm: React.FC<ILoginFormProps> = ({ onLogin, onPressForgot }: ILoginFormProps) => {

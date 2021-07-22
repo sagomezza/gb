@@ -1,9 +1,10 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import routes, { RoutesLabels } from 'config/routes';
-import { HomeScreen, MoreScreen, SearchScreen } from 'screens';
+import { HomeScreen, MoreScreen, ProfileScreen, SearchScreen } from 'screens';
 import { BottomTabButton } from 'components';
-import { bottomNavigatorStyles } from './styled';
+import { bottomNavigatorStyles } from './styles';
+import MoreNavigator from './MoreNavigator';
 
 interface ITabBarIconProps {
   focused: boolean;
@@ -53,7 +54,7 @@ const MainNavigator: React.FC = () => (
       }}
     />
     <BottomTab.Screen
-      component={MoreScreen}
+      component={ProfileScreen}
       name={routes.PROFILE}
       options={{
         tabBarIcon: ({ focused }: ITabBarIconProps) => (
@@ -81,7 +82,7 @@ const MainNavigator: React.FC = () => (
       }}
     />
     <BottomTab.Screen
-      component={MoreScreen}
+      component={MoreNavigator}
       name={routes.MORE}
       options={{
         tabBarIcon: ({ focused }: ITabBarIconProps) => (

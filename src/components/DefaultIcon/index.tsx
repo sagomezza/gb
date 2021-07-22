@@ -34,8 +34,7 @@ export enum FontFamily {
   SimpleLineIcons = 'SimpleLineIcons',
   Zocial = 'Zocial',
 }
-type FontFamilyType = keyof typeof FontFamily;
-
+export type FontFamilyType = keyof typeof FontFamily;
 interface IDefaultIconProps {
   color: keyof typeof theme.colors;
   iconFamily?: FontFamilyType;
@@ -47,7 +46,7 @@ interface IDefaultIconProps {
   solid?: boolean;
 }
 
-const DefaultIcon: React.FC<IDefaultIconProps> = ({
+const DefaultIcon = ({
   color,
   iconFamily,
   margin = 0,

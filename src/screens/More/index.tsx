@@ -1,39 +1,34 @@
 import React from 'react';
 import { Header } from 'components';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import routes from 'config/routes';
-import { MainContainer } from './styled';
+import { SafeAreaView } from '../styles';
+import { MainContainer } from './styles';
 import MenuItem from './MenuItem';
 
 const MoreScreen: React.FC = () => (
   <SafeAreaView>
-    <Header title="More" />
+    <Header route={routes.MORE} />
     <MainContainer>
       <MenuItem
         iconFamily="MaterialCommunityIcons"
         iconName="email-outline"
-        navigateTo={routes.MESSAGES}
-        title="Messages"
+        route={routes.MESSAGES}
       />
       <MenuItem
         iconFamily="MaterialCommunityIcons"
         iconName="map-marker-outline"
-        navigateTo={routes.ONBOARDINGSKILLS}
-        title="Near me"
+        route={routes.NEARME}
       />
       <MenuItem
-        isPremium
         iconFamily="MaterialCommunityIcons"
         iconName="newspaper-variant-outline"
-        navigateTo={routes.ONBOARDINGSKILLS}
-        title="Bulletin"
+        route={routes.BULLETIN}
       />
       <MenuItem
         omitBottomBorder
         iconFamily="SimpleLineIcons"
         iconName="settings"
-        navigateTo={routes.ONBOARDINGSKILLS}
-        title="Settings"
+        route={routes.SETTINGS}
       />
     </MainContainer>
   </SafeAreaView>

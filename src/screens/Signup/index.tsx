@@ -10,7 +10,7 @@ import {
   HeaderSubtitle,
   HeaderTitle,
   SignupBody,
-} from './styled';
+} from './styles';
 import { IFormValuesSignup } from './types';
 
 const backgroundHeader = require('../../../assets/imgs/BgHeader.png');

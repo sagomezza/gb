@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Text, View } from 'react-native';
+import { Platform, Text, View } from 'react-native';
 import { nlz, rs } from 'utils/dimensions';
 import { withProps } from 'utils/bypass';
 
@@ -12,7 +12,7 @@ export const ButtonContainer = styled(View)`
   align-items: center;
   flex: 1;
   justify-content: center;
-  padding-bottom: ${rs(15)}px;
+  padding-bottom: ${rs(Platform.OS === 'ios' ? 15 : 5)}px;
   width: 100%;
 `;
 

@@ -1,5 +1,5 @@
 import { theme } from 'config/theme';
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 export const bottomNavigatorStyles = StyleSheet.create({
   shadow: {
@@ -13,6 +13,6 @@ export const bottomNavigatorStyles = StyleSheet.create({
     elevation: 5,
   },
   base: {
-    height: 100,
+    height: Platform.OS === 'ios' ? 100 : 75,
   },
 });

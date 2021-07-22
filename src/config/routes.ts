@@ -4,9 +4,14 @@ export enum RoutesAuth {
   SIGNUP = 'SIGNUP',
 }
 
+export enum PremiumRoutes {
+  BULLETIN = 'BULLETIN',
+  MYBULLETINS = 'BULLETIN/MYBULLETINS',
+  NEWBULLETIN = 'BULLETIN/NEWBULLETIN',
+}
+
 export enum RoutesMain {
   BUDDIES = 'BUDDIES',
-  BULLETIN = 'BULLETIN',
   CALENDAR = 'CALENDAR',
   CHAT = 'CHAT',
   HOME = 'HOME',
@@ -24,15 +29,27 @@ export enum RoutesMain {
 const routes = {
   ...RoutesAuth,
   ...RoutesMain,
+  ...PremiumRoutes,
 };
 
 export enum RoutesLabels {
   BUDDIES = 'Buddies',
+  BULLETIN = 'Bulletin',
   CALENDAR = 'Calendar',
   HOME = 'Home',
+  LOGIN = 'Login',
+  MAIN = 'Main',
+  MESSAGES = 'Messages',
   MORE = 'More',
+  MYBULLETINS = 'My Bulletins',
+  NEARME = 'Near me',
+  NEWBULLETIN = 'New Bulletin',
+  ONBOARDING = 'Onboarding',
+  ONBOARDINGSKILLS = 'Onboarding skills',
   PROFILE = 'Profile',
   SEARCH = 'Buddies',
+  SETTINGS = 'Settings',
+  SIGNUP = 'Sign up',
 }
 
 export default routes;

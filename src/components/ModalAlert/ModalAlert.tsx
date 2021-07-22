@@ -7,6 +7,7 @@ import ContentModalSuccess from './contentSuccessModal';
 
 type ModalAlertProps = {
   children?: React.ReactNode | React.ReactNodeArray;
+  fullWidthButton?: boolean;
   hideModal: () => void;
   onDismiss: () => void;
   onSubmit?: () => void;
@@ -19,6 +20,7 @@ type ModalAlertProps = {
 
 const ModalAlert = ({
   children,
+  fullWidthButton,
   hideModal,
   onDismiss,
   onSubmit,
@@ -41,7 +43,13 @@ const ModalAlert = ({
     }
     if (type === 'content') {
       return (
-        <ContentModalChildren text={text} textButton={textButton} title={title} onSubmit={onSubmit}>
+        <ContentModalChildren
+          fullWidthButton={fullWidthButton}
+          text={text}
+          textButton={textButton}
+          title={title}
+          onSubmit={onSubmit}
+        >
           {children}
         </ContentModalChildren>
       );

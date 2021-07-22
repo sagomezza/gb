@@ -2,7 +2,7 @@ import { theme } from 'config/theme';
 import { FontFamilyType } from 'core/components/DefaultIcon';
 import React from 'react';
 import { DefaultIcon } from '../../core/components';
-import { ButtonContainer, MainContainer, Label, SelectionBar } from './styled';
+import { ButtonContainer, MainContainer, Label, SelectionBar } from './styles';
 
 interface IBottomTabButtonProps {
   focused: boolean;

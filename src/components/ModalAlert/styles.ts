@@ -5,6 +5,7 @@ import { nlz, rs } from '../../utils/dimensions';
 import { theme } from '../../config/theme';
 
 type ButtonModalProps = {
+  fullWidth?: boolean;
   isError?: boolean;
 };
 
@@ -22,7 +23,7 @@ export const TitleInput = styled.Text`
   color: ${({ theme: { colors } }) => colors.darkGreenModal};
   font-family: ${({ theme: { fonts } }) => fonts.medium.fontFamily};
   font-size: ${nlz(24)}px;
-  font-weight: 600;
+  font-weight: bold;
   text-align: center;
 `;
 
@@ -39,7 +40,7 @@ export const ButtonModal = styled(PrimaryButton).attrs(() => ({
     color: theme.colors.white,
     fontFamily: theme.fonts.medium.fontFamily,
     fontSize: nlz(16),
-    fontWeight: theme.fonts.medium.fontWeight,
+    fontWeight: 'bold',
   },
 }))<ButtonModalProps>`
   align-self: center;
@@ -49,7 +50,7 @@ export const ButtonModal = styled(PrimaryButton).attrs(() => ({
   justify-content: center;
   margin-horizontal: ${rs(20)}px;
   margin-vertical: ${rs(10)}px;
-  width: ${rs(200)}px;
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : `${rs(200)}px`)};
 `;
 
 export const ContainerContentModal = styled.View`

@@ -1,6 +1,6 @@
 import React from 'react';
 import { DefaultIcon } from 'components';
-import { PremiumBadgeContainer, PremiumLabel } from './styled';
+import { PremiumBadgeContainer, PremiumLabel } from './styles';
 
 const PremiumBadge: React.FC = () => (
   <PremiumBadgeContainer>

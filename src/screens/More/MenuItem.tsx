@@ -1,47 +1,60 @@
-import React from 'react';
-import { DefaultIcon } from 'components';
+import React, { useMemo, useState } from 'react';
+import { DefaultIcon, GoPremiumModal, PremiumBadge } from 'components';
 import { FontFamilyType } from 'components/DefaultIcon';
 import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { IconAndLabelContainer, MenuItemContainer, Title } from './styled';
-import PremiumBadge from './PremiumBadge';
+import { PremiumRoutes, RoutesLabels, RoutesTypes } from 'config/routes';
+import { IconAndLabelContainer, MenuItemContainer, Title } from './styles';
 
 interface IMenuItemProps {
   iconFamily: FontFamilyType;
   iconName: string;
   iconSize?: number;
-  isPremium?: boolean;
-  navigateTo: string;
   omitBottomBorder?: boolean;
-  title: string;
+  route: RoutesTypes;
 }
+
+const IS_USER_PREMIUM = true;
 
 const MenuItem: React.FC<IMenuItemProps> = ({
   iconFamily,
   iconName,
   iconSize = 24,
-  isPremium = false,
-  navigateTo,
   omitBottomBorder = false,
-  title,
+  route,
 }: IMenuItemProps) => {
+  const isUserPremium = IS_USER_PREMIUM;
   const navigation = useNavigation();
+  const routeRequiresPremium = useMemo(() => !!PremiumRoutes[route], [route]);
+
+  const [goPremiumModalVisible, setGoPremiumModalVisibility] = useState(false);
 
   return (
-    <TouchableOpacity
-      onPress={() => {
-        navigation.navigate(navigateTo);
-      }}
-    >
-      <MenuItemContainer omitBottomBorder={omitBottomBorder}>
-        <IconAndLabelContainer>
-          <DefaultIcon color="black" iconFamily={iconFamily} name={iconName} size={iconSize} />
-          <Title>{title}</Title>
-        </IconAndLabelContainer>
+    <>
+      <TouchableOpacity
+        onPress={() => {
+          if (routeRequiresPremium && !isUserPremium) {
+            setGoPremiumModalVisibility(true);
+            return;
+          }
+          navigation.navigate(route);
+        }}
+      >
+        <MenuItemContainer omitBottomBorder={omitBottomBorder}>
+          <IconAndLabelContainer>
+            <DefaultIcon color="black" iconFamily={iconFamily} name={iconName} size={iconSize} />
+            <Title>{RoutesLabels[route]}</Title>
+          </IconAndLabelContainer>
 
-        {isPremium && <PremiumBadge />}
-      </MenuItemContainer>
-    </TouchableOpacity>
+          {routeRequiresPremium && <PremiumBadge />}
+        </MenuItemContainer>
+      </TouchableOpacity>
+
+      <GoPremiumModal
+        visible={goPremiumModalVisible}
+        onClose={() => setGoPremiumModalVisibility(false)}
+      />
+    </>
   );
 };
 
