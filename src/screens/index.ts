@@ -8,6 +8,7 @@ export { default as NearMeScreen } from './NearMe';
 export { default as NewMessageScreen } from './NewMessage';
 export { default as OnboardingScreen } from './Onboarding';
 export { default as OnboardingSkillsScreen } from './OnboardingSkills';
+export { default as AddActivityScreen } from './AddActivity';
 export { default as ProfileScreen } from './Profile';
 export { default as SearchScreen } from './Search';
 export { default as SettingsScreen } from './Settings';

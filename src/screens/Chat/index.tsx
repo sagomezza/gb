@@ -3,7 +3,7 @@ import { GiftedChat, Send } from 'react-native-gifted-chat';
 import { RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
 import { theme } from 'config/theme';
-import { HeaderContainer } from 'components/Header/styled';
+import { HeaderContainer } from 'components/Header/styles';
 import ScreensHeader from 'components/ScreensHeader';
 import Header from 'components/Header';
 import { ChatContainer, ChatBubble, IconContainer } from './styled';

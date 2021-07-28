@@ -62,6 +62,7 @@ const colors = {
   gradientColors: ['#42BAA4', '#203944'],
   darkGreenNewMessage: '#16575D',
   darkGreenSecondary: '#3ea997',
+  greenSecondary: '#3BC0A7',
   chipBlue: '#F0F5FF',
   subtitleColorText: '#979797',
 };
