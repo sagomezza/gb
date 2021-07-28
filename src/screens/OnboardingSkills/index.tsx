@@ -38,7 +38,7 @@ const OnboardingSkillsScreen: React.FC = () => {
             onTapClose={onMultiChange()}
           />
         </SelectContainer>
-        <ButtonSignup onPress={() => goToPage(routes.SEARCH)}>Ready</ButtonSignup>
+        <ButtonSignup onPress={() => goToPage(routes.MAIN)}>Ready</ButtonSignup>
       </OnboardingContainer>
     </>
   );

@@ -15,3 +15,4 @@ export { default as SettingsScreen } from './Settings';
 export { default as SignupScreen } from './Signup';
 export { default as SubscribePaymentsScreen } from './SubscribePayments';
 export { default as SubscribePricesScreen } from './SubscribePrices';
+export { default as CalendarScreen } from './Calendar';

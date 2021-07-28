@@ -49,6 +49,7 @@ const colors = {
   gray3: '#626262',
   gray4: '#C4C4C4',
   gray5: '#545454',
+  grayCalendarBorder: '#C8C7CC',
   lightBlue: '#E4EFF8',
   lighterGrey: '#E4E3E5',
   lightGrey: '#cccccc',
