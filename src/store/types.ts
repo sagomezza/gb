@@ -62,3 +62,29 @@ export interface IModalState {
 export type AppState = {
   modalAlert: IModalState;
 };
+
+export interface Spot {
+  address: string;
+  age?: number;
+  coordinates: { latitude: number; longitude: number };
+  email: string;
+  gender?: string;
+  id: number;
+  interests?: string[];
+  location?: string;
+  name: string;
+  phone: string;
+  picture: string;
+  type: string;
+}
+
+interface PlaceLocation {
+  lat: number;
+  lng: number;
+}
+
+export interface Place {
+  geometry: { location: PlaceLocation };
+  name: string;
+  place_id: string;
+}

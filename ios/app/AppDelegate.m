@@ -3,6 +3,7 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <GoogleMaps/GoogleMaps.h>
 #import "RNBootSplash.h" // <- add the header import
 
 #ifdef FB_SONARKIT_ENABLED
@@ -37,7 +38,7 @@ static void InitializeFlipper(UIApplication *application) {
   [AppCenterReactNativeAnalytics registerWithInitiallyEnabled:true];
   [AppCenterReactNativeCrashes registerWithAutomaticProcessing];
 #endif
-
+  [GMSServices provideAPIKey:@"AIzaSyD0yfZMlzviD9i7yPQBCsllT1bjFY_1Q14"];
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"app"
