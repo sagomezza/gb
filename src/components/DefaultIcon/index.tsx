@@ -88,11 +88,16 @@ const DefaultIcon = ({
         return <Icon color={color} margin={margin} name={name} size={size} />;
     }
   };
-  return (
-    <Pressable onLongPress={onLongPress} onPress={onPress}>
-      <RenderIcon />
-    </Pressable>
-  );
+
+  if (onPress) {
+    return (
+      <Pressable onLongPress={onLongPress} onPress={onPress}>
+        <RenderIcon />
+      </Pressable>
+    );
+  }
+
+  return <RenderIcon />;
 };
 
 export default DefaultIcon;

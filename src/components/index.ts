@@ -8,6 +8,7 @@ export { default as GoPremiumModal } from './GoPremiumModal';
 export { default as Header } from './Header';
 export { default as Input } from './Input';
 export { default as PremiumBadge } from './PremiumBadge';
+export { default as Spacing } from './Spacing';
 export { default as Typography } from './Typography';
 export { PrimaryButton, SecondaryButton, LinkButton, OutlinedButton } from './Button';
 export { default as SafeArea } from './SafeArea/styles';

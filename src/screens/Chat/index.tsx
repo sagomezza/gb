@@ -1,11 +1,9 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { GiftedChat, Send } from 'react-native-gifted-chat';
 import { RouteProp } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Feather';
-import { theme } from 'config/theme';
-import { HeaderContainer } from 'components/Header/styles';
-import ScreensHeader from 'components/ScreensHeader';
 import Header from 'components/Header';
+import { SafeAreaView } from 'screens/styles';
+import { DefaultIcon } from 'components';
 import { ChatContainer, ChatBubble, IconContainer } from './styles';
 
 type MessagesStackParamList = {
@@ -68,29 +66,28 @@ const ChatScreen: React.FC<IChatScreenProps> = ({ route }: IChatScreenProps) => 
       // eslint-disable-next-line react/jsx-props-no-spreading
       <Send {...props}>
         <IconContainer>
-          <Icon color={theme.colors.greenPrimary} name="send" size={30} />
+          <DefaultIcon color="secondary" iconFamily="Feather" name="send" size={20} />
         </IconContainer>
       </Send>
     );
   }
 
   return (
-    <ChatContainer>
-      <HeaderContainer>
-        <ScreensHeader />
-      </HeaderContainer>
-      <Header title={userName} />
-      <GiftedChat
-        alwaysShowSend
-        messages={messages}
-        renderBubble={renderBubble}
-        renderSend={renderSend}
-        user={{
-          _id: 1,
-        }}
-        onSend={(messages) => onSend(messages)}
-      />
-    </ChatContainer>
+    <SafeAreaView>
+      <ChatContainer>
+        <Header title={userName} />
+        <GiftedChat
+          alwaysShowSend
+          messages={messages}
+          renderBubble={renderBubble}
+          renderSend={renderSend}
+          user={{
+            _id: 1,
+          }}
+          onSend={(messages) => onSend(messages)}
+        />
+      </ChatContainer>
+    </SafeAreaView>
   );
 };
 

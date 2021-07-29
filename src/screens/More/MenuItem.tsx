@@ -14,7 +14,7 @@ interface IMenuItemProps {
   route: RoutesTypes;
 }
 
-const IS_USER_PREMIUM = false;
+const IS_USER_PREMIUM = true;
 
 const MenuItem: React.FC<IMenuItemProps> = ({
   iconFamily,

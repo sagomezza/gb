@@ -6,7 +6,8 @@ export const messagesData = [
     location: 'Florida. USA',
     interests: ['Crossfit', 'Running'],
     user: { firstName: 'Annie', lastName: 'Hall' },
-    avatar: 'https://reactnative.dev/img/tiny_logo.png',
+    avatar:
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
     messages: [
       {
         id: 1,
@@ -32,7 +33,8 @@ export const messagesData = [
     location: 'Florida. USA',
     interests: ['Crossfit', 'Running'],
     user: { firstName: 'Jodee', lastName: 'Furrow' },
-    avatar: '',
+    avatar:
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
     messages: [
       {
         id: 2,
@@ -53,7 +55,8 @@ export const messagesData = [
     location: 'Florida. USA',
     interests: ['Yoga'],
     user: { firstName: 'Karl', lastName: 'Nyland' },
-    avatar: 'https://reactnative.dev/img/tiny_logo.png',
+    avatar:
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
     messages: [
       {
         id: 1,
@@ -116,7 +119,8 @@ export const messagesData = [
     location: 'Florida. USA',
     interests: ['Crossfit', 'Running'],
     user: { firstName: 'Joe', lastName: 'Biden' },
-    avatar: 'https://reactnative.dev/img/tiny_logo.png',
+    avatar:
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
     messages: [
       {
         id: 1,
@@ -137,7 +141,8 @@ export const messagesData = [
     location: 'Florida. USA',
     interests: ['Crossfit', 'Yoga'],
     user: { firstName: 'Jeane', lastName: 'Chenier' },
-    avatar: 'https://reactnative.dev/img/tiny_logo.png',
+    avatar:
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
     messages: [
       {
         id: 1,
@@ -158,7 +163,8 @@ export const messagesData = [
     location: 'Florida. USA',
     interests: ['Crossfit', 'Running'],
     user: { firstName: 'Markus', lastName: 'Musk' },
-    avatar: 'https://reactnative.dev/img/tiny_logo.png',
+    avatar:
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
     messages: [
       {
         id: 1,
@@ -179,7 +185,8 @@ export const messagesData = [
     location: 'Florida. USA',
     interests: ['Crossfit', 'Running'],
     user: { firstName: 'Brad', lastName: 'Pitt' },
-    avatar: 'https://reactnative.dev/img/tiny_logo.png',
+    avatar:
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
     messages: [
       {
         id: 1,
@@ -200,7 +207,8 @@ export const messagesData = [
     location: 'Florida. USA',
     interests: ['Crossfit'],
     user: { firstName: 'Will', lastName: 'Smmith' },
-    avatar: 'https://reactnative.dev/img/tiny_logo.png',
+    avatar:
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
     messages: [
       {
         id: 1,

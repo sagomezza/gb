@@ -5,7 +5,7 @@ import { ChatScreen, MessagesScreen, NewMessageScreen } from '../screens';
 
 const Stack = createStackNavigator();
 
-const MessagesStackNavigator: React.FC = () => (
+const MessagesNavigator: React.FC = () => (
   <Stack.Navigator headerMode="none" initialRouteName={routes.MESSAGES}>
     <Stack.Screen component={MessagesScreen} name={routes.MESSAGES} />
     <Stack.Screen component={NewMessageScreen} name={routes.NEWMESSAGE} />
@@ -13,4 +13,4 @@ const MessagesStackNavigator: React.FC = () => (
   </Stack.Navigator>
 );
 
-export default MessagesStackNavigator;
+export default MessagesNavigator;

@@ -1,6 +1,5 @@
-/* eslint-disable no-nested-ternary */
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { IItemMessage } from 'store/types';
 import { colors } from '../../utils/colors';
 import {
@@ -9,7 +8,6 @@ import {
   DetailsContainer,
   LastMessage,
   MessageContainer,
-  MessageTitleContainer,
   PhotoBackground,
   PhotoTitle,
 } from './styles';
@@ -17,53 +15,28 @@ import {
 type ItemListProps = {
   item: IItemMessage;
   onPress?: () => void;
-  photoPosition: 'rigth' | 'left';
 };
 
-const ItemList: React.FC<ItemListProps> = ({
-  item,
-  onPress,
-  photoPosition = 'left',
-}: ItemListProps) => {
-  const userName = `${item?.user?.firstName} ${item?.user?.lastName}`;
+const ItemList: React.FC<ItemListProps> = ({ item, onPress }: ItemListProps) => {
   const message = item.messages[item.messages.length - 1];
+  const username = `${item?.user.firstName} ${item?.user?.lastName}`;
+  const usernameInitials = `${item?.user?.firstName[0]} ${item?.user?.lastName[0]}`;
 
   return (
     <TouchableOpacity onPress={onPress}>
       <MessageContainer>
-        {photoPosition === 'left' ? (
-          item.avatar !== '' ? (
-            <ContactPhoto source={{ uri: item.avatar }} />
-          ) : (
-            <PhotoBackground background={colors[Math.floor(Math.random() * colors.length)]}>
-              <PhotoTitle>{userName}</PhotoTitle>
-            </PhotoBackground>
-          )
+        {item.avatar !== '' ? (
+          <ContactPhoto source={{ uri: item.avatar }} />
         ) : (
-          <View />
+          <PhotoBackground background={colors[Math.floor(Math.random() * colors.length)]}>
+            <PhotoTitle>{usernameInitials}</PhotoTitle>
+          </PhotoBackground>
         )}
 
         <DetailsContainer>
-          <MessageTitleContainer>
-            <View>
-              <ContactName>
-                {item.user.firstName} {item.user.lastName}
-              </ContactName>
-            </View>
-          </MessageTitleContainer>
+          <ContactName>{username}</ContactName>
           <LastMessage numberOfLines={1}>{message.text}</LastMessage>
         </DetailsContainer>
-        {photoPosition === 'rigth' ? (
-          item.avatar !== '' ? (
-            <ContactPhoto source={{ uri: item.avatar }} />
-          ) : (
-            <PhotoBackground>
-              <PhotoTitle>{userName}</PhotoTitle>
-            </PhotoBackground>
-          )
-        ) : (
-          <View />
-        )}
       </MessageContainer>
     </TouchableOpacity>
   );

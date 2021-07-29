@@ -1,43 +1,46 @@
 import React, { useState } from 'react';
-import { TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/Entypo';
+import { DefaultIcon, Header, Input } from 'components';
 import { navigator } from 'navigation';
-import { theme } from 'config/theme';
 import routes from 'config/routes';
-import { HeaderContainer } from 'screens/NewMessage/styles';
-import ScreensHeader from 'components/ScreensHeader';
-import {
-  ContactsContainer,
-  InputSearch,
-  MessagesContainer,
-  MessagesTitle,
-  MessagesTitleContainer,
-  SearchContainer,
-} from './styles';
 import Conversations from './components/Conversations';
+import { SafeAreaView } from '../styles';
+import {
+  MainContainer,
+  NewMessageIconContainer,
+  SearchContainer,
+  SearchInputContainer,
+} from './styles';
 
 const MessagesScreen: React.FC = () => {
   const [query, setQuery] = useState('');
   const { goToPage } = navigator();
 
   return (
-    <MessagesContainer>
-      <HeaderContainer>
-        <ScreensHeader />
-      </HeaderContainer>
-      <MessagesTitleContainer>
-        <MessagesTitle>Messages</MessagesTitle>
-      </MessagesTitleContainer>
-      <ContactsContainer>
+    <SafeAreaView>
+      <Header route={routes.MESSAGES} />
+      <MainContainer>
         <SearchContainer>
-          <InputSearch onChange={(value: string) => setQuery(value)} />
-          <TouchableOpacity onPress={() => goToPage(routes.NEWMESSAGE)}>
-            <Icon color={theme.colors.greenPrimary} name="new-message" size={40} />
-          </TouchableOpacity>
+          <SearchInputContainer>
+            <Input
+              placeholder="🔍 Search"
+              useShadow={false}
+              value={query}
+              onChangeText={(newText) => setQuery(newText)}
+            />
+          </SearchInputContainer>
+          <NewMessageIconContainer>
+            <DefaultIcon
+              color="secondary"
+              iconFamily="FontAwesome"
+              name="pencil-square-o"
+              size={30}
+              onPress={() => goToPage(routes.NEWMESSAGE)}
+            />
+          </NewMessageIconContainer>
         </SearchContainer>
         <Conversations query={query} />
-      </ContactsContainer>
-    </MessagesContainer>
+      </MainContainer>
+    </SafeAreaView>
   );
 };
 

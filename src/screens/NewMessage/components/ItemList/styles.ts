@@ -9,6 +9,10 @@ export const IconContainer = styled.View`
   align-self: flex-end;
 `;
 
+export const PaddedContainer = styled.View`
+  padding-horizontal: ${rs(16)}px;
+`;
+
 export const MessageContainer = styled.View`
   align-items: center;
   background-color: ${({ theme: { colors } }) => colors.white};
@@ -16,7 +20,6 @@ export const MessageContainer = styled.View`
   elevation: 5;
   flex-direction: row;
   height: ${rs(120)}px;
-  margin-horizontal: ${rs(20)}px;
   margin-vertical: ${rs(10)}px;
   padding-bottom: ${rs(5)}px;
   padding-horizontal: ${rs(10)}px;
@@ -24,7 +27,7 @@ export const MessageContainer = styled.View`
   shadow-offset: 0 5px;
   shadow-opacity: 0.3;
   shadow-radius: 2.5px;
-  width: 90%;
+  width: 100%;
 `;
 
 export const DetailsContainer = styled.View`
@@ -58,25 +61,26 @@ export const ContactPhoto = styled.Image`
 export const ContactName = styled.Text`
   color: ${({ theme: { colors } }) => colors.darkGreenNewMessage};
   font-family: ${({ theme: { fonts } }) => fonts.medium.fontFamily};
-  font-size: ${nlz(18)}px;
-  font-weight: 600;
+  font-size: ${nlz(16)}px;
+  font-weight: bold;
 `;
 
 export const PhotoTitle = styled.Text`
   color: ${({ theme: { colors } }) => colors.white};
   font-family: ${({ theme: { fonts } }) => fonts.medium.fontFamily};
-  font-size: ${nlz(34)}px;
+  font-size: ${nlz(20)}px;
   font-weight: ${({ theme: { fonts } }) => fonts.medium.fontWeight};
 `;
 
 export const ContactDetail = styled.Text`
   color: ${({ theme: { colors } }) => colors.placeholder};
   font-family: ${({ theme: { fonts } }) => fonts.light.fontFamily};
-  font-size: ${nlz(14)}px;
+  font-size: ${nlz(12)}px;
   font-weight: ${({ theme: { fonts } }) => fonts.light.fontWeight};
   text-align: justify;
 `;
 
 export const FirstLineDetailContainer = styled.View`
+  align-items: center;
   flex-direction: row;
 `;

@@ -15,14 +15,21 @@ export const ChatBubble = styled(Bubble).attrs(() => ({
   },
   wrapperStyle: {
     left: {
-      backgroundColor: theme.colors.lightGrey,
+      backgroundColor: theme.colors.lighterGrey,
+      marginTop: rs(5),
+      marginBottom: rs(5),
     },
     right: {
       backgroundColor: theme.colors.greenPrimary,
+      marginTop: rs(5),
+      marginBottom: rs(5),
     },
   },
 }))``;
 
 export const IconContainer = styled.View`
+  align-items: center;
+  flex-direction: row;
+  height: 100%;
   margin-horizontal: ${rs(10)}px;
 `;

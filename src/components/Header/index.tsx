@@ -4,15 +4,16 @@ import PremiumBadge from 'components/PremiumBadge';
 import { HeaderContainer, PremiumBadgeAbsoluteContainer, Title } from './styles';
 
 interface IHeaderProps {
-  route: RoutesTypes;
+  route?: RoutesTypes;
+  title?: string;
 }
 
-const Header: React.FC<IHeaderProps> = ({ route }: IHeaderProps) => {
-  const routeIsPremium = useMemo(() => !!PremiumRoutes[route], [route]);
+const Header: React.FC<IHeaderProps> = ({ route, title }: IHeaderProps) => {
+  const routeIsPremium = useMemo(() => route && !!PremiumRoutes[route], [route]);
 
   return (
     <HeaderContainer>
-      <Title>{RoutesLabels[route]}</Title>
+      <Title>{(route && RoutesLabels[route]) || title}</Title>
       {routeIsPremium && (
         <PremiumBadgeAbsoluteContainer>
           <PremiumBadge />

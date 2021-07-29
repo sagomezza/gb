@@ -6,26 +6,24 @@ interface IPhotoBackgroundProps {
 }
 
 export const MessageContainer = styled.View`
+  align-items: center;
   background-color: ${({ theme: { colors } }) => colors.white};
   flex-direction: row;
-  margin-top: ${rs(10)}px;
+  padding-top: ${rs(10)}px;
   padding-vertical: ${rs(10)}px;
 `;
 
 export const DetailsContainer = styled.View`
+  border-bottom-color: ${({ theme: { colors } }) => colors.lightGrey};
+  border-bottom-width: 1px;
   flex: 1;
-  margin-left: ${rs(10)}px;
-`;
-
-export const MessageTitleContainer = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: ${rs(10)}px;
+  margin-left: ${rs(17)}px;
+  padding-bottom: ${rs(10)}px;
 `;
 
 export const PhotoBackground = styled.ImageBackground<IPhotoBackgroundProps>`
   align-items: center;
-  background-color: ${(props) => (props.background ? props.background : 'black')};
+  background-color: ${({ background }) => background || 'black'};
   border-radius: 25px;
   height: ${rs(50)}px;
   justify-content: center;
@@ -44,12 +42,13 @@ export const ContactName = styled.Text`
   font-family: ${({ theme: { fonts } }) => fonts.medium.fontFamily};
   font-size: ${nlz(15)}px;
   font-weight: ${({ theme: { fonts } }) => fonts.medium.fontWeight};
+  margin-bottom: ${rs(8)}px;
 `;
 
 export const PhotoTitle = styled.Text`
   color: ${({ theme: { colors } }) => colors.white};
   font-family: ${({ theme: { fonts } }) => fonts.medium.fontFamily};
-  font-size: ${nlz(24)}px;
+  font-size: ${nlz(16)}px;
   font-weight: ${({ theme: { fonts } }) => fonts.medium.fontWeight};
 `;
 

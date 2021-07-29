@@ -3,7 +3,7 @@ import { FlatList, View } from 'react-native';
 import { messagesData } from 'utils/messages-data';
 import { navigator } from 'navigation';
 import routes from 'config/routes';
-import { ContainerList, ConversationsTitle, Separator } from './styles';
+import { ContainerList, ConversationsTitle } from './styles';
 import ItemList from '../ItemList';
 
 interface IConversationsProps {
@@ -27,20 +27,20 @@ const Conversations: React.FC<IConversationsProps> = ({ query }: IConversationsP
 
   return (
     <View>
-      <ConversationsTitle>RECENT CONVERSATIONS</ConversationsTitle>
+      <ConversationsTitle>Recent conversations</ConversationsTitle>
       <ContainerList>
         <FlatList
           data={filteredConversations}
-          ItemSeparatorComponent={() => <Separator />}
+          ItemSeparatorComponent={() => <></>}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
             <ItemList
               item={item}
-              photoPosition="left"
               onPress={() => goToPage(routes.CHAT, { item: JSON.stringify(item) })}
             />
           )}
           showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
         />
       </ContainerList>
     </View>
