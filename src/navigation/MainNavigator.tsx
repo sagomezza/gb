@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import routes, { RoutesLabels } from 'config/routes';
-import { HomeScreen, CalendarScreen, ProfileScreen, SearchScreen } from 'screens';
+import { HomeScreen, CalendarScreen, ProfileScreen, BuddiesScreen } from 'screens';
 import { BottomTabButton } from 'components';
 import { bottomNavigatorStyles } from './styles';
 import MoreNavigator from './MoreNavigator';
@@ -40,7 +40,7 @@ const MainNavigator: React.FC = () => (
       }}
     />
     <BottomTab.Screen
-      component={SearchScreen}
+      component={BuddiesScreen}
       name={routes.SEARCH}
       options={{
         tabBarIcon: ({ focused }: ITabBarIconProps) => (

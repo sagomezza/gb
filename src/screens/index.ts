@@ -1,4 +1,5 @@
 export { default as AuthScreen } from './Onboarding';
+export { default as BuddiesScreen } from './Buddies';
 export { default as BulletinScreen } from './Bulletin';
 export { default as ChatScreen } from './Chat';
 export { default as GoPremiumScreen } from './SubscribePrices';
