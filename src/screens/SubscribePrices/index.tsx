@@ -2,6 +2,9 @@ import React from 'react';
 import { StatusBar, View, TouchableOpacity } from 'react-native';
 import ScreensHeader from 'components/ScreensHeader';
 import Spacing from 'components/Spacing';
+import { useNavigation } from '@react-navigation/native';
+import routes from 'config/routes';
+import CardSubcribePrices from './components/Card';
 import {
   CancelSubcriptionText,
   HeaderContainer,
@@ -11,11 +14,11 @@ import {
   SubscribePricesFooter,
   SubscribePricesSubtitle,
   SubscribePricesTitle,
-} from './styled';
-import CardSubcribePrices from './components/Card';
+} from './styles';
 
 const SubscribePricesScreen: React.FC = () => {
-  const onPressSubscribe = () => {};
+  const navigation = useNavigation();
+  const onPressSubscribe = () => navigation.navigate(routes.PAYMENT);
 
   return (
     <>

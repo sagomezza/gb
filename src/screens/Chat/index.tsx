@@ -6,7 +6,7 @@ import { theme } from 'config/theme';
 import { HeaderContainer } from 'components/Header/styles';
 import ScreensHeader from 'components/ScreensHeader';
 import Header from 'components/Header';
-import { ChatContainer, ChatBubble, IconContainer } from './styled';
+import { ChatContainer, ChatBubble, IconContainer } from './styles';
 
 type MessagesStackParamList = {
   Messages: {

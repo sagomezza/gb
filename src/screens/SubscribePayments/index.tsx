@@ -8,7 +8,7 @@ import {
   SubscribePaymentsContainer,
   SubscribePaymentsSubTitle,
   SubscribePaymentsTitle,
-} from './styled';
+} from './styles';
 import Form from './Form';
 import { ICardDetails, IFormValuesSubscribePayments } from './types';
 

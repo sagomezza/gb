@@ -4,7 +4,7 @@ import Spacing from 'components/Spacing';
 import ScreensHeader from 'components/ScreensHeader';
 import Header from 'components/Header';
 import { messagesData } from 'utils/messages-data';
-import { ContactsContainer, HeaderContainer, InputSearch, NewMessageContainer } from './styled';
+import { ContactsContainer, HeaderContainer, InputSearch, NewMessageContainer } from './styles';
 import ItemList from './components/ItemList';
 
 const dataSource = messagesData;

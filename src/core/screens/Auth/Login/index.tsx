@@ -10,7 +10,7 @@ import {
 } from 'core/components';
 import routes from 'config/routes';
 import Form from '../components/Form/Form';
-import { Container } from './styled';
+import { Container } from './styles';
 
 import { IAuthData } from '../types/auth.types';
 

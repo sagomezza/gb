@@ -1,5 +1,7 @@
+export { default as AuthScreen } from './Onboarding';
 export { default as BulletinScreen } from './Bulletin';
 export { default as ChatScreen } from './Chat';
+export { default as GoPremiumScreen } from './SubscribePrices';
 export { default as HomeScreen } from './Home';
 export { default as LoginScreen } from './Login';
 export { default as MessagesScreen } from './Messages';
@@ -9,6 +11,7 @@ export { default as NewMessageScreen } from './NewMessage';
 export { default as OnboardingScreen } from './Onboarding';
 export { default as OnboardingSkillsScreen } from './OnboardingSkills';
 export { default as AddActivityScreen } from './AddActivity';
+export { default as PaymentScreen } from './SubscribePayments';
 export { default as ProfileScreen } from './Profile';
 export { default as SearchScreen } from './Search';
 export { default as SettingsScreen } from './Settings';

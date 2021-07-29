@@ -9,7 +9,7 @@ import {
   ItemsContainer,
   PriceContainer,
   TextContainer,
-} from './styled';
+} from './styles';
 
 interface ICardSubscribePrices {
   onPress: () => void;

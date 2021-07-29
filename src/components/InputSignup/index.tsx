@@ -10,7 +10,7 @@ import type {
   ReturnKeyType,
 } from 'react-native/Libraries/Components/TextInput/TextInput';
 import type { TextStyleProp } from 'react-native/Libraries/StyleSheet/StyleSheet';
-import { styles, ContainerInputLogin, InputSignup } from './styled';
+import { styles, ContainerInputLogin, InputSignup } from './styles';
 import { TypographyProps } from '../Typography/types';
 
 export const TypographyVariant = {

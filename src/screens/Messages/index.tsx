@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Entypo';
 import { navigator } from 'navigation';
 import { theme } from 'config/theme';
 import routes from 'config/routes';
-import { HeaderContainer } from 'screens/NewMessage/styled';
+import { HeaderContainer } from 'screens/NewMessage/styles';
 import ScreensHeader from 'components/ScreensHeader';
 import {
   ContactsContainer,

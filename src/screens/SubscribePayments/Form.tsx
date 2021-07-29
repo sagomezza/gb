@@ -9,7 +9,7 @@ import {
   FormContainer,
   InputSubscribePayments,
   styles,
-} from './styled';
+} from './styles';
 import { IFormValuesSubscribePayments, ISubscribePaymentsFormProps } from './types';
 
 const SubscribePaymentsForm: React.FC<ISubscribePaymentsFormProps> = ({

@@ -1,6 +1,6 @@
 export enum RoutesAuth {
+  AUTH = 'AUTH',
   LOGIN = 'LOGIN',
-  ONBOARDING = 'ONBOARDING',
   SIGNUP = 'SIGNUP',
 }
 
@@ -14,13 +14,15 @@ export enum RoutesMain {
   BUDDIES = 'BUDDIES',
   CALENDAR = 'CALENDAR',
   CHAT = 'CHAT',
+  GOPREMIUM = 'GOPREMIUM',
   HOME = 'HOME',
   MAIN = 'MAIN',
   MESSAGES = 'MESSAGES',
   MORE = 'MORE',
   NEARME = 'NEARME',
   NEWMESSAGE = 'NEWMESSAGE',
-  ONBOARDINGSKILLS = 'ONBOARDINGSKILLS',
+  ONBOARDING = 'ONBOARDING',
+  PAYMENT = 'PAYMENT',
   PROFILE = 'PROFILE',
   SEARCH = 'SEARCH',
   SETTINGS = 'SETTINGS',
@@ -33,9 +35,11 @@ const routes = {
 };
 
 export enum RoutesLabels {
+  AUTH = 'Auth',
   BUDDIES = 'Buddies',
   BULLETIN = 'Bulletin',
   CALENDAR = 'Calendar',
+  GOPREMIUM = 'Go Premium',
   HOME = 'Home',
   LOGIN = 'Login',
   MAIN = 'Main',
@@ -45,7 +49,7 @@ export enum RoutesLabels {
   NEARME = 'Near me',
   NEWBULLETIN = 'New Bulletin',
   ONBOARDING = 'Onboarding',
-  ONBOARDINGSKILLS = 'Onboarding skills',
+  PAYMENT = 'Payment',
   PROFILE = 'Profile',
   SEARCH = 'Buddies',
   SETTINGS = 'Settings',

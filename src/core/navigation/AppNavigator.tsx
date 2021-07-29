@@ -15,7 +15,7 @@ const AppNavigator: React.FC = (): React.ReactElement => (
     <Stack.Navigator headerMode="none" initialRouteName={routes.LOGIN}>
       <Stack.Screen component={MainStackNavigation} name={routes.HOME} />
       <Stack.Screen component={AuthNavigator} name={routes.LOGIN} />
-      <Stack.Screen component={Onboarding} name={routes.ONBOARDING} />
+      <Stack.Screen component={Onboarding} name={routes.AUTH} />
     </Stack.Navigator>
   </NavigationContainer>
 );

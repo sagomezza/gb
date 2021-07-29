@@ -4,7 +4,7 @@ import { navigator } from 'core/navigation';
 import { Spacing, KeyboardAwareScrollViewContainer, ContentStyles } from 'core/components';
 import routes from 'config/routes';
 import Form from './Form';
-import { Container } from './styled';
+import { Container } from './styles';
 import { IChangePasswordData } from './Form/types';
 
 const ChangePasswordScreen = () => {
