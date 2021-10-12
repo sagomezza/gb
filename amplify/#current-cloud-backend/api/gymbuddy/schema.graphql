@@ -1,0 +1,145 @@
+type Todo @model {
+  id: ID!
+  name: String!
+  description: String
+}
+
+type GPS {
+  lon: Float
+  lat: Float
+}
+
+input GPSInput {
+  lon: Float!
+  lat: Float!
+}
+
+input GPSQueryInput {
+  gps: GPSInput!
+  radius: Float!
+}
+
+type Setting
+  @model(subscriptions: { level: off })
+  @auth(
+    rules: [
+      {
+        allow: private
+        provider: userPools
+        operations: [create, update, delete, read]
+      }
+      {
+        allow: owner
+        provider: userPools
+        operations: [create, update, delete, read]
+        identityClaim: "sub"
+      }
+      {
+        allow: groups
+        provider: userPools
+        groups: ["Admin"]
+        operations: [create, update, delete, read]
+      }
+    ]
+  ) {
+  id: ID!
+  categories: [String]
+  radius: Float
+  icon: String
+  settingOwnerId: ID!
+  owner: User @connection(name: "UserSetting")
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+}
+
+type User
+  @model(subscriptions: { level: off })
+  @auth(
+    rules: [
+      { allow: private, provider: userPools, operations: [read] }
+      {
+        allow: owner
+        provider: userPools
+        ownerField: "id"
+        identityClaim: "sub"
+        operations: [create, update, delete, read]
+      }
+      {
+        allow: groups
+        provider: userPools
+        groups: ["Admin"]
+        operations: [create, update, delete, read]
+      }
+    ]
+  )
+  @key(name: "userByEmail", fields: ["email"], queryField: "getUserByEmail")
+  @key(fields: ["id"]) {
+  id: ID!
+  owner: String
+  userGroup: UserType
+  name: String!
+  business: String
+  deviceId: String
+  deviceToken: String
+  platform: String
+  stripeCustomerId: String
+  stripeSubscription: String
+  stripeSubscriptionId: String
+  endpointArn: String
+  email: String!
+  username: String
+  birthdate: String
+  gender: String
+  address: String
+  phone: String
+  status: Boolean
+  premium: Boolean
+  gps: GPS
+  photo: String
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+  userSettingId: ID!
+  userSuscriptionId: ID
+  setting: Setting @connection(name: "UserSetting")
+}
+
+enum UserType {
+  User
+  Business
+}
+
+type ModelUserConnection {
+  items: [User]
+  nextToken: String
+  scannedCount: Int
+  count: Int
+}
+
+type ModelSettingConnection {
+  items: [Setting]
+  nextToken: String
+  scannedCount: Int
+  count: Int
+}
+
+# type Query {
+#   findTools(input: FindToolsInput!): SearchableToolConnection
+#     @aws_iam
+#     @aws_cognito_user_pools
+# }
+
+# input FindToolsInput {
+#   byGPS: GPSQueryInput
+#   query: String
+#   limit: Int
+#   nextToken: String
+#   from: Int
+# }
+
+# type SearchableToolConnection @aws_iam @aws_cognito_user_pools {
+#   items: [Tool]
+#   nextToken: String
+#   total: Int
+#   scannedCount: Int
+#   count: Int
+# }

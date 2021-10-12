@@ -1,0 +1,110 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplifya12f0476f8e34-staging-194102-authRole",
+      "UnauthRoleArn": "arn:aws:iam::484188761906:role/amplify-amplifya12f0476f8e34-staging-194102-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::484188761906:role/amplify-amplifya12f0476f8e34-staging-194102-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",
+      "UnauthRoleName": "amplify-amplifya12f0476f8e34-staging-194102-unauthRole",
+      "StackName": "amplify-amplifya12f0476f8e34-staging-194102",
+      "StackId": "arn:aws:cloudformation:us-east-1:484188761906:stack/amplify-amplifya12f0476f8e34-staging-194102/2cdb25d0-2acb-11ec-a719-0ec7b9d1f895",
+      "AmplifyAppId": "d1bklvtno5mzyd"
+    }
+  },
+  "auth": {
+    "gymbuddy": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "loginMechanisms": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OPTIONAL",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/auth/gymbuddy-cloudformation-template.yml",
+        "logicalId": "authgymbuddy"
+      },
+      "lastPushTimeStamp": "2021-10-12T16:33:32.684Z",
+      "output": {
+        "CreatedSNSRole": "arn:aws:iam::484188761906:role/snsf7341fea194102-staging",
+        "UserPoolId": "us-east-1_n1te2WG7C",
+        "AppClientIDWeb": "3d8qruo50oo8pq6tq2jk25ns2m",
+        "AppClientID": "57ntqn9or4im114vq112sltt5a",
+        "IdentityPoolId": "us-east-1:5d049da8-1a79-41f8-901e-376d40532d49",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:484188761906:userpool/us-east-1_n1te2WG7C",
+        "IdentityPoolName": "gymbuddyIdentityPool__staging",
+        "UserPoolName": "gymbuddyUserPool"
+      },
+      "lastPushDirHash": "RtvSiGDrcgt3UC8NeKYvPnhapQc="
+    }
+  },
+  "api": {
+    "gymbuddy": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authgymbuddy"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "nbm47hodufgmtn5bs3u32l4mja",
+        "GraphQLAPIEndpointOutput": "https://np3zt62q4ffhvcilsgcx5na5ku.appsync-api.us-east-1.amazonaws.com/graphql"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apigymbuddy"
+      },
+      "lastPushTimeStamp": "2021-10-12T16:33:32.689Z",
+      "lastPushDirHash": "Xw6TGu2SmSWZSxvDmEeHXb39d/8="
+    }
+  },
+  "function": {
+    "postConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2021-10-12T16:31:34.397Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2021-10-12T16:31:50.407Z",
+      "distZipFilename": "postConfirmation-72745a4155664b304a65-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",
+        "s3Key": "amplify-builds/postConfirmation-72745a4155664b304a65-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/postConfirmation-cloudformation-template.json",
+        "logicalId": "functionpostConfirmation"
+      },
+      "lastPushTimeStamp": "2021-10-12T16:33:32.711Z",
+      "output": {
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:484188761906:function:postConfirmation-staging",
+        "Name": "postConfirmation-staging",
+        "LambdaExecutionRole": "gymbuddydevLambdaRole6aeae715-staging"
+      },
+      "lastPushDirHash": "vtCRF0EsrdNoNkamkxVTGhHZ2gg="
+    }
+  }
+}

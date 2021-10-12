@@ -3,3 +3,9 @@ node_modules
 android
 ios
 react-native.config.js
+amplify/
+src/models
+src/graphql
+src/lib
+scr/API.ts
+scr/aws-exports.js

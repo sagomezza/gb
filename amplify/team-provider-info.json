@@ -1,0 +1,26 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplifya12f0476f8e34-staging-194102-authRole",
+      "UnauthRoleArn": "arn:aws:iam::484188761906:role/amplify-amplifya12f0476f8e34-staging-194102-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::484188761906:role/amplify-amplifya12f0476f8e34-staging-194102-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",
+      "UnauthRoleName": "amplify-amplifya12f0476f8e34-staging-194102-unauthRole",
+      "StackName": "amplify-amplifya12f0476f8e34-staging-194102",
+      "StackId": "arn:aws:cloudformation:us-east-1:484188761906:stack/amplify-amplifya12f0476f8e34-staging-194102/2cdb25d0-2acb-11ec-a719-0ec7b9d1f895",
+      "AmplifyAppId": "d1bklvtno5mzyd"
+    },
+    "categories": {
+      "auth": {
+        "gymbuddy": {}
+      },
+      "function": {
+        "postConfirmation": {
+          "deploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",
+          "s3Key": "amplify-builds/postConfirmation-72745a4155664b304a65-build.zip"
+        }
+      }
+    }
+  }
+}
