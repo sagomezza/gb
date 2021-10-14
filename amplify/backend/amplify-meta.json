@@ -76,7 +76,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apigymbuddy"
       },
-      "lastPushTimeStamp": "2021-10-12T16:33:32.689Z",
+      "lastPushTimeStamp": "2021-10-14T19:09:27.956Z",
       "lastPushDirHash": "Xw6TGu2SmSWZSxvDmEeHXb39d/8="
     }
   },
