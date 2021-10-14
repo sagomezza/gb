@@ -1,7 +1,0 @@
-{
-  "staging": {
-    "configLevel": "project",
-    "useProfile": false,
-    "awsConfigFilePath": "/Users/marcoantoniogomez/.amplify/awscloudformation/R6ymQiuvA6"
-  }
-}

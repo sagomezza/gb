@@ -37,11 +37,6 @@
           "EMAIL"
         ]
       },
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/auth/gymbuddy-cloudformation-template.yml",
-        "logicalId": "authgymbuddy"
-      },
-      "lastPushTimeStamp": "2021-10-14T19:36:53.015Z",
       "output": {
         "CreatedSNSRole": "arn:aws:iam::484188761906:role/snsf7341fea194102-staging",
         "UserPoolId": "us-east-1_n1te2WG7C",
@@ -52,7 +47,11 @@
         "IdentityPoolName": "gymbuddyIdentityPool__staging",
         "UserPoolName": "gymbuddyUserPool"
       },
-      "lastPushDirHash": "RtvSiGDrcgt3UC8NeKYvPnhapQc="
+      "lastPushTimeStamp": "2021-10-14T20:12:56.598Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/auth/gymbuddy-cloudformation-template.yml",
+        "logicalId": "authgymbuddy"
+      }
     }
   },
   "api": {
@@ -72,12 +71,11 @@
         "GraphQLAPIIdOutput": "nbm47hodufgmtn5bs3u32l4mja",
         "GraphQLAPIEndpointOutput": "https://np3zt62q4ffhvcilsgcx5na5ku.appsync-api.us-east-1.amazonaws.com/graphql"
       },
+      "lastPushTimeStamp": "2021-10-14T20:12:56.599Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apigymbuddy"
-      },
-      "lastPushTimeStamp": "2021-10-14T19:36:58.533Z",
-      "lastPushDirHash": "XLQs5pvHfFHED9fxRNr8qYvfDjM="
+      }
     }
   },
   "function": {
@@ -85,26 +83,21 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
-      "lastBuildTimeStamp": "2021-10-12T16:31:34.397Z",
-      "lastBuildType": "PROD",
-      "lastPackageTimeStamp": "2021-10-12T16:31:50.407Z",
-      "distZipFilename": "postConfirmation-72745a4155664b304a65-build.zip",
-      "s3Bucket": {
-        "deploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",
-        "s3Key": "amplify-builds/postConfirmation-72745a4155664b304a65-build.zip"
-      },
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/postConfirmation-cloudformation-template.json",
-        "logicalId": "functionpostConfirmation"
-      },
-      "lastPushTimeStamp": "2021-10-14T19:36:53.024Z",
       "output": {
         "Region": "us-east-1",
         "Arn": "arn:aws:lambda:us-east-1:484188761906:function:postConfirmation-staging",
         "Name": "postConfirmation-staging",
         "LambdaExecutionRole": "gymbuddydevLambdaRole6aeae715-staging"
       },
-      "lastPushDirHash": "vtCRF0EsrdNoNkamkxVTGhHZ2gg="
+      "lastPushTimeStamp": "2021-10-14T20:12:56.599Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/postConfirmation-cloudformation-template.json",
+        "logicalId": "functionpostConfirmation"
+      },
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",
+        "s3Key": "amplify-builds/postConfirmation-72745a4155664b304a65-build.zip"
+      }
     }
   }
 }
