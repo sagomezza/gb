@@ -11,9 +11,6 @@ export const createTodo = /* GraphQL */ `
       id
       name
       description
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -28,9 +25,6 @@ export const updateTodo = /* GraphQL */ `
       id
       name
       description
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -45,9 +39,6 @@ export const deleteTodo = /* GraphQL */ `
       id
       name
       description
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -102,19 +93,10 @@ export const createSetting = /* GraphQL */ `
           settingOwnerId
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -167,19 +149,10 @@ export const updateSetting = /* GraphQL */ `
           settingOwnerId
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -232,19 +205,10 @@ export const deleteSetting = /* GraphQL */ `
           settingOwnerId
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -315,19 +279,10 @@ export const createUser = /* GraphQL */ `
           updatedAt
           userSettingId
           userSuscriptionId
-          _version
-          _deleted
-          _lastChangedAt
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -398,19 +353,10 @@ export const updateUser = /* GraphQL */ `
           updatedAt
           userSettingId
           userSuscriptionId
-          _version
-          _deleted
-          _lastChangedAt
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -481,19 +427,10 @@ export const deleteUser = /* GraphQL */ `
           updatedAt
           userSettingId
           userSuscriptionId
-          _version
-          _deleted
-          _lastChangedAt
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;

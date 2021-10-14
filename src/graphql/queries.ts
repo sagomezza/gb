@@ -2,43 +2,12 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const syncTodos = /* GraphQL */ `
-  query SyncTodos(
-    $filter: ModelTodoFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncTodos(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        description
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
 export const getTodo = /* GraphQL */ `
   query GetTodo($id: ID!) {
     getTodo(id: $id) {
       id
       name
       description
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -55,75 +24,10 @@ export const listTodos = /* GraphQL */ `
         id
         name
         description
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncSettings = /* GraphQL */ `
-  query SyncSettings(
-    $filter: ModelSettingFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncSettings(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        categories
-        radius
-        icon
-        settingOwnerId
-        owner {
-          id
-          owner
-          userGroup
-          name
-          business
-          deviceId
-          deviceToken
-          platform
-          stripeCustomerId
-          stripeSubscription
-          stripeSubscriptionId
-          endpointArn
-          email
-          username
-          birthdate
-          gender
-          address
-          phone
-          status
-          premium
-          photo
-          createdAt
-          updatedAt
-          userSettingId
-          userSuscriptionId
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      scannedCount
-      count
     }
   }
 `;
@@ -173,19 +77,10 @@ export const getSetting = /* GraphQL */ `
           settingOwnerId
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -228,80 +123,9 @@ export const listSettings = /* GraphQL */ `
           updatedAt
           userSettingId
           userSuscriptionId
-          _version
-          _deleted
-          _lastChangedAt
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      scannedCount
-      count
-    }
-  }
-`;
-export const syncUsers = /* GraphQL */ `
-  query SyncUsers(
-    $filter: ModelUserFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncUsers(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        owner
-        userGroup
-        name
-        business
-        deviceId
-        deviceToken
-        platform
-        stripeCustomerId
-        stripeSubscription
-        stripeSubscriptionId
-        endpointArn
-        email
-        username
-        birthdate
-        gender
-        address
-        phone
-        status
-        premium
-        gps {
-          lon
-          lat
-        }
-        photo
-        createdAt
-        updatedAt
-        userSettingId
-        userSuscriptionId
-        setting {
-          id
-          categories
-          radius
-          icon
-          settingOwnerId
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
       scannedCount
@@ -373,19 +197,10 @@ export const getUser = /* GraphQL */ `
           updatedAt
           userSettingId
           userSuscriptionId
-          _version
-          _deleted
-          _lastChangedAt
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -442,13 +257,7 @@ export const listUsers = /* GraphQL */ `
           settingOwnerId
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
       scannedCount
@@ -509,13 +318,7 @@ export const getUserByEmail = /* GraphQL */ `
           settingOwnerId
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
       scannedCount

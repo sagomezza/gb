@@ -41,7 +41,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/auth/gymbuddy-cloudformation-template.yml",
         "logicalId": "authgymbuddy"
       },
-      "lastPushTimeStamp": "2021-10-12T16:33:32.684Z",
+      "lastPushTimeStamp": "2021-10-14T19:36:53.015Z",
       "output": {
         "CreatedSNSRole": "arn:aws:iam::484188761906:role/snsf7341fea194102-staging",
         "UserPoolId": "us-east-1_n1te2WG7C",
@@ -76,8 +76,8 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apigymbuddy"
       },
-      "lastPushTimeStamp": "2021-10-14T19:09:27.956Z",
-      "lastPushDirHash": "Xw6TGu2SmSWZSxvDmEeHXb39d/8="
+      "lastPushTimeStamp": "2021-10-14T19:36:58.533Z",
+      "lastPushDirHash": "XLQs5pvHfFHED9fxRNr8qYvfDjM="
     }
   },
   "function": {
@@ -97,7 +97,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/postConfirmation-cloudformation-template.json",
         "logicalId": "functionpostConfirmation"
       },
-      "lastPushTimeStamp": "2021-10-12T16:33:32.711Z",
+      "lastPushTimeStamp": "2021-10-14T19:36:53.024Z",
       "output": {
         "Region": "us-east-1",
         "Arn": "arn:aws:lambda:us-east-1:484188761906:function:postConfirmation-staging",
