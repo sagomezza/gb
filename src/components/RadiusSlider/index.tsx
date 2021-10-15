@@ -64,7 +64,7 @@ export const RadiusSlider: React.FC<RadiusSliderProps> = ({
 
 RadiusSlider.defaultProps = {
   minimumValue: 1,
-  minimumTrackTintColor: theme.colors.primary,
+  minimumTrackTintColor: theme.colors.greenPrimary,
   maximumTrackTintColor: theme.colors.graySlider,
   style: {
     width: rs(327),

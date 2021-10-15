@@ -21,19 +21,21 @@ const differenceInDays = require('date-fns/differenceInDays');
 type DailyActivityParamList = {
   DailyActivity: {
     activityDate: Date;
+    day?: Date;
+    item?: object;
   };
 };
 
 type AddActivityScreenRouteProp = RouteProp<DailyActivityParamList, 'DailyActivity'>;
 
-interface IAddActivityScreenProps {
+export interface IAddActivityScreenProps {
   route: AddActivityScreenRouteProp;
 }
 
 const AddActivityScreen: React.FC<IAddActivityScreenProps> = ({
   route,
 }: IAddActivityScreenProps) => {
-  const { activityDate } = route.params;
+  const { activityDate, item } = route.params;
 
   const date = startOfDay(activityDate);
   const today = startOfDay(Date.now());
@@ -63,14 +65,14 @@ const AddActivityScreen: React.FC<IAddActivityScreenProps> = ({
         <AddActivityContainer>
           <Spacing size={20} />
           <View>
-            {titleDate()}
+            <TitleDate>{titleDate()}</TitleDate>
             <TextDate>{format(activityDate, 'eeee dd MMMM, yyyy')}</TextDate>
           </View>
           <Spacing />
           <View>
             <AddActivityTitle>Add Activity</AddActivityTitle>
             <Spacing />
-            <Form onSubmit={onSubmit} />
+            <Form item={item} onSubmit={onSubmit} />
           </View>
         </AddActivityContainer>
       </ScrollView>

@@ -18,7 +18,10 @@ import { IAddActivityFormProps, IFormValuesAddActivity } from './types';
 const format = require('date-fns/format');
 const sub = require('date-fns/sub');
 
-const AddActivityForm: React.FC<IAddActivityFormProps> = ({ onSubmit }: IAddActivityFormProps) => {
+const AddActivityForm: React.FC<IAddActivityFormProps> = ({
+  item,
+  onSubmit,
+}: IAddActivityFormProps) => {
   const { control, handleSubmit, setValue } = useForm({ mode: 'onBlur' });
 
   const [isTimePickerVisible, setTimePickerVisible] = useState(false);
@@ -69,7 +72,7 @@ const AddActivityForm: React.FC<IAddActivityFormProps> = ({ onSubmit }: IAddActi
         <SingleInputContainer>
           <Controller
             control={control}
-            defaultValue=""
+            defaultValue={item?.name ?? ''}
             name="title"
             render={({ field: { onChange, value } }) => (
               <Input
@@ -83,7 +86,7 @@ const AddActivityForm: React.FC<IAddActivityFormProps> = ({ onSubmit }: IAddActi
         <SingleInputContainer>
           <Controller
             control={control}
-            defaultValue=""
+            defaultValue={item?.ubication ?? ''}
             name="ubication"
             render={({ field: { onChange, value } }) => (
               <Input
@@ -97,7 +100,7 @@ const AddActivityForm: React.FC<IAddActivityFormProps> = ({ onSubmit }: IAddActi
         <MultilineInputContainer>
           <Controller
             control={control}
-            defaultValue=""
+            defaultValue={item?.description ?? ''}
             name="description"
             render={({ field: { onChange, value } }) => (
               <Input

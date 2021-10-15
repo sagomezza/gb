@@ -17,3 +17,6 @@ export { default as SnackBar } from './SnackBar';
 export { default as ActivityIndicator } from './ActivityIndicator';
 export { default as FormInputMask } from './FormInputMask';
 export { default as RadiusSlider } from './RadiusSlider';
+export { default as Switch } from './Switch';
+export { default as ProfilePrivacy } from './ProfilePrivacy';
+export { default as Text } from './Text';

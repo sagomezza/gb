@@ -49,6 +49,7 @@ const colors = {
   gray3: '#626262',
   gray4: '#C4C4C4',
   gray5: '#545454',
+  grayAgenda: '#D5D5D5',
   grayCalendarBorder: '#C8C7CC',
   lightBlue: '#E4EFF8',
   lighterGrey: '#E4E3E5',
@@ -64,11 +65,13 @@ const colors = {
   darkGreenNewMessage: '#16575D',
   darkGreenSecondary: '#3ea997',
   greenSecondary: '#3BC0A7',
+  greenSecondaryAgenda: '#17545B',
   chipBlue: '#F0F5FF',
   subtitleColorText: '#979797',
   graySlider: '#E0DFDF',
   primaryBlur: '#e0fcff',
   darkerBeige: '#F1F1F1',
+  dayNotSelected: '#9D9D9D',
 };
 
 export const theme = {
@@ -95,6 +98,19 @@ export const theme = {
   },
   menuActiveOption: {
     backgroundColor: 'rgba(0,174,255,0.15)',
+  },
+  text: {
+    darkGray: '#525252',
+    lightGray: '#797777',
+    red: '#E93613',
+    orange: '#3CC7AD',
+  },
+  switch: {
+    borderColor: '#CFCFCF',
+    backgroundActive: '#F1F1F1',
+    backgroundInactive: '#F1F1F1',
+    circleActiveColor: '#3CC7AD',
+    circleInActiveColor: '#3CC7AD',
   },
   onboardingScreen: {
     backgroundColor: colors.beige,

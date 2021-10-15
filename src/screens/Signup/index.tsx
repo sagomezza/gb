@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
-import Spacing from 'components/Spacing';
 import { navigator } from 'navigation';
+import routes from 'config/routes';
+import Spacing from 'components/Spacing';
 import { IAuthData } from 'store/types';
 import { useAuth } from 'service/authentication.service';
 import { useDispatch } from 'react-redux';
 import { AuthAmplifyDictionary } from 'diccionaries/auth.diccionaries';
 import { SnackBar } from 'components';
-import routes from 'config/routes';
 import { saveUserInfo, toggleAuthLoader } from 'store/auth/authActions';
 import {
   BackButtonContainer,
