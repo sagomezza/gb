@@ -9,3 +9,4 @@ src/graphql
 src/lib
 scr/API.ts
 scr/aws-exports.js
+/src/API.ts

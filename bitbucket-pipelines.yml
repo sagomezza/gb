@@ -7,16 +7,15 @@ image: node:10.15.3
 
 pipelines:
   default:
-    - parallel:
-        - step:
-            name: Build and Lint
-            caches:
-              - node
-            script:
-              - npm install
-        - step:
-            name: Code linting
-            script:
-              - npm run lint
-            caches:
-              - node
+    - step:
+        name: Build and Lint
+        caches:
+          - node
+        script:
+          - npm install
+    - step:
+        name: Code linting
+        script:
+          - npm run lint
+        caches:
+          - node
