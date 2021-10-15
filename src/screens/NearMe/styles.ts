@@ -1,5 +1,5 @@
 import { Platform } from 'react-native';
-import { MarkerAnimated } from 'react-native-maps';
+import { Animated, MarkerAnimated } from 'react-native-maps';
 import styled from 'styled-components/native';
 import { rs } from 'utils/dimensions';
 
@@ -24,4 +24,8 @@ export const NearMeContainer = styled.View`
 
 export const MarkerAnimatedStyled = styled(MarkerAnimated)`
   z-index: -10;
+`;
+
+export const MapStyled = styled(Animated)`
+  flex: 1;
 `;

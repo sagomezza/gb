@@ -69,18 +69,20 @@ export type AppState = {
 };
 
 export interface Spot {
-  address: string;
+  address?: string;
   age?: number;
-  coordinates: { latitude: number; longitude: number };
-  email: string;
+  coordinates?: { latitude: number; longitude: number };
+  email?: string;
   gender?: string;
+  geometry?: { location: PlaceLocation };
   id: number;
   interests?: string[];
   location?: string;
   name: string;
-  phone: string;
-  picture: string;
-  type: string;
+  phone?: string;
+  picture?: string;
+  place_id?: string;
+  type?: string;
 }
 
 interface PlaceLocation {

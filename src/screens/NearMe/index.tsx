@@ -1,9 +1,12 @@
 import Spacing from 'components/Spacing';
 import React, { useEffect, useState } from 'react';
-import { Place, Spot } from 'store/types';
-import { useDispatch } from 'react-redux';
-import { resetActiveSpot, setActiveSpot } from 'store/spots/spotsActions';
-import { LatLng, Region } from 'react-native-maps';
+import { LatLng, PROVIDER_GOOGLE, Region } from 'react-native-maps';
+import {
+  LATITUDE_DEFAULT,
+  LATITUDE_DELTA,
+  LONGITUDE_DEFAULT,
+  LONGITUDE_DELTA,
+} from 'screens/NearMe/utils/constants';
 import { useRequestLocation } from 'hooks/useRequestLocation';
 import { SafeAreaView } from 'screens/styles';
 import { Header } from 'components';
@@ -11,7 +14,7 @@ import routes from 'config/routes';
 import { mapData } from './utils/data-example';
 import Map from './components/Map';
 import { StyledMapView } from './components/Map/styles';
-import { MapContainer, NearMeContainer, SearchContainer } from './styles';
+import { MapContainer, MapStyled, NearMeContainer, SearchContainer } from './styles';
 import GooglePlacesInput from './components/GooglePlacesAutocomplete';
 
 const NearMeScreen: React.FC = () => {
@@ -20,23 +23,10 @@ const NearMeScreen: React.FC = () => {
   const [placeLocation, setPlaceLocation] = useState<LatLng | any>();
   const [regionCoordinates, setRegionCoordinates] = useState<Region | any>();
   const radius = 5000;
-  const dispatch = useDispatch();
 
   const getMapRef = (ref: any) => {
     setMapRef(ref);
   };
-
-  const onMarkerPress = (spot: Spot | Place) => {
-    dispatch(setActiveSpot(spot));
-  };
-  const unSelectSpot = () => {
-    dispatch(resetActiveSpot());
-  };
-
-  useEffect(() => {
-    dispatch(resetActiveSpot());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     setRegionCoordinates({ ...currentLocation, ...placeLocation?.location });
@@ -56,18 +46,26 @@ const NearMeScreen: React.FC = () => {
           <GooglePlacesInput radius={radius} setLocation={setPlaceLocation} />
         </SearchContainer>
         <Spacing size={70} />
-        {!!regionCoordinates && !!currentLocation && currentLocation.latitude !== 0 && (
-          <MapContainer>
+        <MapContainer>
+          {!!regionCoordinates && !!currentLocation && currentLocation.latitude !== 0 ? (
             <Map
               getMapRef={getMapRef}
-              location={currentLocation}
+              location={mapData.location}
               radius={radius}
               spots={mapData.spots}
-              unSelectSpot={unSelectSpot}
-              onMarkerPress={onMarkerPress}
             />
-          </MapContainer>
-        )}
+          ) : (
+            <MapStyled
+              initialRegion={{
+                latitude: LATITUDE_DEFAULT,
+                longitude: LONGITUDE_DEFAULT,
+                latitudeDelta: LATITUDE_DELTA,
+                longitudeDelta: LONGITUDE_DELTA,
+              }}
+              provider={PROVIDER_GOOGLE}
+            />
+          )}
+        </MapContainer>
       </NearMeContainer>
     </SafeAreaView>
   );

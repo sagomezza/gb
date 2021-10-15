@@ -6,7 +6,7 @@ import GymMarker from '../../../../../assets/imgs/GymSpot.svg';
 
 export interface IMarkerProps {
   coordinates: { latitude: number; longitude: number };
-  onMarkerPress: (spot: Spot) => void;
+  onMarkerPress: () => void;
   spot: Spot;
 }
 
@@ -18,7 +18,7 @@ const markerDisplay = (spot) => {
 };
 
 export default ({ coordinates, onMarkerPress, spot }: IMarkerProps): ReactElement => (
-  <MarkerAnimated coordinate={coordinates} onPress={() => onMarkerPress(spot)}>
+  <MarkerAnimated key={spot.id} coordinate={coordinates} onPress={() => onMarkerPress()}>
     {markerDisplay(spot)}
   </MarkerAnimated>
 );

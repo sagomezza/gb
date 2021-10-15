@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react';
 import { MarkerAnimatedStyled } from 'screens/NearMe/styles';
-import { Place } from 'store/types';
+import { Spot } from 'store/types';
 import PlaceMarker from '../../../../../assets/imgs/PlaceMarker.svg';
 
 export interface IPlaceMarkerProps {
-  onMarkerPress: (spot: Place) => void;
-  place: Place;
+  onMarkerPress: () => void;
+  place: Spot;
 }
 
 export default ({ onMarkerPress, place }: IPlaceMarkerProps): ReactElement => {
@@ -16,7 +16,7 @@ export default ({ onMarkerPress, place }: IPlaceMarkerProps): ReactElement => {
     longitude: lng,
   };
   return (
-    <MarkerAnimatedStyled coordinate={coordinates} onPress={() => onMarkerPress(place)}>
+    <MarkerAnimatedStyled coordinate={coordinates} onPress={() => onMarkerPress()}>
       <PlaceMarker height={50} width={50} />
     </MarkerAnimatedStyled>
   );

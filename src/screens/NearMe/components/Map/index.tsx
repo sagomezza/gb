@@ -2,11 +2,8 @@
 import React, { ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ViewStyle } from 'react-native';
 import MapViewDirections from 'react-native-maps-directions';
-import { AnimatedRegion, PROVIDER_GOOGLE, MapStyleElement, MapEvent } from 'react-native-maps';
+import { AnimatedRegion, PROVIDER_GOOGLE, MapStyleElement } from 'react-native-maps';
 import { GOOGLE_MAPS_API_KEY } from '@env';
-import { resetActiveSpot } from 'store/spots/spotsActions';
-import { useSelector, useDispatch } from 'react-redux';
-import { getActiveSpot } from 'store/spots/spotsSelectors';
 import { Place, Spot } from 'store/types';
 import {
   LATITUDE_DELTA,
@@ -25,28 +22,40 @@ interface IMapProps {
   getMapRef: (ref: any) => void;
   location: { latitude: number; longitude: number };
   mapStyles?: MapStyleElement[] | undefined;
-  onMarkerPress: (spot: Spot | Place) => void;
   radius?: number;
   spots: Spot[];
-  unSelectSpot: (event: MapEvent) => void;
 }
+
+const activeSpotInitialState: Spot | Place = {
+  place_id: '',
+  address: '',
+  age: 0,
+  coordinates: { latitude: 0, longitude: 0 },
+  email: '',
+  gender: '',
+  geometry: { location: { lat: 0, lng: 0 } },
+  id: 0,
+  interests: [],
+  location: '',
+  name: '',
+  phone: '',
+  picture: '',
+  type: '',
+};
 
 const Map = ({
   containerStyles,
   getMapRef,
   location,
   mapStyles,
-  onMarkerPress,
   radius = 5000,
   spots,
-  unSelectSpot,
 }: IMapProps): ReactElement => {
   const url = `${URL_MAPS_NEARBY_SEARCH}location=${location.latitude},${location.longitude}&radius=${radius}&type=gym&key=${GOOGLE_MAPS_API_KEY}`;
-  const activeSpot = useSelector(getActiveSpot);
+  const [activeSpot, setActiveSpot] = useState<Spot>(activeSpotInitialState);
   const [distance, setDistance] = useState(0);
   const [duration, setDuration] = useState(0);
   const [places, setPlaces] = useState([]);
-  const dispatch = useDispatch();
   const mapRef = useRef<typeof StyledMapView>(null);
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const snapPoints = useMemo(() => ['25%', '40%'], []);
@@ -64,14 +73,22 @@ const Map = ({
     getMapRef(mapRef);
   }, [mapRef, getMapRef]);
 
+  useEffect(() => {
+    searchRoute();
+  }, [activeSpot]);
+
+  const onMarkerPress = (spot: Spot) => {
+    setActiveSpot(spot);
+  };
+
   const showBottomSheet = useCallback(() => {
     bottomSheetModalRef?.current?.present();
   }, []);
 
-  const closeBottomSheet = () => {
-    dispatch(resetActiveSpot());
+  const closeBottomSheet = useCallback(() => {
+    setActiveSpot(activeSpotInitialState);
     bottomSheetModalRef?.current?.dismiss();
-  };
+  }, []);
 
   const renderMarkers = (spotsData: Spot[]) =>
     spotsData.map((spot: Spot) => (
@@ -79,20 +96,21 @@ const Map = ({
         key={spot.id}
         coordinates={spot.coordinates}
         spot={spot}
-        onMarkerPress={(pressedSpot) => {
-          onMarkerPress(pressedSpot);
-          showBottomSheet();
+        onMarkerPress={() => {
+          bottomSheetModalRef?.current?.dismiss();
+          setActiveSpot(spot);
+          if (spot.type === 'Gym') showBottomSheet();
         }}
       />
     ));
 
-  const renderPlacesMarkers = (places: Place[]) =>
-    places.map((place: Place) => (
+  const renderPlacesMarkers = (places: Spot[]) =>
+    places.map((place: Spot) => (
       <PlaceMarker
         key={place.place_id}
         place={place}
-        onMarkerPress={(pressedPlace) => {
-          onMarkerPress(pressedPlace);
+        onMarkerPress={() => {
+          onMarkerPress(place);
           showBottomSheet();
         }}
       />
@@ -170,8 +188,7 @@ const Map = ({
           provider={PROVIDER_GOOGLE}
           onPress={(event) => {
             if (event.nativeEvent.action !== 'marker-press') {
-              unSelectSpot(event);
-              bottomSheetModalRef.current.dismiss();
+              closeBottomSheet();
             }
           }}
         >
@@ -187,7 +204,7 @@ const Map = ({
               <UserCard item={activeSpot} />
             </MarkerStyled>
           )}
-          {searchRoute()}
+          {(activeSpot.place_id || activeSpot.type === 'Gym') && searchRoute()}
         </StyledMapView>
 
         <BottomSheetModal ref={bottomSheetModalRef} index={1} snapPoints={snapPoints}>
