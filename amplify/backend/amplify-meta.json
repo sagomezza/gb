@@ -47,7 +47,7 @@
         "IdentityPoolName": "gymbuddyIdentityPool__staging",
         "UserPoolName": "gymbuddyUserPool"
       },
-      "lastPushTimeStamp": "2021-10-15T14:40:27.100Z",
+      "lastPushTimeStamp": "2021-10-15T22:52:06.859Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/auth/gymbuddy-cloudformation-template.yml",
         "logicalId": "authgymbuddy"
@@ -71,11 +71,12 @@
         "GraphQLAPIIdOutput": "nbm47hodufgmtn5bs3u32l4mja",
         "GraphQLAPIEndpointOutput": "https://np3zt62q4ffhvcilsgcx5na5ku.appsync-api.us-east-1.amazonaws.com/graphql"
       },
-      "lastPushTimeStamp": "2021-10-15T14:40:27.101Z",
+      "lastPushTimeStamp": "2021-10-15T22:52:06.860Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apigymbuddy"
-      }
+      },
+      "lastPushDirHash": "5d9vYaWnhi0Ry511JYKKXx4ecTs="
     }
   },
   "function": {
@@ -89,15 +90,20 @@
         "Name": "postConfirmation-staging",
         "LambdaExecutionRole": "gymbuddydevLambdaRole6aeae715-staging"
       },
-      "lastPushTimeStamp": "2021-10-15T14:40:27.101Z",
+      "lastPushTimeStamp": "2021-10-15T22:52:06.861Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/postConfirmation-cloudformation-template.json",
         "logicalId": "functionpostConfirmation"
       },
       "s3Bucket": {
         "deploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",
-        "s3Key": "amplify-builds/postConfirmation-72745a4155664b304a65-build.zip"
-      }
+        "s3Key": "amplify-builds/postConfirmation-5a643263762b32425a77-build.zip"
+      },
+      "lastBuildTimeStamp": "2021-10-15T20:48:27.741Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2021-10-15T20:48:30.333Z",
+      "distZipFilename": "postConfirmation-5a643263762b32425a77-build.zip",
+      "lastPushDirHash": "gL/3MNBjNaoP+yyk2SK+e5obSyw="
     }
   }
 }

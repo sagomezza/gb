@@ -18,6 +18,36 @@ type Category
   image: S3Object
   description: String
 }
+
+type Gym
+  @model(subscriptions: { level: off })
+  @auth(
+    rules: [
+      { allow: private, provider: userPools, operations: [read] }
+      { allow: owner, provider: userPools, operations: [read], identityClaim: "sub" }
+      {
+        allow: groups
+        provider: userPools
+        groups: ["Admin"]
+        operations: [create, update, delete, read]
+      }
+    ]
+  )
+  @key(fields: ["id"]) {
+  id: ID!
+  name: String!
+  description: String
+  address: String
+  gps: GPS
+  pictures: [String]
+  available: Boolean
+  status: String
+  likeCount: Int
+  averageRating: Float
+  gymOwnerId: ID
+  owner: User @connection(name: "GymOwner")
+}
+
 type S3Object {
   bucket: String!
   region: String!
@@ -32,10 +62,35 @@ input GPSInput {
   lon: Float!
   lat: Float!
 }
-
 input GPSQueryInput {
   gps: GPSInput!
   radius: Float!
+}
+
+type Notification
+  @model(subscriptions: { level: off })
+  @auth(
+    rules: [
+      { allow: private, provider: userPools, operations: [read] }
+      {
+        allow: groups
+        provider: userPools
+        groups: ["Admin"]
+        operations: [create, update, delete, read]
+      }
+    ]
+  )
+  @key(
+    name: "notificationsByEndpoint"
+    fields: ["endpointArn"]
+    queryField: "getNotificationsByEndpoint"
+  ) {
+  id: ID!
+  message: String
+  endpointArn: String!
+  subject: String
+  notificationOwnerId: ID
+  owner: User @connection(name: "NotificationOwner")
 }
 
 type Setting
@@ -109,6 +164,7 @@ type User
   phone: String
   status: Boolean
   premium: Boolean
+  trainer: Boolean
   gps: GPS
   photo: String
   createdAt: AWSDateTime
@@ -116,6 +172,8 @@ type User
   userSettingId: ID!
   userSuscriptionId: ID
   setting: Setting @connection(name: "UserSetting")
+  gyms: [Gym] @connection(name: "GymOwner")
+  notification: [Notification] @connection(name: "NotificationOwner")
 }
 
 enum UserType {
@@ -136,14 +194,18 @@ type ModelSettingConnection {
   scannedCount: Int
   count: Int
 }
+type ModelNotificationConnection {
+  items: [Notification]
+  nextToken: String
+  scannedCount: Int
+  count: Int
+}
 
 # type Query {
-#   findTools(input: FindToolsInput!): SearchableToolConnection
-#     @aws_iam
-#     @aws_cognito_user_pools
+#   findGyms(input: FindGymsInput!): SearchableGymConnection @aws_iam @aws_cognito_user_pools
 # }
 
-# input FindToolsInput {
+# input FindGymsInput {
 #   byGPS: GPSQueryInput
 #   query: String
 #   limit: Int
@@ -151,8 +213,8 @@ type ModelSettingConnection {
 #   from: Int
 # }
 
-# type SearchableToolConnection @aws_iam @aws_cognito_user_pools {
-#   items: [Tool]
+# type SearchableGymConnection @aws_iam @aws_cognito_user_pools {
+#   items: [Gym]
 #   nextToken: String
 #   total: Int
 #   scannedCount: Int

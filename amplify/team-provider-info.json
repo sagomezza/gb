@@ -18,7 +18,7 @@
       "function": {
         "postConfirmation": {
           "deploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",
-          "s3Key": "amplify-builds/postConfirmation-72745a4155664b304a65-build.zip"
+          "s3Key": "amplify-builds/postConfirmation-5a643263762b32425a77-build.zip"
         }
       }
     }
