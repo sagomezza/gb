@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import React, { useState, useCallback, useEffect } from 'react';
 import { GiftedChat, Send } from 'react-native-gifted-chat';
 import { RouteProp } from '@react-navigation/native';

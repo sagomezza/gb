@@ -1,10 +1,5 @@
-export interface IFormValuesSignup {
-  email: string;
-  name: string;
-  password: string;
-  username: string;
-}
+import { IAuthData } from 'store/types';
 
 export interface ISignupFormProps {
-  onSignup: (data: IFormValuesSignup) => void;
+  onSignup: (data: IAuthData) => void;
 }

@@ -3,6 +3,8 @@ import { StatusBar } from 'react-native';
 import { navigator } from 'navigation';
 import { xorBy } from 'lodash';
 import routes from 'config/routes';
+import { useSelector } from 'react-redux';
+import { getEditProfileState } from 'store/app/appSelectors';
 import { Data } from './example-data';
 import {
   ButtonSignup,
@@ -14,11 +16,17 @@ import {
 
 const OnboardingSkillsScreen: React.FC = () => {
   const [selectedTeams, setSelectedTeams] = useState([]);
-  const { goToPage } = navigator();
+  const { goBack, goToPage } = navigator();
+  const editProfileState = useSelector(getEditProfileState);
 
   function onMultiChange() {
     return (item) => setSelectedTeams(xorBy(selectedTeams, [item], 'id'));
   }
+
+  const handleOnPress = () => {
+    if (editProfileState) goBack();
+    goToPage(routes.MAIN);
+  };
 
   return (
     <>
@@ -38,7 +46,7 @@ const OnboardingSkillsScreen: React.FC = () => {
             onTapClose={onMultiChange()}
           />
         </SelectContainer>
-        <ButtonSignup onPress={() => goToPage(routes.MAIN)}>Ready</ButtonSignup>
+        <ButtonSignup onPress={handleOnPress}>Ready</ButtonSignup>
       </OnboardingContainer>
     </>
   );

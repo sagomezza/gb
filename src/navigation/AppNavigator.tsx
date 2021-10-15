@@ -1,28 +1,54 @@
 // Libs
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import routes from 'config/routes';
-import { GoPremiumScreen, OnboardingScreen, PaymentScreen, SearchScreen } from '../screens';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserToken } from 'store/auth/authSelectors';
+import { useAuth } from 'service/authentication.service';
+import { saveUserInfo, saveUserToken } from 'store/auth/authActions';
+import RNBootSplash from 'react-native-bootsplash';
+import MainStackNavigator from './MainStackNavigator';
+import AuthNavigator from './AuthNavigator';
 
-import AuthStackNavigator from './AuthNavigator';
-import MainStackNavigator from './MainNavigator';
-import MessagesNavigator from './MessagesNavigator';
+const AppNavigator: React.FC = (): React.ReactElement => {
+  const dispatch = useDispatch();
+  const token = useSelector(getUserToken);
+  const { getCurrentSessionUser } = useAuth();
+  const [logged, setLogged] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
-const Stack = createStackNavigator();
+  useEffect(() => {
+    const init = async () => {
+      const session = await getCurrentSessionUser();
+      if (session?.accessToken?.jwtToken) {
+        setLogged(true);
+        await dispatch(saveUserInfo({ email: session.idToken?.payload?.email }));
+        await dispatch(
+          saveUserToken({
+            token: `Bearer ${session?.accessToken?.jwtToken}`,
+            userId: session?.idToken?.payload?.sub,
+          }),
+        );
+      } else {
+        setLogged(false);
+      }
+      setLoading(false);
+    };
 
-const AppNavigator: React.FC = (): React.ReactElement => (
-  <NavigationContainer>
-    <Stack.Navigator headerMode="none" initialRouteName={routes.AUTH}>
-      <Stack.Screen component={AuthStackNavigator} name={routes.AUTH} />
-      <Stack.Screen component={GoPremiumScreen} name={routes.GOPREMIUM} />
-      <Stack.Screen component={MainStackNavigator} name={routes.MAIN} />
-      <Stack.Screen component={MessagesNavigator} name={routes.MESSAGES} />
-      <Stack.Screen component={OnboardingScreen} name={routes.ONBOARDING} />
-      <Stack.Screen component={PaymentScreen} name={routes.PAYMENT} />
-      <Stack.Screen component={SearchScreen} name={routes.SEARCH} />
-    </Stack.Navigator>
-  </NavigationContainer>
-);
+    init().finally(() => {
+      RNBootSplash.hide({ fade: true });
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token]);
+
+  return (
+    <>
+      {!loading && (
+        <NavigationContainer>
+          {logged ? <MainStackNavigator /> : <AuthNavigator />}
+        </NavigationContainer>
+      )}
+    </>
+  );
+};
 
 export default AppNavigator;

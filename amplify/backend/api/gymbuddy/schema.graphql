@@ -1,9 +1,28 @@
-type Todo @model {
+type Category
+  @model(subscriptions: { level: off })
+  @key(name: "categoryByName", fields: ["name"], queryField: "getCategoryByName")
+  @auth(
+    rules: [
+      { allow: private, provider: userPools, operations: [read] }
+      {
+        allow: groups
+        provider: userPools
+        groups: ["Admin"]
+        operations: [create, update, delete, read]
+      }
+    ]
+  ) {
   id: ID!
-  name: String!
+  name: String
+  icon: String
+  image: S3Object
   description: String
 }
-
+type S3Object {
+  bucket: String!
+  region: String!
+  key: String!
+}
 type GPS {
   lon: Float
   lat: Float
@@ -23,11 +42,7 @@ type Setting
   @model(subscriptions: { level: off })
   @auth(
     rules: [
-      {
-        allow: private
-        provider: userPools
-        operations: [create, update, delete, read]
-      }
+      { allow: private, provider: userPools, operations: [create, update, delete, read] }
       {
         allow: owner
         provider: userPools

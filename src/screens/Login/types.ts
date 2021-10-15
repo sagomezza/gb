@@ -1,9 +1,6 @@
-export interface IFormValuesLogin {
-  email: string;
-  password: string;
-}
+import { IAuthData } from 'store/types';
 
 export interface ILoginFormProps {
-  onLogin: (data: IFormValuesLogin) => void;
+  onLogin: (data: IAuthData) => void;
   onPressForgot: () => void;
 }

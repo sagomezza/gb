@@ -2,42 +2,60 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createTodo = /* GraphQL */ `
-  mutation CreateTodo(
-    $input: CreateTodoInput!
-    $condition: ModelTodoConditionInput
+export const createCategory = /* GraphQL */ `
+  mutation CreateCategory(
+    $input: CreateCategoryInput!
+    $condition: ModelCategoryConditionInput
   ) {
-    createTodo(input: $input, condition: $condition) {
+    createCategory(input: $input, condition: $condition) {
       id
       name
+      icon
+      image {
+        bucket
+        region
+        key
+      }
       description
       createdAt
       updatedAt
     }
   }
 `;
-export const updateTodo = /* GraphQL */ `
-  mutation UpdateTodo(
-    $input: UpdateTodoInput!
-    $condition: ModelTodoConditionInput
+export const updateCategory = /* GraphQL */ `
+  mutation UpdateCategory(
+    $input: UpdateCategoryInput!
+    $condition: ModelCategoryConditionInput
   ) {
-    updateTodo(input: $input, condition: $condition) {
+    updateCategory(input: $input, condition: $condition) {
       id
       name
+      icon
+      image {
+        bucket
+        region
+        key
+      }
       description
       createdAt
       updatedAt
     }
   }
 `;
-export const deleteTodo = /* GraphQL */ `
-  mutation DeleteTodo(
-    $input: DeleteTodoInput!
-    $condition: ModelTodoConditionInput
+export const deleteCategory = /* GraphQL */ `
+  mutation DeleteCategory(
+    $input: DeleteCategoryInput!
+    $condition: ModelCategoryConditionInput
   ) {
-    deleteTodo(input: $input, condition: $condition) {
+    deleteCategory(input: $input, condition: $condition) {
       id
       name
+      icon
+      image {
+        bucket
+        region
+        key
+      }
       description
       createdAt
       updatedAt

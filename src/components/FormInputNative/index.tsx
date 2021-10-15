@@ -71,6 +71,7 @@ export default ({
   defaultValue = '',
   error = '',
   errorText = '',
+  inputStyle = {},
   label = '',
   labelProps = defaultLabelProps,
   name,
@@ -100,7 +101,7 @@ export default ({
               {...props}
               placeholder={placeholder}
               placeholderTextColor={theme.colors.grayPlaceholder}
-              style={[multiline ? styles.multiline : {}]}
+              style={[multiline ? styles.multiline : inputStyle]}
             />
           )}
           returnKeyType={returnKeyType}

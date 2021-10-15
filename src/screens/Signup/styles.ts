@@ -115,3 +115,13 @@ export const ButtonSignup = styled(OutlinedButton).attrs(() => ({
   justify-content: center;
   margin-horizontal: ${rs(10)}px;
 `;
+
+export const BackButtonContainer = styled.View`
+  align-items: center;
+  background-color: transparent;
+  flex-direction: row;
+  left: ${rs(32)}px;
+  position: absolute;
+  top: ${rs(50)}px;
+  z-index: 5;
+`;

@@ -66,6 +66,9 @@ const colors = {
   greenSecondary: '#3BC0A7',
   chipBlue: '#F0F5FF',
   subtitleColorText: '#979797',
+  graySlider: '#E0DFDF',
+  primaryBlur: '#e0fcff',
+  darkerBeige: '#F1F1F1',
 };
 
 export const theme = {
@@ -100,6 +103,11 @@ export const theme = {
     descriptionSize: 12,
     titleColor: colors.primary,
     titleSize: 40,
+  },
+  codeField: {
+    background: '#F4F4F4',
+    label: '#8E8E8E',
+    border: '#E4E4E4',
   },
 };
 

@@ -2,18 +2,27 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateTodoInput = {
+export type CreateCategoryInput = {
   id?: string | null,
-  name: string,
+  name?: string | null,
+  icon?: string | null,
+  image?: S3ObjectInput | null,
   description?: string | null,
 };
 
-export type ModelTodoConditionInput = {
+export type S3ObjectInput = {
+  bucket: string,
+  region: string,
+  key: string,
+};
+
+export type ModelCategoryConditionInput = {
   name?: ModelStringInput | null,
+  icon?: ModelStringInput | null,
   description?: ModelStringInput | null,
-  and?: Array< ModelTodoConditionInput | null > | null,
-  or?: Array< ModelTodoConditionInput | null > | null,
-  not?: ModelTodoConditionInput | null,
+  and?: Array< ModelCategoryConditionInput | null > | null,
+  or?: Array< ModelCategoryConditionInput | null > | null,
+  not?: ModelCategoryConditionInput | null,
 };
 
 export type ModelStringInput = {
@@ -56,22 +65,33 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type Todo = {
-  __typename: "Todo",
+export type Category = {
+  __typename: "Category",
   id: string,
-  name: string,
+  name?: string | null,
+  icon?: string | null,
+  image?: S3Object | null,
   description?: string | null,
   createdAt: string,
   updatedAt: string,
 };
 
-export type UpdateTodoInput = {
+export type S3Object = {
+  __typename: "S3Object",
+  bucket: string,
+  region: string,
+  key: string,
+};
+
+export type UpdateCategoryInput = {
   id: string,
   name?: string | null,
+  icon?: string | null,
+  image?: S3ObjectInput | null,
   description?: string | null,
 };
 
-export type DeleteTodoInput = {
+export type DeleteCategoryInput = {
   id: string,
 };
 
@@ -303,6 +323,86 @@ export type DeleteUserInput = {
   id: string,
 };
 
+<<<<<<< HEAD
+export type ModelCategoryFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  icon?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  and?: Array< ModelCategoryFilterInput | null > | null,
+  or?: Array< ModelCategoryFilterInput | null > | null,
+  not?: ModelCategoryFilterInput | null,
+};
+
+export type ModelCategoryConnection = {
+  __typename: "ModelCategoryConnection",
+  items?:  Array<Category | null > | null,
+  nextToken?: string | null,
+};
+
+export type ModelSettingFilterInput = {
+  id?: ModelIDInput | null,
+  categories?: ModelStringInput | null,
+  radius?: ModelFloatInput | null,
+  icon?: ModelStringInput | null,
+  settingOwnerId?: ModelIDInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelSettingFilterInput | null > | null,
+  or?: Array< ModelSettingFilterInput | null > | null,
+  not?: ModelSettingFilterInput | null,
+};
+
+export type ModelSettingConnection = {
+  __typename: "ModelSettingConnection",
+  items?:  Array<Setting | null > | null,
+  nextToken?: string | null,
+  scannedCount?: number | null,
+  count?: number | null,
+};
+
+export type ModelUserFilterInput = {
+  id?: ModelIDInput | null,
+  owner?: ModelStringInput | null,
+  userGroup?: ModelUserTypeInput | null,
+  name?: ModelStringInput | null,
+  business?: ModelStringInput | null,
+  deviceId?: ModelStringInput | null,
+  deviceToken?: ModelStringInput | null,
+  platform?: ModelStringInput | null,
+  stripeCustomerId?: ModelStringInput | null,
+  stripeSubscription?: ModelStringInput | null,
+  stripeSubscriptionId?: ModelStringInput | null,
+  endpointArn?: ModelStringInput | null,
+  email?: ModelStringInput | null,
+  username?: ModelStringInput | null,
+  birthdate?: ModelStringInput | null,
+  gender?: ModelStringInput | null,
+  address?: ModelStringInput | null,
+  phone?: ModelStringInput | null,
+  status?: ModelBooleanInput | null,
+  premium?: ModelBooleanInput | null,
+  photo?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  userSettingId?: ModelIDInput | null,
+  userSuscriptionId?: ModelIDInput | null,
+  and?: Array< ModelUserFilterInput | null > | null,
+  or?: Array< ModelUserFilterInput | null > | null,
+  not?: ModelUserFilterInput | null,
+};
+
+export enum ModelSortDirection {
+  ASC = "ASC",
+  DESC = "DESC",
+}
+
+
+export type ModelUserConnection = {
+  __typename: "ModelUserConnection",
+  items?:  Array<User | null > | null,
+  nextToken?: string | null,
+=======
 export type ModelTodoFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
@@ -380,52 +480,74 @@ export type ModelUserConnection = {
   __typename: "ModelUserConnection",
   items?:  Array<User | null > | null,
   nextToken?: string | null,
+>>>>>>> develop
   scannedCount?: number | null,
   count?: number | null,
 };
 
-export type CreateTodoMutationVariables = {
-  input: CreateTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type CreateCategoryMutationVariables = {
+  input: CreateCategoryInput,
+  condition?: ModelCategoryConditionInput | null,
 };
 
-export type CreateTodoMutation = {
-  createTodo?:  {
-    __typename: "Todo",
+export type CreateCategoryMutation = {
+  createCategory?:  {
+    __typename: "Category",
     id: string,
-    name: string,
+    name?: string | null,
+    icon?: string | null,
+    image?:  {
+      __typename: "S3Object",
+      bucket: string,
+      region: string,
+      key: string,
+    } | null,
     description?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type UpdateTodoMutationVariables = {
-  input: UpdateTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type UpdateCategoryMutationVariables = {
+  input: UpdateCategoryInput,
+  condition?: ModelCategoryConditionInput | null,
 };
 
-export type UpdateTodoMutation = {
-  updateTodo?:  {
-    __typename: "Todo",
+export type UpdateCategoryMutation = {
+  updateCategory?:  {
+    __typename: "Category",
     id: string,
-    name: string,
+    name?: string | null,
+    icon?: string | null,
+    image?:  {
+      __typename: "S3Object",
+      bucket: string,
+      region: string,
+      key: string,
+    } | null,
     description?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type DeleteTodoMutationVariables = {
-  input: DeleteTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type DeleteCategoryMutationVariables = {
+  input: DeleteCategoryInput,
+  condition?: ModelCategoryConditionInput | null,
 };
 
-export type DeleteTodoMutation = {
-  deleteTodo?:  {
-    __typename: "Todo",
+export type DeleteCategoryMutation = {
+  deleteCategory?:  {
+    __typename: "Category",
     id: string,
-    name: string,
+    name?: string | null,
+    icon?: string | null,
+    image?:  {
+      __typename: "S3Object",
+      bucket: string,
+      region: string,
+      key: string,
+    } | null,
     description?: string | null,
     createdAt: string,
     updatedAt: string,
@@ -852,33 +974,593 @@ export type DeleteUserMutation = {
   } | null,
 };
 
-export type GetTodoQueryVariables = {
+export type GetCategoryQueryVariables = {
   id: string,
 };
 
-export type GetTodoQuery = {
-  getTodo?:  {
-    __typename: "Todo",
+export type GetCategoryQuery = {
+  getCategory?:  {
+    __typename: "Category",
     id: string,
-    name: string,
+    name?: string | null,
+    icon?: string | null,
+    image?:  {
+      __typename: "S3Object",
+      bucket: string,
+      region: string,
+      key: string,
+    } | null,
     description?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type ListTodosQueryVariables = {
-  filter?: ModelTodoFilterInput | null,
+<<<<<<< HEAD
+export type ListCategorysQueryVariables = {
+  filter?: ModelCategoryFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListTodosQuery = {
-  listTodos?:  {
-    __typename: "ModelTodoConnection",
+export type ListCategorysQuery = {
+  listCategorys?:  {
+    __typename: "ModelCategoryConnection",
     items?:  Array< {
-      __typename: "Todo",
+      __typename: "Category",
       id: string,
+      name?: string | null,
+      icon?: string | null,
+      image?:  {
+        __typename: "S3Object",
+        bucket: string,
+        region: string,
+        key: string,
+      } | null,
+      description?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null > | null,
+    nextToken?: string | null,
+=======
+export type CreateSettingMutationVariables = {
+  input: CreateSettingInput,
+  condition?: ModelSettingConditionInput | null,
+};
+
+export type CreateSettingMutation = {
+  createSetting?:  {
+    __typename: "Setting",
+    id: string,
+    categories?: Array< string | null > | null,
+    radius?: number | null,
+    icon?: string | null,
+    settingOwnerId: string,
+    owner?:  {
+      __typename: "User",
+      id: string,
+      owner?: string | null,
+      userGroup?: UserType | null,
+      name: string,
+      business?: string | null,
+      deviceId?: string | null,
+      deviceToken?: string | null,
+      platform?: string | null,
+      stripeCustomerId?: string | null,
+      stripeSubscription?: string | null,
+      stripeSubscriptionId?: string | null,
+      endpointArn?: string | null,
+      email: string,
+      username?: string | null,
+      birthdate?: string | null,
+      gender?: string | null,
+      address?: string | null,
+      phone?: string | null,
+      status?: boolean | null,
+      premium?: boolean | null,
+      gps?:  {
+        __typename: "GPS",
+        lon?: number | null,
+        lat?: number | null,
+      } | null,
+      photo?: string | null,
+      createdAt?: string | null,
+      updatedAt?: string | null,
+      userSettingId: string,
+      userSuscriptionId?: string | null,
+      setting?:  {
+        __typename: "Setting",
+        id: string,
+        categories?: Array< string | null > | null,
+        radius?: number | null,
+        icon?: string | null,
+        settingOwnerId: string,
+        createdAt?: string | null,
+        updatedAt?: string | null,
+      } | null,
+    } | null,
+    createdAt?: string | null,
+    updatedAt?: string | null,
+  } | null,
+};
+
+export type UpdateSettingMutationVariables = {
+  input: UpdateSettingInput,
+  condition?: ModelSettingConditionInput | null,
+};
+
+export type UpdateSettingMutation = {
+  updateSetting?:  {
+    __typename: "Setting",
+    id: string,
+    categories?: Array< string | null > | null,
+    radius?: number | null,
+    icon?: string | null,
+    settingOwnerId: string,
+    owner?:  {
+      __typename: "User",
+      id: string,
+      owner?: string | null,
+      userGroup?: UserType | null,
+      name: string,
+      business?: string | null,
+      deviceId?: string | null,
+      deviceToken?: string | null,
+      platform?: string | null,
+      stripeCustomerId?: string | null,
+      stripeSubscription?: string | null,
+      stripeSubscriptionId?: string | null,
+      endpointArn?: string | null,
+      email: string,
+      username?: string | null,
+      birthdate?: string | null,
+      gender?: string | null,
+      address?: string | null,
+      phone?: string | null,
+      status?: boolean | null,
+      premium?: boolean | null,
+      gps?:  {
+        __typename: "GPS",
+        lon?: number | null,
+        lat?: number | null,
+      } | null,
+      photo?: string | null,
+      createdAt?: string | null,
+      updatedAt?: string | null,
+      userSettingId: string,
+      userSuscriptionId?: string | null,
+      setting?:  {
+        __typename: "Setting",
+        id: string,
+        categories?: Array< string | null > | null,
+        radius?: number | null,
+        icon?: string | null,
+        settingOwnerId: string,
+        createdAt?: string | null,
+        updatedAt?: string | null,
+      } | null,
+    } | null,
+    createdAt?: string | null,
+    updatedAt?: string | null,
+  } | null,
+};
+
+export type DeleteSettingMutationVariables = {
+  input: DeleteSettingInput,
+  condition?: ModelSettingConditionInput | null,
+};
+
+export type DeleteSettingMutation = {
+  deleteSetting?:  {
+    __typename: "Setting",
+    id: string,
+    categories?: Array< string | null > | null,
+    radius?: number | null,
+    icon?: string | null,
+    settingOwnerId: string,
+    owner?:  {
+      __typename: "User",
+      id: string,
+      owner?: string | null,
+      userGroup?: UserType | null,
+      name: string,
+      business?: string | null,
+      deviceId?: string | null,
+      deviceToken?: string | null,
+      platform?: string | null,
+      stripeCustomerId?: string | null,
+      stripeSubscription?: string | null,
+      stripeSubscriptionId?: string | null,
+      endpointArn?: string | null,
+      email: string,
+      username?: string | null,
+      birthdate?: string | null,
+      gender?: string | null,
+      address?: string | null,
+      phone?: string | null,
+      status?: boolean | null,
+      premium?: boolean | null,
+      gps?:  {
+        __typename: "GPS",
+        lon?: number | null,
+        lat?: number | null,
+      } | null,
+      photo?: string | null,
+      createdAt?: string | null,
+      updatedAt?: string | null,
+      userSettingId: string,
+      userSuscriptionId?: string | null,
+      setting?:  {
+        __typename: "Setting",
+        id: string,
+        categories?: Array< string | null > | null,
+        radius?: number | null,
+        icon?: string | null,
+        settingOwnerId: string,
+        createdAt?: string | null,
+        updatedAt?: string | null,
+      } | null,
+    } | null,
+    createdAt?: string | null,
+    updatedAt?: string | null,
+  } | null,
+};
+
+export type CreateUserMutationVariables = {
+  input: CreateUserInput,
+  condition?: ModelUserConditionInput | null,
+};
+
+export type CreateUserMutation = {
+  createUser?:  {
+    __typename: "User",
+    id: string,
+    owner?: string | null,
+    userGroup?: UserType | null,
+    name: string,
+    business?: string | null,
+    deviceId?: string | null,
+    deviceToken?: string | null,
+    platform?: string | null,
+    stripeCustomerId?: string | null,
+    stripeSubscription?: string | null,
+    stripeSubscriptionId?: string | null,
+    endpointArn?: string | null,
+    email: string,
+    username?: string | null,
+    birthdate?: string | null,
+    gender?: string | null,
+    address?: string | null,
+    phone?: string | null,
+    status?: boolean | null,
+    premium?: boolean | null,
+    gps?:  {
+      __typename: "GPS",
+      lon?: number | null,
+      lat?: number | null,
+    } | null,
+    photo?: string | null,
+    createdAt?: string | null,
+    updatedAt?: string | null,
+    userSettingId: string,
+    userSuscriptionId?: string | null,
+    setting?:  {
+      __typename: "Setting",
+      id: string,
+      categories?: Array< string | null > | null,
+      radius?: number | null,
+      icon?: string | null,
+      settingOwnerId: string,
+      owner?:  {
+        __typename: "User",
+        id: string,
+        owner?: string | null,
+        userGroup?: UserType | null,
+        name: string,
+        business?: string | null,
+        deviceId?: string | null,
+        deviceToken?: string | null,
+        platform?: string | null,
+        stripeCustomerId?: string | null,
+        stripeSubscription?: string | null,
+        stripeSubscriptionId?: string | null,
+        endpointArn?: string | null,
+        email: string,
+        username?: string | null,
+        birthdate?: string | null,
+        gender?: string | null,
+        address?: string | null,
+        phone?: string | null,
+        status?: boolean | null,
+        premium?: boolean | null,
+        photo?: string | null,
+        createdAt?: string | null,
+        updatedAt?: string | null,
+        userSettingId: string,
+        userSuscriptionId?: string | null,
+      } | null,
+      createdAt?: string | null,
+      updatedAt?: string | null,
+    } | null,
+  } | null,
+};
+
+export type UpdateUserMutationVariables = {
+  input: UpdateUserInput,
+  condition?: ModelUserConditionInput | null,
+};
+
+export type UpdateUserMutation = {
+  updateUser?:  {
+    __typename: "User",
+    id: string,
+    owner?: string | null,
+    userGroup?: UserType | null,
+    name: string,
+    business?: string | null,
+    deviceId?: string | null,
+    deviceToken?: string | null,
+    platform?: string | null,
+    stripeCustomerId?: string | null,
+    stripeSubscription?: string | null,
+    stripeSubscriptionId?: string | null,
+    endpointArn?: string | null,
+    email: string,
+    username?: string | null,
+    birthdate?: string | null,
+    gender?: string | null,
+    address?: string | null,
+    phone?: string | null,
+    status?: boolean | null,
+    premium?: boolean | null,
+    gps?:  {
+      __typename: "GPS",
+      lon?: number | null,
+      lat?: number | null,
+    } | null,
+    photo?: string | null,
+    createdAt?: string | null,
+    updatedAt?: string | null,
+    userSettingId: string,
+    userSuscriptionId?: string | null,
+    setting?:  {
+      __typename: "Setting",
+      id: string,
+      categories?: Array< string | null > | null,
+      radius?: number | null,
+      icon?: string | null,
+      settingOwnerId: string,
+      owner?:  {
+        __typename: "User",
+        id: string,
+        owner?: string | null,
+        userGroup?: UserType | null,
+        name: string,
+        business?: string | null,
+        deviceId?: string | null,
+        deviceToken?: string | null,
+        platform?: string | null,
+        stripeCustomerId?: string | null,
+        stripeSubscription?: string | null,
+        stripeSubscriptionId?: string | null,
+        endpointArn?: string | null,
+        email: string,
+        username?: string | null,
+        birthdate?: string | null,
+        gender?: string | null,
+        address?: string | null,
+        phone?: string | null,
+        status?: boolean | null,
+        premium?: boolean | null,
+        photo?: string | null,
+        createdAt?: string | null,
+        updatedAt?: string | null,
+        userSettingId: string,
+        userSuscriptionId?: string | null,
+      } | null,
+      createdAt?: string | null,
+      updatedAt?: string | null,
+    } | null,
+  } | null,
+};
+
+export type DeleteUserMutationVariables = {
+  input: DeleteUserInput,
+  condition?: ModelUserConditionInput | null,
+};
+
+export type DeleteUserMutation = {
+  deleteUser?:  {
+    __typename: "User",
+    id: string,
+    owner?: string | null,
+    userGroup?: UserType | null,
+    name: string,
+    business?: string | null,
+    deviceId?: string | null,
+    deviceToken?: string | null,
+    platform?: string | null,
+    stripeCustomerId?: string | null,
+    stripeSubscription?: string | null,
+    stripeSubscriptionId?: string | null,
+    endpointArn?: string | null,
+    email: string,
+    username?: string | null,
+    birthdate?: string | null,
+    gender?: string | null,
+    address?: string | null,
+    phone?: string | null,
+    status?: boolean | null,
+    premium?: boolean | null,
+    gps?:  {
+      __typename: "GPS",
+      lon?: number | null,
+      lat?: number | null,
+    } | null,
+    photo?: string | null,
+    createdAt?: string | null,
+    updatedAt?: string | null,
+    userSettingId: string,
+    userSuscriptionId?: string | null,
+    setting?:  {
+      __typename: "Setting",
+      id: string,
+      categories?: Array< string | null > | null,
+      radius?: number | null,
+      icon?: string | null,
+      settingOwnerId: string,
+      owner?:  {
+        __typename: "User",
+        id: string,
+        owner?: string | null,
+        userGroup?: UserType | null,
+        name: string,
+        business?: string | null,
+        deviceId?: string | null,
+        deviceToken?: string | null,
+        platform?: string | null,
+        stripeCustomerId?: string | null,
+        stripeSubscription?: string | null,
+        stripeSubscriptionId?: string | null,
+        endpointArn?: string | null,
+        email: string,
+        username?: string | null,
+        birthdate?: string | null,
+        gender?: string | null,
+        address?: string | null,
+        phone?: string | null,
+        status?: boolean | null,
+        premium?: boolean | null,
+        photo?: string | null,
+        createdAt?: string | null,
+        updatedAt?: string | null,
+        userSettingId: string,
+        userSuscriptionId?: string | null,
+      } | null,
+      createdAt?: string | null,
+      updatedAt?: string | null,
+    } | null,
+>>>>>>> develop
+  } | null,
+};
+
+export type GetSettingQueryVariables = {
+  id: string,
+};
+
+export type GetSettingQuery = {
+  getSetting?:  {
+    __typename: "Setting",
+    id: string,
+<<<<<<< HEAD
+    categories?: Array< string | null > | null,
+    radius?: number | null,
+    icon?: string | null,
+    settingOwnerId: string,
+    owner?:  {
+      __typename: "User",
+      id: string,
+      owner?: string | null,
+      userGroup?: UserType | null,
+      name: string,
+      business?: string | null,
+      deviceId?: string | null,
+      deviceToken?: string | null,
+      platform?: string | null,
+      stripeCustomerId?: string | null,
+      stripeSubscription?: string | null,
+      stripeSubscriptionId?: string | null,
+      endpointArn?: string | null,
+      email: string,
+      username?: string | null,
+      birthdate?: string | null,
+      gender?: string | null,
+      address?: string | null,
+      phone?: string | null,
+      status?: boolean | null,
+      premium?: boolean | null,
+      gps?:  {
+        __typename: "GPS",
+        lon?: number | null,
+        lat?: number | null,
+      } | null,
+      photo?: string | null,
+      createdAt?: string | null,
+      updatedAt?: string | null,
+      userSettingId: string,
+      userSuscriptionId?: string | null,
+      setting?:  {
+        __typename: "Setting",
+        id: string,
+        categories?: Array< string | null > | null,
+        radius?: number | null,
+        icon?: string | null,
+        settingOwnerId: string,
+        createdAt?: string | null,
+        updatedAt?: string | null,
+      } | null,
+    } | null,
+    createdAt?: string | null,
+    updatedAt?: string | null,
+=======
+    name: string,
+    description?: string | null,
+    createdAt: string,
+    updatedAt: string,
+>>>>>>> develop
+  } | null,
+};
+
+export type ListSettingsQueryVariables = {
+  filter?: ModelSettingFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListSettingsQuery = {
+  listSettings?:  {
+    __typename: "ModelSettingConnection",
+    items?:  Array< {
+      __typename: "Setting",
+      id: string,
+<<<<<<< HEAD
+      categories?: Array< string | null > | null,
+      radius?: number | null,
+      icon?: string | null,
+      settingOwnerId: string,
+      owner?:  {
+        __typename: "User",
+        id: string,
+        owner?: string | null,
+        userGroup?: UserType | null,
+        name: string,
+        business?: string | null,
+        deviceId?: string | null,
+        deviceToken?: string | null,
+        platform?: string | null,
+        stripeCustomerId?: string | null,
+        stripeSubscription?: string | null,
+        stripeSubscriptionId?: string | null,
+        endpointArn?: string | null,
+        email: string,
+        username?: string | null,
+        birthdate?: string | null,
+        gender?: string | null,
+        address?: string | null,
+        phone?: string | null,
+        status?: boolean | null,
+        premium?: boolean | null,
+        photo?: string | null,
+        createdAt?: string | null,
+        updatedAt?: string | null,
+        userSettingId: string,
+        userSuscriptionId?: string | null,
+      } | null,
+      createdAt?: string | null,
+      updatedAt?: string | null,
+    } | null > | null,
+    nextToken?: string | null,
+=======
       name: string,
       description?: string | null,
       createdAt: string,
@@ -1194,16 +1876,239 @@ export type GetUserByEmailQuery = {
       } | null,
     } | null > | null,
     nextToken?: string | null,
+>>>>>>> develop
     scannedCount?: number | null,
     count?: number | null,
   } | null,
 };
 
-export type OnCreateTodoSubscription = {
-  onCreateTodo?:  {
-    __typename: "Todo",
+export type GetUserQueryVariables = {
+  id: string,
+};
+
+export type GetUserQuery = {
+  getUser?:  {
+    __typename: "User",
     id: string,
+    owner?: string | null,
+    userGroup?: UserType | null,
     name: string,
+<<<<<<< HEAD
+    business?: string | null,
+    deviceId?: string | null,
+    deviceToken?: string | null,
+    platform?: string | null,
+    stripeCustomerId?: string | null,
+    stripeSubscription?: string | null,
+    stripeSubscriptionId?: string | null,
+    endpointArn?: string | null,
+    email: string,
+    username?: string | null,
+    birthdate?: string | null,
+    gender?: string | null,
+    address?: string | null,
+    phone?: string | null,
+    status?: boolean | null,
+    premium?: boolean | null,
+    gps?:  {
+      __typename: "GPS",
+      lon?: number | null,
+      lat?: number | null,
+    } | null,
+    photo?: string | null,
+    createdAt?: string | null,
+    updatedAt?: string | null,
+    userSettingId: string,
+    userSuscriptionId?: string | null,
+    setting?:  {
+      __typename: "Setting",
+      id: string,
+      categories?: Array< string | null > | null,
+      radius?: number | null,
+      icon?: string | null,
+      settingOwnerId: string,
+      owner?:  {
+        __typename: "User",
+        id: string,
+        owner?: string | null,
+        userGroup?: UserType | null,
+        name: string,
+        business?: string | null,
+        deviceId?: string | null,
+        deviceToken?: string | null,
+        platform?: string | null,
+        stripeCustomerId?: string | null,
+        stripeSubscription?: string | null,
+        stripeSubscriptionId?: string | null,
+        endpointArn?: string | null,
+        email: string,
+        username?: string | null,
+        birthdate?: string | null,
+        gender?: string | null,
+        address?: string | null,
+        phone?: string | null,
+        status?: boolean | null,
+        premium?: boolean | null,
+        photo?: string | null,
+        createdAt?: string | null,
+        updatedAt?: string | null,
+        userSettingId: string,
+        userSuscriptionId?: string | null,
+      } | null,
+      createdAt?: string | null,
+      updatedAt?: string | null,
+    } | null,
+  } | null,
+};
+
+export type ListUsersQueryVariables = {
+  id?: string | null,
+  filter?: ModelUserFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+  sortDirection?: ModelSortDirection | null,
+};
+
+export type ListUsersQuery = {
+  listUsers?:  {
+    __typename: "ModelUserConnection",
+    items?:  Array< {
+      __typename: "User",
+      id: string,
+      owner?: string | null,
+      userGroup?: UserType | null,
+      name: string,
+      business?: string | null,
+      deviceId?: string | null,
+      deviceToken?: string | null,
+      platform?: string | null,
+      stripeCustomerId?: string | null,
+      stripeSubscription?: string | null,
+      stripeSubscriptionId?: string | null,
+      endpointArn?: string | null,
+      email: string,
+      username?: string | null,
+      birthdate?: string | null,
+      gender?: string | null,
+      address?: string | null,
+      phone?: string | null,
+      status?: boolean | null,
+      premium?: boolean | null,
+      gps?:  {
+        __typename: "GPS",
+        lon?: number | null,
+        lat?: number | null,
+      } | null,
+      photo?: string | null,
+      createdAt?: string | null,
+      updatedAt?: string | null,
+      userSettingId: string,
+      userSuscriptionId?: string | null,
+      setting?:  {
+        __typename: "Setting",
+        id: string,
+        categories?: Array< string | null > | null,
+        radius?: number | null,
+        icon?: string | null,
+        settingOwnerId: string,
+        createdAt?: string | null,
+        updatedAt?: string | null,
+      } | null,
+    } | null > | null,
+    nextToken?: string | null,
+    scannedCount?: number | null,
+    count?: number | null,
+  } | null,
+};
+
+export type GetCategoryByNameQueryVariables = {
+  name?: string | null,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelCategoryFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type GetCategoryByNameQuery = {
+  getCategoryByName?:  {
+    __typename: "ModelCategoryConnection",
+    items?:  Array< {
+      __typename: "Category",
+      id: string,
+      name?: string | null,
+      icon?: string | null,
+      image?:  {
+        __typename: "S3Object",
+        bucket: string,
+        region: string,
+        key: string,
+      } | null,
+      description?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null > | null,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetUserByEmailQueryVariables = {
+  email?: string | null,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelUserFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type GetUserByEmailQuery = {
+  getUserByEmail?:  {
+    __typename: "ModelUserConnection",
+    items?:  Array< {
+      __typename: "User",
+      id: string,
+      owner?: string | null,
+      userGroup?: UserType | null,
+      name: string,
+      business?: string | null,
+      deviceId?: string | null,
+      deviceToken?: string | null,
+      platform?: string | null,
+      stripeCustomerId?: string | null,
+      stripeSubscription?: string | null,
+      stripeSubscriptionId?: string | null,
+      endpointArn?: string | null,
+      email: string,
+      username?: string | null,
+      birthdate?: string | null,
+      gender?: string | null,
+      address?: string | null,
+      phone?: string | null,
+      status?: boolean | null,
+      premium?: boolean | null,
+      gps?:  {
+        __typename: "GPS",
+        lon?: number | null,
+        lat?: number | null,
+      } | null,
+      photo?: string | null,
+      createdAt?: string | null,
+      updatedAt?: string | null,
+      userSettingId: string,
+      userSuscriptionId?: string | null,
+      setting?:  {
+        __typename: "Setting",
+        id: string,
+        categories?: Array< string | null > | null,
+        radius?: number | null,
+        icon?: string | null,
+        settingOwnerId: string,
+        createdAt?: string | null,
+        updatedAt?: string | null,
+      } | null,
+    } | null > | null,
+    nextToken?: string | null,
+    scannedCount?: number | null,
+    count?: number | null,
+=======
     description?: string | null,
     createdAt: string,
     updatedAt: string,
@@ -1229,5 +2134,6 @@ export type OnDeleteTodoSubscription = {
     description?: string | null,
     createdAt: string,
     updatedAt: string,
+>>>>>>> develop
   } | null,
 };

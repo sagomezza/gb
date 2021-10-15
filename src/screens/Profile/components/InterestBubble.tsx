@@ -1,5 +1,5 @@
 import React from 'react';
-import { InterestBubbleContainer as Container, InterestBubbleLabel as Label } from './styles';
+import { InterestBubbleContainer as Container, InterestBubbleLabel as Label } from '../styles';
 
 interface IInterestBubbleProps {
   label: string;

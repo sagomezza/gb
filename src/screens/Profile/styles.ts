@@ -1,5 +1,5 @@
 import { Image, View, Text, TouchableOpacity } from 'react-native';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import { nlz, rs } from 'utils/dimensions';
 import { DefaultIcon } from 'components';
 
@@ -60,8 +60,7 @@ export const AgeAndCity = styled(Text)`
 export const InterestsContainer = styled(View)`
   flex-direction: row;
   flex-wrap: wrap;
-  margin-bottom: ${rs(4)}px;
-  margin-top: ${rs(4)}px;
+  margin-vertical: ${rs(12)}px;
 `;
 
 export const InterestBubbleContainer = styled(View)`
@@ -112,9 +111,10 @@ export const EditionButton = styled(TouchableOpacity)`
   width: ${rs(120)}px;
 `;
 
-export const EditionButtonLabel = styled(Text)`
-  color: ${({ theme: { colors } }) => colors.secondary};
-  font-family: ${({ theme: { fonts } }) => fonts.regular.fontFamily};
+export const EditionButtonLabel = styled.Text`
+  color: ${({ addLabel, theme: { colors } }) => (addLabel ? colors.white : colors.secondary)};
+  font-family: ${({ addLabel, theme: { fonts } }) =>
+    addLabel ? fonts.medium.fontFamily : fonts.regular.fontFamily};
   font-size: ${nlz(16)}px;
 `;
 

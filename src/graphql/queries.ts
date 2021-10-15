@@ -2,27 +2,48 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+<<<<<<< HEAD
+export const getCategory = /* GraphQL */ `
+  query GetCategory($id: ID!) {
+    getCategory(id: $id) {
+=======
 export const getTodo = /* GraphQL */ `
   query GetTodo($id: ID!) {
     getTodo(id: $id) {
+>>>>>>> develop
       id
       name
+      icon
+      image {
+        bucket
+        region
+        key
+      }
       description
       createdAt
       updatedAt
     }
   }
 `;
-export const listTodos = /* GraphQL */ `
-  query ListTodos(
-    $filter: ModelTodoFilterInput
+export const listCategorys = /* GraphQL */ `
+  query ListCategorys(
+    $filter: ModelCategoryFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listCategorys(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         name
+<<<<<<< HEAD
+        icon
+        image {
+          bucket
+          region
+          key
+        }
+=======
+>>>>>>> develop
         description
         createdAt
         updatedAt
@@ -262,6 +283,38 @@ export const listUsers = /* GraphQL */ `
       nextToken
       scannedCount
       count
+    }
+  }
+`;
+export const getCategoryByName = /* GraphQL */ `
+  query GetCategoryByName(
+    $name: String
+    $sortDirection: ModelSortDirection
+    $filter: ModelCategoryFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    getCategoryByName(
+      name: $name
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        name
+        icon
+        image {
+          bucket
+          region
+          key
+        }
+        description
+        createdAt
+        updatedAt
+      }
+      nextToken
     }
   }
 `;

@@ -1,7 +1,9 @@
 export enum RoutesAuth {
   AUTH = 'AUTH',
+  FORGOTPASSWORD = 'FORGOTPASSWORD',
   LOGIN = 'LOGIN',
   SIGNUP = 'SIGNUP',
+  VERIFICATION = 'VERIFICATION',
 }
 
 export enum PremiumRoutes {
@@ -22,6 +24,7 @@ export enum RoutesMain {
   NEARME = 'NEARME',
   NEWMESSAGE = 'NEWMESSAGE',
   ONBOARDING = 'ONBOARDING',
+  ONBOARDINGSKILLS = 'ONBOARDINGSKILLS',
   PAYMENT = 'PAYMENT',
   PROFILE = 'PROFILE',
   SEARCH = 'SEARCH',

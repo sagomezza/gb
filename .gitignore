@@ -81,6 +81,12 @@ __generated__
 .env
 ios/Podfile.lock
 
+src/API.ts
+src/lib/api.ts
+src/graphql
+
+src/lib/api.ts
+
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
 amplify/.config/local-*

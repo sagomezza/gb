@@ -1,3 +1,5 @@
+import { IEditProfileForm } from 'screens/Profile/types';
+
 export type ExampleState = {
   exampleError: string | null;
   fetchExample: null | FetchExampleEntity;
@@ -50,6 +52,7 @@ export type FetchExampleEntity = {
 };
 
 export interface IModalState {
+  data?: string;
   hideModal: () => void;
   onDismiss: () => void;
   text: string;
@@ -60,7 +63,9 @@ export interface IModalState {
 }
 
 export type AppState = {
+  editProfile?: boolean;
   modalAlert: IModalState;
+  profile?: IEditProfileForm;
 };
 
 export interface Spot {
@@ -88,3 +93,27 @@ export interface Place {
   name: string;
   place_id: string;
 }
+
+export interface IForgotPasswordData {
+  code?: string;
+  email?: string;
+  password: string;
+  passwordConfirmation: string;
+  pinCode: string;
+}
+
+export interface IAuthData {
+  code?: string;
+  deviceId?: string;
+  email: string;
+  name?: string;
+  password?: string;
+  username?: string;
+}
+
+export type UserState = {
+  loading: boolean;
+  token: string;
+  user: IAuthData;
+  userId: string;
+};

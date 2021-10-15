@@ -1,8 +1,17 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import Spacing from 'components/Spacing';
-import Form from './Form';
+import { navigator } from 'navigation';
+import { IAuthData } from 'store/types';
+import { useAuth } from 'service/authentication.service';
+import { useDispatch } from 'react-redux';
+import { AuthAmplifyDictionary } from 'diccionaries/auth.diccionaries';
+import { SnackBar } from 'components';
+import routes from 'config/routes';
+import { saveUserInfo, toggleAuthLoader } from 'store/auth/authActions';
+import SignUpBackButton from './SignUpBackButton';
 import {
+  BackButtonContainer,
   ContainerForm,
   ContainerSignup,
   ContainerText,
@@ -11,20 +20,49 @@ import {
   HeaderTitle,
   SignupBody,
 } from './styles';
-import { IFormValuesSignup } from './types';
+import Form from './Form';
 
 const backgroundHeader = require('../../../assets/imgs/BgHeader.png');
 
 const SignupScreen: React.FC = () => {
-  const onSignup = (data: IFormValuesSignup) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
+  const [toast, setToast] = useState({ label: '', message: '', visible: false });
+  const { goToPage } = navigator();
+  const dispatch = useDispatch();
+  const { signUp } = useAuth();
+
+  const onSignup = async (data: IAuthData) => {
+    dispatch(toggleAuthLoader(true));
+
+    const response = await signUp({
+      username: data.email,
+      password: data.password,
+      phone_number: `+13146009090`,
+    });
+
+    const existCode = AuthAmplifyDictionary(response?.code);
+
+    if (existCode) {
+      setToast({
+        label: 'OK',
+        message: response?.message,
+        visible: true,
+      });
+      dispatch(toggleAuthLoader(false));
+
+      return;
+    }
+    dispatch(toggleAuthLoader(false));
+    dispatch(saveUserInfo(data));
+    goToPage(routes.VERIFICATION);
   };
 
   return (
     <ContainerSignup>
       <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
         <HeaderBackground source={backgroundHeader}>
+          <BackButtonContainer>
+            <SignUpBackButton />
+          </BackButtonContainer>
           <Spacing />
           <ContainerText>
             <HeaderTitle>Hello</HeaderTitle>
@@ -35,6 +73,7 @@ const SignupScreen: React.FC = () => {
           <ContainerForm>
             <Form onSignup={onSignup} />
           </ContainerForm>
+          <SnackBar toast={toast} />
         </SignupBody>
       </ScrollView>
     </ContainerSignup>

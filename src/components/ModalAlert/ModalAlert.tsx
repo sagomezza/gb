@@ -4,9 +4,11 @@ import { ContainerModal, IconContainer } from './styles';
 import ContentModalError from './contentErrorModal';
 import ContentModalChildren from './contentChildrenModal';
 import ContentModalSuccess from './contentSuccessModal';
+import ContentConfirmCustomModal from './contentConfirmCustomModal';
 
 type ModalAlertProps = {
   children?: React.ReactNode | React.ReactNodeArray;
+  data?: string;
   fullWidthButton?: boolean;
   hideModal: () => void;
   onDismiss: () => void;
@@ -20,6 +22,7 @@ type ModalAlertProps = {
 
 const ModalAlert = ({
   children,
+  data,
   fullWidthButton,
   hideModal,
   onDismiss,
@@ -54,7 +57,26 @@ const ModalAlert = ({
         </ContentModalChildren>
       );
     }
-    return <ContentModalSuccess text={text} title={title} />;
+    if (type === 'confirmLogOut') {
+      return (
+        <ContentConfirmCustomModal
+          text={text}
+          textButton={textButton}
+          title={title}
+          onButtonPress={onSubmit}
+          onDismiss={onDismiss}
+        />
+      );
+    }
+    return (
+      <ContentModalSuccess
+        data={data}
+        text={text}
+        textButton={textButton}
+        title={title}
+        type={type}
+      />
+    );
   };
 
   return (

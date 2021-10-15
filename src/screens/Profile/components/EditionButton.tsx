@@ -1,5 +1,5 @@
 import React from 'react';
-import { EditionButton as BaseEditionButton, EditionButtonLabel } from './styles';
+import { EditionButton as BaseEditionButton, EditionButtonLabel } from '../styles';
 
 interface IEditionButtonProps {
   onPress: () => void;

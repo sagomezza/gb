@@ -1,0 +1,19 @@
+overwrite: true
+schema:
+  - 'amplify/backend/api/gymbuddy/build/*.graphql'
+  - 'src/amplify/amplifyBase.graphql'
+documents: 'src/graphql/*.ts'
+generates:
+  src/lib/api.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-query'
+    config:
+      exposeQueryKeys: true
+      exposeFetcher: true 
+      maybeValue: 'T | null | undefined'
+      fetcher: '../amplify/fetcher#amplifyFetcher'
+hooks:
+  afterAllFileWrite:
+    - prettier --write

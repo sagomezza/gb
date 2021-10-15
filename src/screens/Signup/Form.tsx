@@ -1,26 +1,32 @@
 import React, { useCallback } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { View } from 'react-native';
 import { useForm } from 'react-hook-form';
 import Spacing from 'components/Spacing';
+import { UserSchema } from 'YupSchemas/auth.user';
+import { IAuthData } from 'store/types';
+import { ActivityIndicator } from 'components';
+import { useSelector } from 'react-redux';
+import { getLoadingStatus } from 'store/auth/authSelectors';
 import Fb from '../../../assets/imgs/FB.svg';
 import Google from '../../../assets/imgs/Google.svg';
 import { ButtonSignup, FbButton, GoogleButton, ParagraphSignup, SocialContainer } from './styles';
-import { REGEX_EMAIL, REGEX_LETTERS } from '../../utils/regexes';
-import { IFormValuesSignup, ISignupFormProps } from './types';
+import { ISignupFormProps } from './types';
 import InputSignup from '../../components/InputSignup';
 
 const SignupForm: React.FC<ISignupFormProps> = ({ onSignup }: ISignupFormProps) => {
+  const isLoading = useSelector(getLoadingStatus);
   const {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm({ mode: 'onBlur' });
+  } = useForm({ resolver: yupResolver(UserSchema) });
 
   const signupFb = () => {};
   const signupGoogle = () => {};
 
   const onSubmit = useCallback(
-    (data: IFormValuesSignup) => {
+    (data: IAuthData) => {
       onSignup(data);
     },
     [onSignup],
@@ -36,31 +42,15 @@ const SignupForm: React.FC<ISignupFormProps> = ({ onSignup }: ISignupFormProps) 
         keyboardType="default"
         name="name"
         placeholder="Full name"
-        rules={{
-          required: {
-            value: true,
-            message: 'Full name is required',
-          },
-          pattern: {
-            value: REGEX_LETTERS,
-            message: 'Characters only',
-          },
-        }}
       />
       <Spacing size={15} />
       <InputSignup
         control={control}
-        error={errors.userName}
-        errorText={errors.userName?.message}
+        error={errors.username}
+        errorText={errors.username?.message}
         keyboardType="default"
-        name="userName"
-        placeholder="User name"
-        rules={{
-          required: {
-            value: true,
-            message: 'User name is required',
-          },
-        }}
+        name="username"
+        placeholder="User Name"
       />
       <Spacing size={15} />
       <InputSignup
@@ -70,16 +60,6 @@ const SignupForm: React.FC<ISignupFormProps> = ({ onSignup }: ISignupFormProps) 
         keyboardType="email-address"
         name="email"
         placeholder="Email"
-        rules={{
-          required: {
-            value: true,
-            message: 'Email is required',
-          },
-          pattern: {
-            value: REGEX_EMAIL,
-            message: 'Invalid email',
-          },
-        }}
       />
       <Spacing size={15} />
       <InputSignup
@@ -89,12 +69,6 @@ const SignupForm: React.FC<ISignupFormProps> = ({ onSignup }: ISignupFormProps) 
         errorText={errors.password?.message}
         name="password"
         placeholder="Password"
-        rules={{
-          required: {
-            value: true,
-            message: 'Password is required',
-          },
-        }}
       />
       <Spacing size={30} />
       <ParagraphSignup>Sign Up with</ParagraphSignup>
@@ -107,7 +81,11 @@ const SignupForm: React.FC<ISignupFormProps> = ({ onSignup }: ISignupFormProps) 
         </GoogleButton>
       </SocialContainer>
       <Spacing size={30} />
-      <ButtonSignup onPress={handleSubmit(onSubmit)}>Sign Up</ButtonSignup>
+      {isLoading ? (
+        <ActivityIndicator color="#3CC7AD" />
+      ) : (
+        <ButtonSignup onPress={handleSubmit(onSubmit)}>Sign Up</ButtonSignup>
+      )}
     </View>
   );
 };

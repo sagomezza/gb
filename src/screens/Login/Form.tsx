@@ -6,9 +6,13 @@ import { navigator } from 'navigation';
 import routes from 'config/routes';
 import { theme } from 'config/theme';
 import { REGEX_EMAIL } from 'utils/regexes';
+import { IAuthData } from 'store/types';
+import { ActivityIndicator } from 'components';
+import { useSelector } from 'react-redux';
+import { getLoadingStatus } from 'store/auth/authSelectors';
 import InputLogin from '../../components/InputLogin';
 import { ButtonForgotPass, ButtonLogin, ButtonSignup } from './styles';
-import { IFormValuesLogin, ILoginFormProps } from './types';
+import { ILoginFormProps } from './types';
 
 const LoginForm: React.FC<ILoginFormProps> = ({ onLogin, onPressForgot }: ILoginFormProps) => {
   const {
@@ -17,8 +21,10 @@ const LoginForm: React.FC<ILoginFormProps> = ({ onLogin, onPressForgot }: ILogin
     handleSubmit,
   } = useForm({ mode: 'onBlur' });
   const { goToPage } = navigator();
+  const isLoading = useSelector(getLoadingStatus);
+
   const onSubmit = useCallback(
-    (data: IFormValuesLogin) => {
+    (data: IAuthData) => {
       onLogin(data);
     },
     [onLogin],
@@ -65,7 +71,13 @@ const LoginForm: React.FC<ILoginFormProps> = ({ onLogin, onPressForgot }: ILogin
         Forgot your password?
       </ButtonForgotPass>
       <Spacing size={40} />
-      <ButtonLogin onPress={handleSubmit(onSubmit)}>Log In</ButtonLogin>
+
+      {isLoading ? (
+        <ActivityIndicator color="white" />
+      ) : (
+        <ButtonLogin onPress={handleSubmit(onSubmit)}>Log in</ButtonLogin>
+      )}
+
       <Spacing size={18} />
       <ButtonSignup onPress={() => goToPage(routes.SIGNUP)}>Sign Up</ButtonSignup>
     </View>

@@ -6,8 +6,10 @@ import search from './search/searchReducer';
 import app from './app/appReducer';
 import messages from './messages/messagesReducer';
 import spots from './spots/spotsReducer';
+import auth from './auth/authReducer';
 
 const rootReducer = combineReducers({
+  auth,
   example,
   search,
   app,

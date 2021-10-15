@@ -10,7 +10,7 @@ import { Body } from 'layout/default';
 export const LinearGradientStyled = styled(BaseGradient)`
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-  height: ${H * 0.8}px;
+  height: ${Platform.OS === 'android' ? H * 0.8 : H * 0.72}px;
   padding-bottom: ${rs(30)}px;
 `;
 
@@ -20,6 +20,7 @@ export const ParagraphLogin = styled.Text`
   font-size: ${nlz(15)}px;
   font-weight: 400;
   text-align: center;
+  z-index: -1;
 `;
 
 export const BodyLogin = styled(Body)`
@@ -65,8 +66,7 @@ export const ButtonForgotPass = styled(LinkButton).attrs(() => ({
 }))``;
 
 export const ContainerForm = styled.View`
-  margin: 0 auto;
-  min-width: ${rs(280)}px;
+  margin-horizontal: ${rs(50)}px;
 `;
 
 export const ContainerLogin = styled.View`
@@ -93,6 +93,7 @@ export const SocialContainer = styled.View`
   justify-content: space-evenly;
   margin-top: ${rs(10)}px;
   padding-horizontal: ${rs(50)}px;
+  z-index: -1;
 `;
 
 export const FbButton = styled.TouchableOpacity`
@@ -122,5 +123,5 @@ export const GoogleButton = styled.TouchableOpacity`
 `;
 
 export const HeaderContainer = styled.View`
-  margin-top: ${Platform.OS === 'ios' ? rs(40) : rs(10)}px;
+  margin-top: ${Platform.OS === 'android' ? rs(20) : 0}px;
 `;

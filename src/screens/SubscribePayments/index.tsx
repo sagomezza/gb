@@ -3,6 +3,8 @@ import React from 'react';
 import ScreensHeader from 'components/ScreensHeader';
 import { StatusBar } from 'react-native';
 import Spacing from 'components/Spacing';
+import { useSelector } from 'react-redux';
+import { getProfileState } from 'store/app/appSelectors';
 import {
   HeaderContainer,
   SubscribePaymentsContainer,
@@ -13,9 +15,13 @@ import Form from './Form';
 import { ICardDetails, IFormValuesSubscribePayments } from './types';
 
 const SubscribePaymentsScreen: React.FC = () => {
+  const profileInfo = useSelector(getProfileState);
   const onPressSubscribe = (data: IFormValuesSubscribePayments, card: ICardDetails) => {
     // TODO: CONSUME SERVICE BACKEND
     console.log(data, card);
+    // ON PAYMENT SUCCESSFUL
+    profileInfo.isTrainer = true;
+    console.log('updateProfile', profileInfo);
   };
   return (
     <>
