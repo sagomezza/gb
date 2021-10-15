@@ -13,6 +13,8 @@ export enum PremiumRoutes {
 }
 
 export enum RoutesMain {
+  ADD_ACTIVITY = 'ADD_ACTIVITY',
+  AGENDA = 'AGENDA',
   BUDDIES = 'BUDDIES',
   CALENDAR = 'CALENDAR',
   CHAT = 'CHAT',
@@ -38,6 +40,8 @@ const routes = {
 };
 
 export enum RoutesLabels {
+  ADD_ACTIVITY = 'ADD ACTIVITY',
+  AGENDA = 'AGENDA',
   AUTH = 'Auth',
   BUDDIES = 'Buddies',
   BULLETIN = 'Bulletin',

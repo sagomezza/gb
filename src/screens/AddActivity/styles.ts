@@ -81,8 +81,9 @@ export const TitleDate = styled.Text`
 export const TextDate = styled.Text`
   color: ${({ theme: { colors } }) => colors.textModal};
   font-family: ${({ theme: { fonts } }) => fonts.regular.fontFamily};
-  font-size: ${nlz(18)}px;
+  font-size: ${nlz(17)}px;
   font-weight: ${({ theme: { fonts } }) => fonts.regular.fontWeight};
+  padding-top: ${rs(5)}px;
   text-align: left;
 `;
 

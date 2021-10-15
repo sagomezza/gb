@@ -38,7 +38,7 @@ static void InitializeFlipper(UIApplication *application) {
   [AppCenterReactNativeAnalytics registerWithInitiallyEnabled:true];
   [AppCenterReactNativeCrashes registerWithAutomaticProcessing];
 #endif
-  [GMSServices provideAPIKey:@"AIzaSyD0yfZMlzviD9i7yPQBCsllT1bjFY_1Q14"];
+  [GMSServices provideAPIKey:@"AIzaSyBAG0Fls2K2pe9btk_QYBsFHbpAH7PmCgY"];
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"app"

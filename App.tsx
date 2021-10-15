@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React, { useEffect } from 'react';
+import { LogBox } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { Provider as StoreProvider } from 'react-redux';
 import { store } from 'store';
@@ -16,7 +17,7 @@ import { theme as themePaper } from './src/config/theme';
 import AppNavigator from './src/navigation/AppNavigator';
 
 // Uncomment line 16 when doing tests
-// LogBox.ignoreAllLogs(true);
+LogBox.ignoreAllLogs(true);
 
 // RNBootSplash.hide({ fade: true });
 

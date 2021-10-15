@@ -61,6 +61,7 @@ const ChatScreen: React.FC<IChatScreenProps> = ({ route }: IChatScreenProps) => 
     <GiftedChat
       alwaysShowSend
       messages={messages}
+      // eslint-disable-next-line react/jsx-no-bind
       renderBubble={renderBubble}
       user={{
         _id: 1,

@@ -7,5 +7,6 @@ export interface IFormValuesAddActivity {
 }
 
 export interface IAddActivityFormProps {
+  item?: object;
   onSubmit: (data: IFormValuesAddActivity) => void;
 }

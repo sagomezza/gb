@@ -1,12 +1,14 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import routes, { RoutesLabels } from 'config/routes';
-import { HomeScreen, CalendarScreen, ProfileScreen, BuddiesScreen } from 'screens';
+import { HomeScreen, ProfileScreen, BuddiesScreen } from 'screens';
 import { BottomTabButton } from 'components';
 import { bottomNavigatorStyles } from './styles';
+import CalendarNavigator from './CalendarNavigator';
 import MoreNavigator from './MoreNavigator';
 
 interface ITabBarIconProps {
+  // eslint-disable-next-line react/no-unused-prop-types
   focused: boolean;
 }
 
@@ -68,7 +70,7 @@ const MainNavigator: React.FC = () => (
       }}
     />
     <BottomTab.Screen
-      component={CalendarScreen}
+      component={CalendarNavigator}
       name={routes.CALENDAR}
       options={{
         tabBarIcon: ({ focused }: ITabBarIconProps) => (

@@ -2,6 +2,8 @@
 import * as React from 'react';
 import { Text } from 'react-native';
 import { Calendar, CalendarProps } from 'react-native-calendars';
+import { navigator } from 'navigation';
+import routes from 'config/routes';
 
 import { Header } from './Calendar.styles';
 
@@ -12,6 +14,8 @@ interface ICalendarProps extends CalendarProps {
 const CalendarComponent: React.FC<ICalendarProps> = ({
   markedDates,
 }: ICalendarProps): React.ReactElement => {
+  const { goToPage } = navigator();
+
   const currentDay = new Date();
   return (
     <Calendar
@@ -34,7 +38,8 @@ const CalendarComponent: React.FC<ICalendarProps> = ({
       )}
       showWeekNumbers={false}
       onDayPress={(day) => {
-        console.log('selected day', day);
+        console.log(`day ${day}`);
+        goToPage(routes.AGENDA, { day });
       }}
       onMonthChange={(month) => {
         console.log('month changed', month);
