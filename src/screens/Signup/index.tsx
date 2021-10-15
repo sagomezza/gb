@@ -9,7 +9,6 @@ import { AuthAmplifyDictionary } from 'diccionaries/auth.diccionaries';
 import { SnackBar } from 'components';
 import routes from 'config/routes';
 import { saveUserInfo, toggleAuthLoader } from 'store/auth/authActions';
-import SignUpBackButton from './SignUpBackButton';
 import {
   BackButtonContainer,
   ContainerForm,
@@ -20,6 +19,7 @@ import {
   HeaderTitle,
   SignupBody,
 } from './styles';
+import SignUpBackButton from './SignUpBackButton';
 import Form from './Form';
 
 const backgroundHeader = require('../../../assets/imgs/BgHeader.png');
