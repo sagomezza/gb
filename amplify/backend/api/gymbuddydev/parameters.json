@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "gymbuddydev",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": "false",
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authgymbuddydevbe376c59",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
