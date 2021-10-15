@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from 'components';
+import { GBScreenHeader } from 'components';
 import routes from 'config/routes';
 import { SafeAreaView } from '../styles';
 import { MainContainer } from './styles';
@@ -7,7 +7,7 @@ import MenuItem from './MenuItem';
 
 const MoreScreen: React.FC = () => (
   <SafeAreaView>
-    <Header route={routes.MORE} />
+    <GBScreenHeader title={routes.MORE} />
     <MainContainer>
       <MenuItem
         iconFamily="MaterialCommunityIcons"

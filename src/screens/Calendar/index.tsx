@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Spacing } from 'core/components';
-import { DefaultIcon, Header, SafeArea } from 'components';
+import { DefaultIcon, GBScreenHeader, SafeArea } from 'components';
 import { markedDates } from 'utils/calendar-data-mock';
+import routes from 'config/routes';
 import {
   CalendarContainer,
   Calendar,
@@ -18,7 +19,7 @@ const CalendarScreen = () => {
   return (
     <SafeArea>
       <ScreenContainer>
-        <Header title="Calendar" />
+        <GBScreenHeader title={routes.CALENDAR} />
         <CalendarContainer>
           <Calendar markedDates={markedDates} />
         </CalendarContainer>

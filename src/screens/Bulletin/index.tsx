@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from 'components';
+import { GBScreenHeader } from 'components';
 import routes, { RoutesLabels } from 'config/routes';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { SafeAreaView } from '../styles';
@@ -11,7 +11,7 @@ const MaterialTop = createMaterialTopTabNavigator();
 
 const BulletinScreen = () => (
   <SafeAreaView>
-    <Header route={routes.BULLETIN} />
+    <GBScreenHeader title={routes.BULLETIN} />
     <MainContainer>
       <MaterialTop.Navigator
         sceneContainerStyle={TopNavigatorStyles.screensWrapper}

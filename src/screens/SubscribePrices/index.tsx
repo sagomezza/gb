@@ -1,13 +1,12 @@
 import React from 'react';
-import { StatusBar, View, TouchableOpacity } from 'react-native';
-import ScreensHeader from 'components/ScreensHeader';
+import { View, TouchableOpacity } from 'react-native';
 import Spacing from 'components/Spacing';
 import { useNavigation } from '@react-navigation/native';
 import routes from 'config/routes';
+import { GBScreenHeader } from 'components';
 import CardSubcribePrices from './components/Card';
 import {
   CancelSubcriptionText,
-  HeaderContainer,
   LinkContainer,
   LinkText,
   SubscribePricesContainer,
@@ -22,12 +21,7 @@ const SubscribePricesScreen: React.FC = () => {
 
   return (
     <>
-      <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
-
-      <HeaderContainer>
-        <ScreensHeader isGoBack />
-      </HeaderContainer>
-
+      <GBScreenHeader title="Suscribe" />
       <SubscribePricesContainer>
         <View>
           <SubscribePricesTitle>Become a Premium</SubscribePricesTitle>

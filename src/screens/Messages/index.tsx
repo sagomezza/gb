@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DefaultIcon, Header, Input } from 'components';
+import { DefaultIcon, GBScreenHeader, Input } from 'components';
 import { navigator } from 'navigation';
 import routes from 'config/routes';
 import Conversations from './components/Conversations';
@@ -17,7 +17,7 @@ const MessagesScreen: React.FC = () => {
 
   return (
     <SafeAreaView>
-      <Header route={routes.MESSAGES} />
+      <GBScreenHeader title={routes.MESSAGES} />
       <MainContainer>
         <SearchContainer>
           <SearchInputContainer>

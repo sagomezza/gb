@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import { ScrollView } from 'react-native';
-import { Card, Header } from 'components';
+import { Card, GBScreenHeader } from 'components';
 import routes from 'config/routes';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleEditProfile } from 'store/app/appActions';
@@ -42,7 +42,7 @@ const ProfileScreen: React.FC = () => {
 
   return (
     <SafeAreaView>
-      <Header route={routes.PROFILE} />
+      <GBScreenHeader title={routes.PROFILE} />
       <MainContainer>
         <Card renderShadow>
           <ScrollView showsVerticalScrollIndicator={false}>

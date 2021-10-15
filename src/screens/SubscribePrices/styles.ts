@@ -1,10 +1,5 @@
-import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 import { nlz, rs, W } from 'utils/dimensions';
-
-export const HeaderContainer = styled.View`
-  margin-top: ${Platform.OS === 'ios' ? rs(40) : rs(20)}px;
-`;
 
 export const SubscribePricesTitle = styled.Text`
   color: ${({ theme: { colors } }) => colors.black};

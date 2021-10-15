@@ -20,3 +20,4 @@ export { default as RadiusSlider } from './RadiusSlider';
 export { default as Switch } from './Switch';
 export { default as ProfilePrivacy } from './ProfilePrivacy';
 export { default as Text } from './Text';
+export { default as GBScreenHeader } from './GBScreenHeader';

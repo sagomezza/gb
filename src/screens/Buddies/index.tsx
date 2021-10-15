@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { FlatList } from 'react-native';
-import { Header, Input } from 'components';
+import { Input, GBScreenHeader } from 'components';
 import { messagesData } from 'utils/messages-data';
 import { SafeAreaView } from 'screens/styles';
 import routes from 'config/routes';
@@ -24,7 +24,7 @@ const BuddiesScreen = () => {
 
   return (
     <SafeAreaView>
-      <Header route={routes.BUDDIES} />
+      <GBScreenHeader title={routes.BUDDIES} />
       <MainContainer>
         <SearchInputContainer>
           <Input

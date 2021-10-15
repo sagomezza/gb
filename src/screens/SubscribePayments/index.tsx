@@ -1,12 +1,10 @@
 /* eslint-disable no-console */
 import React from 'react';
-import ScreensHeader from 'components/ScreensHeader';
-import { StatusBar } from 'react-native';
 import Spacing from 'components/Spacing';
 import { useSelector } from 'react-redux';
 import { getProfileState } from 'store/app/appSelectors';
+import { GBScreenHeader } from 'components';
 import {
-  HeaderContainer,
   SubscribePaymentsContainer,
   SubscribePaymentsSubTitle,
   SubscribePaymentsTitle,
@@ -25,10 +23,7 @@ const SubscribePaymentsScreen: React.FC = () => {
   };
   return (
     <>
-      <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
-      <HeaderContainer>
-        <ScreensHeader isGoBack />
-      </HeaderContainer>
+      <GBScreenHeader title="Suscribe Payment" />
       <SubscribePaymentsContainer>
         <Spacing size={40} />
         <SubscribePaymentsTitle>Payment</SubscribePaymentsTitle>

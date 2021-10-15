@@ -8,6 +8,9 @@ import { IAuthData } from 'store/types';
 import { ActivityIndicator } from 'components';
 import { useSelector } from 'react-redux';
 import { getLoadingStatus } from 'store/auth/authSelectors';
+import { ButtonLogin } from 'screens/Login/styles';
+import routes from 'config/routes';
+import { navigator } from 'core/navigation';
 import Fb from '../../../assets/imgs/FB.svg';
 import Google from '../../../assets/imgs/Google.svg';
 import { ButtonSignup, FbButton, GoogleButton, ParagraphSignup, SocialContainer } from './styles';
@@ -22,6 +25,8 @@ const SignupForm: React.FC<ISignupFormProps> = ({ onSignup }: ISignupFormProps) 
     handleSubmit,
   } = useForm({ resolver: yupResolver(UserSchema) });
 
+  const { goToPage } = navigator();
+
   const signupFb = () => {};
   const signupGoogle = () => {};
 
@@ -31,6 +36,10 @@ const SignupForm: React.FC<ISignupFormProps> = ({ onSignup }: ISignupFormProps) 
     },
     [onSignup],
   );
+
+  const onLogin = () => {
+    goToPage(routes.LOGIN);
+  };
 
   return (
     <View>
@@ -86,6 +95,8 @@ const SignupForm: React.FC<ISignupFormProps> = ({ onSignup }: ISignupFormProps) 
       ) : (
         <ButtonSignup onPress={handleSubmit(onSubmit)}>Sign Up</ButtonSignup>
       )}
+      <Spacing size={5} />
+      <ButtonLogin onPress={onLogin}>Log In</ButtonLogin>
     </View>
   );
 };

@@ -56,6 +56,10 @@ const SignupScreen: React.FC = () => {
     goToPage(routes.VERIFICATION);
   };
 
+  const onLogin = () => {
+    goToPage(routes.LOGIN);
+  };
+
   return (
     <ContainerSignup>
       <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
@@ -71,7 +75,7 @@ const SignupScreen: React.FC = () => {
         </HeaderBackground>
         <SignupBody>
           <ContainerForm>
-            <Form onSignup={onSignup} />
+            <Form onLogin={onLogin} onSignup={onSignup} />
           </ContainerForm>
           <SnackBar toast={toast} />
         </SignupBody>

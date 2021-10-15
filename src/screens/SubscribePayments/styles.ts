@@ -5,10 +5,6 @@ import { Platform, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 import { H, nlz, rs } from 'utils/dimensions';
 
-export const HeaderContainer = styled.View`
-  margin-top: ${Platform.OS === 'ios' ? rs(40) : rs(20)}px;
-`;
-
 export const ButtonSubscribe = styled(PrimaryButton).attrs(() => ({
   labelStyle: {
     color: theme.colors.white,

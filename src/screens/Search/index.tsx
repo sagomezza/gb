@@ -5,10 +5,11 @@ import { Body } from 'layout/default';
 import Spacing from 'components/Spacing';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveRecentSearches } from 'store/search/searchActions';
-import ScreensHeader from 'components/ScreensHeader';
 import { getRecentSearches } from 'store/search/searchSelector';
+import routes from 'config/routes';
+import { GBScreenHeader } from 'components';
 import { data } from './example-data';
-import { HeaderContainer, InputSearch, SearchContainer, Separator } from './styles';
+import { InputSearch, SearchContainer, Separator } from './styles';
 import ItemView from './components/ItemView';
 import Searches from './components/Searches';
 
@@ -54,9 +55,7 @@ const SearchScreen = () => {
 
   return (
     <>
-      <HeaderContainer>
-        <ScreensHeader isGoBack />
-      </HeaderContainer>
+      <GBScreenHeader title={routes.PROFILE} />
       <SearchContainer>
         <Body>
           <Spacing size={20} />

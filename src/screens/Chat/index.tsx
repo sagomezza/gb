@@ -2,9 +2,8 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { GiftedChat, Send } from 'react-native-gifted-chat';
 import { RouteProp } from '@react-navigation/native';
-import Header from 'components/Header';
 import { SafeAreaView } from 'screens/styles';
-import { DefaultIcon } from 'components';
+import { DefaultIcon, GBScreenHeader } from 'components';
 import { ChatContainer, ChatBubble, IconContainer } from './styles';
 
 type MessagesStackParamList = {
@@ -76,7 +75,7 @@ const ChatScreen: React.FC<IChatScreenProps> = ({ route }: IChatScreenProps) => 
   return (
     <SafeAreaView>
       <ChatContainer>
-        <Header title={userName} />
+        <GBScreenHeader title={userName} />
         <GiftedChat
           alwaysShowSend
           messages={messages}

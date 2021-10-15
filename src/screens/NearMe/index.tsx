@@ -9,7 +9,7 @@ import {
 } from 'screens/NearMe/utils/constants';
 import { useRequestLocation } from 'hooks/useRequestLocation';
 import { SafeAreaView } from 'screens/styles';
-import { Header } from 'components';
+import { GBScreenHeader } from 'components';
 import routes from 'config/routes';
 import { mapData } from './utils/data-example';
 import Map from './components/Map';
@@ -40,7 +40,7 @@ const NearMeScreen: React.FC = () => {
 
   return (
     <SafeAreaView>
-      <Header route={routes.NEARME} />
+      <GBScreenHeader title={routes.NEARME} />
       <NearMeContainer>
         <SearchContainer>
           <GooglePlacesInput radius={radius} setLocation={setPlaceLocation} />

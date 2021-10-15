@@ -1,8 +1,9 @@
 import React, { useMemo, useState } from 'react';
 import { FlatList } from 'react-native';
-import { Header, Input } from 'components';
+import { GBScreenHeader, Header, Input } from 'components';
 import { messagesData } from 'utils/messages-data';
 import { SafeAreaView } from 'screens/styles';
+import routes from 'config/routes';
 import { ContactsContainer, NewMessageContainer, SearchInputContainer } from './styles';
 import ItemList from './components/ItemList';
 
@@ -24,6 +25,7 @@ const NewMessageScreen: React.FC = () => {
   return (
     <SafeAreaView>
       <NewMessageContainer>
+        <GBScreenHeader title={routes.NEWMESSAGE} />
         <Header title="New Message" />
         <ContactsContainer>
           <SearchInputContainer>
