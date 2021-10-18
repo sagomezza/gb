@@ -1,11 +1,24 @@
+/* eslint-disable no-extra-boolean-cast */
+/* eslint-disable no-console */
+// @ts-nocheck
 import * as React from 'react';
+
 import { Auth } from 'aws-amplify';
+
 import { ISignUpResult } from 'amazon-cognito-identity-js';
 import { API } from 'amplify/fetcher';
+
+import usePushNotifications from 'hooks/push-notifications';
 import { isAndroid } from 'utils/responsive';
+import { useSendNotificationMutations } from './notifications';
 
 export const useAuth = () => {
   const [errorResponses, setErrorResponses] = React.useState({ error: null, type: '' });
+
+  const { deviceToken } = usePushNotifications();
+  const token = deviceToken?.token;
+
+  const { createUserEndpoint, deleteUserEndpoint } = useSendNotificationMutations();
 
   const platform = isAndroid ? 'android' : 'ios';
 
@@ -31,13 +44,38 @@ export const useAuth = () => {
 
   // ToDo read all methods of Amplify.Auth here -> https://aws-amplify.github.io/amplify-js/api/classes/authclass.html
 
-  const signUp = async ({ password, phone_number, username }): Promise<ISignUpResult> => {
+  const signUp = async ({
+    group,
+    password,
+    phone_number,
+    user,
+    username,
+  }): Promise<ISignUpResult> => {
     try {
+      const { business, deviceId, name, phone } = user;
       const response = await Auth.signUp({
         password,
         username,
         attributes: {
           phone_number,
+          'custom:group': group,
+          'custom:business': business,
+          'custom:name': name,
+          'custom:phone': phone,
+        },
+        clientMetadata: {
+          groupName: group,
+          'custom:group': group,
+          'custom:business': business,
+          'custom:name': name,
+          'custom:phone': phone,
+          business,
+          deviceId,
+          deviceToken: token,
+          platform,
+          group,
+          name,
+          phone,
         },
       });
 
@@ -47,15 +85,59 @@ export const useAuth = () => {
     }
   };
 
+  const registerNotificationsArn = async () => {
+    if (!!token) {
+      try {
+        const session = await getCurrentSessionUser();
+        const userId = session?.idToken?.payload?.sub;
+        const body = {
+          userId,
+          platform: isAndroid ? 'android' : 'ios',
+          deviceId: token,
+        };
+
+        await createUserEndpoint(body);
+      } catch (error) {
+        console.error('Error creating endpointArn: ', error);
+      }
+    }
+  };
+
   const signIn = async ({ password, username }): Promise<ISignUpResult> => {
     try {
       const response = await Auth.signIn({
         password,
-
         username,
       });
 
+      await API.updateIsSignedIn(true);
       return response;
+    } catch (error) {
+      return error;
+    }
+  };
+
+  const removeNotificationsArn = async () => {
+    try {
+      const session = await getCurrentSessionUser();
+      const userId = session?.idToken?.payload?.sub;
+      const body = {
+        endpointArn: 'signout',
+        userId,
+      };
+
+      await deleteUserEndpoint(body);
+    } catch (error) {
+      console.error('Error removing endpointArn: ', error);
+    }
+  };
+
+  // eslint-disable-next-line consistent-return
+  const signOut = async () => {
+    try {
+      await removeNotificationsArn();
+      await Auth.signOut();
+      API.updateIsSignedIn(false);
     } catch (error) {
       return error;
     }
@@ -86,8 +168,11 @@ export const useAuth = () => {
   };
 
   /**
+
    * confirmSignUp Method is used for confirming Verification Code sent to email
+
    * Ref: https://aws-amplify.github.io/amplify-js/api/classes/authclass.html#confirmsignup
+
    */
 
   const confirmSignUp = async ({ code, user, username }) => {
@@ -97,6 +182,7 @@ export const useAuth = () => {
       const options = {
         clientMetadata: {
           deviceId,
+          deviceToken: token,
           platform,
         },
       };
@@ -111,13 +197,23 @@ export const useAuth = () => {
   };
 
   /**
+
    * resendSignUp Method is used to send Verification Code sent to email
+
    * Ref: https://aws-amplify.github.io/amplify-js/api/classes/authclass.html#resendsignup
+
    */
 
-  const resendSignUp = async ({ username }) => {
+  const resendSignUp = async ({ user, username }) => {
     try {
-      const data = await Auth.resendSignUp(username);
+      const { deviceId } = user;
+
+      const clientMetadata = {
+        deviceId,
+        deviceToken: token,
+        platform,
+      };
+      const data = await Auth.resendSignUp(username, clientMetadata);
 
       return data;
     } catch (error) {
@@ -127,26 +223,18 @@ export const useAuth = () => {
     }
   };
 
-  // eslint-disable-next-line consistent-return
-  const signOut = async () => {
-    try {
-      await Auth.signOut();
-      API.updateIsSignedIn(false);
-    } catch (error) {
-      return error;
-    }
-  };
-
   return {
     confirmSignUp,
-    getCurrentUserCredentials,
-    getCurrentSessionUser,
     errorResponses,
     forgotPassword,
-    forgotPasswordSubmit,
+    getCurrentSessionUser,
+    getCurrentUserCredentials,
+    registerNotificationsArn,
+    removeNotificationsArn,
     resendSignUp,
-    signUp,
     signIn,
     signOut,
+    signUp,
+    forgotPasswordSubmit,
   };
 };

@@ -1,17 +1,30 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, Linking, PermissionsAndroid, Platform, ToastAndroid } from 'react-native';
-import Geolocation, { GeoPosition } from 'react-native-geolocation-service';
+import Geolocation from 'react-native-geolocation-service';
 import { Region } from 'react-native-maps';
 
 export const useRequestLocation = () => {
-  const [unmount, setUnmount] = useState(false);
-  const [geoPositionState, setGeoPositionState] = useState<GeoPosition>();
-  const [currentLocation, setLocation] = useState<Region>({
+  const [currentLocation, setCurrentLocation] = useState<Region>({
     latitude: 0,
     longitude: 0,
     latitudeDelta: 0,
     longitudeDelta: 0,
   });
+  const prevLocation = useRef({
+    currentLocation: {
+      latitude: 0,
+      longitude: 0,
+      latitudeDelta: 0,
+      longitudeDelta: 0,
+    },
+    lastLocation: {
+      latitude: 0,
+      longitude: 0,
+      latitudeDelta: 0,
+      longitudeDelta: 0,
+    },
+    isMounted: true,
+  }).current;
 
   const hasPermissionIOS = async () => {
     const openSetting = () => {
@@ -30,7 +43,7 @@ export const useRequestLocation = () => {
     }
 
     if (status === 'disabled') {
-      Alert.alert(`Turn on Location Services to allow APP to determine your location.`, '', [
+      Alert.alert(`Turn on Location Services to allow Curl - Gym to determine your location.`, '', [
         { text: 'Go to Settings', onPress: openSetting },
         { text: "Don't Use Location", onPress: () => {} },
       ]);
@@ -99,8 +112,9 @@ export const useRequestLocation = () => {
           };
           const { accuracy, latitude, longitude } = position.coords;
           const latLng = regionFrom(latitude, longitude, accuracy);
-          setLocation(latLng);
-          setGeoPositionState(position);
+          prevLocation.lastLocation = prevLocation.currentLocation;
+          prevLocation.currentLocation = { ...latLng };
+          if (prevLocation.isMounted) setCurrentLocation(latLng);
         },
         () => {
           // See error code charts below.
@@ -113,30 +127,24 @@ export const useRequestLocation = () => {
     }
   };
 
-  const getLocationCallback = useCallback(() => {
-    getLocation();
+  const getLocationCallback = useCallback(async () => {
+    await getLocation();
+    Geolocation.stopObserving();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const currentLocationMemo = useMemo(() => {
+  const getLocationMemo = useMemo(() => {
     getLocationCallback();
-    return currentLocation;
+    Geolocation.stopObserving();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [getLocationCallback]);
+  }, []);
 
   useEffect(() => {
-    if (!unmount) {
-      (async () => {
-        try {
-          await getLocationCallback();
-        } catch (error) {
-          // Todo catch errors console.log('Error eolocation ', error);
-        }
-      })();
-    }
+    getLocationCallback();
 
     return () => {
-      setUnmount(true);
+      prevLocation.lastLocation = prevLocation.currentLocation;
+      prevLocation.isMounted = false;
       Geolocation.stopObserving();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -144,10 +152,9 @@ export const useRequestLocation = () => {
 
   return {
     currentLocation,
-    currentLocationMemo,
     getLocation,
     getLocationCallback,
-    geoPositionState,
-    setUnmount,
+    getLocationMemo,
+    hasLocationPermission,
   };
 };

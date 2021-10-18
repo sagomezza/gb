@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { navigator } from 'navigation';
 import NetInfo from '@react-native-community/netinfo';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { Auth, Hub } from 'aws-amplify';
+import { API } from 'amplify/fetcher';
 import Spacing from 'components/Spacing';
 import { showModalAlert, hideModalAlert } from 'store/app/appActions';
 import { ModalAlert } from 'components/ModalAlert';
@@ -54,23 +56,118 @@ const LoginScreen: React.FC = () => {
     email: string;
   };
 
+  React.useEffect(() => {
+    Hub.listen('auth', ({ payload: { data, event } }) => {
+      switch (event) {
+        case 'signIn':
+        case 'cognitoHostedUI':
+          // @ts-ignore
+          dispatch(
+            showModalAlert({
+              title: 'Logged in',
+              text: 'You logged in successfully',
+              textButton: 'Ok',
+              type: 'confirm',
+              visible: true,
+            }),
+          );
+          Auth.currentUserCredentials().then(async (userData) => {
+            const session = await getCurrentSessionUser();
+            if (userData.authenticated) {
+              dispatch(
+                saveUserToken({
+                  // @ts-ignore
+                  // @ts-ignore
+                  token: `Bearer ${session?.accessToken?.jwtToken}`,
+                  // @ts-ignore
+                  userId: session?.idToken?.payload?.sub,
+                }),
+              );
+              // @ts-ignore
+              dispatch(saveUserInfo({ ...session?.idToken?.payload, userId: data?.username }));
+              API.updateIsSignedIn(true);
+              dispatch(hideModalAlert());
+            }
+          });
+          break;
+        case 'signIn_failure':
+        case 'cognitoHostedUI_failure':
+          dispatch(
+            showModalAlert({
+              title: 'Error',
+              text: 'Error trying to login.',
+              textButton: 'Ok',
+              type: 'error',
+              visible: true,
+            }),
+          );
+          break;
+        default:
+          break;
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const loginFb = () => {
+    NetInfo.fetch().then(async (state) => {
+      if (!state.isConnected) {
+        dispatch(
+          showModalAlert({
+            title: 'Error',
+            text: 'Internet connection not available',
+            textButton: 'Ok',
+            type: 'error',
+            visible: true,
+          }),
+        );
+      } else {
+        // @ts-ignore
+        Auth.federatedSignIn({ provider: 'Facebook' });
+      }
+    });
+  };
+  const loginGoogle = async () => {
+    NetInfo.fetch().then(async (state) => {
+      if (!state.isConnected) {
+        dispatch(
+          showModalAlert({
+            title: 'Error',
+            text: 'Internet connection not available',
+            textButton: 'Ok',
+            type: 'error',
+            visible: true,
+          }),
+        );
+      } else {
+        // @ts-ignore
+        Auth.federatedSignIn({ provider: 'Google' });
+      }
+    });
+  };
+  // const loginApple = async () => {
+  //   NetInfo.fetch().then(async (state) => {
+  //     if (!state.isConnected) {
+  //       dispatch(
+  //         showModalAlert({
+  //           title: 'Error',
+  //           text: 'Internet connection not available',
+  //           textButton: 'Ok',
+  //           type: 'error',
+  //           visible: true,
+  //         }),
+  //       );
+  //     } else {
+  //       // @ts-ignore
+  //       await Auth.federatedSignIn({ provider: 'Apple' });
+  //     }
+  //   });
+  // };
+
   const resendCode = async (email) => {
     resendSignUp({
       username: email,
     });
-  };
-
-  const loginFb = () => {};
-  const loginGoogle = () => {
-    dispatch(
-      showModalAlert({
-        title: 'Error',
-        text: 'Internet connection not available',
-        textButton: 'Ok',
-        type: 'error',
-        visible: true,
-      }),
-    );
   };
 
   const onLogin = (data: IAuthData) => {

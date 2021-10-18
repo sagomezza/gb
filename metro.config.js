@@ -1,4 +1,5 @@
 const { getDefaultConfig } = require('metro-config');
+const exclusionList = require('metro-config/src/defaults/exclusionList');
 module.exports = (async () => {
   const {
     resolver: { sourceExts, assetExts },
@@ -15,6 +16,7 @@ module.exports = (async () => {
       }),
     },
     resolver: {
+      blacklistRE: exclusionList([/#current-cloud-backend\/.*/]),
       assetExts: assetExts.filter((ext) => ext !== 'svg'),
       sourceExts: [...sourceExts, 'svg'],
     },

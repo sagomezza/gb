@@ -201,6 +201,31 @@ type ModelNotificationConnection {
   count: Int
 }
 
+type Mutation {
+  enableDisableUsers(user: String): String @function(name: "enableDisableUsers-${env}")
+  registerEndpointArnNotification(body: UserPushRegisterInput): String
+    @function(name: "createEndpointNotifications-${env}")
+  deleteEndpointArnNotification(body: UserPushDeleteInput): String
+    @function(name: "deleteEndpointNotifications-${env}")
+  publishNotification(body: PublishNotificationInput): String
+    @function(name: "publishNotification-${env}")
+}
+input UserPushRegisterInput {
+  userId: String
+  platform: String
+  deviceId: String
+}
+input UserPushDeleteInput {
+  endpointArn: String
+  userId: String
+}
+
+input PublishNotificationInput {
+  message: String
+  endpointArn: String
+  subject: String
+}
+
 # type Query {
 #   findGyms(input: FindGymsInput!): SearchableGymConnection @aws_iam @aws_cognito_user_pools
 # }

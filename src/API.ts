@@ -2,6 +2,23 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
+export type UserPushRegisterInput = {
+  userId?: string | null,
+  platform?: string | null,
+  deviceId?: string | null,
+};
+
+export type UserPushDeleteInput = {
+  endpointArn?: string | null,
+  userId?: string | null,
+};
+
+export type PublishNotificationInput = {
+  message?: string | null,
+  endpointArn?: string | null,
+  subject?: string | null,
+};
+
 export type CreateCategoryInput = {
   id?: string | null,
   name?: string | null,
@@ -570,6 +587,38 @@ export type ModelUserConnection = {
   nextToken?: string | null,
   scannedCount?: number | null,
   count?: number | null,
+};
+
+export type EnableDisableUsersMutationVariables = {
+  user?: string | null,
+};
+
+export type EnableDisableUsersMutation = {
+  enableDisableUsers?: string | null,
+};
+
+export type RegisterEndpointArnNotificationMutationVariables = {
+  body?: UserPushRegisterInput | null,
+};
+
+export type RegisterEndpointArnNotificationMutation = {
+  registerEndpointArnNotification?: string | null,
+};
+
+export type DeleteEndpointArnNotificationMutationVariables = {
+  body?: UserPushDeleteInput | null,
+};
+
+export type DeleteEndpointArnNotificationMutation = {
+  deleteEndpointArnNotification?: string | null,
+};
+
+export type PublishNotificationMutationVariables = {
+  body?: PublishNotificationInput | null,
+};
+
+export type PublishNotificationMutation = {
+  publishNotification?: string | null,
 };
 
 export type CreateCategoryMutationVariables = {

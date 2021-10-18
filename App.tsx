@@ -6,6 +6,9 @@ import { Provider as StoreProvider } from 'react-redux';
 import { store } from 'store';
 import { STRIPE_PUBLISHABLE_KEY, CACHE_TIME_REACT_QUERY } from '@env';
 import Amplify from 'aws-amplify';
+import { useRequestLocation } from 'hooks/useRequestLocation';
+import usePushNotifications from 'hooks/push-notifications';
+import InAppBrowser from 'react-native-inappbrowser-reborn';
 import { initStripe } from '@stripe/stripe-react-native';
 import RNBootSplash from 'react-native-bootsplash';
 import { ThemeProvider } from 'styled-components/native';
@@ -21,8 +24,36 @@ LogBox.ignoreAllLogs(true);
 
 // RNBootSplash.hide({ fade: true });
 
+async function urlOpener(url, redirectUrl) {
+  try {
+    if (await InAppBrowser.isAvailable()) {
+      InAppBrowser.openAuth(url, redirectUrl, {
+        // iOS Properties
+        ephemeralWebSession: false,
+        // Android Properties
+        showTitle: false,
+        enableUrlBarHiding: true,
+        enableDefaultShare: false,
+      }).then((response) => {
+        if (response.type === 'success' && response.url) {
+          Linking.openURL(response.url);
+        }
+      });
+    } else Linking.openURL(url);
+  } catch (error) {
+    Linking.openURL(url);
+  }
+}
+
 Amplify.configure({
   ...awsConfig,
+  PushNotification: {
+    requestIOSPermissions: true,
+  },
+  oauth: {
+    ...awsConfig.oauth,
+    urlOpener,
+  },
 });
 
 const queryClient = new QueryClient({
@@ -36,6 +67,8 @@ const queryClient = new QueryClient({
 const publishableKey = STRIPE_PUBLISHABLE_KEY;
 
 const App = () => {
+  useRequestLocation();
+
   React.useEffect(() => {
     const init = async () => {
       // …do multiple sync or async tasks
@@ -52,6 +85,8 @@ const App = () => {
       merchantIdentifier: 'merchant.identifier',
     });
   }, []);
+  usePushNotifications();
+
   return (
     <QueryClientProvider client={queryClient}>
       <StoreProvider store={store}>

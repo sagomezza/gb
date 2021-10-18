@@ -18,7 +18,23 @@
       "function": {
         "postConfirmation": {
           "deploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",
-          "s3Key": "amplify-builds/postConfirmation-5a643263762b32425a77-build.zip"
+          "s3Key": "amplify-builds/postConfirmation-327475436c5559694a44-build.zip"
+        },
+        "createEndpointNotifications": {
+          "deploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",
+          "s3Key": "amplify-builds/createEndpointNotifications-5549743070672f643634-build.zip"
+        },
+        "deleteEndpointNotifications": {
+          "deploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",
+          "s3Key": "amplify-builds/deleteEndpointNotifications-4b354369715936654847-build.zip"
+        },
+        "enableDisableUsers": {
+          "deploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",
+          "s3Key": "amplify-builds/enableDisableUsers-4a31536f555646384362-build.zip"
+        },
+        "publishNotification": {
+          "deploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",
+          "s3Key": "amplify-builds/publishNotification-47433046633964704449-build.zip"
         }
       }
     }

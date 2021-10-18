@@ -53,7 +53,7 @@ exports.handler = async (event, context) => {
       ? event.request.userAttributes['cognito:user_status']
       : false;
 
-  const userPoolId = event && event.userPoolId ? event.userPoolId : 'us-east-1_C6MtzIzAP';
+  const userPoolId = event && event.userPoolId ? event.userPoolId : 'us-east-1_n1te2WG7C';
   const idSettings = uuidv4();
   let stripeCustomerId = '';
 
