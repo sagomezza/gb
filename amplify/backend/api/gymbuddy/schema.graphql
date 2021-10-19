@@ -93,6 +93,37 @@ type Notification
   owner: User @connection(name: "NotificationOwner")
 }
 
+type Bulletin
+  @model(subscriptions: { level: off })
+  @auth(
+    rules: [
+      { allow: private, provider: userPools, operations: [create, update, delete, read] }
+      {
+        allow: owner
+        provider: userPools
+        operations: [create, update, delete, read]
+        identityClaim: "sub"
+      }
+      {
+        allow: groups
+        provider: userPools
+        groups: ["Admin"]
+        operations: [create, update, delete, read]
+      }
+    ]
+  ) {
+  id: ID!
+  title: String!
+  description: String!
+  category: String
+  photos: [String]
+  bulletinOwnerId: ID!
+  eventDate: String!
+  owner: User @connection(name: "UserBulletin")
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+}
+
 type Setting
   @model(subscriptions: { level: off })
   @auth(
@@ -174,6 +205,7 @@ type User
   setting: Setting @connection(name: "UserSetting")
   gyms: [Gym] @connection(name: "GymOwner")
   notification: [Notification] @connection(name: "NotificationOwner")
+  bulletin: [Bulletin] @connection(name: "UserBulletin")
 }
 
 enum UserType {
@@ -188,6 +220,12 @@ type ModelUserConnection {
   count: Int
 }
 
+type ModelBulletinConnection {
+  items: [Bulletin]
+  nextToken: String
+  scannedCount: Int
+  count: Int
+}
 type ModelSettingConnection {
   items: [Setting]
   nextToken: String

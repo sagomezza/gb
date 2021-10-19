@@ -47,7 +47,7 @@
         "IdentityPoolName": "gymbuddyIdentityPool__staging",
         "UserPoolName": "gymbuddyUserPool"
       },
-      "lastPushTimeStamp": "2021-10-19T14:54:30.817Z",
+      "lastPushTimeStamp": "2021-10-19T15:56:43.581Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/auth/gymbuddy-cloudformation-template.yml",
         "logicalId": "authgymbuddy"
@@ -68,7 +68,7 @@
           ]
         }
       ],
-      "lastPushTimeStamp": "2021-10-19T14:54:30.839Z",
+      "lastPushTimeStamp": "2021-10-19T15:56:43.595Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/auth/template.json",
         "logicalId": "authuserPoolGroups"
@@ -96,12 +96,12 @@
         "GraphQLAPIIdOutput": "nbm47hodufgmtn5bs3u32l4mja",
         "GraphQLAPIEndpointOutput": "https://np3zt62q4ffhvcilsgcx5na5ku.appsync-api.us-east-1.amazonaws.com/graphql"
       },
-      "lastPushTimeStamp": "2021-10-19T14:54:30.842Z",
+      "lastPushTimeStamp": "2021-10-19T15:56:47.135Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apigymbuddy"
       },
-      "lastPushDirHash": "BFDuAPFgeCek9ibBbTUkIQCVpQI="
+      "lastPushDirHash": "8RYNkT5Acbo3ut9S33tw6XdROuM="
     }
   },
   "function": {
@@ -115,7 +115,7 @@
         "Name": "postConfirmation-staging",
         "LambdaExecutionRole": "gymbuddydevLambdaRole6aeae715-staging"
       },
-      "lastPushTimeStamp": "2021-10-19T14:54:30.910Z",
+      "lastPushTimeStamp": "2021-10-19T15:56:43.600Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/postConfirmation-cloudformation-template.json",
         "logicalId": "functionpostConfirmation"
@@ -146,7 +146,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/createEndpointNotifications-cloudformation-template.json",
         "logicalId": "functioncreateEndpointNotifications"
       },
-      "lastPushTimeStamp": "2021-10-19T14:54:30.852Z",
+      "lastPushTimeStamp": "2021-10-19T15:56:43.603Z",
       "output": {
         "Region": "us-east-1",
         "Arn": "arn:aws:lambda:us-east-1:484188761906:function:createEndpointNotifications-staging",
@@ -171,7 +171,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/deleteEndpointNotifications-cloudformation-template.json",
         "logicalId": "functiondeleteEndpointNotifications"
       },
-      "lastPushTimeStamp": "2021-10-19T14:54:30.854Z",
+      "lastPushTimeStamp": "2021-10-19T15:56:43.606Z",
       "output": {
         "Region": "us-east-1",
         "Arn": "arn:aws:lambda:us-east-1:484188761906:function:deleteEndpointNotifications-staging",
@@ -196,7 +196,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/enableDisableUsers-cloudformation-template.json",
         "logicalId": "functionenableDisableUsers"
       },
-      "lastPushTimeStamp": "2021-10-19T14:54:30.857Z",
+      "lastPushTimeStamp": "2021-10-19T15:56:43.608Z",
       "output": {
         "Region": "us-east-1",
         "Arn": "arn:aws:lambda:us-east-1:484188761906:function:enableDisableUsers-staging",
@@ -221,7 +221,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/publishNotification-cloudformation-template.json",
         "logicalId": "functionpublishNotification"
       },
-      "lastPushTimeStamp": "2021-10-19T14:54:30.858Z",
+      "lastPushTimeStamp": "2021-10-19T15:56:43.610Z",
       "output": {
         "Region": "us-east-1",
         "Arn": "arn:aws:lambda:us-east-1:484188761906:function:publishNotification-staging",

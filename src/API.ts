@@ -249,6 +249,7 @@ export type User = {
   setting?: Setting | null,
   gyms?: ModelGymConnection | null,
   notification?: ModelNotificationConnection | null,
+  bulletin?: ModelBulletinConnection | null,
 };
 
 export enum UserType {
@@ -293,6 +294,28 @@ export type Notification = {
   owner?: User | null,
   createdAt: string,
   updatedAt: string,
+};
+
+export type ModelBulletinConnection = {
+  __typename: "ModelBulletinConnection",
+  items?:  Array<Bulletin | null > | null,
+  nextToken?: string | null,
+  scannedCount?: number | null,
+  count?: number | null,
+};
+
+export type Bulletin = {
+  __typename: "Bulletin",
+  id: string,
+  title: string,
+  description: string,
+  category?: string | null,
+  photos?: Array< string | null > | null,
+  bulletinOwnerId: string,
+  eventDate: string,
+  owner?: User | null,
+  createdAt?: string | null,
+  updatedAt?: string | null,
 };
 
 export type UpdateGymInput = {
@@ -340,6 +363,48 @@ export type UpdateNotificationInput = {
 };
 
 export type DeleteNotificationInput = {
+  id: string,
+};
+
+export type CreateBulletinInput = {
+  id?: string | null,
+  title: string,
+  description: string,
+  category?: string | null,
+  photos?: Array< string | null > | null,
+  bulletinOwnerId: string,
+  eventDate: string,
+  createdAt?: string | null,
+  updatedAt?: string | null,
+};
+
+export type ModelBulletinConditionInput = {
+  title?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  category?: ModelStringInput | null,
+  photos?: ModelStringInput | null,
+  bulletinOwnerId?: ModelIDInput | null,
+  eventDate?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelBulletinConditionInput | null > | null,
+  or?: Array< ModelBulletinConditionInput | null > | null,
+  not?: ModelBulletinConditionInput | null,
+};
+
+export type UpdateBulletinInput = {
+  id: string,
+  title?: string | null,
+  description?: string | null,
+  category?: string | null,
+  photos?: Array< string | null > | null,
+  bulletinOwnerId?: string | null,
+  eventDate?: string | null,
+  createdAt?: string | null,
+  updatedAt?: string | null,
+};
+
+export type DeleteBulletinInput = {
   id: string,
 };
 
@@ -526,6 +591,21 @@ export type ModelNotificationFilterInput = {
   and?: Array< ModelNotificationFilterInput | null > | null,
   or?: Array< ModelNotificationFilterInput | null > | null,
   not?: ModelNotificationFilterInput | null,
+};
+
+export type ModelBulletinFilterInput = {
+  id?: ModelIDInput | null,
+  title?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  category?: ModelStringInput | null,
+  photos?: ModelStringInput | null,
+  bulletinOwnerId?: ModelIDInput | null,
+  eventDate?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelBulletinFilterInput | null > | null,
+  or?: Array< ModelBulletinFilterInput | null > | null,
+  not?: ModelBulletinFilterInput | null,
 };
 
 export type ModelSettingFilterInput = {
@@ -766,6 +846,12 @@ export type CreateGymMutation = {
         scannedCount?: number | null,
         count?: number | null,
       } | null,
+      bulletin?:  {
+        __typename: "ModelBulletinConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
     } | null,
     createdAt: string,
     updatedAt: string,
@@ -844,6 +930,12 @@ export type UpdateGymMutation = {
       } | null,
       notification?:  {
         __typename: "ModelNotificationConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
+      bulletin?:  {
+        __typename: "ModelBulletinConnection",
         nextToken?: string | null,
         scannedCount?: number | null,
         count?: number | null,
@@ -930,6 +1022,12 @@ export type DeleteGymMutation = {
         scannedCount?: number | null,
         count?: number | null,
       } | null,
+      bulletin?:  {
+        __typename: "ModelBulletinConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
     } | null,
     createdAt: string,
     updatedAt: string,
@@ -998,6 +1096,12 @@ export type CreateNotificationMutation = {
       } | null,
       notification?:  {
         __typename: "ModelNotificationConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
+      bulletin?:  {
+        __typename: "ModelBulletinConnection",
         nextToken?: string | null,
         scannedCount?: number | null,
         count?: number | null,
@@ -1074,6 +1178,12 @@ export type UpdateNotificationMutation = {
         scannedCount?: number | null,
         count?: number | null,
       } | null,
+      bulletin?:  {
+        __typename: "ModelBulletinConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
     } | null,
     createdAt: string,
     updatedAt: string,
@@ -1146,9 +1256,255 @@ export type DeleteNotificationMutation = {
         scannedCount?: number | null,
         count?: number | null,
       } | null,
+      bulletin?:  {
+        __typename: "ModelBulletinConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+  } | null,
+};
+
+export type CreateBulletinMutationVariables = {
+  input: CreateBulletinInput,
+  condition?: ModelBulletinConditionInput | null,
+};
+
+export type CreateBulletinMutation = {
+  createBulletin?:  {
+    __typename: "Bulletin",
+    id: string,
+    title: string,
+    description: string,
+    category?: string | null,
+    photos?: Array< string | null > | null,
+    bulletinOwnerId: string,
+    eventDate: string,
+    owner?:  {
+      __typename: "User",
+      id: string,
+      owner?: string | null,
+      userGroup?: UserType | null,
+      name: string,
+      business?: string | null,
+      deviceId?: string | null,
+      deviceToken?: string | null,
+      platform?: string | null,
+      stripeCustomerId?: string | null,
+      stripeSubscription?: string | null,
+      stripeSubscriptionId?: string | null,
+      endpointArn?: string | null,
+      email: string,
+      username?: string | null,
+      birthdate?: string | null,
+      gender?: string | null,
+      address?: string | null,
+      phone?: string | null,
+      status?: boolean | null,
+      premium?: boolean | null,
+      trainer?: boolean | null,
+      gps?:  {
+        __typename: "GPS",
+        lon?: number | null,
+        lat?: number | null,
+      } | null,
+      photo?: string | null,
+      createdAt?: string | null,
+      updatedAt?: string | null,
+      userSettingId: string,
+      userSuscriptionId?: string | null,
+      setting?:  {
+        __typename: "Setting",
+        id: string,
+        categories?: Array< string | null > | null,
+        radius?: number | null,
+        icon?: string | null,
+        settingOwnerId: string,
+        createdAt?: string | null,
+        updatedAt?: string | null,
+      } | null,
+      gyms?:  {
+        __typename: "ModelGymConnection",
+        nextToken?: string | null,
+      } | null,
+      notification?:  {
+        __typename: "ModelNotificationConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
+      bulletin?:  {
+        __typename: "ModelBulletinConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
+    } | null,
+    createdAt?: string | null,
+    updatedAt?: string | null,
+  } | null,
+};
+
+export type UpdateBulletinMutationVariables = {
+  input: UpdateBulletinInput,
+  condition?: ModelBulletinConditionInput | null,
+};
+
+export type UpdateBulletinMutation = {
+  updateBulletin?:  {
+    __typename: "Bulletin",
+    id: string,
+    title: string,
+    description: string,
+    category?: string | null,
+    photos?: Array< string | null > | null,
+    bulletinOwnerId: string,
+    eventDate: string,
+    owner?:  {
+      __typename: "User",
+      id: string,
+      owner?: string | null,
+      userGroup?: UserType | null,
+      name: string,
+      business?: string | null,
+      deviceId?: string | null,
+      deviceToken?: string | null,
+      platform?: string | null,
+      stripeCustomerId?: string | null,
+      stripeSubscription?: string | null,
+      stripeSubscriptionId?: string | null,
+      endpointArn?: string | null,
+      email: string,
+      username?: string | null,
+      birthdate?: string | null,
+      gender?: string | null,
+      address?: string | null,
+      phone?: string | null,
+      status?: boolean | null,
+      premium?: boolean | null,
+      trainer?: boolean | null,
+      gps?:  {
+        __typename: "GPS",
+        lon?: number | null,
+        lat?: number | null,
+      } | null,
+      photo?: string | null,
+      createdAt?: string | null,
+      updatedAt?: string | null,
+      userSettingId: string,
+      userSuscriptionId?: string | null,
+      setting?:  {
+        __typename: "Setting",
+        id: string,
+        categories?: Array< string | null > | null,
+        radius?: number | null,
+        icon?: string | null,
+        settingOwnerId: string,
+        createdAt?: string | null,
+        updatedAt?: string | null,
+      } | null,
+      gyms?:  {
+        __typename: "ModelGymConnection",
+        nextToken?: string | null,
+      } | null,
+      notification?:  {
+        __typename: "ModelNotificationConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
+      bulletin?:  {
+        __typename: "ModelBulletinConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
+    } | null,
+    createdAt?: string | null,
+    updatedAt?: string | null,
+  } | null,
+};
+
+export type DeleteBulletinMutationVariables = {
+  input: DeleteBulletinInput,
+  condition?: ModelBulletinConditionInput | null,
+};
+
+export type DeleteBulletinMutation = {
+  deleteBulletin?:  {
+    __typename: "Bulletin",
+    id: string,
+    title: string,
+    description: string,
+    category?: string | null,
+    photos?: Array< string | null > | null,
+    bulletinOwnerId: string,
+    eventDate: string,
+    owner?:  {
+      __typename: "User",
+      id: string,
+      owner?: string | null,
+      userGroup?: UserType | null,
+      name: string,
+      business?: string | null,
+      deviceId?: string | null,
+      deviceToken?: string | null,
+      platform?: string | null,
+      stripeCustomerId?: string | null,
+      stripeSubscription?: string | null,
+      stripeSubscriptionId?: string | null,
+      endpointArn?: string | null,
+      email: string,
+      username?: string | null,
+      birthdate?: string | null,
+      gender?: string | null,
+      address?: string | null,
+      phone?: string | null,
+      status?: boolean | null,
+      premium?: boolean | null,
+      trainer?: boolean | null,
+      gps?:  {
+        __typename: "GPS",
+        lon?: number | null,
+        lat?: number | null,
+      } | null,
+      photo?: string | null,
+      createdAt?: string | null,
+      updatedAt?: string | null,
+      userSettingId: string,
+      userSuscriptionId?: string | null,
+      setting?:  {
+        __typename: "Setting",
+        id: string,
+        categories?: Array< string | null > | null,
+        radius?: number | null,
+        icon?: string | null,
+        settingOwnerId: string,
+        createdAt?: string | null,
+        updatedAt?: string | null,
+      } | null,
+      gyms?:  {
+        __typename: "ModelGymConnection",
+        nextToken?: string | null,
+      } | null,
+      notification?:  {
+        __typename: "ModelNotificationConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
+      bulletin?:  {
+        __typename: "ModelBulletinConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
+    } | null,
+    createdAt?: string | null,
+    updatedAt?: string | null,
   } | null,
 };
 
@@ -1214,6 +1570,12 @@ export type CreateSettingMutation = {
       } | null,
       notification?:  {
         __typename: "ModelNotificationConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
+      bulletin?:  {
+        __typename: "ModelBulletinConnection",
         nextToken?: string | null,
         scannedCount?: number | null,
         count?: number | null,
@@ -1290,6 +1652,12 @@ export type UpdateSettingMutation = {
         scannedCount?: number | null,
         count?: number | null,
       } | null,
+      bulletin?:  {
+        __typename: "ModelBulletinConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
     } | null,
     createdAt?: string | null,
     updatedAt?: string | null,
@@ -1358,6 +1726,12 @@ export type DeleteSettingMutation = {
       } | null,
       notification?:  {
         __typename: "ModelNotificationConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
+      bulletin?:  {
+        __typename: "ModelBulletinConnection",
         nextToken?: string | null,
         scannedCount?: number | null,
         count?: number | null,
@@ -1481,6 +1855,24 @@ export type CreateUserMutation = {
       scannedCount?: number | null,
       count?: number | null,
     } | null,
+    bulletin?:  {
+      __typename: "ModelBulletinConnection",
+      items?:  Array< {
+        __typename: "Bulletin",
+        id: string,
+        title: string,
+        description: string,
+        category?: string | null,
+        photos?: Array< string | null > | null,
+        bulletinOwnerId: string,
+        eventDate: string,
+        createdAt?: string | null,
+        updatedAt?: string | null,
+      } | null > | null,
+      nextToken?: string | null,
+      scannedCount?: number | null,
+      count?: number | null,
+    } | null,
   } | null,
 };
 
@@ -1597,6 +1989,24 @@ export type UpdateUserMutation = {
       scannedCount?: number | null,
       count?: number | null,
     } | null,
+    bulletin?:  {
+      __typename: "ModelBulletinConnection",
+      items?:  Array< {
+        __typename: "Bulletin",
+        id: string,
+        title: string,
+        description: string,
+        category?: string | null,
+        photos?: Array< string | null > | null,
+        bulletinOwnerId: string,
+        eventDate: string,
+        createdAt?: string | null,
+        updatedAt?: string | null,
+      } | null > | null,
+      nextToken?: string | null,
+      scannedCount?: number | null,
+      count?: number | null,
+    } | null,
   } | null,
 };
 
@@ -1708,6 +2118,24 @@ export type DeleteUserMutation = {
         notificationOwnerId?: string | null,
         createdAt: string,
         updatedAt: string,
+      } | null > | null,
+      nextToken?: string | null,
+      scannedCount?: number | null,
+      count?: number | null,
+    } | null,
+    bulletin?:  {
+      __typename: "ModelBulletinConnection",
+      items?:  Array< {
+        __typename: "Bulletin",
+        id: string,
+        title: string,
+        description: string,
+        category?: string | null,
+        photos?: Array< string | null > | null,
+        bulletinOwnerId: string,
+        eventDate: string,
+        createdAt?: string | null,
+        updatedAt?: string | null,
       } | null > | null,
       nextToken?: string | null,
       scannedCount?: number | null,
@@ -1837,6 +2265,12 @@ export type GetGymQuery = {
       } | null,
       notification?:  {
         __typename: "ModelNotificationConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
+      bulletin?:  {
+        __typename: "ModelBulletinConnection",
         nextToken?: string | null,
         scannedCount?: number | null,
         count?: number | null,
@@ -1976,6 +2410,12 @@ export type GetNotificationQuery = {
         scannedCount?: number | null,
         count?: number | null,
       } | null,
+      bulletin?:  {
+        __typename: "ModelBulletinConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
     } | null,
     createdAt: string,
     updatedAt: string,
@@ -2029,6 +2469,141 @@ export type ListNotificationsQuery = {
       } | null,
       createdAt: string,
       updatedAt: string,
+    } | null > | null,
+    nextToken?: string | null,
+    scannedCount?: number | null,
+    count?: number | null,
+  } | null,
+};
+
+export type GetBulletinQueryVariables = {
+  id: string,
+};
+
+export type GetBulletinQuery = {
+  getBulletin?:  {
+    __typename: "Bulletin",
+    id: string,
+    title: string,
+    description: string,
+    category?: string | null,
+    photos?: Array< string | null > | null,
+    bulletinOwnerId: string,
+    eventDate: string,
+    owner?:  {
+      __typename: "User",
+      id: string,
+      owner?: string | null,
+      userGroup?: UserType | null,
+      name: string,
+      business?: string | null,
+      deviceId?: string | null,
+      deviceToken?: string | null,
+      platform?: string | null,
+      stripeCustomerId?: string | null,
+      stripeSubscription?: string | null,
+      stripeSubscriptionId?: string | null,
+      endpointArn?: string | null,
+      email: string,
+      username?: string | null,
+      birthdate?: string | null,
+      gender?: string | null,
+      address?: string | null,
+      phone?: string | null,
+      status?: boolean | null,
+      premium?: boolean | null,
+      trainer?: boolean | null,
+      gps?:  {
+        __typename: "GPS",
+        lon?: number | null,
+        lat?: number | null,
+      } | null,
+      photo?: string | null,
+      createdAt?: string | null,
+      updatedAt?: string | null,
+      userSettingId: string,
+      userSuscriptionId?: string | null,
+      setting?:  {
+        __typename: "Setting",
+        id: string,
+        categories?: Array< string | null > | null,
+        radius?: number | null,
+        icon?: string | null,
+        settingOwnerId: string,
+        createdAt?: string | null,
+        updatedAt?: string | null,
+      } | null,
+      gyms?:  {
+        __typename: "ModelGymConnection",
+        nextToken?: string | null,
+      } | null,
+      notification?:  {
+        __typename: "ModelNotificationConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
+      bulletin?:  {
+        __typename: "ModelBulletinConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
+    } | null,
+    createdAt?: string | null,
+    updatedAt?: string | null,
+  } | null,
+};
+
+export type ListBulletinsQueryVariables = {
+  filter?: ModelBulletinFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListBulletinsQuery = {
+  listBulletins?:  {
+    __typename: "ModelBulletinConnection",
+    items?:  Array< {
+      __typename: "Bulletin",
+      id: string,
+      title: string,
+      description: string,
+      category?: string | null,
+      photos?: Array< string | null > | null,
+      bulletinOwnerId: string,
+      eventDate: string,
+      owner?:  {
+        __typename: "User",
+        id: string,
+        owner?: string | null,
+        userGroup?: UserType | null,
+        name: string,
+        business?: string | null,
+        deviceId?: string | null,
+        deviceToken?: string | null,
+        platform?: string | null,
+        stripeCustomerId?: string | null,
+        stripeSubscription?: string | null,
+        stripeSubscriptionId?: string | null,
+        endpointArn?: string | null,
+        email: string,
+        username?: string | null,
+        birthdate?: string | null,
+        gender?: string | null,
+        address?: string | null,
+        phone?: string | null,
+        status?: boolean | null,
+        premium?: boolean | null,
+        trainer?: boolean | null,
+        photo?: string | null,
+        createdAt?: string | null,
+        updatedAt?: string | null,
+        userSettingId: string,
+        userSuscriptionId?: string | null,
+      } | null,
+      createdAt?: string | null,
+      updatedAt?: string | null,
     } | null > | null,
     nextToken?: string | null,
     scannedCount?: number | null,
@@ -2097,6 +2672,12 @@ export type GetSettingQuery = {
       } | null,
       notification?:  {
         __typename: "ModelNotificationConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
+      bulletin?:  {
+        __typename: "ModelBulletinConnection",
         nextToken?: string | null,
         scannedCount?: number | null,
         count?: number | null,
@@ -2273,6 +2854,24 @@ export type GetUserQuery = {
       scannedCount?: number | null,
       count?: number | null,
     } | null,
+    bulletin?:  {
+      __typename: "ModelBulletinConnection",
+      items?:  Array< {
+        __typename: "Bulletin",
+        id: string,
+        title: string,
+        description: string,
+        category?: string | null,
+        photos?: Array< string | null > | null,
+        bulletinOwnerId: string,
+        eventDate: string,
+        createdAt?: string | null,
+        updatedAt?: string | null,
+      } | null > | null,
+      nextToken?: string | null,
+      scannedCount?: number | null,
+      count?: number | null,
+    } | null,
   } | null,
 };
 
@@ -2336,6 +2935,12 @@ export type ListUsersQuery = {
       } | null,
       notification?:  {
         __typename: "ModelNotificationConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
+      bulletin?:  {
+        __typename: "ModelBulletinConnection",
         nextToken?: string | null,
         scannedCount?: number | null,
         count?: number | null,
@@ -2493,6 +3098,12 @@ export type GetUserByEmailQuery = {
       } | null,
       notification?:  {
         __typename: "ModelNotificationConnection",
+        nextToken?: string | null,
+        scannedCount?: number | null,
+        count?: number | null,
+      } | null,
+      bulletin?:  {
+        __typename: "ModelBulletinConnection",
         nextToken?: string | null,
         scannedCount?: number | null,
         count?: number | null,
