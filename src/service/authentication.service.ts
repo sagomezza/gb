@@ -44,15 +44,11 @@ export const useAuth = () => {
 
   // ToDo read all methods of Amplify.Auth here -> https://aws-amplify.github.io/amplify-js/api/classes/authclass.html
 
-  const signUp = async ({
-    group,
-    password,
-    phone_number,
-    user,
-    username,
-  }): Promise<ISignUpResult> => {
+  const signUp = async ({ password, phone_number, user, username }): Promise<ISignUpResult> => {
     try {
-      const { business, deviceId, name, phone } = user;
+      const { name } = user;
+      const group = 'User';
+      const business = 'no-business';
       const response = await Auth.signUp({
         password,
         username,
@@ -61,21 +57,21 @@ export const useAuth = () => {
           'custom:group': group,
           'custom:business': business,
           'custom:name': name,
-          'custom:phone': phone,
+          'custom:phone': phone_number,
         },
         clientMetadata: {
           groupName: group,
           'custom:group': group,
           'custom:business': business,
           'custom:name': name,
-          'custom:phone': phone,
+          'custom:phone': phone_number,
           business,
-          deviceId,
+          deviceId: token,
           deviceToken: token,
           platform,
           group,
           name,
-          phone,
+          phone: phone_number,
         },
       });
 

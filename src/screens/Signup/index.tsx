@@ -34,9 +34,10 @@ const SignupScreen: React.FC = () => {
     dispatch(toggleAuthLoader(true));
 
     const response = await signUp({
-      username: data.email,
       password: data.password,
       phone_number: `+13146009090`,
+      user: data.name,
+      username: data.email,
     });
 
     const existCode = AuthAmplifyDictionary(response?.code);

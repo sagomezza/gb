@@ -47,11 +47,36 @@
         "IdentityPoolName": "gymbuddyIdentityPool__staging",
         "UserPoolName": "gymbuddyUserPool"
       },
-      "lastPushTimeStamp": "2021-10-18T15:03:05.395Z",
+      "lastPushTimeStamp": "2021-10-19T14:54:30.817Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/auth/gymbuddy-cloudformation-template.yml",
         "logicalId": "authgymbuddy"
       }
+    },
+    "userPoolGroups": {
+      "service": "Cognito-UserPool-Groups",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "gymbuddy",
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ]
+        }
+      ],
+      "lastPushTimeStamp": "2021-10-19T14:54:30.839Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/auth/template.json",
+        "logicalId": "authuserPoolGroups"
+      },
+      "output": {
+        "UserGroupRole": "arn:aws:iam::484188761906:role/us-east-1_n1te2WG7C-UserGroupRole"
+      },
+      "lastPushDirHash": "j09RAMAz0czvHfRDFpVbqm2jNkI="
     }
   },
   "api": {
@@ -71,7 +96,7 @@
         "GraphQLAPIIdOutput": "nbm47hodufgmtn5bs3u32l4mja",
         "GraphQLAPIEndpointOutput": "https://np3zt62q4ffhvcilsgcx5na5ku.appsync-api.us-east-1.amazonaws.com/graphql"
       },
-      "lastPushTimeStamp": "2021-10-18T15:03:08.751Z",
+      "lastPushTimeStamp": "2021-10-19T14:54:30.842Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apigymbuddy"
@@ -90,20 +115,20 @@
         "Name": "postConfirmation-staging",
         "LambdaExecutionRole": "gymbuddydevLambdaRole6aeae715-staging"
       },
-      "lastPushTimeStamp": "2021-10-18T15:03:05.401Z",
+      "lastPushTimeStamp": "2021-10-19T14:54:30.910Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/postConfirmation-cloudformation-template.json",
         "logicalId": "functionpostConfirmation"
       },
       "s3Bucket": {
         "deploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",
-        "s3Key": "amplify-builds/postConfirmation-327475436c5559694a44-build.zip"
+        "s3Key": "amplify-builds/postConfirmation-592b52784d4963693974-build.zip"
       },
-      "lastBuildTimeStamp": "2021-10-18T14:43:18.635Z",
+      "lastBuildTimeStamp": "2021-10-19T14:53:01.366Z",
       "lastBuildType": "PROD",
-      "lastPackageTimeStamp": "2021-10-18T14:43:23.364Z",
-      "distZipFilename": "postConfirmation-327475436c5559694a44-build.zip",
-      "lastPushDirHash": "P+Qf2zxyy2vOHoVYfkrw6So0wAc="
+      "lastPackageTimeStamp": "2021-10-19T14:53:13.251Z",
+      "distZipFilename": "postConfirmation-592b52784d4963693974-build.zip",
+      "lastPushDirHash": "eHOdsiPtDLZv9p0BRy4td+82L5M="
     },
     "createEndpointNotifications": {
       "build": true,
@@ -121,7 +146,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/createEndpointNotifications-cloudformation-template.json",
         "logicalId": "functioncreateEndpointNotifications"
       },
-      "lastPushTimeStamp": "2021-10-18T15:03:05.402Z",
+      "lastPushTimeStamp": "2021-10-19T14:54:30.852Z",
       "output": {
         "Region": "us-east-1",
         "Arn": "arn:aws:lambda:us-east-1:484188761906:function:createEndpointNotifications-staging",
@@ -146,7 +171,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/deleteEndpointNotifications-cloudformation-template.json",
         "logicalId": "functiondeleteEndpointNotifications"
       },
-      "lastPushTimeStamp": "2021-10-18T15:03:05.404Z",
+      "lastPushTimeStamp": "2021-10-19T14:54:30.854Z",
       "output": {
         "Region": "us-east-1",
         "Arn": "arn:aws:lambda:us-east-1:484188761906:function:deleteEndpointNotifications-staging",
@@ -171,7 +196,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/enableDisableUsers-cloudformation-template.json",
         "logicalId": "functionenableDisableUsers"
       },
-      "lastPushTimeStamp": "2021-10-18T15:03:05.410Z",
+      "lastPushTimeStamp": "2021-10-19T14:54:30.857Z",
       "output": {
         "Region": "us-east-1",
         "Arn": "arn:aws:lambda:us-east-1:484188761906:function:enableDisableUsers-staging",
@@ -196,7 +221,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/publishNotification-cloudformation-template.json",
         "logicalId": "functionpublishNotification"
       },
-      "lastPushTimeStamp": "2021-10-18T15:03:05.411Z",
+      "lastPushTimeStamp": "2021-10-19T14:54:30.858Z",
       "output": {
         "Region": "us-east-1",
         "Arn": "arn:aws:lambda:us-east-1:484188761906:function:publishNotification-staging",
