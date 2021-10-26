@@ -4,3 +4,4 @@ export const customQueries = () => {};
 export { useGetUserQuery as getUserQuery } from './user';
 export { useListCategorysQuery as listCategoryQuery } from './category';
 export { useListBulletinsQuery as listBulletinsQuery } from './bulletin';
+export { useSearchUsersQuery as searchUsers } from './buddies';
