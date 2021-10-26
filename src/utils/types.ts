@@ -1,3 +1,4 @@
+import { DrawerNavigationProp } from '@react-navigation/drawer';
 import React from 'react';
 import { NavigationScreenProp } from 'react-navigation';
 
@@ -23,4 +24,11 @@ export interface IWithChildrenAndProps extends IWithChildren {
 
 export interface IWithStyle {
   style?: React.CSSProperties;
+}
+
+export interface IWithDrawerNavigation {
+  navigation: DrawerNavigationProp<any, any>;
+  route?: {
+    params?: any | null;
+  };
 }

@@ -23,3 +23,4 @@ export { default as CalendarScreen } from './Calendar';
 export { default as ForgotPasswordScreen } from './ForgotPassword';
 export { default as VerificationScreen } from './Verification';
 export { default as AgendaScreen } from './Agenda';
+export { default as LegalTermsScreen } from './LegalTerms';

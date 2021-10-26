@@ -72,6 +72,7 @@ const colors = {
   primaryBlur: '#e0fcff',
   darkerBeige: '#F1F1F1',
   dayNotSelected: '#9D9D9D',
+  paragraphText: '#807474',
 };
 
 export const theme = {

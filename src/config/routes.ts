@@ -31,6 +31,7 @@ export enum RoutesMain {
   PROFILE = 'PROFILE',
   SEARCH = 'SEARCH',
   SETTINGS = 'SETTINGS',
+  TERMS = 'TERMS',
 }
 
 const routes = {

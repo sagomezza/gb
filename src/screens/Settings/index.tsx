@@ -9,6 +9,7 @@ import { getModalAlertState } from 'store/app/appSelectors';
 import { removeUserToken, toggleAuthLoader } from 'store/auth/authActions';
 import { useAuth } from 'service/authentication.service';
 import { useQueryClient } from 'react-query';
+import { navigator } from 'navigation';
 import PrivacyTogggler from './components/PrivacyToggler';
 import { Separator, TitleLabel, TogglerContainer } from './styles';
 import { SafeAreaView } from '../styles';
@@ -19,6 +20,7 @@ const SettingsScreen = () => {
   const modalAlertState = useSelector(getModalAlertState);
   const { signOut } = useAuth();
   const queryClient = useQueryClient();
+  const { goToPage } = navigator();
 
   const onSliderChange = (value) => {
     setSliderValue(value);
@@ -63,6 +65,22 @@ const SettingsScreen = () => {
           />
           <Spacing />
           <PrivacyTogggler />
+          <Separator />
+          <TouchableOpacity
+            onPress={() => {
+              goToPage('TERMS', { contentType: 'terms' });
+            }}
+          >
+            <TitleLabel>Terms of Use</TitleLabel>
+          </TouchableOpacity>
+          <Separator />
+          <TouchableOpacity
+            onPress={() => {
+              goToPage('TERMS', { contentType: 'privacy' });
+            }}
+          >
+            <TitleLabel>Privacy Policy</TitleLabel>
+          </TouchableOpacity>
           <Separator />
           <TouchableOpacity onPress={handleLogOut}>
             <TitleLabel>Log Out</TitleLabel>
