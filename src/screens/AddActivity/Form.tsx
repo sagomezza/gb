@@ -3,7 +3,7 @@ import { Controller, useForm } from 'react-hook-form';
 import Spacing from 'components/Spacing';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { TouchableOpacity } from 'react-native';
-import { Input } from 'components';
+import { Input, Typography } from 'components';
 import {
   ButtonForm,
   FormContainer,
@@ -22,7 +22,12 @@ const AddActivityForm: React.FC<IAddActivityFormProps> = ({
   item,
   onSubmit,
 }: IAddActivityFormProps) => {
-  const { control, handleSubmit, setValue } = useForm({ mode: 'onBlur' });
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+    setValue,
+  } = useForm({ mode: 'onBlur' });
 
   const [isTimePickerVisible, setTimePickerVisible] = useState(false);
   const [startTime, setStartTime] = useState(new Date(2020, 1, 1, 11));
@@ -81,7 +86,13 @@ const AddActivityForm: React.FC<IAddActivityFormProps> = ({
                 onChangeText={(newText) => onChange(newText)}
               />
             )}
+            rules={{ required: { value: true, message: 'Title is required' } }}
           />
+          {!!errors.title && (
+            <Typography color="error" size={11}>
+              {errors.title.message}
+            </Typography>
+          )}
         </SingleInputContainer>
         <SingleInputContainer>
           <Controller
@@ -110,7 +121,13 @@ const AddActivityForm: React.FC<IAddActivityFormProps> = ({
                 onChangeText={(newText) => onChange(newText)}
               />
             )}
+            rules={{ required: { value: true, message: 'Description is required' } }}
           />
+          {!!errors.description && (
+            <Typography color="error" size={11}>
+              {errors.description.message}
+            </Typography>
+          )}
         </MultilineInputContainer>
         <TimeContainer>
           <TimeText>Start</TimeText>

@@ -46,6 +46,7 @@ export const TimeContainer = styled.View`
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: ${rs(4)}px;
 `;
 
 export const TimeText = styled.Text<TimeTextProps>`
@@ -89,7 +90,7 @@ export const TextDate = styled.Text`
 
 export const SingleInputContainer = styled.View`
   height: ${rs(60)}px;
-  margin-bottom: ${rs(16)}px;
+  margin-bottom: ${rs(24)}px;
   width: 100%;
 `;
 
