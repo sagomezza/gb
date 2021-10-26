@@ -1,11 +1,13 @@
 import FormInputNative from 'components/FormInputNative';
 import { theme } from 'config/theme';
+import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 import { nlz, rs } from 'utils/dimensions';
 
 export const SubmitButtonContainer = styled.View`
   align-self: flex-end;
-  margin-vertical: ${rs(20)}px;
+  margin-bottom: ${Platform.OS === 'ios' ? rs(40) : rs(60)}px;
+  margin-top: ${rs(20)}px;
 `;
 
 export const InputName = styled(FormInputNative).attrs(() => ({

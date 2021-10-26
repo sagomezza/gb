@@ -3,10 +3,15 @@ import React from 'react';
 import Spacing from 'components/Spacing';
 import { useDispatch, useSelector } from 'react-redux';
 import { getModalAlertState, getProfileState } from 'store/app/appSelectors';
-import { showModalAlert, hideModalAlert } from 'store/app/appActions';
-import NetInfo from '@react-native-community/netinfo';
-import { ModalAlert } from 'components/ModalAlert';
 import { GBScreenHeader } from 'components';
+import { hideModalAlert, showModalAlert, toggleEditProfile } from 'store/app/appActions';
+import { useQueryClient } from 'react-query';
+import { updateUserMutation } from 'service/mutations';
+import { getUserId } from 'store/auth/authSelectors';
+import { GetUserQuery, UpdateUserInput } from 'lib/api';
+import { ModalAlert } from 'components/ModalAlert';
+import { navigator } from 'navigation';
+import NetInfo from '@react-native-community/netinfo';
 import { SafeAreaView } from 'screens/styles';
 import {
   SubscribePaymentsContainer,
@@ -17,50 +22,87 @@ import Form from './Form';
 import { ICardDetails, IFormValuesSubscribePayments } from './types';
 
 const SubscribePaymentsScreen: React.FC = () => {
-  const alertModal = useSelector(getModalAlertState);
-  const dispatch = useDispatch();
+  const { goToPage } = navigator();
   const profileInfo = useSelector(getProfileState);
+  const userID = useSelector(getUserId);
+  const dispatch = useDispatch();
+  const queryClient = useQueryClient();
+  const modalAlertState = useSelector(getModalAlertState);
+
+  const { mutateAsync } = updateUserMutation();
+
   const onPressSubscribe = (data: IFormValuesSubscribePayments, card: ICardDetails) => {
     // TODO: CONSUME SERVICE BACKEND
     console.log(data, card);
+    // ON PAYMENT SUCCESSFUL
+    profileInfo.trainer = true;
+    profileInfo.premium = true;
+
+    const input = {
+      id: userID,
+      name: profileInfo.name,
+      description: profileInfo.description,
+      premium: profileInfo.premium,
+      trainer: profileInfo.trainer,
+    };
+    updateProfile(input);
+  };
+
+  const updateProfile = (input: UpdateUserInput) => {
     NetInfo.fetch().then(async (state) => {
       if (!state.isConnected) {
         onConnectionErrorHandler();
       } else {
         try {
-          // mutation
-          // ON PAYMENT SUCCESSFUL
-          profileInfo.isTrainer = true;
-          console.log('updateProfile', profileInfo);
-          dispatch(
-            showModalAlert({
-              title: 'Success',
-              text: 'Suscription bougth!',
-              textButton: 'Ok',
-              type: 'confirm',
-              visible: true,
-            }),
+          await mutateAsync(
+            { input },
+            {
+              onSuccess: (data) => {
+                queryClient.setQueryData<GetUserQuery>(
+                  [
+                    'GetUser',
+                    {
+                      id: userID,
+                    },
+                  ],
+                  {
+                    // @ts-ignore
+                    getUser: data.updateUser,
+                  },
+                );
+                dispatch(
+                  showModalAlert({
+                    title: 'Well Done!',
+                    text: `Your profile has been updated successfully`,
+                    textButton: '',
+                    type: 'sucess',
+                    visible: true,
+                  }),
+                );
+                dispatch(toggleEditProfile(false));
+                goToPage('PROFILE');
+              },
+            },
           );
         } catch (error) {
-          onCreateErrorHandler();
+          onUpdateErrorHandler();
         }
       }
     });
   };
 
-  const onCreateErrorHandler = () => {
+  const onUpdateErrorHandler = () =>
     dispatch(
       showModalAlert({
-        title: 'Oops',
-        text: 'Something has happened, please try again later',
+        title: 'Error',
+        text: `An error has occurred, please try again later`,
         textButton: 'Ok',
         type: 'error',
         visible: true,
       }),
     );
-  };
 
-  const onConnectionErrorHandler = () => {
+  const onConnectionErrorHandler = () =>
     dispatch(
       showModalAlert({
         title: 'Error',
@@ -70,7 +112,6 @@ const SubscribePaymentsScreen: React.FC = () => {
         visible: true,
       }),
     );
-  };
 
   return (
     <>
@@ -86,11 +127,11 @@ const SubscribePaymentsScreen: React.FC = () => {
         </SubscribePaymentsContainer>
         <ModalAlert
           hideModal={() => dispatch(hideModalAlert())}
-          text={alertModal.text}
-          textButton={alertModal.textButton}
-          title={alertModal.title}
-          type={alertModal.type}
-          visible={alertModal.visible}
+          text={modalAlertState.text}
+          textButton={modalAlertState.textButton}
+          title={modalAlertState.title}
+          type={modalAlertState.type}
+          visible={modalAlertState.visible}
           onDismiss={() => dispatch(hideModalAlert())}
         />
       </SafeAreaView>

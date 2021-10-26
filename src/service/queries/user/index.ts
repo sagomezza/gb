@@ -5,12 +5,20 @@ import { useQuery, UseQueryOptions } from 'react-query';
 export const GetUserDocument = `
     query GetUser($id: ID!) {
   getUser(id: $id)  { 
+    age
+    city
+    description
     email
+    name
+    photo
+    premium
     setting {
       categories 
       id
       radius
     }
+    trainer
+    state
   }
     }
 `;

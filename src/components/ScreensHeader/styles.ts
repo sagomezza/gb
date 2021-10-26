@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 import { nlz, rs } from 'utils/dimensions';
 
@@ -8,6 +9,7 @@ type TitleContainerProps = {
 export const MainContainer = styled.View`
   padding-bottom: ${rs(5)}px;
   padding-horizontal: ${rs(10)}px;
+  padding-top: ${Platform.OS === 'android' ? rs(20) : 0}px;
   width: 100%;
 `;
 

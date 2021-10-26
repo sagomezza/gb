@@ -1,12 +1,15 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { navigator } from 'navigation';
-import { Spacing } from 'components';
+import { ActivityIndicator, Spacing } from 'components';
+import { useDispatch, useSelector } from 'react-redux';
 import FormInputNative from 'components/FormInputNative';
 import routes from 'config/routes';
-import { saveProfileInfo, toggleEditProfile, showModalAlert } from 'store/app/appActions';
-import { useDispatch } from 'react-redux';
-import NetInfo from '@react-native-community/netinfo';
+import { saveProfileInfo } from 'store/app/appActions';
+import { capitalize } from 'utils/capitalize';
+import { useFocusEffect } from '@react-navigation/native';
+import { getUserId } from 'store/auth/authSelectors';
+import { getUserQuery } from 'service/queries';
 import {
   InterestsContainer,
   TrainerCheckContainer,
@@ -26,64 +29,40 @@ const EditProfile: React.FC<IEditProfileProps> = ({ onSubmit, userData }: IEditP
     handleSubmit,
     setValue,
   } = useForm({ mode: 'onBlur' });
+  const [categories, setCategories] = useState([]);
   const { goToPage } = navigator();
   const dispatch = useDispatch();
+  const userID = useSelector(getUserId);
 
-  const onCreateErrorHandler = () => {
-    dispatch(
-      showModalAlert({
-        title: 'Oops',
-        text: 'Something has happened, please try again later',
-        textButton: 'Ok',
-        type: 'error',
-        visible: true,
-      }),
-    );
-  };
+  const { isLoading, refetch } = getUserQuery(
+    { id: userID },
+    {
+      refetchOnWindowFocus: false,
+      onSuccess: (data) => {
+        const categories = data.getUser?.setting?.categories;
+        if (categories != null) {
+          if (categories.length > 0) {
+            setCategories(categories);
+          }
+        }
+      },
+    },
+  );
 
-  const onConnectionErrorHandler = () => {
-    dispatch(
-      showModalAlert({
-        title: 'Error',
-        text: "It seems that you're not connected to Internet",
-        textButton: 'Ok',
-        type: 'error',
-        visible: true,
-      }),
-    );
-  };
+  useFocusEffect(
+    useCallback(() => {
+      refetch();
+    }, [refetch]),
+  );
 
   const submitHandler = useCallback(
     (data: IEditProfileForm) => {
-      NetInfo.fetch().then(async (state) => {
-        if (!state.isConnected) {
-          onConnectionErrorHandler();
-        } else {
-          try {
-            // mutation
-            dispatch(
-              showModalAlert({
-                title: 'Success!',
-                text: 'Profile updated',
-                textButton: 'Ok',
-                type: 'confirm',
-                visible: true,
-              }),
-            );
-            dispatch(toggleEditProfile(false));
-            onSubmit(data);
-          } catch (error) {
-            onCreateErrorHandler();
-          }
-        }
-      });
+      onSubmit(data);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [onSubmit, dispatch],
+    [onSubmit],
   );
 
   useEffect(() => {
-    setValue('interests', userData?.interests);
     setValue('isTrainer', userData?.isTrainer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -94,8 +73,8 @@ const EditProfile: React.FC<IEditProfileProps> = ({ onSubmit, userData }: IEditP
       const editProfileInfo = {
         description: formValues.description,
         name: formValues.name,
+        premium: false,
         isTrainer: formValues.isTrainer,
-        interests: formValues.interests,
       };
       dispatch(saveProfileInfo(editProfileInfo));
       goToPage(routes.GOPREMIUM);
@@ -123,14 +102,21 @@ const EditProfile: React.FC<IEditProfileProps> = ({ onSubmit, userData }: IEditP
         }}
       />
       <Spacing size={15} />
-      <InterestsContainer>
-        {userData?.interests?.map((interest) => (
-          <InterestBubble key={`profileScreen.interest.${interest.id}`} label={interest.name} />
-        ))}
-        <AddButton onPress={() => goToPage(routes.ONBOARDINGSKILLS)}>
-          <EditionButtonLabel addLabel>Add +</EditionButtonLabel>
-        </AddButton>
-      </InterestsContainer>
+      {isLoading ? (
+        <ActivityIndicator />
+      ) : (
+        <InterestsContainer>
+          {categories.map((interest) => (
+            <InterestBubble
+              key={`profileScreen.interest.${interest}`}
+              label={capitalize(interest)}
+            />
+          ))}
+          <AddButton onPress={() => goToPage(routes.ONBOARDINGSKILLS)}>
+            <EditionButtonLabel addLabel>Add +</EditionButtonLabel>
+          </AddButton>
+        </InterestsContainer>
+      )}
       <FormInputNative
         multiline
         control={control}

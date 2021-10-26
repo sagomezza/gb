@@ -2,4 +2,5 @@
 
 export const customMutations = () => {};
 export { useUpdateSettingMutation as updateSettingMutation } from './setting';
+export { useUpdateUserMutation as updateUserMutation } from './user';
 export { useCreateBulletinMutation as createBulletinMutation } from './bulletin';

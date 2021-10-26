@@ -33,7 +33,8 @@ type Gym
       }
     ]
   )
-  @key(fields: ["id"]) {
+  @key(fields: ["id"])
+  @searchable {
   id: ID!
   name: String!
   description: String
@@ -46,6 +47,88 @@ type Gym
   averageRating: Float
   gymOwnerId: ID
   owner: User @connection(name: "GymOwner")
+}
+
+type Activity
+  @model(subscriptions: { level: off })
+  @auth(
+    rules: [
+      { allow: private, provider: userPools, operations: [read] }
+      { allow: owner, provider: userPools, operations: [read], identityClaim: "sub" }
+      {
+        allow: groups
+        provider: userPools
+        groups: ["Admin", "User"]
+        operations: [create, update, delete, read]
+      }
+    ]
+  )
+  @key(fields: ["id"]) {
+  id: ID!
+  title: String!
+  description: String
+  location: String
+  address: String
+  gps: GPS
+  invitePushSent: Boolean
+  startAt: AWSDateTime
+  endsAt: AWSDateTime
+  activityDate: String!
+  pictures: [String]
+  available: Boolean
+  status: String
+  activityOwnerId: ID
+  owner: User @connection(name: "ActivityOwner")
+}
+
+type Chat
+  @model(subscriptions: { level: off })
+  @auth(
+    rules: [
+      { allow: private, provider: userPools, operations: [read] }
+      { allow: owner, provider: userPools, operations: [read], identityClaim: "sub" }
+      {
+        allow: groups
+        provider: userPools
+        groups: ["Admin", "User"]
+        operations: [create, update, delete, read]
+      }
+    ]
+  )
+  @key(fields: ["id"]) {
+  id: ID!
+  title: String
+  description: String
+  status: String
+  chatOwnerId: ID
+  chatReceiverId: ID
+  messages: [Message] @connection(name: "ChatMessages")
+  receiver: User @connection(name: "ChatReceiver")
+  owner: User @connection(name: "ChatOwner")
+}
+
+type Message
+  @model(subscriptions: { level: off })
+  @auth(
+    rules: [
+      { allow: private, provider: userPools, operations: [read] }
+      { allow: owner, provider: userPools, operations: [read], identityClaim: "sub" }
+      {
+        allow: groups
+        provider: userPools
+        groups: ["Admin", "User"]
+        operations: [create, update, delete, read]
+      }
+    ]
+  )
+  @key(fields: ["id"]) {
+  id: ID!
+  message: String
+  status: String
+  messageOwnerId: ID
+  messageChatId: ID
+  chat: Chat @connection(name: "ChatMessages")
+  owner: User @connection(name: "MessageOwner")
 }
 
 type S3Object {
@@ -174,11 +257,16 @@ type User
     ]
   )
   @key(name: "userByEmail", fields: ["email"], queryField: "getUserByEmail")
-  @key(fields: ["id"]) {
+  @key(fields: ["id"])
+  @searchable {
   id: ID!
   owner: String
   userGroup: UserType
   name: String!
+  age: String
+  city: String
+  state: String
+  description: String
   business: String
   deviceId: String
   deviceToken: String
@@ -206,6 +294,10 @@ type User
   gyms: [Gym] @connection(name: "GymOwner")
   notification: [Notification] @connection(name: "NotificationOwner")
   bulletin: [Bulletin] @connection(name: "UserBulletin")
+  activity: [Activity] @connection(name: "ActivityOwner")
+  chat: [Chat] @connection(name: "ChatOwner")
+  chatReceiver: [Chat] @connection(name: "ChatReceiver")
+  messages: [Message] @connection(name: "MessageOwner")
 }
 
 enum UserType {
@@ -264,22 +356,38 @@ input PublishNotificationInput {
   subject: String
 }
 
-# type Query {
-#   findGyms(input: FindGymsInput!): SearchableGymConnection @aws_iam @aws_cognito_user_pools
-# }
+type Query {
+  findGyms(input: FindGymsInput!): SearchableGymConnection @aws_iam @aws_cognito_user_pools
+  findUsers(input: FindUsersInput!): SearchableUserConnection @aws_iam @aws_cognito_user_pools
+}
 
-# input FindGymsInput {
-#   byGPS: GPSQueryInput
-#   query: String
-#   limit: Int
-#   nextToken: String
-#   from: Int
-# }
+input FindUsersInput {
+  byGPS: GPSQueryInput
+  query: String
+  limit: Int
+  nextToken: String
+  from: Int
+}
 
-# type SearchableGymConnection @aws_iam @aws_cognito_user_pools {
-#   items: [Gym]
-#   nextToken: String
-#   total: Int
-#   scannedCount: Int
-#   count: Int
-# }
+type SearchableUserConnection @aws_iam @aws_cognito_user_pools {
+  items: [User]
+  nextToken: String
+  total: Int
+  scannedCount: Int
+  count: Int
+}
+input FindGymsInput {
+  byGPS: GPSQueryInput
+  query: String
+  limit: Int
+  nextToken: String
+  from: Int
+}
+
+type SearchableGymConnection @aws_iam @aws_cognito_user_pools {
+  items: [Gym]
+  nextToken: String
+  total: Int
+  scannedCount: Int
+  count: Int
+}

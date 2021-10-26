@@ -1,8 +1,8 @@
 export interface IEditProfileForm {
   description: string;
-  interests: { id: number; name: string }[];
   isTrainer?: boolean;
   name: string;
+  premium?: boolean;
 }
 
 export interface IEditProfileProps {

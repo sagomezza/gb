@@ -15,7 +15,7 @@ const TrainerCheck: React.FC<ITrainerCheckProps> = ({ checked, onPress }: ITrain
         <Checkbox
           status={isTrainer ? 'checked' : 'unchecked'}
           onPress={() => {
-            setIsTrainer(!isTrainer);
+            if (isTrainer) setIsTrainer(!isTrainer);
             onPress(isTrainer);
           }}
         />

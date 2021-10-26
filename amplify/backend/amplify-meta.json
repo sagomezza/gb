@@ -47,7 +47,7 @@
         "IdentityPoolName": "gymbuddyIdentityPool__staging",
         "UserPoolName": "gymbuddyUserPool"
       },
-      "lastPushTimeStamp": "2021-10-20T14:53:09.086Z",
+      "lastPushTimeStamp": "2021-10-25T22:14:01.758Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/auth/gymbuddy-cloudformation-template.yml",
         "logicalId": "authgymbuddy"
@@ -71,7 +71,7 @@
       "output": {
         "UserGroupRole": "arn:aws:iam::484188761906:role/us-east-1_n1te2WG7C-UserGroupRole"
       },
-      "lastPushTimeStamp": "2021-10-20T14:53:09.087Z",
+      "lastPushTimeStamp": "2021-10-25T22:14:01.763Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/auth/template.json",
         "logicalId": "authuserPoolGroups"
@@ -95,7 +95,7 @@
         "GraphQLAPIIdOutput": "nbm47hodufgmtn5bs3u32l4mja",
         "GraphQLAPIEndpointOutput": "https://np3zt62q4ffhvcilsgcx5na5ku.appsync-api.us-east-1.amazonaws.com/graphql"
       },
-      "lastPushTimeStamp": "2021-10-20T14:53:09.087Z",
+      "lastPushTimeStamp": "2021-10-25T22:14:01.764Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apigymbuddy"
@@ -113,7 +113,7 @@
         "Name": "postConfirmation-staging",
         "LambdaExecutionRole": "gymbuddydevLambdaRole6aeae715-staging"
       },
-      "lastPushTimeStamp": "2021-10-20T14:53:09.089Z",
+      "lastPushTimeStamp": "2021-10-25T22:14:01.765Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/postConfirmation-cloudformation-template.json",
         "logicalId": "functionpostConfirmation"
@@ -133,7 +133,7 @@
         "Name": "createEndpointNotifications-staging",
         "LambdaExecutionRole": "gymbuddydevLambdaRoledaf1caf7-staging"
       },
-      "lastPushTimeStamp": "2021-10-20T14:53:09.090Z",
+      "lastPushTimeStamp": "2021-10-25T22:14:01.765Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/createEndpointNotifications-cloudformation-template.json",
         "logicalId": "functioncreateEndpointNotifications"
@@ -153,7 +153,7 @@
         "Name": "deleteEndpointNotifications-staging",
         "LambdaExecutionRole": "gymbuddydevLambdaRole8740e42c-staging"
       },
-      "lastPushTimeStamp": "2021-10-20T14:53:09.091Z",
+      "lastPushTimeStamp": "2021-10-25T22:14:01.766Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/deleteEndpointNotifications-cloudformation-template.json",
         "logicalId": "functiondeleteEndpointNotifications"
@@ -173,7 +173,7 @@
         "Name": "enableDisableUsers-staging",
         "LambdaExecutionRole": "gymbuddydevLambdaRole7479eea2-staging"
       },
-      "lastPushTimeStamp": "2021-10-20T14:53:09.091Z",
+      "lastPushTimeStamp": "2021-10-25T22:14:01.767Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/enableDisableUsers-cloudformation-template.json",
         "logicalId": "functionenableDisableUsers"
@@ -193,7 +193,7 @@
         "Name": "publishNotification-staging",
         "LambdaExecutionRole": "gymbuddydevLambdaRole218e7ac2-staging"
       },
-      "lastPushTimeStamp": "2021-10-20T14:53:09.094Z",
+      "lastPushTimeStamp": "2021-10-25T22:14:01.768Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/publishNotification-cloudformation-template.json",
         "logicalId": "functionpublishNotification"
@@ -213,7 +213,7 @@
         "Name": "createSubscriptionStripe-staging",
         "LambdaExecutionRole": "gymbuddydevLambdaRolea3c55926-staging"
       },
-      "lastPushTimeStamp": "2021-10-20T14:53:09.095Z",
+      "lastPushTimeStamp": "2021-10-25T22:14:01.771Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/createSubscriptionStripe-cloudformation-template.json",
         "logicalId": "functioncreateSubscriptionStripe"
@@ -233,7 +233,7 @@
         "Name": "paymentIntentClientSecret-staging",
         "LambdaExecutionRole": "gymbuddydevLambdaRole13bb6ef8-staging"
       },
-      "lastPushTimeStamp": "2021-10-20T14:53:09.095Z",
+      "lastPushTimeStamp": "2021-10-25T22:14:01.772Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/paymentIntentClientSecret-cloudformation-template.json",
         "logicalId": "functionpaymentIntentClientSecret"
@@ -253,7 +253,7 @@
         "Name": "updateSubscriptionStatus-staging",
         "LambdaExecutionRole": "gymbuddydevLambdaRole05c00cf5-staging"
       },
-      "lastPushTimeStamp": "2021-10-20T14:53:09.096Z",
+      "lastPushTimeStamp": "2021-10-25T22:14:01.773Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya12f0476f8e34-staging-194102-deployment/amplify-cfn-templates/function/updateSubscriptionStatus-cloudformation-template.json",
         "logicalId": "functionupdateSubscriptionStatus"
