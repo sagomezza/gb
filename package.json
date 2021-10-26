@@ -33,7 +33,8 @@
     "pod-clear-m1": "rm -rf ~/Library/Caches/CocoaPods && rm -rf Pods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && cd ios && arch -x86_64 pod deintegrate && arch -x86_64 pod setup",
     "pod-install-m1": "cd ios && arch -x86_64 pod install && cd ..",
     "clean-modules-m1": "rm -rf node_modules/ && arch -x86_64 yarn cache clean",
-    "install-m1": "arch -x86_64 yarn install"
+    "install-m1": "arch -x86_64 yarn install",
+    "install-clean-m1": "yarn clean-modules-m1 && yarn pod-clear-m1 && yarn install-m1 && yarn pod-install-m1"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [

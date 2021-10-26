@@ -36,6 +36,18 @@
         "publishNotification": {
           "deploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",
           "s3Key": "amplify-builds/publishNotification-47433046633964704449-build.zip"
+        },
+        "createSubscriptionStripe": {
+          "deploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",
+          "s3Key": "amplify-builds/createSubscriptionStripe-7263512f613941554449-build.zip"
+        },
+        "paymentIntentClientSecret": {
+          "deploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",
+          "s3Key": "amplify-builds/paymentIntentClientSecret-6c6d616f4a424a6c545a-build.zip"
+        },
+        "updateSubscriptionStatus": {
+          "deploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",
+          "s3Key": "amplify-builds/updateSubscriptionStatus-2f544d4663636d737363-build.zip"
         }
       }
     }

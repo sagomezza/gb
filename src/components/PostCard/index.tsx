@@ -1,13 +1,13 @@
 import React from 'react';
 import { Card } from 'components';
-import { ImageSourcePropType, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { DataContainer, Description, PostedBy, Picture, Title } from './styles';
 
 export interface IPostCardProps {
   description: string;
   id: number | string;
   onPress: (id: number | string) => void;
-  picture: ImageSourcePropType;
+  picture: string;
   postedBy: string;
   title: string;
 }
@@ -22,7 +22,7 @@ const PostCard: React.FC<IPostCardProps> = ({
 }: IPostCardProps) => (
   <TouchableOpacity onPress={() => onPress(id)}>
     <Card>
-      <Picture source={picture} />
+      <Picture source={{ uri: picture }} />
       <DataContainer>
         <Title>{title}</Title>
         <PostedBy>{`Posted by ${postedBy}`}</PostedBy>
