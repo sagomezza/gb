@@ -1,11 +1,12 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import routes, { RoutesLabels } from 'config/routes';
-import { HomeScreen, ProfileScreen, BuddiesScreen } from 'screens';
+import { HomeScreen, BuddiesScreen } from 'screens';
 import { BottomTabButton } from 'components';
 import { bottomNavigatorStyles } from './styles';
 import CalendarNavigator from './CalendarNavigator';
 import MoreNavigator from './MoreNavigator';
+import ProfileNavigator from './ProfileNavigator';
 
 interface ITabBarIconProps {
   // eslint-disable-next-line react/no-unused-prop-types
@@ -56,7 +57,7 @@ const MainNavigator: React.FC = () => (
       }}
     />
     <BottomTab.Screen
-      component={ProfileScreen}
+      component={ProfileNavigator}
       name={routes.PROFILE}
       options={{
         tabBarIcon: ({ focused }: ITabBarIconProps) => (

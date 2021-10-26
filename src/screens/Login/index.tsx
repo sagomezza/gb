@@ -7,7 +7,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { Auth, Hub } from 'aws-amplify';
 import { API } from 'amplify/fetcher';
 import Spacing from 'components/Spacing';
-import { showModalAlert, hideModalAlert } from 'store/app/appActions';
+import { showModalAlert, hideModalAlert, toggleEditProfile } from 'store/app/appActions';
 import { ModalAlert } from 'components/ModalAlert';
 import { getModalAlertState } from 'store/app/appSelectors';
 import routes from 'config/routes';
@@ -222,6 +222,7 @@ const LoginScreen: React.FC = () => {
           }),
         );
         dispatch(toggleAuthLoader(false));
+        dispatch(toggleEditProfile(false));
       }
     });
   };

@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'react-native';
 import { navigator } from 'navigation';
 import { xorBy } from 'lodash';
 import routes from 'config/routes';
 import { useSelector } from 'react-redux';
 import { getEditProfileState } from 'store/app/appSelectors';
-import { Data } from './example-data';
+import { getUserId } from 'store/auth/authSelectors';
+import { getUserQuery, listCategoryQuery } from 'service/queries';
+import { GetUserQuery, UpdateSettingInput, useUpdateSettingMutation } from 'lib/api';
+import { useQueryClient } from 'react-query';
+import { capitalize } from 'utils/capitalize';
 import {
   ButtonSignup,
   OnboardingContainer,
@@ -15,13 +19,117 @@ import {
 } from './styles';
 
 const OnboardingSkillsScreen: React.FC = () => {
-  const [selectedTeams, setSelectedTeams] = useState([]);
+  const [listCategories, setListCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const { goBack, goToPage } = navigator();
   const editProfileState = useSelector(getEditProfileState);
+  const userID = useSelector(getUserId);
+  const queryClient = useQueryClient();
 
-  function onMultiChange() {
-    return (item) => setSelectedTeams(xorBy(selectedTeams, [item], 'id'));
+  const { mutateAsync } = useUpdateSettingMutation();
+
+  const { data: categoriesData } = listCategoryQuery(undefined, {
+    refetchOnWindowFocus: false,
+    select: (data) => data.listCategorys?.items || [],
+  });
+
+  const { data: userData } = getUserQuery(
+    { id: userID },
+    {
+      refetchOnWindowFocus: false,
+      onSuccess: (data) => {
+        const categories = data.getUser?.setting?.categories;
+        if (categories != null) {
+          const array = [];
+          if (categories.length > 0) {
+            categories.forEach((userCategory) => {
+              const result = listCategories.find(
+                (category) => category.item.toLowerCase() === userCategory,
+              );
+              array.push(result);
+            });
+            setSelectedCategories(array);
+          }
+        }
+      },
+      enabled: listCategories.length > 0,
+    },
+  );
+
+  const updateUserSettings = async (input: UpdateSettingInput) => {
+    try {
+      await mutateAsync(
+        { input },
+        {
+          onSuccess: (data) => {
+            queryClient.setQueryData<GetUserQuery>(
+              [
+                'GetUser',
+                {
+                  id: userID,
+                },
+              ],
+              {
+                // @ts-ignore
+                getUser: {
+                  ...userData,
+                  setting: data.updateSetting,
+                },
+              },
+            );
+          },
+        },
+      );
+    } catch (error) {
+      // To Do
+    }
+  };
+
+  function sortCategories(a, b) {
+    if (a.item < b.item) {
+      return -1;
+    }
+    if (a.item > b.item) {
+      return 1;
+    }
+    return 0;
   }
+
+  const formatCategories = () => {
+    const listCategories = [];
+
+    if (categoriesData?.length > 0) {
+      categoriesData?.forEach((category) => {
+        const object = { id: category.id, item: capitalize(category.name) };
+        listCategories.push(object);
+      });
+    }
+
+    listCategories.sort(sortCategories);
+    setListCategories(listCategories);
+  };
+
+  useEffect(() => {
+    if (categoriesData && categoriesData.length && categoriesData.length > 0) formatCategories();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [categoriesData]);
+
+  const updateCategories = (list) => {
+    const categories = [];
+    list.forEach((category) => categories.push(category.item.toLowerCase()));
+    const input = {
+      id: userData?.getUser?.setting?.id!!,
+      categories,
+    };
+
+    updateUserSettings(input);
+  };
+
+  const onMultiChange = () => (item) => {
+    setSelectedCategories(xorBy(selectedCategories, [item], 'item'));
+    const newArray = xorBy(selectedCategories, [item], 'id');
+    updateCategories(newArray);
+  };
 
   const handleOnPress = () => {
     if (editProfileState) goBack();
@@ -40,8 +148,8 @@ const OnboardingSkillsScreen: React.FC = () => {
             isMulti
             inputPlaceholder="Select..."
             label=""
-            options={Data}
-            selectedValues={selectedTeams}
+            options={listCategories}
+            selectedValues={selectedCategories}
             onMultiSelect={onMultiChange()}
             onTapClose={onMultiChange()}
           />
