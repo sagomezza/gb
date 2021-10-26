@@ -1,9 +1,11 @@
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { colors } from 'screens/NewMessage/utils/colors';
 import { DefaultIcon } from 'components';
 import { useNavigation } from '@react-navigation/native';
 import routes from 'config/routes';
+import { User } from 'lib/api';
 import {
   ContactDetail,
   ContactName,
@@ -18,7 +20,7 @@ import {
   PhotoTitle,
 } from './styles';
 
-const ItemList: React.FC = ({ item }) => {
+const ItemList: React.FC<User> = (item: User) => {
   const navigation = useNavigation();
   const userName = `${item?.name.charAt(0)}`;
 
