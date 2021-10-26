@@ -6,7 +6,15 @@ export const MainContainer = styled.View`
   flex: 1;
 `;
 
-export const ResultsContainer = styled.View`
+export const ResultsContainer = styled.FlatList.attrs(() => ({
+  contentContainerStyle: {
+    height: rs(40),
+    marginBottom: rs(8),
+    marginTop: rs(24),
+    paddingHorizontal: rs(16),
+    width: `100%`,
+  },
+}))`
   flex: 1;
   padding-bottom: ${rs(10)}px;
 `;
