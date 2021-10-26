@@ -66,7 +66,7 @@ export const NewBulletinContainer = styled(View)`
 
 export const TitleInputContainer = styled(View)`
   height: ${rs(60)}px;
-  margin-bottom: ${rs(16)}px;
+  margin-bottom: ${rs(24)}px;
   width: 100%;
 `;
 
