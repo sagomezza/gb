@@ -1,16 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import AgendaComponent from 'components/Agenda';
-import { StatusBar } from 'react-native';
-import ScreensHeader from 'components/ScreensHeader';
-
 import { AgendaMockData } from 'utils/agenda-mock-data';
-import { HeaderContainer, TextDate, TitleDate } from 'screens/AddActivity/styles';
-
+import { TextDate, TitleDate } from 'screens/AddActivity/styles';
 import { navigator } from 'navigation';
 import routes from 'config/routes';
+import { GBScreenHeader } from 'components';
+import { SafeAreaView } from 'screens/styles';
 import { AddActivity, AddActivityContainer, MainContainer, MainTitles } from './styles';
-
 import { IAddActivityScreenProps } from '../AddActivity';
 
 const startOfDay = require('date-fns/startOfDay');
@@ -36,11 +33,8 @@ const AgendaScreen: React.FC<IAddActivityScreenProps> = ({ route }: IAddActivity
   };
 
   return (
-    <>
-      <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
-      <HeaderContainer>
-        <ScreensHeader isGoBack />
-      </HeaderContainer>
+    <SafeAreaView>
+      <GBScreenHeader title="Agenda" />
       <MainContainer>
         <MainTitles>
           <TitleDate>{titleDate()}</TitleDate>
@@ -53,7 +47,7 @@ const AgendaScreen: React.FC<IAddActivityScreenProps> = ({ route }: IAddActivity
         </MainTitles>
         <AgendaComponent items={AgendaMockData} selected={calendarDay} />
       </MainContainer>
-    </>
+    </SafeAreaView>
   );
 };
 

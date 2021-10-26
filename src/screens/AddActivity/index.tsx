@@ -1,16 +1,16 @@
 /* eslint-disable no-console */
-import ScreensHeader from 'components/ScreensHeader';
 import React from 'react';
-import { ScrollView, StatusBar, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import Spacing from 'components/Spacing';
 import { RouteProp } from '@react-navigation/native';
-import {
-  AddActivityContainer,
-  AddActivityTitle,
-  HeaderContainer,
-  TextDate,
-  TitleDate,
-} from './styles';
+import { useDispatch, useSelector } from 'react-redux';
+import NetInfo from '@react-native-community/netinfo';
+import { showModalAlert, hideModalAlert } from 'store/app/appActions';
+import { ModalAlert } from 'components/ModalAlert';
+import { getModalAlertState } from 'store/app/appSelectors';
+import { GBScreenHeader } from 'components';
+import { SafeAreaView } from 'screens/styles';
+import { AddActivityContainer, AddActivityTitle, TextDate, TitleDate } from './styles';
 import Form from './Form';
 import { IFormValuesAddActivity } from './types';
 
@@ -40,9 +40,55 @@ const AddActivityScreen: React.FC<IAddActivityScreenProps> = ({
   const date = startOfDay(activityDate);
   const today = startOfDay(Date.now());
   const interval = differenceInDays(date, today);
+  const alertModal = useSelector(getModalAlertState);
+  const dispatch = useDispatch();
 
   const onSubmit = (data: IFormValuesAddActivity) => {
     console.log(data);
+    NetInfo.fetch().then(async (state) => {
+      if (!state.isConnected) {
+        onConnectionErrorHandler();
+      } else {
+        try {
+          // mutation
+          dispatch(
+            showModalAlert({
+              title: 'Success',
+              text: 'New activity added to your agenda',
+              textButton: 'Ok',
+              type: 'confirm',
+              visible: true,
+            }),
+          );
+        } catch (error) {
+          onCreateErrorHandler();
+        }
+      }
+    });
+  };
+
+  const onCreateErrorHandler = () => {
+    dispatch(
+      showModalAlert({
+        title: 'Oops',
+        text: 'Something has happened, please try again later',
+        textButton: 'Ok',
+        type: 'error',
+        visible: true,
+      }),
+    );
+  };
+
+  const onConnectionErrorHandler = () => {
+    dispatch(
+      showModalAlert({
+        title: 'Error',
+        text: "It seems that you're not connected to Internet",
+        textButton: 'Ok',
+        type: 'error',
+        visible: true,
+      }),
+    );
   };
 
   const titleDate = () => {
@@ -56,11 +102,8 @@ const AddActivityScreen: React.FC<IAddActivityScreenProps> = ({
   };
 
   return (
-    <>
-      <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
-      <HeaderContainer>
-        <ScreensHeader isGoBack />
-      </HeaderContainer>
+    <SafeAreaView>
+      <GBScreenHeader title="Add Activity" />
       <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
         <AddActivityContainer>
           <Spacing size={20} />
@@ -76,7 +119,16 @@ const AddActivityScreen: React.FC<IAddActivityScreenProps> = ({
           </View>
         </AddActivityContainer>
       </ScrollView>
-    </>
+      <ModalAlert
+        hideModal={() => dispatch(hideModalAlert())}
+        text={alertModal.text}
+        textButton={alertModal.textButton}
+        title={alertModal.title}
+        type={alertModal.type}
+        visible={alertModal.visible}
+        onDismiss={() => dispatch(hideModalAlert())}
+      />
+    </SafeAreaView>
   );
 };
 

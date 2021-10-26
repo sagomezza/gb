@@ -2,10 +2,11 @@ import React, { useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { navigator } from 'navigation';
 import { Spacing } from 'components';
-import { useDispatch } from 'react-redux';
 import FormInputNative from 'components/FormInputNative';
 import routes from 'config/routes';
-import { saveProfileInfo, toggleEditProfile } from 'store/app/appActions';
+import { saveProfileInfo, toggleEditProfile, showModalAlert } from 'store/app/appActions';
+import { useDispatch } from 'react-redux';
+import NetInfo from '@react-native-community/netinfo';
 import {
   InterestsContainer,
   TrainerCheckContainer,
@@ -28,11 +29,56 @@ const EditProfile: React.FC<IEditProfileProps> = ({ onSubmit, userData }: IEditP
   const { goToPage } = navigator();
   const dispatch = useDispatch();
 
+  const onCreateErrorHandler = () => {
+    dispatch(
+      showModalAlert({
+        title: 'Oops',
+        text: 'Something has happened, please try again later',
+        textButton: 'Ok',
+        type: 'error',
+        visible: true,
+      }),
+    );
+  };
+
+  const onConnectionErrorHandler = () => {
+    dispatch(
+      showModalAlert({
+        title: 'Error',
+        text: "It seems that you're not connected to Internet",
+        textButton: 'Ok',
+        type: 'error',
+        visible: true,
+      }),
+    );
+  };
+
   const submitHandler = useCallback(
     (data: IEditProfileForm) => {
-      dispatch(toggleEditProfile(false));
-      onSubmit(data);
+      NetInfo.fetch().then(async (state) => {
+        if (!state.isConnected) {
+          onConnectionErrorHandler();
+        } else {
+          try {
+            // mutation
+            dispatch(
+              showModalAlert({
+                title: 'Success!',
+                text: 'Profile updated',
+                textButton: 'Ok',
+                type: 'confirm',
+                visible: true,
+              }),
+            );
+            dispatch(toggleEditProfile(false));
+            onSubmit(data);
+          } catch (error) {
+            onCreateErrorHandler();
+          }
+        }
+      });
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [onSubmit, dispatch],
   );
 

@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Spacing } from 'core/components';
-import { DefaultIcon, GBScreenHeader, SafeArea } from 'components';
+import { DefaultIcon, GBScreenHeader } from 'components';
 import { markedDates } from 'utils/calendar-data-mock';
 import routes from 'config/routes';
+import { SafeAreaView } from 'screens/styles';
 import {
   CalendarContainer,
   Calendar,
@@ -17,9 +18,9 @@ const CalendarScreen = () => {
   const goToAgenda = () => {};
 
   return (
-    <SafeArea>
+    <SafeAreaView>
+      <GBScreenHeader title={routes.CALENDAR} />
       <ScreenContainer>
-        <GBScreenHeader title={routes.CALENDAR} />
         <CalendarContainer>
           <Calendar markedDates={markedDates} />
         </CalendarContainer>
@@ -58,7 +59,7 @@ const CalendarScreen = () => {
           </PlanContainer>
         </UpcommingPlansContainer>
       </ScreenContainer>
-    </SafeArea>
+    </SafeAreaView>
   );
 };
 

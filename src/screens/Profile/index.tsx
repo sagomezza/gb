@@ -4,8 +4,9 @@ import { ScrollView } from 'react-native';
 import { Card, GBScreenHeader } from 'components';
 import routes from 'config/routes';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleEditProfile } from 'store/app/appActions';
-import { getEditProfileState } from 'store/app/appSelectors';
+import { toggleEditProfile, hideModalAlert } from 'store/app/appActions';
+import { ModalAlert } from 'components/ModalAlert';
+import { getEditProfileState, getModalAlertState } from 'store/app/appSelectors';
 import { SafeAreaView } from '../styles';
 import {
   AgeAndCity,
@@ -30,6 +31,7 @@ const ProfileScreen: React.FC = () => {
   const dispatch = useDispatch();
   const data = ProfileScreenMockData;
   const editProfileState = useSelector(getEditProfileState);
+  const alertModal = useSelector(getModalAlertState);
 
   const onSubmitHandler = (dataForm: IEditProfileForm) => {
     console.log(dataForm);
@@ -87,6 +89,15 @@ const ProfileScreen: React.FC = () => {
           </ScrollView>
         </Card>
       </MainContainer>
+      <ModalAlert
+        hideModal={() => dispatch(hideModalAlert())}
+        text={alertModal.text}
+        textButton={alertModal.textButton}
+        title={alertModal.title}
+        type={alertModal.type}
+        visible={alertModal.visible}
+        onDismiss={() => dispatch(hideModalAlert())}
+      />
     </SafeAreaView>
   );
 };

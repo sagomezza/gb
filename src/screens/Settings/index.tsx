@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
-import { Header, RadiusSlider, Spacing } from 'components';
-import routes from 'config/routes';
+import { GBScreenHeader, RadiusSlider, Spacing } from 'components';
 import { TouchableOpacity } from 'react-native';
 import { hideModalAlert, showModalAlert } from 'store/app/appActions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -53,7 +52,7 @@ const SettingsScreen = () => {
   return (
     <>
       <SafeAreaView>
-        <Header route={routes.SETTINGS} />
+        <GBScreenHeader title="Settings" />
         <TogglerContainer>
           <Spacing />
           <RadiusSlider

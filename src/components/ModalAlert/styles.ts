@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import { PrimaryButton } from 'components/Button';
+import { Caption } from 'components/Caption';
 import { Modal } from 'react-native-paper';
 import { nlz, rs } from '../../utils/dimensions';
 import { theme } from '../../config/theme';
@@ -7,6 +8,10 @@ import { theme } from '../../config/theme';
 type ButtonModalProps = {
   fullWidth?: boolean;
   isError?: boolean;
+};
+
+type CaptionAlertProps = {
+  textAlign?: string;
 };
 
 export const ContainerModal = styled(Modal).attrs(() => ({
@@ -58,7 +63,7 @@ export const ContainerContentModal = styled.View`
 `;
 
 export const TitleAlertError = styled.Text`
-  color: ${({ theme: { colors } }) => colors.error};
+  color: #ce2b15;
   font-family: ${({ theme: { fonts } }) => fonts.light.fontFamily};
   font-size: ${nlz(20)}px;
   font-weight: ${({ theme: { fonts } }) => fonts.light.fontWeight};
@@ -67,4 +72,29 @@ export const TitleAlertError = styled.Text`
 
 export const IconContainer = styled.TouchableOpacity`
   align-items: flex-end;
+`;
+
+export const CaptionAlert = styled(Caption)(({ textAlign }: CaptionAlertProps) => ({
+  textAlign: textAlign || 'center',
+  fontFamily: theme.fonts.light.fontFamily,
+  fontWeight: theme.fonts.light.fontWeight,
+  fontSize: nlz(15),
+  paddingTop: rs(8),
+}));
+
+export const TitleAlert = styled.Text`
+  color: #ce2b15;
+  font-family: ${({ theme: { fonts } }) => fonts.medium.fontFamily};
+  font-size: ${nlz(20)}px;
+  font-weight: ${({ theme: { fonts } }) => fonts.medium.fontWeight};
+  margin-top: ${rs(5)}px;
+`;
+
+export const TitleConfirm = styled(TitleAlert)`
+  color: ${({ theme: { colors } }) => colors.greenPrimary};
+`;
+
+export const CloseContainer = styled.TouchableOpacity`
+  align-items: flex-end;
+  width: 100%;
 `;

@@ -5,6 +5,7 @@ import ContentModalError from './contentErrorModal';
 import ContentModalChildren from './contentChildrenModal';
 import ContentModalSuccess from './contentSuccessModal';
 import ContentConfirmCustomModal from './contentConfirmCustomModal';
+import ContentConfirmModal from './contentConfirmModal';
 
 type ModalAlertProps = {
   children?: React.ReactNode | React.ReactNodeArray;
@@ -41,6 +42,16 @@ const ModalAlert = ({
           text={text}
           textButton={textButton}
           title={title}
+        />
+      );
+    }
+    if (type === 'confirm') {
+      return (
+        <ContentConfirmModal
+          text={text}
+          textButton={textButton}
+          title={title}
+          onButtonPress={hideModal}
         />
       );
     }
