@@ -1,10 +1,11 @@
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { IItemMessage } from 'store/types';
 import { colors } from 'screens/NewMessage/utils/colors';
 import { DefaultIcon } from 'components';
 import { useNavigation } from '@react-navigation/native';
 import routes from 'config/routes';
+import { User } from 'lib/api';
 import {
   ContactDetail,
   ContactName,
@@ -19,13 +20,9 @@ import {
   PhotoTitle,
 } from './styles';
 
-type ItemListProps = {
-  item: IItemMessage;
-};
-
-const ItemList: React.FC<ItemListProps> = ({ item }: ItemListProps) => {
+const ItemList: React.FC<User> = (item: User) => {
   const navigation = useNavigation();
-  const userName = `${item?.user?.firstName.charAt(0)} ${item?.user?.lastName.charAt(0)}`;
+  const userName = `${item?.name.charAt(0)}`;
 
   return (
     <TouchableOpacity
@@ -33,8 +30,8 @@ const ItemList: React.FC<ItemListProps> = ({ item }: ItemListProps) => {
     >
       <PaddedContainer>
         <MessageContainer>
-          {item.avatar !== '' ? (
-            <ContactPhoto source={{ uri: item.avatar }} />
+          {item.photo !== '' ? (
+            <ContactPhoto source={{ uri: item.photo }} />
           ) : (
             <PhotoBackground background={colors[Math.floor(Math.random() * colors.length)]}>
               <PhotoTitle>{userName}</PhotoTitle>
@@ -42,16 +39,14 @@ const ItemList: React.FC<ItemListProps> = ({ item }: ItemListProps) => {
           )}
           <DetailsContainer>
             <MessageTitleContainer>
-              <ContactName>
-                {item.user.firstName} {item.user.lastName}
-              </ContactName>
+              <ContactName>{item?.name}</ContactName>
             </MessageTitleContainer>
             <FirstLineDetailContainer>
               <ContactDetail numberOfLines={1}>
                 {item.age}, {item.gender}.
               </ContactDetail>
               <DefaultIcon color="secondary" iconFamily="Feather" name="map-pin" size={14} />
-              <ContactDetail numberOfLines={1}> {item.location}.</ContactDetail>
+              <ContactDetail numberOfLines={1}> {item.city}.</ContactDetail>
             </FirstLineDetailContainer>
             <ContactDetail numberOfLines={1}>
               {`Interest: ${item?.interests?.join(', ')}`}
