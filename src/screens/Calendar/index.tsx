@@ -17,6 +17,7 @@ import {
   PlanContainer,
   Plan,
   Title,
+  IndicatorContainer,
 } from './Calendar.styles';
 
 type IActivitiesQueryProps = {
@@ -46,7 +47,7 @@ const CalendarScreen = () => {
 
   useFocusEffect(
     React.useCallback(() => {
-      queryClient.invalidateQueries('ListBulletins');
+      queryClient.invalidateQueries('ListActivitys');
     }, [queryClient]),
   );
 
@@ -54,7 +55,10 @@ const CalendarScreen = () => {
     return (
       <SafeArea>
         <ScreenContainer>
-          <ActivityIndicator />
+          <GBScreenHeader title={routes.CALENDAR} />
+          <IndicatorContainer>
+            <ActivityIndicator />
+          </IndicatorContainer>
         </ScreenContainer>
       </SafeArea>
     );
