@@ -70,7 +70,7 @@ const CalendarScreen = () => {
   }
 
   return (
-    <SafeAreaView>
+    <SafeArea>
       <GBScreenHeader title={routes.CALENDAR} />
       <ScreenContainer>
         <CalendarContainer>
@@ -93,7 +93,7 @@ const CalendarScreen = () => {
           ))}
         </UpcommingPlansContainer>
       </ScreenContainer>
-    </SafeAreaView>
+    </SafeArea>
   );
 };
 
