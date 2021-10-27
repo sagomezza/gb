@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Agenda, AgendaProps } from 'react-native-calendars';
 import { navigator } from 'navigation';
 import routes from 'config/routes';
-
+import { groupBy } from 'utils/groupBy';
 import {
   AgendaContainer,
   AgendaHour,
@@ -23,24 +23,34 @@ interface ItemType {
 
 const AgendaComponent: React.FC<AgendaProps<ItemType>> = ({
   items,
-  selected,
 }: AgendaProps<ItemType>): React.ReactElement => {
-  const [, setCurrentDate] = useState<Date>();
+  const [currentDate, setCurrentDate] = useState<Date>();
   const { goToPage } = navigator();
+  const agendaItems = groupBy(items, 'activityDate');
+
+  const duration = (date1, date2) => {
+    const diffTime = Math.abs(date2 - date1);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60));
+    return diffDays;
+  };
 
   const renderItem = (day, item) => (
-    <ItemContainer item={item && item.name}>
+    <ItemContainer item={item && item.title}>
       <PressableItem
         onPress={() => {
           goToPage(routes.ADD_ACTIVITY, { activityDate: new Date(), item });
         }}
       >
-        <AgendaHour bold>{item.hour}</AgendaHour>
-        {item && item.name ? (
+        <AgendaHour bold>{`${new Date(item.startAt).getHours()} ${
+          new Date(item.startAt).getHours() < 12 ? 'AM' : 'PM'
+        }`}</AgendaHour>
+        {item && item.title ? (
           <AgendaItemContainer>
-            <AgendaItemTitle bold>{item?.name}</AgendaItemTitle>
+            <AgendaItemTitle bold>{item?.title}</AgendaItemTitle>
             <AgendaItem>{item?.description}</AgendaItem>
-            <AgendaItem>Duration:{item?.duration}</AgendaItem>
+            <AgendaItem>
+              Duration: {duration(new Date(item.startAt), new Date(item.endsAt))}h
+            </AgendaItem>
           </AgendaItemContainer>
         ) : (
           <></>
@@ -58,15 +68,16 @@ const AgendaComponent: React.FC<AgendaProps<ItemType>> = ({
   );
 
   const onDayPress = (day) => setCurrentDate(day);
+
   return (
     <AgendaContainer>
       <Agenda
         hideKnob
-        items={items}
+        items={agendaItems}
         markingType="custom"
         renderDay={renderItem}
         renderEmptyData={renderEmptyData}
-        selected={selected?.dateString}
+        selected={currentDate?.dateString}
         style={{ backgroundColor: 'white' }}
         theme={{ ...themeAgenda, dayTextColor: 'green' }}
         onDayChange={onDayPress}

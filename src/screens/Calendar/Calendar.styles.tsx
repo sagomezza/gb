@@ -5,7 +5,7 @@ import { IS_SMALL_DEVICE } from 'utils/responsive';
 import { BaseGradient } from 'components';
 
 export const ScreenContainer = styled.View`
-  align-items: flex-start;
+  align-items: center;
   background-color: ${({ theme: { colors } }) => colors.white};
   height: 100%;
   justify-content: flex-start;
@@ -63,4 +63,10 @@ export const Plan = styled.Text`
   font-size: ${nlz(16)}px;
   justify-content: center;
   width: 100%;
+`;
+
+export const IndicatorContainer = styled.View`
+  align-items: center;
+  flex: 1;
+  justify-content: center;
 `;
