@@ -19,8 +19,11 @@ const format = require('date-fns/format');
 const differenceInDays = require('date-fns/differenceInDays');
 
 const AgendaScreen: React.FC<IAddActivityScreenProps> = ({ route }: IAddActivityScreenProps) => {
-  const { day } = route.params;
-  const calendarDay = new Date();
+  const { activities, day } = route.params;
+  const dateSplit = day?.dateString?.split('-') ?? null;
+  const calendarDay = dateSplit
+    ? new Date(dateSplit[0], dateSplit[1] - 1, dateSplit[2])
+    : new Date(day) || new Date();
   const date = startOfDay(calendarDay);
   const today = startOfDay(Date.now());
   const interval = differenceInDays(date, today);

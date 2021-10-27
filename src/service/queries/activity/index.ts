@@ -3,8 +3,8 @@ import { ListActivitysQuery, ListActivitysQueryVariables } from 'lib/api';
 import { useQuery, UseQueryOptions } from 'react-query';
 
 export const ListActivitiesDocument = `
-    query ListActivities($filter: ModelActivityFilterInput, $limit: Int, $nextToken: String) {
-        listActivities(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    query ListActivitys($filter: ModelActivityFilterInput, $limit: Int, $nextToken: String) {
+      listActivitys(filter: $filter, limit: $limit, nextToken: $nextToken) {
             items {
                 id
                 title
@@ -19,6 +19,8 @@ export const ListActivitiesDocument = `
                 startAt
                 status
                 endsAt
+                updatedAt
+                createdAt
             }
             nextToken
         }

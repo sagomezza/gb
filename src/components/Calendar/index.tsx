@@ -8,16 +8,19 @@ import routes from 'config/routes';
 import { Header } from './Calendar.styles';
 
 interface ICalendarProps extends CalendarProps {
+  activities: [];
   markedDates?: object;
 }
 
 const CalendarComponent: React.FC<ICalendarProps> = ({
+  activities,
   markedDates,
 }: ICalendarProps): React.ReactElement => {
   const { goToPage } = navigator();
 
   const currentDay = new Date();
   return (
+    // @ts-ignore
     <Calendar
       enableSwipeMonths
       current={currentDay}
@@ -38,8 +41,8 @@ const CalendarComponent: React.FC<ICalendarProps> = ({
       )}
       showWeekNumbers={false}
       onDayPress={(day) => {
-        console.log(`day ${day}`);
-        goToPage(routes.AGENDA, { day });
+        console.log('day', day);
+        goToPage(routes.AGENDA, { day, activities });
       }}
       onMonthChange={(month) => {
         console.log('month changed', month);

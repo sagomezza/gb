@@ -9,6 +9,7 @@ import { getUserId } from 'store/auth/authSelectors';
 import { useQueryClient } from 'react-query';
 import { useSelector } from 'react-redux';
 import { useFocusEffect } from '@react-navigation/native';
+import { navigator } from 'navigation';
 import {
   CalendarContainer,
   Calendar,
@@ -21,11 +22,11 @@ import {
 } from './Calendar.styles';
 
 type IActivitiesQueryProps = {
-  acitivities: Activity[];
+  activities: Activity[];
 };
 
 const CalendarScreen = () => {
-  const goToAgenda = () => {};
+  const { goToPage } = navigator();
   const queryClient = useQueryClient();
   const userID = useSelector(getUserId);
   const [dataList, setDataList] = React.useState<Activity[]>(undefined);
@@ -36,13 +37,13 @@ const CalendarScreen = () => {
       refetchOnWindowFocus: false,
       // @ts-ignore
       select: (data) => ({
-        bulletins: data?.listActivitys?.items ?? [],
+        activities: data?.listActivitys?.items ?? [],
       }),
     },
   );
 
   React.useEffect(() => {
-    setDataList(activityList?.acitivities.slice(0, 4));
+    setDataList(activityList?.activities?.slice(0, 4) ?? []);
   }, [activityList]);
 
   useFocusEffect(
@@ -50,6 +51,10 @@ const CalendarScreen = () => {
       queryClient.invalidateQueries('ListActivitys');
     }, [queryClient]),
   );
+
+  const goToAgenda = (activity: Activity) => {
+    goToPage(routes.AGENDA, { day: activity.activityDate, activities: dataList });
+  };
 
   if (isLoading) {
     return (
@@ -69,20 +74,20 @@ const CalendarScreen = () => {
       <GBScreenHeader title={routes.CALENDAR} />
       <ScreenContainer>
         <CalendarContainer>
-          <Calendar markedDates={markedDates} />
+          <Calendar activities={dataList} markedDates={markedDates} />
         </CalendarContainer>
         <UpcommingPlansContainer>
           <Title>Upcoming Plans</Title>
           <Spacing size={16} />
-          {dataList?.map((activity) => (
-            <PlanContainer>
-              <Plan onPress={goToAgenda}>{activity.title}</Plan>
+          {dataList?.map((activity: Activity) => (
+            <PlanContainer key={activity.id}>
+              <Plan onPress={() => goToAgenda(activity)}>{activity.title}</Plan>
               <DefaultIcon
                 color="gray4"
                 iconFamily="MaterialIcons"
                 name="keyboard-arrow-right"
                 size={24}
-                onPress={goToAgenda}
+                onPress={() => goToAgenda(activity)}
               />
             </PlanContainer>
           ))}
