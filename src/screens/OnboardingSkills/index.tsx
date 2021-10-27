@@ -44,7 +44,7 @@ const OnboardingSkillsScreen: React.FC = () => {
           if (categories.length > 0) {
             categories.forEach((userCategory) => {
               const result = listCategories.find(
-                (category) => category.item.toLowerCase() === userCategory,
+                (category) => category.item.toLowerCase() === userCategory.toLowerCase(),
               );
               array.push(result);
             });
