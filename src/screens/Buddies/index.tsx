@@ -20,7 +20,6 @@ const BuddiesScreen = () => {
   const [query, setQuery] = useState('');
   const [userList, setUserList] = useState<User[]>([]);
   const queryClient = useQueryClient();
-  console.log(query);
   const { data: usersData } = searchUsers<IUserListProps>(
     { filter: { name: { matchPhrase: query } } },
     {
@@ -33,8 +32,6 @@ const BuddiesScreen = () => {
   );
 
   React.useEffect(() => {
-    console.log('----------------------------------------usersData--------------------s');
-    console.log(usersData?.users);
     setUserList(usersData?.users ?? []);
   }, [usersData]);
 
