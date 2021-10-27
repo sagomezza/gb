@@ -20,7 +20,8 @@ import {
   PhotoTitle,
 } from './styles';
 
-const ItemList: React.FC<User> = (item: User) => {
+const ItemList: React.FC = ({ item }) => {
+  console.log(item);
   const navigation = useNavigation();
   const userName = `${item?.name.charAt(0)}`;
 
