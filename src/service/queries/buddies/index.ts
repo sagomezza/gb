@@ -3,34 +3,26 @@ import { amplifyFetcher } from 'amplify/fetcher';
 import { useQuery, UseQueryOptions } from 'react-query';
 
 export const SearchUsersDocument = `
-    query SearchUsers($filter: ModelUserFilterInput, $limit: Int, $nextToken: String) {
-        SearchUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    query SearchUsers($filter: SearchableUserFilterInput, $limit: Int, $nextToken: String) {
+        searchUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
             items {
                 id
-                activity
                 address
                 birthdate
-                bulletin
                 business
                 city
                 createdAt
                 email
                 gender
-                gps {
-                    lat
-                    lon
-                }
-                gym
                 name
-                owner
                 phone
                 photo
                 trainer
                 updatedAt
-                userGroup
-                userName
             }
             nextToken
+            scannedCount
+            count
         }
     }
 `;
