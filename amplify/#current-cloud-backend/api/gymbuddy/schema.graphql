@@ -330,6 +330,36 @@ type ModelNotificationConnection {
   scannedCount: Int
   count: Int
 }
+type ModelGymConnection {
+  items: [Gym]
+  nextToken: String
+  scannedCount: Int
+  count: Int
+}
+type ModelActivityConnection {
+  items: [Activity]
+  nextToken: String
+  scannedCount: Int
+  count: Int
+}
+type ModelChatConnection {
+  items: [Chat]
+  nextToken: String
+  scannedCount: Int
+  count: Int
+}
+type ModelMessageConnection {
+  items: [Message]
+  nextToken: String
+  scannedCount: Int
+  count: Int
+}
+type ModelCategoryConnection {
+  items: [Category]
+  nextToken: String
+  scannedCount: Int
+  count: Int
+}
 
 type Mutation {
   enableDisableUsers(user: String): String @function(name: "enableDisableUsers-${env}")
