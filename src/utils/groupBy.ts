@@ -1,6 +1,6 @@
-export const groupBy = function (xs, key) {
-  return xs.reduce((rv, x) => {
+export const groupBy = (xs, key) =>
+  xs.reduce((rv, x) => {
+    // eslint-disable-next-line no-param-reassign
     (rv[x[key]] = rv[x[key]] || []).push(x);
     return rv;
   }, {});
-};
