@@ -1,6 +1,5 @@
 import React from 'react';
 import AgendaComponent from 'components/Agenda';
-import { AgendaMockData } from 'utils/agenda-mock-data';
 import { TextDate, TitleDate } from 'screens/AddActivity/styles';
 import { navigator } from 'navigation';
 import routes from 'config/routes';
@@ -54,7 +53,7 @@ const AgendaScreen: React.FC<IAddActivityScreenProps> = ({ route }: IAddActivity
               <AddActivity bold>Add +</AddActivity>
             </AddActivityContainer>
           </MainTitles>
-          <AgendaComponent items={AgendaMockData} selected={calendarDay} />
+          <AgendaComponent items={activities} selected={calendarDay} />
         </MainContainer>
       </SafeAreaView>
       <ModalAlert
