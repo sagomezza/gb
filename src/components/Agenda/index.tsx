@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable react-native/no-inline-styles */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Agenda, AgendaProps } from 'react-native-calendars';
 import { navigator } from 'navigation';
 import routes from 'config/routes';
@@ -24,7 +23,6 @@ interface ItemType {
 
 const AgendaComponent: React.FC<AgendaProps<ItemType>> = ({
   items,
-  selected,
 }: AgendaProps<ItemType>): React.ReactElement => {
   const [currentDate, setCurrentDate] = useState<Date>();
   const { goToPage } = navigator();
