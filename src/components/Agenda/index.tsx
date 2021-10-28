@@ -17,22 +17,25 @@ import {
   EmptyText,
 } from './styles';
 
+const format = require('date-fns/format');
+
 interface ItemType {
   [key: string]: any[];
 }
 
 const AgendaComponent: React.FC<AgendaProps<ItemType>> = ({
   items,
+  selected,
 }: AgendaProps<ItemType>): React.ReactElement => {
   const [currentDate, setCurrentDate] = useState<Date>();
   const { goToPage } = navigator();
   const agendaItems = groupBy(items, 'activityDate');
-
   const duration = (date1, date2) => {
     const diffTime = Math.abs(date2 - date1);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60));
     return diffDays;
   };
+  const selectedFormated = format(new Date(selected), 'yyyy-MM-dd');
 
   const renderItem = (day, item) => (
     <ItemContainer item={item && item.title}>
@@ -77,7 +80,7 @@ const AgendaComponent: React.FC<AgendaProps<ItemType>> = ({
         markingType="custom"
         renderDay={renderItem}
         renderEmptyData={renderEmptyData}
-        selected={currentDate?.dateString}
+        selected={selectedFormated || currentDate?.dateString}
         style={{ backgroundColor: 'white' }}
         theme={{ ...themeAgenda, dayTextColor: 'green' }}
         onDayChange={onDayPress}

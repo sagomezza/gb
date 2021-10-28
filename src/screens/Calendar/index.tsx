@@ -31,10 +31,15 @@ const CalendarScreen = () => {
   const userID = useSelector(getUserId);
   const [dataList, setDataList] = React.useState<Activity[]>(undefined);
 
-  const { data: activityList, isLoading } = listActivitiesQuery<IActivitiesQueryProps>(
+  const {
+    data: activityList,
+    isLoading,
+    refetch,
+  } = listActivitiesQuery<IActivitiesQueryProps>(
     { filter: { activityOwnerId: { eq: userID } } },
     {
-      refetchOnWindowFocus: false,
+      refetchOnWindowFocus: true,
+      enabled: false,
       // @ts-ignore
       select: (data) => ({
         activities: data?.listActivitys?.items ?? [],
@@ -43,7 +48,11 @@ const CalendarScreen = () => {
   );
 
   React.useEffect(() => {
-    setDataList(activityList?.activities?.slice(0, 4) ?? []);
+    refetch();
+  });
+
+  React.useEffect(() => {
+    setDataList(activityList?.activities?.slice(0, 3) ?? []);
   }, [activityList]);
 
   useFocusEffect(
@@ -53,7 +62,7 @@ const CalendarScreen = () => {
   );
 
   const goToAgenda = (activity: Activity) => {
-    goToPage(routes.AGENDA, { day: activity.activityDate, activities: dataList });
+    goToPage(routes.AGENDA, { day: activity.activityDate, activities: dataList, refetch });
   };
 
   if (isLoading) {

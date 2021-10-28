@@ -17,7 +17,7 @@ const format = require('date-fns/format');
 const differenceInDays = require('date-fns/differenceInDays');
 
 const AgendaScreen: React.FC<IAddActivityScreenProps> = ({ route }: IAddActivityScreenProps) => {
-  const { activities, day } = route.params;
+  const { activities, day, refetch } = route.params;
   const dateSplit = day?.dateString?.split('-') ?? day?.split('-');
   const calendarDay = dateSplit
     ? new Date(dateSplit[0], dateSplit[1] - 1, dateSplit[2])
@@ -48,7 +48,7 @@ const AgendaScreen: React.FC<IAddActivityScreenProps> = ({ route }: IAddActivity
             <TitleDate>{titleDate()}</TitleDate>
             <TextDate>{format(calendarDay, 'eeee dd MMMM, yyyy')}</TextDate>
             <AddActivityContainer
-              onPress={() => goToPage(routes.ADD_ACTIVITY, { activityDate: new Date() })}
+              onPress={() => goToPage(routes.ADD_ACTIVITY, { activityDate: calendarDay, refetch })}
             >
               <AddActivity bold>Add +</AddActivity>
             </AddActivityContainer>
