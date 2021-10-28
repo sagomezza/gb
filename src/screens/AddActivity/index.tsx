@@ -2,6 +2,7 @@ import React from 'react';
 import { ScrollView, View } from 'react-native';
 import Spacing from 'components/Spacing';
 import NetInfo from '@react-native-community/netinfo';
+import { differenceInMinutes } from 'date-fns';
 import { RouteProp } from '@react-navigation/native';
 import { createActivityMutation } from 'service/mutations';
 import { hideModalAlert, showModalAlert } from 'store/app/appActions';
@@ -53,10 +54,29 @@ const AddActivityScreen: React.FC<IAddActivityScreenProps> = ({
   const { mutateAsync } = createActivityMutation();
 
   const onSubmit = async (data: IFormValuesAddActivity) => {
-    const start = parseInt(data.startTime.split(':')[0], 10);
-    const end = parseInt(data.endTime.split(':')[0], 10);
-    const dateTimeStart = set(new Date(), { hours: start - 5, minutes: 0, seconds: 0 });
-    const dateTimeEnd = set(new Date(), { hours: end - 5, minutes: 0, seconds: 0 });
+    const startHour = parseInt(data.startTime.split(':')[0], 10);
+    const endHour = parseInt(data.endTime.split(':')[0], 10);
+    const startMinutes = parseInt(data.startTime.split(':')[1], 10);
+    const endMinutes = parseInt(data.endTime.split(':')[1], 10);
+
+    const dateTimeStart = set(new Date(), {
+      hours: startHour - 5,
+      minutes: startMinutes,
+      seconds: 0,
+    });
+    const dateTimeEnd = set(new Date(), { hours: endHour - 5, minutes: endMinutes, seconds: 0 });
+    if (differenceInMinutes(dateTimeEnd, dateTimeStart) <= 0) {
+      dispatch(
+        showModalAlert({
+          title: 'Error',
+          text: `The start hour can't exceed the end hour`,
+          textButton: 'Ok',
+          type: 'error',
+          visible: true,
+        }),
+      );
+      return;
+    }
 
     NetInfo.fetch().then(async (state) => {
       if (!state.isConnected) {
@@ -81,8 +101,8 @@ const AddActivityScreen: React.FC<IAddActivityScreenProps> = ({
                   showModalAlert({
                     title: 'Well Done',
                     text: 'Activity created successfully',
-                    textButton: 'Ok',
-                    type: 'sucess',
+                    textButton: '',
+                    type: 'success',
                     visible: true,
                   }),
                 );
