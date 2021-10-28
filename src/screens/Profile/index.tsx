@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { ScrollView } from 'react-native';
 import { Card, GBScreenHeader } from 'components';
 import routes from 'config/routes';
@@ -9,7 +9,6 @@ import { getUserId } from 'store/auth/authSelectors';
 import { useQueryClient } from 'react-query';
 import { GetUserQuery } from 'lib/api';
 import { capitalize } from 'utils/capitalize';
-import { useFocusEffect } from '@react-navigation/core';
 import { updateUserMutation } from 'service/mutations';
 import { ModalAlert } from 'components/ModalAlert';
 import { SafeAreaView } from '../styles';
@@ -103,12 +102,6 @@ const ProfileScreen: React.FC = () => {
         visible: true,
       }),
     );
-
-  useFocusEffect(
-    useCallback(() => {
-      queryClient.invalidateQueries('GetUser');
-    }, [queryClient]),
-  );
 
   useEffect(() => {
     dispatch(toggleEditProfile(false));

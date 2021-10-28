@@ -77,6 +77,8 @@ const OnboardingSkillsScreen: React.FC = () => {
                 },
               },
             );
+            if (editProfileState) goBack();
+            goToPage(routes.MAIN);
           },
         },
       );
@@ -114,26 +116,19 @@ const OnboardingSkillsScreen: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoriesData]);
 
-  const updateCategories = (list) => {
+  const onMultiChange = () => (item) => {
+    setSelectedCategories(xorBy(selectedCategories, [item], 'item'));
+  };
+
+  const handleOnPress = () => {
     const categories = [];
-    list.forEach((category) => categories.push(category.item.toLowerCase()));
+    selectedCategories.forEach((category) => categories.push(category.item.toLowerCase()));
     const input = {
       id: userData?.getUser?.setting?.id!!,
       categories,
     };
 
     updateUserSettings(input);
-  };
-
-  const onMultiChange = () => (item) => {
-    setSelectedCategories(xorBy(selectedCategories, [item], 'item'));
-    const newArray = xorBy(selectedCategories, [item], 'id');
-    updateCategories(newArray);
-  };
-
-  const handleOnPress = () => {
-    if (editProfileState) goBack();
-    goToPage(routes.MAIN);
   };
 
   return (

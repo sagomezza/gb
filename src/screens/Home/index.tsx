@@ -4,13 +4,13 @@ import { ActivityIndicator, Header } from 'components';
 import { SafeAreaView } from 'screens/styles';
 import routes from 'config/routes';
 import PostCard from 'components/PostCard';
-import { listBulletinsQuery } from 'service/queries';
-import AdMob, { BannerAd, BannerAdSize } from '@react-native-admob/admob';
+import { getUserQuery, listBulletinsQuery } from 'service/queries';
 import { Bulletin, GetUserQuery } from 'lib/api';
 import { useFocusEffect } from '@react-navigation/native';
-import { useQueryClient } from 'react-query';
-import { useSelector } from 'react-redux';
 import { getUserId } from 'store/auth/authSelectors';
+import { useSelector } from 'react-redux';
+import AdMob, { BannerAd, BannerAdSize } from '@react-native-admob/admob';
+import { useQueryClient } from 'react-query';
 /* import { Platform } from 'react-native';
 import { AD_UNIT_ID_IOS, AD_UNIT_ID_ANDROID } from '@env'; */
 import { BackgroundGradient, Separator, SizedFlatList } from './styles';
@@ -24,6 +24,14 @@ const Home: React.FC = () => {
   const queryClient = useQueryClient();
   const userID = useSelector(getUserId);
   const [dataList, setDataList] = useState<Bulletin[]>(undefined);
+
+  getUserQuery(
+    { id: userID },
+    {
+      refetchOnWindowFocus: false,
+      onSuccess: () => {},
+    },
+  );
   /* const unitID = Platform.select({
     ios: AD_UNIT_ID_IOS,
     android: AD_UNIT_ID_ANDROID,

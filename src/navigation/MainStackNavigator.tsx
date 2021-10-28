@@ -4,19 +4,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import routes from 'config/routes';
 import MessagesNavigator from './MessagesNavigator';
 import MainNavigator from './MainNavigator';
-import {
-  GoPremiumScreen,
-  OnboardingScreen,
-  OnboardingSkillsScreen,
-  PaymentScreen,
-  SearchScreen,
-} from '../screens';
+import { GoPremiumScreen, OnboardingScreen, PaymentScreen, SearchScreen } from '../screens';
 
 const Stack = createStackNavigator();
 
 const MainStackNavigator: React.FC = (): React.ReactElement => (
-  <Stack.Navigator headerMode="none" initialRouteName={routes.ONBOARDINGSKILLS}>
-    <Stack.Screen component={OnboardingSkillsScreen} name={routes.ONBOARDINGSKILLS} />
+  <Stack.Navigator headerMode="none" initialRouteName={routes.MAIN}>
     <Stack.Screen component={MainNavigator} name={routes.MAIN} />
     <Stack.Screen component={GoPremiumScreen} name={routes.GOPREMIUM} />
     <Stack.Screen component={MessagesNavigator} name={routes.MESSAGES} />

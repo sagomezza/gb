@@ -6,21 +6,49 @@ import { getUserToken } from 'store/auth/authSelectors';
 import { useAuth } from 'service/authentication.service';
 import { saveUserInfo, saveUserToken } from 'store/auth/authActions';
 import RNBootSplash from 'react-native-bootsplash';
+import { getUserQuery } from 'service/queries';
+import { getEditProfileState } from 'store/app/appSelectors';
+import { ActivityIndicator } from 'components';
 import MainStackNavigator from './MainStackNavigator';
 import AuthNavigator from './AuthNavigator';
+import OnBoardingSkillsNavigator from './OnBoardingSkillsNavigator';
 
 const AppNavigator: React.FC = (): React.ReactElement => {
   const dispatch = useDispatch();
   const token = useSelector(getUserToken);
   const { getCurrentSessionUser } = useAuth();
+  const [userID, setUserID] = useState();
   const [logged, setLogged] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
+  const [categories, setCategories] = useState([]);
+  const editProfileState = useSelector(getEditProfileState);
+
+  const { isLoading } = getUserQuery(
+    { id: userID },
+    {
+      refetchOnWindowFocus: false,
+      onSuccess: (data) => {
+        if (!editProfileState) setCategories(data?.getUser?.setting?.categories);
+      },
+    },
+  );
+
+  const renderNavigator = () => {
+    if (logged) {
+      if (categories.length === 0) {
+        return <OnBoardingSkillsNavigator />;
+      }
+      return <MainStackNavigator />;
+    }
+    return <AuthNavigator />;
+  };
 
   useEffect(() => {
     const init = async () => {
       const session = await getCurrentSessionUser();
       if (session?.accessToken?.jwtToken) {
         setLogged(true);
+        setUserID(session?.idToken?.payload?.sub);
         await dispatch(saveUserInfo({ email: session.idToken?.payload?.email }));
         await dispatch(
           saveUserToken({
@@ -44,7 +72,7 @@ const AppNavigator: React.FC = (): React.ReactElement => {
     <>
       {!loading && (
         <NavigationContainer>
-          {logged ? <MainStackNavigator /> : <AuthNavigator />}
+          {isLoading ? <ActivityIndicator /> : renderNavigator()}
         </NavigationContainer>
       )}
     </>
