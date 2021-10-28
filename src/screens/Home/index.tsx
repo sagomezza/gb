@@ -1,11 +1,18 @@
-import React, { useCallback, useEffect, useState } from 'react';
+/* eslint-disable no-console */
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Header } from 'components';
 import { SafeAreaView } from 'screens/styles';
 import routes from 'config/routes';
 import PostCard from 'components/PostCard';
 import { listBulletinsQuery } from 'service/queries';
-import { Bulletin } from 'lib/api';
+import AdMob, { BannerAd, BannerAdSize } from '@react-native-admob/admob';
+import { Bulletin, GetUserQuery } from 'lib/api';
 import { useFocusEffect } from '@react-navigation/native';
+import { useQueryClient } from 'react-query';
+import { useSelector } from 'react-redux';
+import { getUserId } from 'store/auth/authSelectors';
+/* import { Platform } from 'react-native';
+import { AD_UNIT_ID_IOS, AD_UNIT_ID_ANDROID } from '@env'; */
 import { BackgroundGradient, Separator, SizedFlatList } from './styles';
 
 type TListBulletinQuery = {
@@ -13,7 +20,15 @@ type TListBulletinQuery = {
 };
 
 const Home: React.FC = () => {
+  const bannerRef = useRef(null);
+  const queryClient = useQueryClient();
+  const userID = useSelector(getUserId);
   const [dataList, setDataList] = useState<Bulletin[]>(undefined);
+  /* const unitID = Platform.select({
+    ios: AD_UNIT_ID_IOS,
+    android: AD_UNIT_ID_ANDROID,
+  }); */
+
   const {
     data: bulletinsData,
     isLoading,
@@ -26,6 +41,15 @@ const Home: React.FC = () => {
     }),
   });
 
+  const userData = queryClient.getQueryData<GetUserQuery>([
+    'GetUser',
+    {
+      id: userID,
+    },
+  ]);
+
+  const profile = userData?.getUser;
+
   useEffect(() => {
     setDataList(bulletinsData?.bulletins);
   }, [bulletinsData]);
@@ -33,13 +57,32 @@ const Home: React.FC = () => {
   useFocusEffect(
     useCallback(() => {
       refetch();
+      bannerRef.current?.loadAd();
     }, [refetch]),
   );
+
+  useEffect(() => {
+    const init = async () => {
+      await AdMob.initialize();
+    };
+
+    init();
+  }, []);
 
   return (
     <SafeAreaView>
       <Header route={routes.HOME} />
       <BackgroundGradient>
+        {!profile?.premium && (
+          <BannerAd
+            ref={bannerRef}
+            size={BannerAdSize.ADAPTIVE_BANNER}
+            // TEST UNIT_ID
+            unitId="ca-app-pub-3940256099942544/6300978111"
+            onAdFailedToLoad={(error) => console.error(error)}
+          />
+        )}
+
         {isLoading ? (
           <ActivityIndicator color="white" />
         ) : (

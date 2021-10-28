@@ -30,6 +30,9 @@
         android:name="com.google.android.geo.API_KEY"
         android:value="AIzaSyAv6lsB-FiRVDYBtZH09ba0EaWA4Eg3ShI"
       />
+      <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-8501280698562568~8070577116"/>
       <meta-data  android:name="com.dieam.reactnativepushnotification.notification_foreground"
                     android:value="false"/>
       <meta-data  android:name="com.dieam.reactnativepushnotification.notification_color"
