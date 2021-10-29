@@ -13,6 +13,7 @@ import { SafeAreaView } from 'screens/styles';
 import { getModalAlertState } from 'store/app/appSelectors';
 import { navigator } from 'navigation';
 import routes from 'config/routes';
+import { Activity } from 'lib/api';
 import { IFormValuesAddActivity } from './types';
 import Form from './Form';
 import { AddActivityContainer, AddActivityTitle, TextDate, TitleDate } from './styles';
@@ -26,7 +27,7 @@ type DailyActivityParamList = {
   DailyActivity: {
     activityDate: Date;
     day?: string;
-    item?: object;
+    item?: Activity;
   };
 };
 

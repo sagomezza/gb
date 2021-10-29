@@ -1,3 +1,5 @@
+import { Activity } from 'lib/api';
+
 export interface IFormValuesAddActivity {
   description: string;
   endTime: string;
@@ -7,6 +9,6 @@ export interface IFormValuesAddActivity {
 }
 
 export interface IAddActivityFormProps {
-  item?: object;
+  item?: Activity;
   onSubmit: (data: IFormValuesAddActivity) => void;
 }
