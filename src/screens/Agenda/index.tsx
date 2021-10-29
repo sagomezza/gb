@@ -5,10 +5,6 @@ import { navigator } from 'navigation';
 import routes from 'config/routes';
 import { GBScreenHeader } from 'components';
 import { SafeAreaView } from 'screens/styles';
-import { ModalAlert } from 'components/ModalAlert';
-import { hideModalAlert } from 'store/app/appActions';
-import { getModalAlertState } from 'store/app/appSelectors';
-import { useDispatch, useSelector } from 'react-redux';
 import { IAddActivityScreenProps } from '../AddActivity';
 import { AddActivity, AddActivityContainer, MainContainer, MainTitles } from './styles';
 
@@ -17,14 +13,12 @@ const format = require('date-fns/format');
 const differenceInDays = require('date-fns/differenceInDays');
 
 const AgendaScreen: React.FC<IAddActivityScreenProps> = ({ route }: IAddActivityScreenProps) => {
-  const { activities, day, refetch } = route.params;
+  const { activities, day } = route.params;
   const [calendarDay, setCalendarDay] = React.useState<Date>(new Date());
   const date = startOfDay(calendarDay);
   const today = startOfDay(Date.now());
   const interval = differenceInDays(date, today);
   const { goToPage } = navigator();
-  const modalAlertState = useSelector(getModalAlertState);
-  const dispatch = useDispatch();
 
   React.useEffect(() => {
     const dateSplit = day?.dateString?.split('-') ?? day?.split('-');
@@ -53,7 +47,7 @@ const AgendaScreen: React.FC<IAddActivityScreenProps> = ({ route }: IAddActivity
             <TitleDate>{titleDate()}</TitleDate>
             <TextDate>{format(calendarDay, 'eeee dd MMMM, yyyy')}</TextDate>
             <AddActivityContainer
-              onPress={() => goToPage(routes.ADD_ACTIVITY, { activityDate: calendarDay, refetch })}
+              onPress={() => goToPage(routes.ADD_ACTIVITY, { activityDate: calendarDay })}
             >
               <AddActivity bold>Add +</AddActivity>
             </AddActivityContainer>
@@ -65,15 +59,6 @@ const AgendaScreen: React.FC<IAddActivityScreenProps> = ({ route }: IAddActivity
           />
         </MainContainer>
       </SafeAreaView>
-      <ModalAlert
-        hideModal={() => dispatch(hideModalAlert())}
-        text={modalAlertState.text}
-        textButton={modalAlertState.textButton}
-        title={modalAlertState.title}
-        type={modalAlertState.type}
-        visible={modalAlertState.visible}
-        onDismiss={() => dispatch(hideModalAlert())}
-      />
     </>
   );
 };

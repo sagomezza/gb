@@ -3,10 +3,13 @@ import { Spacing } from 'core/components';
 import { ActivityIndicator, DefaultIcon, GBScreenHeader, SafeArea } from 'components';
 import routes from 'config/routes';
 import { Activity } from 'lib/api';
+import { ModalAlert } from 'components/ModalAlert';
+import { hideModalAlert } from 'store/app/appActions';
+import { getModalAlertState } from 'store/app/appSelectors';
 import { listActivitiesQuery } from 'service/queries';
 import { getUserId } from 'store/auth/authSelectors';
 import { useQueryClient } from 'react-query';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFocusEffect } from '@react-navigation/native';
 import { navigator } from 'navigation';
 import { groupBy } from 'utils/groupBy';
@@ -31,6 +34,8 @@ const CalendarScreen = () => {
   const userID = useSelector(getUserId);
   const [dataList, setDataList] = React.useState<Activity[]>(undefined);
   const [markedDatesList, setMarkedDatesList] = React.useState<object>(undefined);
+  const modalAlertState = useSelector(getModalAlertState);
+  const dispatch = useDispatch();
 
   const { data: activityList, isLoading } = listActivitiesQuery<IActivitiesQueryProps>(
     { filter: { activityOwnerId: { eq: userID } } },
@@ -118,6 +123,15 @@ const CalendarScreen = () => {
           ))}
         </UpcommingPlansContainer>
       </ScreenContainer>
+      <ModalAlert
+        hideModal={() => dispatch(hideModalAlert())}
+        text={modalAlertState.text}
+        textButton={modalAlertState.textButton}
+        title={modalAlertState.title}
+        type={modalAlertState.type}
+        visible={modalAlertState.visible}
+        onDismiss={() => dispatch(hideModalAlert())}
+      />
     </SafeArea>
   );
 };
