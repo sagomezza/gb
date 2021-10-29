@@ -18,16 +18,21 @@ const differenceInDays = require('date-fns/differenceInDays');
 
 const AgendaScreen: React.FC<IAddActivityScreenProps> = ({ route }: IAddActivityScreenProps) => {
   const { activities, day, refetch } = route.params;
-  const dateSplit = day?.dateString?.split('-') ?? day?.split('-');
-  const calendarDay = dateSplit
-    ? new Date(dateSplit[0], dateSplit[1] - 1, dateSplit[2])
-    : new Date(day) || new Date();
+  const [calendarDay, setCalendarDay] = React.useState<Date>(new Date());
   const date = startOfDay(calendarDay);
   const today = startOfDay(Date.now());
   const interval = differenceInDays(date, today);
   const { goToPage } = navigator();
   const modalAlertState = useSelector(getModalAlertState);
   const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    const dateSplit = day?.dateString?.split('-') ?? day?.split('-');
+    const calendarDate = dateSplit
+      ? new Date(dateSplit[0], dateSplit[1] - 1, dateSplit[2])
+      : new Date(day) || new Date();
+    setCalendarDay(calendarDate);
+  }, [day]);
 
   const titleDate = () => {
     if (interval === 0) {
@@ -53,7 +58,11 @@ const AgendaScreen: React.FC<IAddActivityScreenProps> = ({ route }: IAddActivity
               <AddActivity bold>Add +</AddActivity>
             </AddActivityContainer>
           </MainTitles>
-          <AgendaComponent items={activities} selected={calendarDay} />
+          <AgendaComponent
+            items={activities}
+            selected={calendarDay}
+            onDayChange={(day) => setCalendarDay(day)}
+          />
         </MainContainer>
       </SafeAreaView>
       <ModalAlert

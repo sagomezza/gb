@@ -25,7 +25,7 @@ const set = require('date-fns/set');
 type DailyActivityParamList = {
   DailyActivity: {
     activityDate: Date;
-    day?: Date;
+    day?: string;
     item?: object;
   };
 };

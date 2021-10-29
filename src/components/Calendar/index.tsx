@@ -17,7 +17,6 @@ const CalendarComponent: React.FC<ICalendarProps> = ({
   markedDates,
 }: ICalendarProps): React.ReactElement => {
   const { goToPage } = navigator();
-
   const currentDay = new Date();
   return (
     // @ts-ignore
