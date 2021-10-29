@@ -1,15 +1,18 @@
 import * as React from 'react';
 import { Spacing } from 'core/components';
 import { ActivityIndicator, DefaultIcon, GBScreenHeader, SafeArea } from 'components';
-import { markedDates } from 'utils/calendar-data-mock';
 import routes from 'config/routes';
 import { Activity } from 'lib/api';
+import { ModalAlert } from 'components/ModalAlert';
+import { hideModalAlert } from 'store/app/appActions';
+import { getModalAlertState } from 'store/app/appSelectors';
 import { listActivitiesQuery } from 'service/queries';
 import { getUserId } from 'store/auth/authSelectors';
 import { useQueryClient } from 'react-query';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFocusEffect } from '@react-navigation/native';
 import { navigator } from 'navigation';
+import { groupBy } from 'utils/groupBy';
 import {
   CalendarContainer,
   Calendar,
@@ -30,11 +33,14 @@ const CalendarScreen = () => {
   const queryClient = useQueryClient();
   const userID = useSelector(getUserId);
   const [dataList, setDataList] = React.useState<Activity[]>(undefined);
+  const [markedDatesList, setMarkedDatesList] = React.useState<object>(undefined);
+  const modalAlertState = useSelector(getModalAlertState);
+  const dispatch = useDispatch();
 
   const { data: activityList, isLoading } = listActivitiesQuery<IActivitiesQueryProps>(
     { filter: { activityOwnerId: { eq: userID } } },
     {
-      refetchOnWindowFocus: false,
+      refetchOnWindowFocus: true,
       // @ts-ignore
       select: (data) => ({
         activities: data?.listActivitys?.items ?? [],
@@ -42,8 +48,29 @@ const CalendarScreen = () => {
     },
   );
 
+  // React.useEffect(() => {
+  //   refetch();
+  // });
+
   React.useEffect(() => {
-    setDataList(activityList?.activities?.slice(0, 4) ?? []);
+    let data = [...activityList?.activities];
+    data = data?.slice(0, 3) ?? [];
+    data = data?.sort((a, b) => a.activityDate.localeCompare(b.activityDate));
+    let data2 = [...activityList?.activities];
+    const markedDates = {};
+    if (data) {
+      data2 = groupBy(data, 'activityDate');
+      const keys = Object.keys(data2);
+      keys.forEach((key) => {
+        markedDates[key] = {
+          marked: true,
+          dotColor: '#00a680',
+          selectedColor: '#00a680',
+        };
+      });
+    }
+    setDataList(data);
+    setMarkedDatesList(markedDates);
   }, [activityList]);
 
   useFocusEffect(
@@ -53,7 +80,10 @@ const CalendarScreen = () => {
   );
 
   const goToAgenda = (activity: Activity) => {
-    goToPage(routes.AGENDA, { day: activity.activityDate, activities: dataList });
+    goToPage(routes.AGENDA, {
+      day: activity.activityDate,
+      activities: activityList?.activities,
+    });
   };
 
   if (isLoading) {
@@ -74,7 +104,7 @@ const CalendarScreen = () => {
       <GBScreenHeader title={routes.CALENDAR} />
       <ScreenContainer>
         <CalendarContainer>
-          <Calendar activities={dataList} markedDates={markedDates} />
+          <Calendar activities={activityList?.activities ?? []} markedDates={markedDatesList} />
         </CalendarContainer>
         <UpcommingPlansContainer>
           <Title>Upcoming Plans</Title>
@@ -93,6 +123,15 @@ const CalendarScreen = () => {
           ))}
         </UpcommingPlansContainer>
       </ScreenContainer>
+      <ModalAlert
+        hideModal={() => dispatch(hideModalAlert())}
+        text={modalAlertState.text}
+        textButton={modalAlertState.textButton}
+        title={modalAlertState.title}
+        type={modalAlertState.type}
+        visible={modalAlertState.visible}
+        onDismiss={() => dispatch(hideModalAlert())}
+      />
     </SafeArea>
   );
 };

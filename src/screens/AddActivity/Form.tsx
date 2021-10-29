@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import Spacing from 'components/Spacing';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
@@ -34,6 +34,13 @@ const AddActivityForm: React.FC<IAddActivityFormProps> = ({
   const [endTime, setEndTime] = useState(new Date(2020, 1, 1, 12));
   const [option, setOption] = useState('');
   const [timePicker, setTimePicker] = useState(new Date());
+
+  useEffect(() => {
+    if (item) {
+      setStartTime(new Date(item?.startAt) ?? new Date(2020, 1, 1, 11));
+      setEndTime(new Date(item?.endsAt) ?? new Date(2020, 1, 1, 12));
+    }
+  }, [item]);
 
   const onSubmitForm = useCallback(
     (data: IFormValuesAddActivity) => {
@@ -77,7 +84,7 @@ const AddActivityForm: React.FC<IAddActivityFormProps> = ({
         <SingleInputContainer>
           <Controller
             control={control}
-            defaultValue={item?.name ?? ''}
+            defaultValue={item?.title ?? ''}
             name="title"
             render={({ field: { onChange, value } }) => (
               <Input
@@ -97,7 +104,7 @@ const AddActivityForm: React.FC<IAddActivityFormProps> = ({
         <SingleInputContainer>
           <Controller
             control={control}
-            defaultValue={item?.ubication ?? ''}
+            defaultValue={item?.location ?? ''}
             name="ubication"
             render={({ field: { onChange, value } }) => (
               <Input

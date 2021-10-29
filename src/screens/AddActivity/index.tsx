@@ -13,7 +13,8 @@ import { GBScreenHeader } from 'components';
 import { SafeAreaView } from 'screens/styles';
 import { getModalAlertState } from 'store/app/appSelectors';
 import { navigator } from 'navigation';
-import { useQueryClient } from 'react-query';
+import routes from 'config/routes';
+import { Activity } from 'lib/api';
 import { IFormValuesAddActivity } from './types';
 import Form from './Form';
 import { AddActivityContainer, AddActivityTitle, TextDate, TitleDate } from './styles';
@@ -26,8 +27,8 @@ const set = require('date-fns/set');
 type DailyActivityParamList = {
   DailyActivity: {
     activityDate: Date;
-    day?: Date;
-    item?: object;
+    day?: string;
+    item?: Activity;
   };
 };
 
@@ -48,8 +49,7 @@ const AddActivityScreen: React.FC<IAddActivityScreenProps> = ({
   const dispatch = useDispatch();
   const userID = useSelector(getUserId);
   const modalAlertState = useSelector(getModalAlertState);
-  const { goBack } = navigator();
-  const queryClient = useQueryClient();
+  const { goToPage } = navigator();
 
   const { mutateAsync } = createActivityMutation();
 
@@ -96,7 +96,6 @@ const AddActivityScreen: React.FC<IAddActivityScreenProps> = ({
             { input },
             {
               onSuccess: () => {
-                queryClient.cancelQueries('ListActivitys');
                 dispatch(
                   showModalAlert({
                     title: 'Well Done',
@@ -106,7 +105,7 @@ const AddActivityScreen: React.FC<IAddActivityScreenProps> = ({
                     visible: true,
                   }),
                 );
-                goBack();
+                goToPage(routes.CALENDAR);
               },
             },
           );
