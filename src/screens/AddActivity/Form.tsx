@@ -37,7 +37,6 @@ const AddActivityForm: React.FC<IAddActivityFormProps> = ({
 
   useEffect(() => {
     if (item) {
-      console.log(item);
       setStartTime(new Date(item?.startAt) ?? new Date(2020, 1, 1, 11));
       setEndTime(new Date(item?.endsAt) ?? new Date(2020, 1, 1, 12));
     }
