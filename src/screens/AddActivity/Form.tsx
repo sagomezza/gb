@@ -164,7 +164,9 @@ const AddActivityForm: React.FC<IAddActivityFormProps> = ({
           />
         </TimeContainer>
         <Spacing size={40} />
-        <ButtonForm onPress={handleSubmit(onSubmitForm)}>Add Activity</ButtonForm>
+        <ButtonForm onPress={handleSubmit(onSubmitForm)}>
+          {item?.title ? 'Update Activity' : 'Add Activity'}
+        </ButtonForm>
       </FormContainer>
       <DateTimePickerModal
         date={timePicker}

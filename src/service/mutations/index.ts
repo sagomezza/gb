@@ -3,5 +3,6 @@
 export const customMutations = () => {};
 export { useUpdateSettingMutation as updateSettingMutation } from './setting';
 export { useCreateActivityMutation as createActivityMutation } from './activity';
+export { useUpdateActivityMutation as updateActivityMutation } from './activity';
 export { useUpdateUserMutation as updateUserMutation } from './user';
 export { useCreateBulletinMutation as createBulletinMutation } from './bulletin';

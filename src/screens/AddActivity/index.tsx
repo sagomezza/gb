@@ -4,7 +4,7 @@ import Spacing from 'components/Spacing';
 import NetInfo from '@react-native-community/netinfo';
 import { differenceInMinutes } from 'date-fns';
 import { RouteProp } from '@react-navigation/native';
-import { createActivityMutation } from 'service/mutations';
+import { createActivityMutation, updateActivityMutation } from 'service/mutations';
 import { hideModalAlert, showModalAlert } from 'store/app/appActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserId } from 'store/auth/authSelectors';
@@ -15,6 +15,7 @@ import { getModalAlertState } from 'store/app/appSelectors';
 import { navigator } from 'navigation';
 import routes from 'config/routes';
 import { Activity } from 'lib/api';
+import { useQueryClient } from 'react-query';
 import { IFormValuesAddActivity } from './types';
 import Form from './Form';
 import { AddActivityContainer, AddActivityTitle, TextDate, TitleDate } from './styles';
@@ -50,8 +51,10 @@ const AddActivityScreen: React.FC<IAddActivityScreenProps> = ({
   const userID = useSelector(getUserId);
   const modalAlertState = useSelector(getModalAlertState);
   const { goToPage } = navigator();
+  const queryClient = useQueryClient();
 
   const { mutateAsync } = createActivityMutation();
+  const updateMutateAsync = updateActivityMutation().mutateAsync;
 
   const onSubmit = async (data: IFormValuesAddActivity) => {
     const startHour = parseInt(data.startTime.split(':')[0], 10);
@@ -92,23 +95,44 @@ const AddActivityScreen: React.FC<IAddActivityScreenProps> = ({
           title: data.title,
         };
         try {
-          await mutateAsync(
-            { input },
-            {
-              onSuccess: () => {
-                dispatch(
-                  showModalAlert({
-                    title: 'Well Done',
-                    text: 'Activity created successfully',
-                    textButton: '',
-                    type: 'success',
-                    visible: true,
-                  }),
-                );
-                goToPage(routes.CALENDAR);
+          if (!item) {
+            await mutateAsync(
+              { input },
+              {
+                onSuccess: () => {
+                  queryClient.cancelQueries('ListActivitys');
+                  dispatch(
+                    showModalAlert({
+                      title: 'Well Done',
+                      text: 'Activity created successfully',
+                      textButton: '',
+                      type: 'success',
+                      visible: true,
+                    }),
+                  );
+                  goToPage(routes.CALENDAR);
+                },
               },
-            },
-          );
+            );
+          } else {
+            await updateMutateAsync(
+              { input: { ...input, id: item.id } },
+              {
+                onSuccess: () => {
+                  dispatch(
+                    showModalAlert({
+                      title: 'Well Done',
+                      text: 'Activity updated successfully',
+                      textButton: '',
+                      type: 'success',
+                      visible: true,
+                    }),
+                  );
+                  goToPage(routes.CALENDAR);
+                },
+              },
+            );
+          }
         } catch (error) {
           onUpdateErrorHandler();
         }
@@ -153,7 +177,7 @@ const AddActivityScreen: React.FC<IAddActivityScreenProps> = ({
   return (
     <>
       <SafeAreaView>
-        <GBScreenHeader title="Add Activity" />
+        <GBScreenHeader title={item?.title ? 'Update Activity' : 'Add Activity'} />
         <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
           <AddActivityContainer>
             <Spacing size={20} />
@@ -163,7 +187,9 @@ const AddActivityScreen: React.FC<IAddActivityScreenProps> = ({
             </View>
             <Spacing />
             <View>
-              <AddActivityTitle>Add Activity</AddActivityTitle>
+              <AddActivityTitle>
+                {item?.title ? 'Update Activity' : 'Add Activity'}
+              </AddActivityTitle>
               <Spacing />
               <Form item={item} onSubmit={onSubmit} />
             </View>
