@@ -48,29 +48,27 @@ const CalendarScreen = () => {
     },
   );
 
-  // React.useEffect(() => {
-  //   refetch();
-  // });
-
   React.useEffect(() => {
-    let data = [...activityList?.activities];
-    data = data?.slice(0, 3) ?? [];
-    data = data?.sort((a, b) => a.activityDate.localeCompare(b.activityDate));
-    let data2 = [...activityList?.activities];
-    const markedDates = {};
-    if (data) {
-      data2 = groupBy(data, 'activityDate');
-      const keys = Object.keys(data2);
-      keys.forEach((key) => {
-        markedDates[key] = {
-          marked: true,
-          dotColor: '#00a680',
-          selectedColor: '#00a680',
-        };
-      });
+    if (activityList && activityList?.activities) {
+      let data = [...activityList?.activities];
+      data = data?.slice(0, 3) ?? [];
+      data = data?.sort((a, b) => a.activityDate.localeCompare(b.activityDate)) ?? [];
+      let data2 = [...activityList?.activities];
+      const markedDates = {};
+      if (data2) {
+        data2 = groupBy(data2, 'activityDate');
+        const keys = Object.keys(data2);
+        keys.forEach((key) => {
+          markedDates[key] = {
+            marked: true,
+            dotColor: '#00a680',
+            selectedColor: '#00a680',
+          };
+        });
+      }
+      setDataList(data);
+      setMarkedDatesList(markedDates);
     }
-    setDataList(data);
-    setMarkedDatesList(markedDates);
   }, [activityList]);
 
   useFocusEffect(
