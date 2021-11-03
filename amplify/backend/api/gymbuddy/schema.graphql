@@ -369,6 +369,23 @@ type Mutation {
     @function(name: "deleteEndpointNotifications-${env}")
   publishNotification(body: PublishNotificationInput): String
     @function(name: "publishNotification-${env}")
+  getClientSecret(body: PaymentIntentInput): String
+    @function(name: "paymentIntentClientSecret-${env}")
+  createSubscription(body: CreateSubscriptionInput): String
+    @function(name: "createSubscriptionStripe-${env}")
+  updateSubscription(body: UpdateSubscriptionInput): String
+    @function(name: "updateSubscriptionStatus-${env}")
+}
+
+input PaymentIntentInput {
+  email: String
+}
+input CreateSubscriptionInput {
+  email: String
+}
+input UpdateSubscriptionInput {
+  email: String
+  status: Boolean
 }
 input UserPushRegisterInput {
   userId: String

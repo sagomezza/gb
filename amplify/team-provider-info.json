@@ -39,7 +39,7 @@
         },
         "createSubscriptionStripe": {
           "deploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",
-          "s3Key": "amplify-builds/createSubscriptionStripe-7263512f613941554449-build.zip"
+          "s3Key": "amplify-builds/createSubscriptionStripe-376b4c4e776974336d4c-build.zip"
         },
         "paymentIntentClientSecret": {
           "deploymentBucketName": "amplify-amplifya12f0476f8e34-staging-194102-deployment",

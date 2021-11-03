@@ -42,9 +42,11 @@ const SubscribePaymentsScreen: React.FC = () => {
       id: userID,
       name: profileInfo.name,
       description: profileInfo.description,
+      photo: profileInfo.photo,
       premium: profileInfo.premium,
       trainer: profileInfo.trainer,
     };
+    dispatch(toggleEditProfile(false));
     updateProfile(input);
   };
 
@@ -70,17 +72,7 @@ const SubscribePaymentsScreen: React.FC = () => {
                     getUser: data.updateUser,
                   },
                 );
-                dispatch(
-                  showModalAlert({
-                    title: 'Well Done!',
-                    text: `Your profile has been updated successfully`,
-                    textButton: '',
-                    type: 'sucess',
-                    visible: true,
-                  }),
-                );
-                dispatch(toggleEditProfile(false));
-                goToPage('PROFILE');
+                onSucessHandler();
               },
             },
           );
@@ -89,6 +81,19 @@ const SubscribePaymentsScreen: React.FC = () => {
         }
       }
     });
+  };
+
+  const onSucessHandler = () => {
+    dispatch(
+      showModalAlert({
+        title: 'Well Done!',
+        text: `Your profile has been updated successfully`,
+        textButton: '',
+        type: 'sucess',
+        visible: true,
+      }),
+    );
+    goToPage('PROFILE');
   };
 
   const onUpdateErrorHandler = () =>

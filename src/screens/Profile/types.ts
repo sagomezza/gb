@@ -2,6 +2,7 @@ export interface IEditProfileForm {
   description: string;
   isTrainer?: boolean;
   name: string;
+  photo?: string;
   premium?: boolean;
 }
 

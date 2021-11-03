@@ -112,7 +112,7 @@ exports.handler = async (event, context) => {
   try {
     subscription = await stripe.subscriptions.create({
       customer: stripeCustomerId,
-      items: [{ price: 'price_1JahDsHa6BVOF2G8Agr0OKSJ' }],
+      items: [{ price: process.env.PRODUCTPRICEID }],
       default_payment_method: paymentMethods?.data[0].id,
     });
   } catch (error) {

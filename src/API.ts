@@ -19,6 +19,19 @@ export type PublishNotificationInput = {
   subject?: string | null,
 };
 
+export type PaymentIntentInput = {
+  email?: string | null,
+};
+
+export type CreateSubscriptionInput = {
+  email?: string | null,
+};
+
+export type UpdateSubscriptionInput = {
+  email?: string | null,
+  status?: boolean | null,
+};
+
 export type CreateCategoryInput = {
   id?: string | null,
   name?: string | null,
@@ -1173,6 +1186,30 @@ export type PublishNotificationMutationVariables = {
 
 export type PublishNotificationMutation = {
   publishNotification?: string | null,
+};
+
+export type GetClientSecretMutationVariables = {
+  body?: PaymentIntentInput | null,
+};
+
+export type GetClientSecretMutation = {
+  getClientSecret?: string | null,
+};
+
+export type CreateSubscriptionMutationVariables = {
+  body?: CreateSubscriptionInput | null,
+};
+
+export type CreateSubscriptionMutation = {
+  createSubscription?: string | null,
+};
+
+export type UpdateSubscriptionMutationVariables = {
+  body?: UpdateSubscriptionInput | null,
+};
+
+export type UpdateSubscriptionMutation = {
+  updateSubscription?: string | null,
 };
 
 export type CreateCategoryMutationVariables = {

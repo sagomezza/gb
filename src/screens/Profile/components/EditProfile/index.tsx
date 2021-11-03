@@ -41,7 +41,7 @@ const EditProfile: React.FC<IEditProfileProps> = ({ onSubmit, userData }: IEditP
       onSuccess: (data) => {
         const categories = data.getUser?.setting?.categories;
         if (categories != null) {
-          if (categories.length > 0) {
+          if (categories.length >= 0) {
             setCategories(categories);
           }
         }
@@ -64,6 +64,7 @@ const EditProfile: React.FC<IEditProfileProps> = ({ onSubmit, userData }: IEditP
 
   useEffect(() => {
     setValue('isTrainer', userData?.isTrainer);
+    setValue('photo', userData?.photo);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -73,6 +74,7 @@ const EditProfile: React.FC<IEditProfileProps> = ({ onSubmit, userData }: IEditP
       const editProfileInfo = {
         description: formValues.description,
         name: formValues.name,
+        photo: userData?.photo,
         premium: false,
         isTrainer: formValues.isTrainer,
       };

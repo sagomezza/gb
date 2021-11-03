@@ -45,16 +45,12 @@ export const Name = styled(Text)`
   font-family: ${({ theme: { fonts } }) => fonts.regular.fontFamily};
   font-size: ${nlz(28)}px;
   font-weight: bold;
+  margin-right: ${rs(6)}px;
 `;
 
-export const AgeAndCity = styled(Text)`
-  color: ${({ theme: { colors } }) => colors.gray1};
-  font-family: ${({ theme: { fonts } }) => fonts.regular.fontFamily};
-  font-size: ${nlz(14)}px;
-  letter-spacing: 2px;
-  margin-bottom: ${rs(8)}px;
-  margin-top: ${rs(6)}px;
-  text-transform: uppercase;
+export const NameContainer = styled(View)`
+  align-items: center;
+  flex-direction: row;
 `;
 
 export const InterestsContainer = styled(View)`

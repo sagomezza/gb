@@ -8,11 +8,12 @@ import { getUserQuery, listBulletinsQuery } from 'service/queries';
 import { Bulletin, GetUserQuery } from 'lib/api';
 import { useFocusEffect } from '@react-navigation/native';
 import { getUserId } from 'store/auth/authSelectors';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import AdMob, { BannerAd, BannerAdSize } from '@react-native-admob/admob';
 import { useQueryClient } from 'react-query';
 /* import { Platform } from 'react-native';
 import { AD_UNIT_ID_IOS, AD_UNIT_ID_ANDROID } from '@env'; */
+import { toggleEditProfile } from 'store/app/appActions';
 import { BackgroundGradient, Separator, SizedFlatList } from './styles';
 
 type TListBulletinQuery = {
@@ -24,6 +25,7 @@ const Home: React.FC = () => {
   const queryClient = useQueryClient();
   const userID = useSelector(getUserId);
   const [dataList, setDataList] = useState<Bulletin[]>(undefined);
+  const dispatch = useDispatch();
 
   getUserQuery(
     { id: userID },
@@ -66,6 +68,8 @@ const Home: React.FC = () => {
     useCallback(() => {
       refetch();
       bannerRef.current?.loadAd();
+      dispatch(toggleEditProfile(false));
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [refetch]),
   );
 
