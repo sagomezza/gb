@@ -82,7 +82,6 @@ const AgendaComponent: React.FC<AgendaProps> = ({
     <AgendaContainer>
       <Agenda
         hideKnob
-        futureScrollRange={0}
         items={agendaItems}
         markingType="custom"
         minDate={format(new Date(), 'yyyy-MM-dd')}

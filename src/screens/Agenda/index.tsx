@@ -41,8 +41,8 @@ const AgendaScreen: React.FC<IAddActivityScreenProps> = ({ route }: IAddActivity
   return (
     <>
       <SafeAreaView>
-        <GBScreenHeader title="Agenda" />
         <MainContainer>
+          <GBScreenHeader title="Agenda" />
           <MainTitles>
             <TitleDate>{titleDate()}</TitleDate>
             <TextDate>{format(calendarDay, 'eeee dd MMMM, yyyy')}</TextDate>
